@@ -322,7 +322,7 @@ and check_declaration d = match d with
   | Proc_declaration(ix,i,fps,c)              -> if (IdentificationTable.exists (Identifier_name i)) then
                                                    ErrorReporter.reportError ("Identifier " ^ (Identifier_name i) ^ " already declared") ix.pos;
                                                 IdentificationTable.enter (Identifier_name i) (ref (Proc_declaration(ix,i,fps,c)));
-                                                let elem = IdentificationTable.retrieveElement (Identifier_name i) in
+                                                let elem = IdentificationTable.retrieve_element (Identifier_name i) in
                                                     IdentificationTable.openScope();
                                                     let fpsType = (check_formal_parameter_sequence fps) in
                                                         elem.attr <- (ref (Proc_declaration(ix,i,fpsType,c)));
@@ -336,7 +336,7 @@ and check_declaration d = match d with
                                                     if (IdentificationTable.exists (Identifier_name i)) then
                                                        ErrorReporter.reportError ("Identifier " ^ (Identifier_name i) ^ " already declared") ix.pos;
                                                     IdentificationTable.enter (Identifier_name i) (ref (Func_declaration(ix,i,fps,tType,e)));
-                                                    let elem = IdentificationTable.retrieveElement (Identifier_name i) in
+                                                    let elem = IdentificationTable.retrieve_element (Identifier_name i) in
                                                         IdentificationTable.openScope();
                                                         let fpsType = (check_formal_parameter_sequence fps) in
                                                             elem.attr <- (ref (Func_declaration(ix,i,fpsType,tType,e)));
