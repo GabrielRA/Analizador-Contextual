@@ -132,20 +132,20 @@ let maxRoutineLevel = 7
 
 (* Obtains the astInfo for declaration d *)
 let obtainDeclAstInfo d = match d with
-    NullDeclaration                       -> {pos=Lexing.dummy_pos; run=NullRuntimeEntity}
-  | ConstDeclaration(ix,_,_)
-  | VarDeclaration(ix,_,_)
-  | ProcDeclaration(ix,_,_,_)
-  | FuncDeclaration(ix,_,_,_,_)
-  | TypeDeclaration(ix,_,_)
-  | UnaryOperatorDeclaration(ix,_,_,_)
-  | BinaryOperatorDeclaration(ix,_,_,_,_)
-  | FormalParameterDeclaration(ix,_)
-  | SequentialDeclaration(ix,_,_)         -> ix
+    Null_declaration                       -> {pos=Lexing.dummy_pos; run=NullRuntimeEntity}
+  | Const_declaration(ix,_,_)
+  | Var_declaration(ix,_,_)
+  | Proc_declaration(ix,_,_,_)
+  | Func_declaration(ix,_,_,_,_)
+  | Type_declaration(ix,_,_)
+  | Unary_operator_declaration(ix,_,_,_)
+  | Binary_operator_declaration(ix,_,_,_,_)
+  | Formal_parameter_declaration(ix,_)
+  | Sequential_declaration(ix,_,_)         -> ix
 
 (* Obtains the declaration for identifier i *)
 let obtainIdentifierDeclaration i = match i with
-    CheckedIdentifier(_,d) -> !d
+    Checked_identifier(_,d) -> !d
   | Identifier(_,s)        -> !(retrieve s)
 
 
@@ -165,26 +165,26 @@ let obtainRuntimeEntitySize re = match re with
   
 (* Returns if a Vname is indexed *)
 let isVnameIndexed v = match v with
-    CheckedVname(_,_,b,_,_) -> b
+    Checked_vname(_,_,b,_,_) -> b
   | _                       -> false
 
 (* Returns the offset of a vname *)  
 let obtainVnameOffset v = match v with
-    CheckedVname(_,_,b,o,_) -> o
+    Checked_vname(_,_,b,o,_) -> o
   | _                       -> 0
 
 (* Returns the spelling of an identifier *)
 let rec Identifier_name id = match id with 
     Identifier(_,s)        -> s
-  | CheckedIdentifier(i,_) -> Identifier_name i
+  | Checked_identifier(i,_) -> Identifier_name i
   
 (* Obtains the type of a field identifier *)
 let rec checkFieldIdentifier ft id = match ft with
-    MultipleFieldTypeDenoter(ix,i,t,mt) -> if ((String.compare (Identifier_name id) (Identifier_name i)) == 0) then
+    Multiple_field_type_denoter(ix,i,t,mt) -> if ((String.compare (Identifier_name id) (Identifier_name i)) == 0) then
                                             ix.run
                                           else 
                                             checkFieldIdentifier mt id
-  | SingleFieldTypeDenoter(ix,i,t)     -> if ((String.compare (Identifier_name id) (Identifier_name i)) == 0) then
+  | Single_field_type_denoter(ix,i,t)     -> if ((String.compare (Identifier_name id) (Identifier_name i)) == 0) then
                                             ix.run
                                           else
                                             NullRuntimeEntity
@@ -195,10 +195,10 @@ let rec checkFieldIdentifier ft id = match ft with
 
 (* Returns the runtime entity of a vname *)
 let rec obtainVnameEntity v = match v with
-    SimpleVname(_,i)         -> (obtainDeclAstInfo (obtainIdentifierDeclaration i)).run
-  | DotVname(_,vn,_)         -> (obtainVnameEntity vn)
-  | SubscriptVname(_,vn,_)   -> (obtainVnameEntity vn)
-  | CheckedVname(vn,_,_,_,_) -> obtainVnameEntity vn
+    Simple_vname(_,i)         -> (obtainDeclAstInfo (obtainIdentifierDeclaration i)).run
+  | Dot_vname(_,vn,_)         -> (obtainVnameEntity vn)
+  | Subscript_vname(_,vn,_)   -> (obtainVnameEntity vn)
+  | Checked_vname(vn,_,_,_,_) -> obtainVnameEntity vn
 
 (* Appends an instruction, with the given fields, to the object code. *)
 let emit xop xn xr xd =
@@ -241,15 +241,15 @@ let rec visitProgram p f = match p with
 
 (* Commands *)
 and visitCommand c f = match c with
-    EmptyCommand(ix)              -> ()
+    Empty_command(ix)              -> ()
     
-  | AssignCommand(ix, v, e)       -> let vsize = (visitExpression e f) in  
+  | Assign_command(ix, v, e)       -> let vsize = (visitExpression e f) in  
                                          encodeStore v {lev = f.lev ; size = f.size + vsize} vsize;
                                          
-  | CallCommand(ix, i, aps)       -> let asize = (visitActualParameterSequence aps f) in
+  | Call_command(ix, i, aps)       -> let asize = (visitActualParameterSequence aps f) in
                                          visitIdentifier i {lev = f.lev ; size = asize}
   
-  | SequentialCommand(ix, c1, c2) -> visitCommand c1 f;
+  | Sequential_command(ix, c1, c2) -> visitCommand c1 f;
                                      visitCommand c2 f
                                      
   | LetCommand(ix, d, c)          -> let esize = (visitDeclaration d f) in
@@ -267,7 +267,7 @@ and visitCommand c f = match c with
                                                  visitCommand c2 f;
                                                  patch jumpaddr !nextAddr
   
-  | WhileCommand(ix, e, c)        -> let jumpaddr = !nextAddr in
+  | While_command(ix, e, c)        -> let jumpaddr = !nextAddr in
                                          emit opJUMP 0 rCB 0;
                                          let loopaddr = !nextAddr in
                                              visitCommand c f;
@@ -279,22 +279,22 @@ and visitCommand c f = match c with
 and visitExpression e f =    
     let visitInnerExpression e f vsize =
         (match e with
-          EmptyExpression(ix)             -> 0
+          Empty_expression(ix)             -> 0
 					       
-        | IntegerExpression(ix, il)       -> emit opLOADL 0 0 (visitIntegerLiteral il);
+        | Integer_expression(ix, il)       -> emit opLOADL 0 0 (visitInteger_literal il);
                                              vsize
 					     
-        | CharacterExpression(ix, cl)     -> emit opLOADL 0 0 (visitCharacterLiteral cl);
+        | Character_expression(ix, cl)     -> emit opLOADL 0 0 (visitCharacter_literal cl);
                                              vsize
 					                                         
-        | VnameExpression(ix, vn)         -> encodeFetch vn f vsize;
+        | Vname_expression(ix, vn)         -> encodeFetch vn f vsize;
                                              vsize
 					                                         
-        | CallExpression(ix, i, aps)      -> let args = (visitActualParameterSequence aps f) in
+        | Call_expression(ix, i, aps)      -> let args = (visitActualParameterSequence aps f) in
                                                  visitIdentifier i {lev = f.lev ; size = args};
                                                  vsize
 
-        | IfExpression(ix, e1, e2, e3)    -> let ex1 = (visitExpression e1 f) in
+        | If_expression(ix, e1, e2, e3)    -> let ex1 = (visitExpression e1 f) in
                                                  let jumpifaddr = !nextAddr in
                                                      emit opJUMPIF falseRep rCB 0;
                                                      let ex2 = (visitExpression e2 f) in
@@ -305,32 +305,32 @@ and visitExpression e f =
                                                              patch jumpaddr !nextAddr;
                                                              ex3
 					    
-        | LetExpression(ix, d, e)         -> let esize = (visitDeclaration d f) in
+        | Let_expression(ix, d, e)         -> let esize = (visitDeclaration d f) in
                                                  let f1 = {lev = f.lev ; size = f.size + esize} in
                                                      let usize = (visitExpression e f1) in
                                                          if (esize > 0) then
                                                             emit opPOP usize 0 esize;
                                                          usize
 
-        | UnaryExpression(ix, o, e)       -> let ex = (visitExpression e f) in
+        | Unary_expression(ix, o, e)       -> let ex = (visitExpression e f) in
                                                  visitOperator o {lev = f.lev ; size = vsize};
                                                  vsize
 
-        | BinaryExpression(ix, e1, o, e2) -> let ex1 = (visitExpression e1 f) in
+        | Binary_expression(ix, e1, o, e2) -> let ex1 = (visitExpression e1 f) in
                                                  let f1 = {lev = f.lev ; size = f.size + ex1} in
                                                      let ex2 = (visitExpression e2 f1) in
                                                          let f2 = {lev = f.lev ; size = ex1 + ex2} in
                                                              visitOperator o f2;
                                                              vsize
 
-        | ArrayExpression(ix, aa)         -> (visitArrayAggregate aa f)
+        | Array_expression(ix, aa)         -> (visitArrayAggregate aa f)
 					    
-        | RecordExpression(ix, ra)        -> (visitRecordAggregate ra f)
+        | Record_expression(ix, ra)        -> (visitRecordAggregate ra f)
         
         | _                               -> 0) in
           
            match e with
-             CheckedExpression(ex, t)        -> let vsize = (visitTypeDenoter t) in
+             Checked_expression(ex, t)        -> let vsize = (visitTypeDenoter t) in
                                                     visitInnerExpression ex f vsize
 
            | _                               -> (visitInnerExpression e f 0)
@@ -338,9 +338,9 @@ and visitExpression e f =
 
 (* Array Aggregates *)
 and visitArrayAggregate aa f = match aa with
-    SingleArrayAggregate(ix, e)        -> (visitExpression e f)
+    Single_array_aggregate(ix, e)        -> (visitExpression e f)
     
-  | MultipleArrayAggregate(ix, e, aax) -> let fsize = (visitExpression e f) in  
+  | Multiple_array_aggregate(ix, e, aax) -> let fsize = (visitExpression e f) in  
                                                  let f1 = {lev = f.lev ; size = f.size + fsize} in
                                                      let rsize = (visitArrayAggregate aax f1) in
                                                         fsize + rsize
@@ -356,17 +356,17 @@ and visitRecordAggregate ra f = match ra with
                                                       let rsize = (visitRecordAggregate rax f1) in
                                                          fsize + rsize
                                                         
-  | CheckedRecordAggregate(rax, _)         -> (visitRecordAggregate rax f)
+  | Checked_record_aggregate(rax, _)         -> (visitRecordAggregate rax f)
   
   
 (* Value-or-variable names *)
 and visitVname v f = match v with
-  | CheckedVname(vn, v, i, o, td) -> (match vn with
-                                            SimpleVname(ix, i)            -> CheckedVname(vn, true, false, 0, td)
-					  | DotVname(ix, vnx, i)          -> let vo = (visitVname vnx f) in
+  | Checked_vname(vn, v, i, o, td) -> (match vn with
+                                            Simple_vname(ix, i)            -> Checked_vname(vn, true, false, 0, td)
+					  | Dot_vname(ix, vnx, i)          -> let vo = (visitVname vnx f) in
 					                                         let oa = (match vo with
-					                                             CheckedVname(_,_,_,_,t) -> (match t with
-					                                                                           RecordTypeDenoter(_,tt) -> let mx = (visitFieldTypeDenoter tt 0) in
+					                                             Checked_vname(_,_,_,_,t) -> (match t with
+					                                                                           Record_type_denoter(_,tt) -> let mx = (visitFieldTypeDenoter tt 0) in
 					                                                                                                          let yy = (checkFieldIdentifier tt i) in
 					                                                                                                              (match yy with
 					                                                                                                                 Field(s,o) -> o
@@ -374,15 +374,15 @@ and visitVname v f = match v with
 					                                                                         | _                       -> 0)
 					                                           | _                       -> 0) in
 					                                         let ofs = (obtainVnameOffset vo) + oa in
-					                                             CheckedVname(vn, true, (isVnameIndexed vnx), ofs, td)
-                                          | SubscriptVname(ix, vnx, e)    -> let vo = (visitVname vnx f)
+					                                             Checked_vname(vn, true, (isVnameIndexed vnx), ofs, td)
+                                          | Subscript_vname(ix, vnx, e)    -> let vo = (visitVname vnx f)
                                                                              and esize = (visitTypeDenoter td) in
                                                                              let ofs = ref (obtainVnameOffset vo)
                                                                              and fram = ref f
                                                                              and isize = ref 0
                                                                              and ixed = ref (isVnameIndexed vnx) in
                                                                                  (match e with
-                                                                                    CheckedExpression(IntegerExpression(_,il),_) -> ofs := !ofs + (visitIntegerLiteral il) * esize
+                                                                                    Checked_expression(Integer_expression(_,il),_) -> ofs := !ofs + (visitInteger_literal il) * esize
                                                                                   | _                                            -> if (!ixed) then
                                                                                                                                        fram := {lev = f.lev ; size = f.size + integerSize};
                                                                                                                                     isize := (visitExpression e !fram);
@@ -395,7 +395,7 @@ and visitVname v f = match v with
                                                                                                                                        emit opCALL rSB rPB addDisplacement
                                                                                                                                     else
                                                                                                                                        ixed := true);
-                                                                                 CheckedVname(vn, true, !ixed, !ofs, td)
+                                                                                 Checked_vname(vn, true, !ixed, !ofs, td)
 
                                           | _                             -> vn)
   | _                             -> v
@@ -403,16 +403,16 @@ and visitVname v f = match v with
 
 (* Declarations *)
 and visitDeclaration d f = match d with
-    NullDeclaration                             -> 0
+    Null_declaration                             -> 0
     
-  | ConstDeclaration(ix, i, e)                  -> let vsize = ref 0
+  | Const_declaration(ix, i, e)                  -> let vsize = ref 0
                                                    and tdt = {dname=(Identifier_name i); dkind=""; dsize=""; dlevel=""; ddispl=""; dvalue=""} in
                                                        (match e with
-                                                          CheckedExpression(CharacterExpression(_, cl),_)  -> let value = (visitCharacterLiteral cl) in
+                                                          Checked_expression(Character_expression(_, cl),_)  -> let value = (visitCharacter_literal cl) in
                                                                                                                   ix.run <- KnownValue(characterSize, value);
                                                                                                                   tdt.dkind <- "KnownValue";
                                                                                                                   tdt.dvalue <- string_of_int value;
-                                                        | CheckedExpression(IntegerExpression(_, il),_)    -> let value = (visitIntegerLiteral il) in
+                                                        | Checked_expression(Integer_expression(_, il),_)    -> let value = (visitInteger_literal il) in
                                                                                                                   ix.run <- KnownValue(integerSize, value);
                                                                                                                   tdt.dkind <- "KnownValue";
                                                                                                                   tdt.dvalue <- string_of_int value;
@@ -425,13 +425,13 @@ and visitDeclaration d f = match d with
                                                        addTable tdt;
                                                        !vsize
                                                        
-  | VarDeclaration(ix, i, t)                    -> let esize = (visitTypeDenoter t) in
+  | Var_declaration(ix, i, t)                    -> let esize = (visitTypeDenoter t) in
                                                        emit opPUSH 0 0 esize;
                                                        ix.run <- KnownAddress(addressSize, {level = f.lev ; displacement = f.size});
                                                        addTable {dname=(Identifier_name i); dkind="KnownAddress"; dsize=(string_of_int addressSize); dlevel=(string_of_int f.lev); ddispl=(string_of_int f.size); dvalue=""};
                                                        esize
                                                        
-  | ProcDeclaration(ix, i, fps, c)              -> let jaddr = !nextAddr 
+  | Proc_declaration(ix, i, fps, c)              -> let jaddr = !nextAddr 
                                                    and args = ref 0 in
                                                        emit opJUMP 0 rCB 0;
                                                        ix.run <- KnownRoutine(closureSize, {level = f.lev ; displacement = !nextAddr});
@@ -449,7 +449,7 @@ and visitDeclaration d f = match d with
                                                        addTable {dname=(Identifier_name i); dkind="KnownRoutine"; dsize=(string_of_int closureSize); dlevel=(string_of_int f.lev); ddispl=(string_of_int jaddr); dvalue=""};
                                                        0
                                                
-  | FuncDeclaration(ix, i, fps, t, e)           -> let jaddr = !nextAddr
+  | Func_declaration(ix, i, fps, t, e)           -> let jaddr = !nextAddr
                                                    and args = ref 0
                                                    and vals = ref 0 in
                                                        emit opJUMP 0 rCB 0;
@@ -468,47 +468,47 @@ and visitDeclaration d f = match d with
                                                        addTable {dname=(Identifier_name i); dkind="KnownRoutine"; dsize=(string_of_int closureSize); dlevel=(string_of_int f.lev); ddispl=(string_of_int jaddr); dvalue=""};
                                                        0
                                                        
-  | TypeDeclaration(ix, i, t)                   -> let x = (visitTypeDenoter t) in
+  | Type_declaration(ix, i, t)                   -> let x = (visitTypeDenoter t) in
                                                    0
   
-  | UnaryOperatorDeclaration(ix, o, t1, t2)     -> 0
+  | Unary_operator_declaration(ix, o, t1, t2)     -> 0
   
-  | BinaryOperatorDeclaration(ix,o, t1, t2, t3) -> 0
+  | Binary_operator_declaration(ix,o, t1, t2, t3) -> 0
   
-  | FormalParameterDeclaration(ix, fp)          -> (visitFormalParameter fp f)
+  | Formal_parameter_declaration(ix, fp)          -> (visitFormalParameter fp f)
   
-  | SequentialDeclaration(ix, d1, d2)           -> let esize1 = (visitDeclaration d1 f) in
+  | Sequential_declaration(ix, d1, d2)           -> let esize1 = (visitDeclaration d1 f) in
                                                        let f1 = { lev = f.lev ; size = f.size + esize1 } in
                                                            let esize2 = (visitDeclaration d2 f1) in
                                                                esize1 + esize2
 
 (* Formal parameters *)
 and visitFormalParameter fp f = match fp with
-    ConstFormalParameter(ix, i, t)     -> let vsize = (visitTypeDenoter t) in
+    Const_formal_parameter(ix, i, t)     -> let vsize = (visitTypeDenoter t) in
                                               ix.run <- UnknownValue(vsize, {level=f.lev; displacement= -f.size - vsize});
                                               addTable {dname=(Identifier_name i); dkind="UnknownValue"; dsize=(string_of_int vsize); dlevel=(string_of_int f.lev); ddispl=(string_of_int (-f.size - vsize)); dvalue=""};
                                               vsize
                                               
-  | VarFormalParameter(ix, i, t)       -> let vx = (visitTypeDenoter t) in
+  | Var_formal_parameter(ix, i, t)       -> let vx = (visitTypeDenoter t) in
                                               ix.run <- UnknownAddress(addressSize, {level=f.lev; displacement= -f.size - addressSize});
                                               addTable {dname=(Identifier_name i); dkind="UnknownAddress"; dsize=(string_of_int addressSize); dlevel=(string_of_int f.lev); ddispl=(string_of_int (-f.size - addressSize)); dvalue=""};
                                               addressSize
                                           
-  | ProcFormalParameter(ix, i, fps)
-  | FuncFormalParameter(ix, i, fps, _) -> ix.run <- UnknownRoutine(closureSize, {level=f.lev; displacement= -f.size - closureSize});
+  | Proc_formal_parameter(ix, i, fps)
+  | Func_formal_parameter(ix, i, fps, _) -> ix.run <- UnknownRoutine(closureSize, {level=f.lev; displacement= -f.size - closureSize});
                                           addTable {dname=(Identifier_name i); dkind="UnknownRoutine"; dsize=(string_of_int closureSize); dlevel=(string_of_int f.lev); ddispl=(string_of_int (-f.size - closureSize)); dvalue=""};
                                           closureSize
 
 (* Actual parameters *)
 and visitActualParameter ap f = match ap with
-    ConstActualParameter(ix, e) -> (visitExpression e f)
+    Const_actual_parameter(ix, e) -> (visitExpression e f)
     
-  | VarActualParameter(ix, v)   -> encodeFetchAddress v f;
+  | Var_actual_parameter(ix, v)   -> encodeFetchAddress v f;
                                    addressSize
 
-  | ProcActualParameter(ix, i)
+  | Proc_actual_parameter(ix, i)
                                     
-  | FuncActualParameter(ix, i)  -> (match (obtainDeclAstInfo (obtainIdentifierDeclaration i)).run with
+  | Func_actual_parameter(ix, i)  -> (match (obtainDeclAstInfo (obtainIdentifierDeclaration i)).run with
                                       KnownRoutine(s, oa)    -> emit opLOADA 0 (displayRegister f.lev oa.level) 0;
                                                                 emit opLOADA 0 rCB oa.displacement
                                                                 
@@ -522,9 +522,9 @@ and visitActualParameter ap f = match ap with
 
 (* Formal parameter sequences *)
 and visitFormalParameterSequence fps f = match fps with
-    EmptyFormalParameterSequence(ix)              -> 0
-  | SingleFormalParameterSequence(ix, fp)         -> (visitFormalParameter fp f)
-  | MultipleFormalParameterSequence(ix, fp, fpsx) -> let args1 = (visitFormalParameterSequence fpsx f) in
+    Empty_formal_parameter_sequence(ix)              -> 0
+  | Single_formal_parameter_sequence(ix, fp)         -> (visitFormalParameter fp f)
+  | Multiple_formal_parameter_sequence(ix, fp, fpsx) -> let args1 = (visitFormalParameterSequence fpsx f) in
                                                      let f1 = {lev=f.lev; size=f.size+args1} in
                                                      let args2 = (visitFormalParameter fp f1) in
                                                          args1 + args2
@@ -540,17 +540,17 @@ and visitActualParameterSequence aps f = match aps with
 
 (* Type denoters *)
 and visitTypeDenoter t = match t with
-    NullTypeDenoter             -> 0
+    Null_type_denoter             -> 0
     
-  | ErrorTypeDenoter(ix)        -> 0
+  | Error_type_denoter(ix)        -> 0
   
-  | AnyTypeDenoter(ix)          -> 0
+  | Any_type_denoter(ix)          -> 0
   
   | SimpleTypeDenoter(ix, i)    -> 0
   
-  | ArrayTypeDenoter(ix, il, t) -> if (ix.run == NullRuntimeEntity) then
+  | Array_type_denoter(ix, il, t) -> if (ix.run == NullRuntimeEntity) then
                                       let esize = (visitTypeDenoter t) in
-                                      let tsize = (visitIntegerLiteral il) * esize in
+                                      let tsize = (visitInteger_literal il) * esize in
                                       begin
                                         ix.run <- TypeRepresentation(tsize);                                        
                                         tsize
@@ -558,7 +558,7 @@ and visitTypeDenoter t = match t with
                                    else
                                      (obtainRuntimeEntitySize ix.run)
                                      
-  | RecordTypeDenoter(ix, ft)   -> if (ix.run == NullRuntimeEntity) then
+  | Record_type_denoter(ix, ft)   -> if (ix.run == NullRuntimeEntity) then
                                       let tsize = (visitFieldTypeDenoter ft 0) in
                                       begin
                                         ix.run <- TypeRepresentation(tsize);
@@ -567,22 +567,22 @@ and visitTypeDenoter t = match t with
                                    else
                                       (obtainRuntimeEntitySize ix.run)
   
-  | BoolTypeDenoter(ix)         -> if (ix.run == NullRuntimeEntity) then
+  | Bool_type_denoter(ix)         -> if (ix.run == NullRuntimeEntity) then
                                       ix.run <- TypeRepresentation(booleanSize);
                                    booleanSize
                                    
-  | IntTypeDenoter(ix)          -> if (ix.run == NullRuntimeEntity) then
+  | Int_type_denoter(ix)          -> if (ix.run == NullRuntimeEntity) then
                                       ix.run <- TypeRepresentation(integerSize);
                                    integerSize
                                    
-  | CharTypeDenoter(ix)         -> if (ix.run == NullRuntimeEntity) then
+  | Char_type_denoter(ix)         -> if (ix.run == NullRuntimeEntity) then
                                       ix.run <- TypeRepresentation(characterSize);
                                    characterSize
                                       
   
 (* Field type denoters *)
 and visitFieldTypeDenoter ft offset = match ft with
-    SingleFieldTypeDenoter(ix, i, t)        -> if (ix.run == NullRuntimeEntity) then
+    Single_field_type_denoter(ix, i, t)        -> if (ix.run == NullRuntimeEntity) then
                                                   let fsize = visitTypeDenoter t in
                                                   begin
                                                      ix.run <- Field(fsize, offset);
@@ -591,7 +591,7 @@ and visitFieldTypeDenoter ft offset = match ft with
                                                else
                                                   (obtainRuntimeEntitySize ix.run)
 
-  | MultipleFieldTypeDenoter(ix, i, t, ftx) -> let fsize = 
+  | Multiple_field_type_denoter(ix, i, t, ftx) -> let fsize = 
                                                    if (ix.run == NullRuntimeEntity) then
                                                       let fx = visitTypeDenoter t in
                                                       begin
@@ -607,16 +607,16 @@ and visitFieldTypeDenoter ft offset = match ft with
                                                   
 
 (* Integer literals *)
-and visitIntegerLiteral il = match il with
-    IntegerLiteral(_, s) -> int_of_string s
+and visitInteger_literal il = match il with
+    Integer_literal(_, s) -> int_of_string s
 
 (* Character literals *)
-and visitCharacterLiteral cl = match cl with
-    CharacterLiteral(ix, s) -> (int_of_char (String.get s 1))
+and visitCharacter_literal cl = match cl with
+    Character_literal(ix, s) -> (int_of_char (String.get s 1))
 
 (* Identifiers *)
 and visitIdentifier i f = match i with
-    CheckedIdentifier(i, d) -> let entity = (obtainDeclAstInfo !d).run in
+    Checked_identifier(i, d) -> let entity = (obtainDeclAstInfo !d).run in
                                    (match entity with
                                       KnownRoutine(s,oa)      -> emit opCALL (displayRegister f.lev oa.level) rCB oa.displacement
                                     | UnknownRoutine(s,oa)    -> emit opLOAD closureSize (displayRegister f.lev oa.level) oa.displacement;
@@ -630,7 +630,7 @@ and visitIdentifier i f = match i with
 
 (* Operators, same as identifiers *)
 and visitOperator o f = match o with
-  | CheckedOperator(i, d) -> let entity = (obtainDeclAstInfo !d).run in
+  | Checked_operator(i, d) -> let entity = (obtainDeclAstInfo !d).run in
                                    (match entity with
                                       KnownRoutine(s,oa)      -> emit opCALL (displayRegister f.lev oa.level) rCB oa.displacement
                                     | UnknownRoutine(s,oa)    -> emit opLOAD closureSize (displayRegister f.lev oa.level) oa.displacement;
@@ -733,7 +733,7 @@ and encodeFetchAddress v f = let vx = (visitVname v f) in match (obtainVnameEnti
 
 (* Decides run-time representation of a standard constant. *)
 let elaborateStdConst decl value = match decl with
-    ConstDeclaration(ix,i,e) -> let typeSize = (visitExpression e {lev=0;size=0}) in
+    Const_declaration(ix,i,e) -> let typeSize = (visitExpression e {lev=0;size=0}) in
                                     ix.run <- KnownValue(typeSize, value)
   | _                        -> ()
 

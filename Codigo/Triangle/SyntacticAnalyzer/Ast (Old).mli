@@ -13,90 +13,90 @@ type astInfo = {pos: Lexing.position; mutable run: runtimeEntity}
 type astProgram                = Null_program
                                | Program                         of astInfo * astCommand
 
-and astCommand                 = EmptyCommand                    of astInfo
-                               | AssignCommand                   of astInfo * astVname * astExpression
-                               | CallCommand                     of astInfo * astIdentifier * astActualParameterSequence
-                               | SequentialCommand               of astInfo * astCommand * astCommand
+and astCommand                 = Empty_command                    of astInfo
+                               | Assign_command                   of astInfo * astVname * astExpression
+                               | Call_command                     of astInfo * astIdentifier * astActualParameterSequence
+                               | Sequential_command               of astInfo * astCommand * astCommand
                                | LetCommand                      of astInfo * astDeclaration * astCommand
                                | IfCommand                       of astInfo * astExpression * astCommand * astCommand
-                               | WhileCommand                    of astInfo * astExpression * astCommand
+                               | While_command                    of astInfo * astExpression * astCommand
 
-and astExpression              = EmptyExpression                 of astInfo
-                               | IntegerExpression               of astInfo * astIntegerLiteral
-                               | CharacterExpression             of astInfo * astCharacterLiteral
-                               | VnameExpression                 of astInfo * astVname
-                               | CallExpression                  of astInfo * astIdentifier * astActualParameterSequence
-                               | IfExpression                    of astInfo * astExpression * astExpression * astExpression
-                               | LetExpression                   of astInfo * astDeclaration * astExpression
-                               | UnaryExpression                 of astInfo * astOperator * astExpression
-                               | BinaryExpression                of astInfo * astExpression * astOperator * astExpression
-                               | ArrayExpression                 of astInfo * astArrayAggregate
-                               | RecordExpression                of astInfo * astRecordAggregate
-                               | CheckedExpression               of astExpression * astTypeDenoter
+and astExpression              = Empty_expression                 of astInfo
+                               | Integer_expression               of astInfo * astInteger_literal
+                               | Character_expression             of astInfo * astCharacter_literal
+                               | Vname_expression                 of astInfo * astVname
+                               | Call_expression                  of astInfo * astIdentifier * astActualParameterSequence
+                               | If_expression                    of astInfo * astExpression * astExpression * astExpression
+                               | Let_expression                   of astInfo * astDeclaration * astExpression
+                               | Unary_expression                 of astInfo * astOperator * astExpression
+                               | Binary_expression                of astInfo * astExpression * astOperator * astExpression
+                               | Array_expression                 of astInfo * astArrayAggregate
+                               | Record_expression                of astInfo * astRecordAggregate
+                               | Checked_expression               of astExpression * astTypeDenoter
 
-and astArrayAggregate          = SingleArrayAggregate            of astInfo * astExpression
-                               | MultipleArrayAggregate          of astInfo * astExpression * astArrayAggregate
+and astArrayAggregate          = Single_array_aggregate            of astInfo * astExpression
+                               | Multiple_array_aggregate          of astInfo * astExpression * astArrayAggregate
                                | CheckedArrayAggregate           of astArrayAggregate * int
 
 and astRecordAggregate         = SingleRecordAggregate           of astInfo * astIdentifier * astExpression
                                | MultipleRecordAggregate         of astInfo * astIdentifier * astExpression * astRecordAggregate
-                               | CheckedRecordAggregate          of astRecordAggregate * astFieldTypeDenoter
+                               | Checked_record_aggregate          of astRecordAggregate * astFieldTypeDenoter
 
-and astVname                   = SimpleVname                     of astInfo * astIdentifier
-                               | DotVname                        of astInfo * astVname * astIdentifier
-                               | SubscriptVname                  of astInfo * astVname * astExpression
-                               | CheckedVname                    of astVname * bool * bool * int * astTypeDenoter
+and astVname                   = Simple_vname                     of astInfo * astIdentifier
+                               | Dot_vname                        of astInfo * astVname * astIdentifier
+                               | Subscript_vname                  of astInfo * astVname * astExpression
+                               | Checked_vname                    of astVname * bool * bool * int * astTypeDenoter
                                                                                (* variable, indexed, offset *)
 
-and astDeclaration             = NullDeclaration
-			       | ConstDeclaration                of astInfo * astIdentifier * astExpression
-                               | VarDeclaration                  of astInfo * astIdentifier * astTypeDenoter
-                               | ProcDeclaration                 of astInfo * astIdentifier * astFormalParameterSequence * astCommand
-                               | FuncDeclaration                 of astInfo * astIdentifier * astFormalParameterSequence * astTypeDenoter * astExpression
-                               | TypeDeclaration                 of astInfo * astIdentifier * astTypeDenoter
-                               | UnaryOperatorDeclaration        of astInfo * astOperator * astTypeDenoter * astTypeDenoter
-                               | BinaryOperatorDeclaration       of astInfo * astOperator * astTypeDenoter * astTypeDenoter * astTypeDenoter
-                               | FormalParameterDeclaration      of astInfo * astFormalParameter
-                               | SequentialDeclaration           of astInfo * astDeclaration * astDeclaration
+and astDeclaration             = Null_declaration
+			       | Const_declaration                of astInfo * astIdentifier * astExpression
+                               | Var_declaration                  of astInfo * astIdentifier * astTypeDenoter
+                               | Proc_declaration                 of astInfo * astIdentifier * astFormalParameterSequence * astCommand
+                               | Func_declaration                 of astInfo * astIdentifier * astFormalParameterSequence * astTypeDenoter * astExpression
+                               | Type_declaration                 of astInfo * astIdentifier * astTypeDenoter
+                               | Unary_operator_declaration        of astInfo * astOperator * astTypeDenoter * astTypeDenoter
+                               | Binary_operator_declaration       of astInfo * astOperator * astTypeDenoter * astTypeDenoter * astTypeDenoter
+                               | Formal_parameter_declaration      of astInfo * astFormalParameter
+                               | Sequential_declaration           of astInfo * astDeclaration * astDeclaration
 
-and astFormalParameter         = ConstFormalParameter            of astInfo * astIdentifier * astTypeDenoter
-                               | VarFormalParameter              of astInfo * astIdentifier * astTypeDenoter
-                               | ProcFormalParameter             of astInfo * astIdentifier * astFormalParameterSequence
-                               | FuncFormalParameter             of astInfo * astIdentifier * astFormalParameterSequence * astTypeDenoter
+and astFormalParameter         = Const_formal_parameter            of astInfo * astIdentifier * astTypeDenoter
+                               | Var_formal_parameter              of astInfo * astIdentifier * astTypeDenoter
+                               | Proc_formal_parameter             of astInfo * astIdentifier * astFormalParameterSequence
+                               | Func_formal_parameter             of astInfo * astIdentifier * astFormalParameterSequence * astTypeDenoter
 
-and astActualParameter         = ConstActualParameter            of astInfo * astExpression
-                               | VarActualParameter              of astInfo * astVname
-                               | ProcActualParameter             of astInfo * astIdentifier
-                               | FuncActualParameter             of astInfo * astIdentifier
+and astActualParameter         = Const_actual_parameter            of astInfo * astExpression
+                               | Var_actual_parameter              of astInfo * astVname
+                               | Proc_actual_parameter             of astInfo * astIdentifier
+                               | Func_actual_parameter             of astInfo * astIdentifier
 
-and astFormalParameterSequence = EmptyFormalParameterSequence    of astInfo
-                               | SingleFormalParameterSequence   of astInfo * astFormalParameter
-                               | MultipleFormalParameterSequence of astInfo * astFormalParameter * astFormalParameterSequence
+and astFormalParameterSequence = Empty_formal_parameter_sequence    of astInfo
+                               | Single_formal_parameter_sequence   of astInfo * astFormalParameter
+                               | Multiple_formal_parameter_sequence of astInfo * astFormalParameter * astFormalParameterSequence
 
 and astActualParameterSequence = EmptyActualParameterSequence    of astInfo
                                | SingleActualParameterSequence   of astInfo * astActualParameter
                                | MultipleActualParameterSequence of astInfo * astActualParameter * astActualParameterSequence
 
-and astTypeDenoter             = NullTypeDenoter
-                               | ErrorTypeDenoter                of astInfo
-                               | AnyTypeDenoter                  of astInfo
+and astTypeDenoter             = Null_type_denoter
+                               | Error_type_denoter                of astInfo
+                               | Any_type_denoter                  of astInfo
                                | SimpleTypeDenoter               of astInfo * astIdentifier
-                               | ArrayTypeDenoter                of astInfo * astIntegerLiteral * astTypeDenoter
-                               | RecordTypeDenoter               of astInfo * astFieldTypeDenoter
-                               | BoolTypeDenoter                 of astInfo
-                               | IntTypeDenoter                  of astInfo
-                               | CharTypeDenoter                 of astInfo
+                               | Array_type_denoter                of astInfo * astInteger_literal * astTypeDenoter
+                               | Record_type_denoter               of astInfo * astFieldTypeDenoter
+                               | Bool_type_denoter                 of astInfo
+                               | Int_type_denoter                  of astInfo
+                               | Char_type_denoter                 of astInfo
 
-and astFieldTypeDenoter        = SingleFieldTypeDenoter          of astInfo * astIdentifier * astTypeDenoter
-                               | MultipleFieldTypeDenoter        of astInfo * astIdentifier * astTypeDenoter * astFieldTypeDenoter
+and astFieldTypeDenoter        = Single_field_type_denoter          of astInfo * astIdentifier * astTypeDenoter
+                               | Multiple_field_type_denoter        of astInfo * astIdentifier * astTypeDenoter * astFieldTypeDenoter
 
-and astIntegerLiteral          = IntegerLiteral                  of astInfo * string
+and astInteger_literal          = Integer_literal                  of astInfo * string
 
-and astCharacterLiteral        = CharacterLiteral                of astInfo * string
+and astCharacter_literal        = Character_literal                of astInfo * string
 
 and astIdentifier              = Identifier                      of astInfo * string
-                               | CheckedIdentifier               of astIdentifier * astDeclaration ref
+                               | Checked_identifier               of astIdentifier * astDeclaration ref
 
 and astOperator                = Operator                        of astInfo * string
-                               | CheckedOperator                 of astOperator * astDeclaration ref
+                               | Checked_operator                 of astOperator * astDeclaration ref
 

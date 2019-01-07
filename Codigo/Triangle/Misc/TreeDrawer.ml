@@ -25,104 +25,104 @@ let rec writeProgram t chan = match t with
   
 
 and writeCommand t chan = match t with
-    EmptyCommand      (_)         -> output_string chan "<EmptyCommand/>\n"
+    Empty_command      (_)         -> output_string chan "<Empty_command/>\n"
 
-  | AssignCommand     (_,v,e)     -> output_string chan "<AssignCommand>\n";
+  | Assign_command     (_,v,e)     -> output_string chan "<Assign_command>\n";
                                      writeVname v chan;
                                      writeExpression e chan;
-                                     output_string chan "</AssignCommand>\n"
+                                     output_string chan "</Assign_command>\n"
 
-  | CallCommand       (_,i,aps)   -> output_string chan "<CallCommand>\n";
+  | Call_command       (_,i,aps)   -> output_string chan "<Call_command>\n";
                                      writeIdentifier i chan;
                                      writeActualParameterSequence aps chan;
-                                     output_string chan "</CallCommand>\n"
+                                     output_string chan "</Call_command>\n"
 
-  | SequentialCommand (_,c1,c2)   -> output_string chan "<SequentialCommand>\n";
+  | Sequential_command (_,c1,c2)   -> output_string chan "<Sequential_command>\n";
                                      writeCommand c1 chan;
                                      writeCommand c2 chan;
-                                     output_string chan "</SequentialCommand>\n"
+                                     output_string chan "</Sequential_command>\n"
 
   | LetCommand        (_,d,c)     -> output_string chan "<LetCommand>\n";
                                      writeDeclaration d chan;
                                      writeCommand c chan;
                                      output_string chan "</LetCommand>\n"
 
-  | IfCommand         (_,e,c1,c2) -> output_string chan "<IfCommand>\n";
+  | If_command         (_,e,c1,c2) -> output_string chan "<If_command>\n";
                                      writeExpression e chan;
                                      writeCommand c1 chan;
                                      writeCommand c2 chan;
-                                     output_string chan "</IfCommand>\n"
+                                     output_string chan "</If_command>\n"
 
-  | WhileCommand      (_,e,c)     -> output_string chan "<WhileCommand>\n";
+  | While_command      (_,e,c)     -> output_string chan "<While_command>\n";
                                      writeExpression e chan;
                                      writeCommand c chan;
-                                     output_string chan "</WhileCommand>\n"
+                                     output_string chan "</While_command>\n"
 
 and writeExpression t chan = match t with
-    EmptyExpression     (_)          -> output_string chan "<EmptyExpression/>\n"
+    Empty_expression     (_)          -> output_string chan "<Empty_expression/>\n"
 
-  | IntegerExpression   (_,il)       -> output_string chan "<IntegerExpression>\n";
-                                        writeIntegerLiteral il chan;
-                                        output_string chan "</IntegerExpression>\n"
+  | Integer_expression   (_,il)       -> output_string chan "<Integer_expression>\n";
+                                        writeInteger_literal il chan;
+                                        output_string chan "</Integer_expression>\n"
 
-  | CharacterExpression (_,cl)       -> output_string chan "<CharacterExpression>\n";
-                                        writeCharacterLiteral cl chan;
-                                        output_string chan "</CharacterExpression>\n"
+  | Character_expression (_,cl)       -> output_string chan "<Character_expression>\n";
+                                        writeCharacter_literal cl chan;
+                                        output_string chan "</Character_expression>\n"
 
-  | VnameExpression     (_,v)        -> output_string chan "<VnameExpression>\n";
+  | Vname_expression     (_,v)        -> output_string chan "<Vname_expression>\n";
                                         writeVname v chan;
-                                        output_string chan "</VnameExpression>\n"
+                                        output_string chan "</Vname_expression>\n"
 
-  | CallExpression      (_,i,aps)    -> output_string chan "<CallExpression>\n";
+  | Call_expression      (_,i,aps)    -> output_string chan "<Call_expression>\n";
                                         writeIdentifier i chan;
                                         writeActualParameterSequence aps chan;
-                                        output_string chan "</CallExpression>\n"
+                                        output_string chan "</Call_expression>\n"
 
-  | IfExpression        (_,e1,e2,e3) -> output_string chan "<IfExpression>\n";
+  | If_expression        (_,e1,e2,e3) -> output_string chan "<If_expression>\n";
                                         writeExpression e1 chan;
                                         writeExpression e2 chan;
                                         writeExpression e2 chan;
-                                        output_string chan "</IfExpression>\n"
+                                        output_string chan "</If_expression>\n"
 
-  | LetExpression       (_,d,e)      -> output_string chan "<LetExpression>\n";
+  | Let_expression       (_,d,e)      -> output_string chan "<Let_expression>\n";
                                         writeDeclaration d chan;
                                         writeExpression e chan;
-                                        output_string chan "</LetExpression>\n"
+                                        output_string chan "</Let_expression>\n"
 
-  | UnaryExpression     (_,o,e)      -> output_string chan "<UnaryExpression>\n";
+  | Unary_expression     (_,o,e)      -> output_string chan "<Unary_expression>\n";
                                         writeOperator o chan;
                                         writeExpression e chan;
-                                        output_string chan "</UnaryExpression>\n"
+                                        output_string chan "</Unary_expression>\n"
 
-  | BinaryExpression    (_,e1,o,e2)  -> output_string chan "<BinaryExpression>\n";
+  | Binary_expression    (_,e1,o,e2)  -> output_string chan "<Binary_expression>\n";
                                         writeExpression e1 chan;
                                         writeOperator o chan;
                                         writeExpression e2 chan;
-                                        output_string chan "</BinaryExpression>\n"
+                                        output_string chan "</Binary_expression>\n"
 
-  | ArrayExpression     (_,aa)       -> output_string chan "<ArrayExpression>\n";
+  | Array_expression     (_,aa)       -> output_string chan "<Array_expression>\n";
                                         writeArrayAggregate aa chan;
-                                        output_string chan "</ArrayExpression>\n"
+                                        output_string chan "</Array_expression>\n"
 
-  | RecordExpression    (_,ra)       -> output_string chan "<RecordExpression>\n";
+  | Record_expression    (_,ra)       -> output_string chan "<Record_expression>\n";
                                         writeRecordAggregate ra chan;
-                                        output_string chan "</RecordExpression>\n"
+                                        output_string chan "</Record_expression>\n"
 
-  | CheckedExpression   (e,t)        -> output_string chan ("<CheckedExpression>\n");
+  | Checked_expression   (e,t)        -> output_string chan ("<Checked_expression>\n");
                                         writeExpression e chan;
                                         writeTypeDenoter t chan;
-                                        output_string chan "</CheckedExpression>\n"
+                                        output_string chan "</Checked_expression>\n"
                                         
 
 and writeArrayAggregate t chan = match t with
-    SingleArrayAggregate   (_,e)    -> output_string chan "<SingleArrayAggregate>\n";
+    Single_array_aggregate   (_,e)    -> output_string chan "<Single_array_aggregate>\n";
                                        writeExpression e chan;
-                                       output_string chan "</SingleArrayAggregate>\n"
+                                       output_string chan "</Single_array_aggregate>\n"
 
-  | MultipleArrayAggregate (_,e,aa) -> output_string chan "<MultipleArrayAggregate>\n";
+  | Multiple_array_aggregate (_,e,aa) -> output_string chan "<Multiple_array_aggregate>\n";
                                        writeExpression e chan;
                                        writeArrayAggregate aa chan;
-                                       output_string chan "</MultipleArrayAggregate>\n"
+                                       output_string chan "</Multiple_array_aggregate>\n"
 
   | CheckedArrayAggregate  (aa,i)   -> output_string chan ("<CheckedArrayAggregate elementCount=\"" ^ string_of_int i ^ "\">\n");
                                        writeArrayAggregate aa chan;
@@ -140,136 +140,136 @@ and writeRecordAggregate t chan = match t with
                                           writeRecordAggregate ra chan;
                                           output_string chan "</MultipleRecordAggregate>\n"
 
-  | CheckedRecordAggregate  (ra,t)     -> output_string chan ("<CheckedRecordAggregate>\n");
+  | Checked_record_aggregate  (ra,t)     -> output_string chan ("<Checked_record_aggregate>\n");
                                           writeRecordAggregate ra chan;
                                           writeFieldTypeDenoter t chan;
-                                          output_string chan "</CheckedRecordAggregate>\n"
+                                          output_string chan "</Checked_record_aggregate>\n"
 
 and writeVname t chan = match t with
-    SimpleVname (_,i)            -> output_string chan "<SimpleVname>\n";
+    Simple_vname (_,i)            -> output_string chan "<Simple_vname>\n";
                                     writeIdentifier i chan;
-                                    output_string chan "</SimpleVname>\n"
+                                    output_string chan "</Simple_vname>\n"
 
-  | DotVname (_,v,i)             -> output_string chan "<DotVname>\n";
+  | Dot_vname (_,v,i)             -> output_string chan "<Dot_vname>\n";
                                     writeVname v chan;
                                     writeIdentifier i chan;
-                                    output_string chan "</DotVname>\n"
+                                    output_string chan "</Dot_vname>\n"
 
-  | SubscriptVname (_,v,e)       -> output_string chan "<SubscriptVname>\n";
+  | Subscript_vname (_,v,e)       -> output_string chan "<Subscript_vname>\n";
                                     writeVname v chan;
                                     writeExpression e chan;
-                                    output_string chan "</SubscriptVname>\n"
+                                    output_string chan "</Subscript_vname>\n"
 
-  | CheckedVname (v,vr,ix,os,t)  -> output_string chan ("<CheckedVname variable=\"" ^ (string_of_bool vr) ^ "\" indexed=\"" ^ (string_of_bool ix) ^ "\" offset=\"" ^ (string_of_int os) ^ "\">\n");
+  | Checked_vname (v,vr,ix,os,t)  -> output_string chan ("<Checked_vname variable=\"" ^ (string_of_bool vr) ^ "\" indexed=\"" ^ (string_of_bool ix) ^ "\" offset=\"" ^ (string_of_int os) ^ "\">\n");
                                     writeVname v chan;
                                     writeTypeDenoter t chan;
-                                    output_string chan "</CheckedVname>\n"
+                                    output_string chan "</Checked_vname>\n"
 
 
 and writeDeclaration t chan = match t with
-    NullDeclaration                          -> output_string chan "</NullDeclaration>\n";
-  | ConstDeclaration          (_,i,e)        -> output_string chan "<ConstDeclaration>\n";
+    Null_declaration                          -> output_string chan "</Null_declaration>\n";
+  | Const_declaration          (_,i,e)        -> output_string chan "<Const_declaration>\n";
                                                 writeIdentifier i chan;
                                                 writeExpression e chan;
-                                                output_string chan "</ConstDeclaration>\n"
+                                                output_string chan "</Const_declaration>\n"
 
-  | VarDeclaration            (_,i,t)        -> output_string chan "<VarDeclaration>\n";
+  | Var_declaration            (_,i,t)        -> output_string chan "<Var_declaration>\n";
                                                 writeIdentifier i chan;
                                                 writeTypeDenoter t chan;
-                                                output_string chan "</VarDeclaration>\n"
+                                                output_string chan "</Var_declaration>\n"
 
-  | ProcDeclaration           (_,i,fps,c)    -> output_string chan "<ProcDeclaration>\n";
+  | Proc_declaration           (_,i,fps,c)    -> output_string chan "<Proc_declaration>\n";
                                                 writeIdentifier i chan;
                                                 writeFormalParameterSequence fps chan;
                                                 writeCommand c chan;
-                                                output_string chan "</ProcDeclaration>\n"
+                                                output_string chan "</Proc_declaration>\n"
 
-  | FuncDeclaration           (_,i,fps,t,e)  -> output_string chan "<FuncDeclaration>\n";
+  | Func_declaration           (_,i,fps,t,e)  -> output_string chan "<Func_declaration>\n";
                                                 writeIdentifier i chan;
                                                 writeFormalParameterSequence fps chan;
                                                 writeTypeDenoter t chan;
                                                 writeExpression e chan;
-                                                output_string chan "</FuncDeclaration>\n"
+                                                output_string chan "</Func_declaration>\n"
 
-  | TypeDeclaration           (_,i,t)        -> output_string chan "<TypeDeclaration>\n";
+  | Type_declaration           (_,i,t)        -> output_string chan "<Type_declaration>\n";
                                                 writeIdentifier i chan;
                                                 writeTypeDenoter t chan;
-                                                output_string chan "</TypeDeclaration>\n"
+                                                output_string chan "</Type_declaration>\n"
 
-  | UnaryOperatorDeclaration  (_,o,t1,t2)    -> output_string chan "<UnaryOperatorDeclaration>\n";
+  | Unary_operator_declaration  (_,o,t1,t2)    -> output_string chan "<Unary_operator_declaration>\n";
                                                 writeOperator o chan;
                                                 writeTypeDenoter t1 chan;
                                                 writeTypeDenoter t2 chan;
-                                                output_string chan "</UnaryOperatorDeclaration>\n"
+                                                output_string chan "</Unary_operator_declaration>\n"
 
-  | BinaryOperatorDeclaration (_,o,t1,t2,t3) -> output_string chan "<BinaryOperatorDeclaration>\n";
+  | Binary_operator_declaration (_,o,t1,t2,t3) -> output_string chan "<Binary_operator_declaration>\n";
                                                 writeOperator o chan;
                                                 writeTypeDenoter t1 chan;
                                                 writeTypeDenoter t2 chan;
                                                 writeTypeDenoter t3 chan;
-                                                output_string chan "</BinaryOperatorDeclaration>\n"
+                                                output_string chan "</Binary_operator_declaration>\n"
                                                 
-  | FormalParameterDeclaration(_,fp)         -> output_string chan "<FormalParameterDeclaration>\n";
+  | Formal_parameter_declaration(_,fp)         -> output_string chan "<Formal_parameter_declaration>\n";
                                                 writeFormalParameter fp chan;
-                                                output_string chan "</FormalParameterDeclaration>\n"
+                                                output_string chan "</Formal_parameter_declaration>\n"
 
-  | SequentialDeclaration     (_,d1,d2)      -> output_string chan "<SequentialDeclaration>\n";
+  | Sequential_declaration     (_,d1,d2)      -> output_string chan "<Sequential_declaration>\n";
                                                 writeDeclaration d1 chan;
                                                 writeDeclaration d2 chan;
-                                                output_string chan "</SequentialDeclaration>\n"
+                                                output_string chan "</Sequential_declaration>\n"
 
 
 and writeFormalParameter t chan = match t with
-    ConstFormalParameter (_,i,t)     -> output_string chan "<ConstFormalParameter>\n";
+    Const_formal_parameter (_,i,t)     -> output_string chan "<Const_formal_parameter>\n";
                                         writeIdentifier i chan;
                                         writeTypeDenoter t chan;
-                                        output_string chan "</ConstFormalParameter>\n"
+                                        output_string chan "</Const_formal_parameter>\n"
 
-  | VarFormalParameter (_,i,t)       -> output_string chan "<VarFormalParameter>\n";
+  | Var_formal_parameter (_,i,t)       -> output_string chan "<Var_formal_parameter>\n";
                                         writeIdentifier i chan;
                                         writeTypeDenoter t chan;
-                                        output_string chan "</VarFormalParameter>\n"
+                                        output_string chan "</Var_formal_parameter>\n"
 
-  | ProcFormalParameter (_,i,fps)    -> output_string chan "<ProcFormalParameter>\n";
+  | Proc_formal_parameter (_,i,fps)    -> output_string chan "<Proc_formal_parameter>\n";
                                         writeIdentifier i chan;
                                         writeFormalParameterSequence fps chan;
-                                        output_string chan "</ProcFormalParameter>\n"
+                                        output_string chan "</Proc_formal_parameter>\n"
 
-  | FuncFormalParameter (_,i,fps,t)  -> output_string chan "<FuncFormalParameter>\n";
+  | Func_formal_parameter (_,i,fps,t)  -> output_string chan "<Func_formal_parameter>\n";
                                         writeIdentifier i chan;
                                         writeFormalParameterSequence fps chan;
                                         writeTypeDenoter t chan;
-                                        output_string chan "</FuncFormalParameter>\n"
+                                        output_string chan "</Func_formal_parameter>\n"
 
 
 and writeActualParameter t chan = match t with
-    ConstActualParameter (_,e) -> output_string chan "<ConstActualParameter>\n";
+    Const_actual_parameter (_,e) -> output_string chan "<Const_actual_parameter>\n";
                                   writeExpression e chan;
-                                  output_string chan "</ConstActualParameter>\n"
+                                  output_string chan "</Const_actual_parameter>\n"
 
-  | VarActualParameter (_,v)   -> output_string chan "<VarActualParameter>\n";
+  | Var_actual_parameter (_,v)   -> output_string chan "<Var_actual_parameter>\n";
                                   writeVname v chan;
-                                  output_string chan "</VarActualParameter>\n"
+                                  output_string chan "</Var_actual_parameter>\n"
 
-  | ProcActualParameter (_,i)  -> output_string chan "<ProcActualParameter>\n";
+  | Proc_actual_parameter (_,i)  -> output_string chan "<Proc_actual_parameter>\n";
                                   writeIdentifier i chan;
-                                  output_string chan "</ProcActualParameter>\n"
+                                  output_string chan "</Proc_actual_parameter>\n"
 
-  | FuncActualParameter (_,i)  -> output_string chan "<FuncActualParameter>\n";
+  | Func_actual_parameter (_,i)  -> output_string chan "<Func_actual_parameter>\n";
                                   writeIdentifier i chan;
-                                  output_string chan "</FuncActualParameter>\n"
+                                  output_string chan "</Func_actual_parameter>\n"
 
 and writeFormalParameterSequence t chan = match t with
-    EmptyFormalParameterSequence  (_)          -> output_string chan "<EmptyFormalParameterSequence/>\n"
+    Empty_formal_parameter_sequence  (_)          -> output_string chan "<Empty_formal_parameter_sequence/>\n"
 
-  | SingleFormalParameterSequence (_,fp)       -> output_string chan "<SingleFormalParameterSequence>\n";
+  | Single_formal_parameter_sequence (_,fp)       -> output_string chan "<Single_formal_parameter_sequence>\n";
                                                   writeFormalParameter fp chan;
-                                                  output_string chan "</SingleFormalParameterSequence>\n"
+                                                  output_string chan "</Single_formal_parameter_sequence>\n"
 
-  | MultipleFormalParameterSequence (_,fp,fps) -> output_string chan "<MultipleFormalParameterSequence>\n";
+  | Multiple_formal_parameter_sequence (_,fp,fps) -> output_string chan "<Multiple_formal_parameter_sequence>\n";
                                                   writeFormalParameter fp chan;
                                                   writeFormalParameterSequence fps chan;
-                                                  output_string chan "</MultipleFormalParameterSequence>\n"
+                                                  output_string chan "</Multiple_formal_parameter_sequence>\n"
 
 and writeActualParameterSequence t chan = match t with
     EmptyActualParameterSequence (_)           -> output_string chan "<EmptyActualParameterSequence/>\n"
@@ -284,61 +284,61 @@ and writeActualParameterSequence t chan = match t with
                                                   output_string chan "</MultipleActualParameterSequence>\n"
 
 and writeTypeDenoter t chan = match t with
-    NullTypeDenoter           -> output_string chan "<NullTypeDenoter/>\n"
-  | ErrorTypeDenoter (_)      -> output_string chan "<ErrorTypeDenoter/>\n"
+    Null_type_denoter           -> output_string chan "<Null_type_denoter/>\n"
+  | Error_type_denoter (_)      -> output_string chan "<Error_type_denoter/>\n"
 
-  | AnyTypeDenoter (_)        -> output_string chan "<AnyTypeDenoter/>\n"
+  | Any_type_denoter (_)        -> output_string chan "<Any_type_denoter/>\n"
 
   | SimpleTypeDenoter (_,i)   -> output_string chan "<SimpleTypeDenoter>\n";
                                  writeIdentifier i chan;
                                  output_string chan "</SimpleTypeDenoter>\n"
 
-  | ArrayTypeDenoter (_,il,t) -> output_string chan "<ArrayTypeDenoter>\n";
-                                 writeIntegerLiteral il chan;
+  | Array_type_denoter (_,il,t) -> output_string chan "<Array_type_denoter>\n";
+                                 writeInteger_literal il chan;
                                  writeTypeDenoter t chan;
-                                 output_string chan "</ArrayTypeDenoter>\n"
+                                 output_string chan "</Array_type_denoter>\n"
 
-  | RecordTypeDenoter (_,ft)  -> output_string chan "<RecordTypeDenoter>\n";
+  | Record_type_denoter (_,ft)  -> output_string chan "<Record_type_denoter>\n";
                                  writeFieldTypeDenoter ft chan;
-                                 output_string chan "</RecordTypeDenoter>\n"
+                                 output_string chan "</Record_type_denoter>\n"
 
-  | BoolTypeDenoter (_)       -> output_string chan "<BoolTypeDenoter/>\n"
+  | Bool_type_denoter (_)       -> output_string chan "<Bool_type_denoter/>\n"
 
-  | IntTypeDenoter (_)        -> output_string chan "<IntTypeDenoter/>\n"
+  | Int_type_denoter (_)        -> output_string chan "<Int_type_denoter/>\n"
 
-  | CharTypeDenoter (_)       -> output_string chan "<CharTypeDenoter/>\n"
+  | Char_type_denoter (_)       -> output_string chan "<Char_type_denoter/>\n"
 
 
 and writeFieldTypeDenoter t chan = match t with
-    SingleFieldTypeDenoter (_,i,t)      -> output_string chan "<SingleFieldTypeDenoter>\n";
+    Single_field_type_denoter (_,i,t)      -> output_string chan "<Single_field_type_denoter>\n";
                                            writeIdentifier i chan;
                                            writeTypeDenoter t chan;
-                                           output_string chan "</SingleFieldTypeDenoter>\n"
+                                           output_string chan "</Single_field_type_denoter>\n"
 
-  | MultipleFieldTypeDenoter (_,i,t,ft) -> output_string chan "<MultipleFieldTypeDenoter>\n";
+  | Multiple_field_type_denoter (_,i,t,ft) -> output_string chan "<Multiple_field_type_denoter>\n";
                                            writeIdentifier i chan;
                                            writeTypeDenoter t chan;
                                            writeFieldTypeDenoter ft chan;
-                                           output_string chan "</MultipleFieldTypeDenoter>\n"
+                                           output_string chan "</Multiple_field_type_denoter>\n"
 
-and writeIntegerLiteral t chan = match t with
-    IntegerLiteral (_,str) -> output_string chan ("<IntegerLiteral value=\"" ^ str ^ "\"/>\n")
+and writeInteger_literal t chan = match t with
+    Integer_literal (_,str) -> output_string chan ("<Integer_literal value=\"" ^ str ^ "\"/>\n")
 
-and writeCharacterLiteral t chan = match t with
-    CharacterLiteral (_,str) -> output_string chan ("<CharacterLiteral value=\"" ^ str ^ "\"/>\n")
+and writeCharacter_literal t chan = match t with
+    Character_literal (_,str) -> output_string chan ("<Character_literal value=\"" ^ str ^ "\"/>\n")
 
 and writeIdentifier t chan = match t with 
     Identifier (_,str)        -> output_string chan ("<Identifier value=\"" ^ str ^ "\"/>\n")
 
-  | CheckedIdentifier (i,d)   -> output_string chan ("<CheckedIdentifier>\n");
+  | Checked_identifier (i,d)   -> output_string chan ("<Checked_identifier>\n");
                                  writeIdentifier i chan;
-                                 output_string chan "</CheckedIdentifier>\n"
+                                 output_string chan "</Checked_identifier>\n"
 
 and writeOperator t chan = match t with
     Operator (_,str)      -> output_string chan ("<Operator value=\"" ^ (transformOperator str) ^ "\"/>\n")
-  | CheckedOperator (o,d) -> output_string chan "<CheckedOperator>\n";
+  | Checked_operator (o,d) -> output_string chan "<Checked_operator>\n";
                              writeOperator o chan;
-                             output_string chan "</CheckedOperator>\n"
+                             output_string chan "</Checked_operator>\n"
 
 let writeXMLTree astree fname = 
     try

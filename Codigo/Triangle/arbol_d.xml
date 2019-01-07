@@ -1,216 +1,216 @@
 <?xml version="1.0" standalone="yes"?>
 <Program>
 <LetCommand>
-<SequentialDeclaration>
-<SequentialDeclaration>
-<VarDeclaration>
+<Sequential_declaration>
+<Sequential_declaration>
+<Var_declaration>
 <Identifier value="i"/>
-<IntTypeDenoter/>
-</VarDeclaration>
-<VarDeclaration>
+<Int_type_denoter/>
+</Var_declaration>
+<Var_declaration>
 <Identifier value="n"/>
-<IntTypeDenoter/>
-</VarDeclaration>
-</SequentialDeclaration>
-<VarDeclaration>
+<Int_type_denoter/>
+</Var_declaration>
+</Sequential_declaration>
+<Var_declaration>
 <Identifier value="x"/>
-<IntTypeDenoter/>
-</VarDeclaration>
-</SequentialDeclaration>
-<SequentialCommand>
-<CallCommand>
-<CheckedIdentifier>
+<Int_type_denoter/>
+</Var_declaration>
+</Sequential_declaration>
+<Sequential_command>
+<Call_command>
+<Checked_identifier>
 <Identifier value="getint"/>
-</CheckedIdentifier>
+</Checked_identifier>
 <SingleActualParameterSequence>
-<VarActualParameter>
-<CheckedVname variable="true" indexed="false" offset="0">
-<SimpleVname>
-<CheckedIdentifier>
+<Var_actual_parameter>
+<Checked_vname variable="true" indexed="false" offset="0">
+<Simple_vname>
+<Checked_identifier>
 <Identifier value="i"/>
-</CheckedIdentifier>
-</SimpleVname>
-<IntTypeDenoter/>
-</CheckedVname>
-</VarActualParameter>
+</Checked_identifier>
+</Simple_vname>
+<Int_type_denoter/>
+</Checked_vname>
+</Var_actual_parameter>
 </SingleActualParameterSequence>
-</CallCommand>
-<SequentialCommand>
-<CallCommand>
-<CheckedIdentifier>
+</Call_command>
+<Sequential_command>
+<Call_command>
+<Checked_identifier>
 <Identifier value="getint"/>
-</CheckedIdentifier>
+</Checked_identifier>
 <SingleActualParameterSequence>
-<VarActualParameter>
-<CheckedVname variable="true" indexed="false" offset="0">
-<SimpleVname>
-<CheckedIdentifier>
+<Var_actual_parameter>
+<Checked_vname variable="true" indexed="false" offset="0">
+<Simple_vname>
+<Checked_identifier>
 <Identifier value="n"/>
-</CheckedIdentifier>
-</SimpleVname>
-<IntTypeDenoter/>
-</CheckedVname>
-</VarActualParameter>
+</Checked_identifier>
+</Simple_vname>
+<Int_type_denoter/>
+</Checked_vname>
+</Var_actual_parameter>
 </SingleActualParameterSequence>
-</CallCommand>
-<SequentialCommand>
-<AssignCommand>
-<CheckedVname variable="true" indexed="false" offset="0">
-<SimpleVname>
-<CheckedIdentifier>
+</Call_command>
+<Sequential_command>
+<Assign_command>
+<Checked_vname variable="true" indexed="false" offset="0">
+<Simple_vname>
+<Checked_identifier>
 <Identifier value="x"/>
-</CheckedIdentifier>
-</SimpleVname>
-<IntTypeDenoter/>
-</CheckedVname>
-<CheckedExpression>
-<IntegerExpression>
-<IntegerLiteral value="1"/>
-</IntegerExpression>
-<IntTypeDenoter/>
-</CheckedExpression>
-</AssignCommand>
-<SequentialCommand>
-<WhileCommand>
-<CheckedExpression>
-<BinaryExpression>
-<CheckedExpression>
-<VnameExpression>
-<CheckedVname variable="true" indexed="false" offset="0">
-<SimpleVname>
-<CheckedIdentifier>
+</Checked_identifier>
+</Simple_vname>
+<Int_type_denoter/>
+</Checked_vname>
+<Checked_expression>
+<Integer_expression>
+<Integer_literal value="1"/>
+</Integer_expression>
+<Int_type_denoter/>
+</Checked_expression>
+</Assign_command>
+<Sequential_command>
+<While_command>
+<Checked_expression>
+<Binary_expression>
+<Checked_expression>
+<Vname_expression>
+<Checked_vname variable="true" indexed="false" offset="0">
+<Simple_vname>
+<Checked_identifier>
 <Identifier value="n"/>
-</CheckedIdentifier>
-</SimpleVname>
-<IntTypeDenoter/>
-</CheckedVname>
-</VnameExpression>
-<IntTypeDenoter/>
-</CheckedExpression>
-<CheckedOperator>
+</Checked_identifier>
+</Simple_vname>
+<Int_type_denoter/>
+</Checked_vname>
+</Vname_expression>
+<Int_type_denoter/>
+</Checked_expression>
+<Checked_operator>
 <Operator value=">"/>
-</CheckedOperator>
-<CheckedExpression>
-<IntegerExpression>
-<IntegerLiteral value="0"/>
-</IntegerExpression>
-<IntTypeDenoter/>
-</CheckedExpression>
-</BinaryExpression>
-<BoolTypeDenoter/>
-</CheckedExpression>
-<SequentialCommand>
-<AssignCommand>
-<CheckedVname variable="true" indexed="false" offset="0">
-<SimpleVname>
-<CheckedIdentifier>
+</Checked_operator>
+<Checked_expression>
+<Integer_expression>
+<Integer_literal value="0"/>
+</Integer_expression>
+<Int_type_denoter/>
+</Checked_expression>
+</Binary_expression>
+<Bool_type_denoter/>
+</Checked_expression>
+<Sequential_command>
+<Assign_command>
+<Checked_vname variable="true" indexed="false" offset="0">
+<Simple_vname>
+<Checked_identifier>
 <Identifier value="x"/>
-</CheckedIdentifier>
-</SimpleVname>
-<IntTypeDenoter/>
-</CheckedVname>
-<CheckedExpression>
-<BinaryExpression>
-<CheckedExpression>
-<VnameExpression>
-<CheckedVname variable="true" indexed="false" offset="0">
-<SimpleVname>
-<CheckedIdentifier>
+</Checked_identifier>
+</Simple_vname>
+<Int_type_denoter/>
+</Checked_vname>
+<Checked_expression>
+<Binary_expression>
+<Checked_expression>
+<Vname_expression>
+<Checked_vname variable="true" indexed="false" offset="0">
+<Simple_vname>
+<Checked_identifier>
 <Identifier value="x"/>
-</CheckedIdentifier>
-</SimpleVname>
-<IntTypeDenoter/>
-</CheckedVname>
-</VnameExpression>
-<IntTypeDenoter/>
-</CheckedExpression>
-<CheckedOperator>
+</Checked_identifier>
+</Simple_vname>
+<Int_type_denoter/>
+</Checked_vname>
+</Vname_expression>
+<Int_type_denoter/>
+</Checked_expression>
+<Checked_operator>
 <Operator value="*"/>
-</CheckedOperator>
-<CheckedExpression>
-<VnameExpression>
-<CheckedVname variable="true" indexed="false" offset="0">
-<SimpleVname>
-<CheckedIdentifier>
+</Checked_operator>
+<Checked_expression>
+<Vname_expression>
+<Checked_vname variable="true" indexed="false" offset="0">
+<Simple_vname>
+<Checked_identifier>
 <Identifier value="i"/>
-</CheckedIdentifier>
-</SimpleVname>
-<IntTypeDenoter/>
-</CheckedVname>
-</VnameExpression>
-<IntTypeDenoter/>
-</CheckedExpression>
-</BinaryExpression>
-<IntTypeDenoter/>
-</CheckedExpression>
-</AssignCommand>
-<AssignCommand>
-<CheckedVname variable="true" indexed="false" offset="0">
-<SimpleVname>
-<CheckedIdentifier>
+</Checked_identifier>
+</Simple_vname>
+<Int_type_denoter/>
+</Checked_vname>
+</Vname_expression>
+<Int_type_denoter/>
+</Checked_expression>
+</Binary_expression>
+<Int_type_denoter/>
+</Checked_expression>
+</Assign_command>
+<Assign_command>
+<Checked_vname variable="true" indexed="false" offset="0">
+<Simple_vname>
+<Checked_identifier>
 <Identifier value="n"/>
-</CheckedIdentifier>
-</SimpleVname>
-<IntTypeDenoter/>
-</CheckedVname>
-<CheckedExpression>
-<BinaryExpression>
-<CheckedExpression>
-<VnameExpression>
-<CheckedVname variable="true" indexed="false" offset="0">
-<SimpleVname>
-<CheckedIdentifier>
+</Checked_identifier>
+</Simple_vname>
+<Int_type_denoter/>
+</Checked_vname>
+<Checked_expression>
+<Binary_expression>
+<Checked_expression>
+<Vname_expression>
+<Checked_vname variable="true" indexed="false" offset="0">
+<Simple_vname>
+<Checked_identifier>
 <Identifier value="n"/>
-</CheckedIdentifier>
-</SimpleVname>
-<IntTypeDenoter/>
-</CheckedVname>
-</VnameExpression>
-<IntTypeDenoter/>
-</CheckedExpression>
-<CheckedOperator>
+</Checked_identifier>
+</Simple_vname>
+<Int_type_denoter/>
+</Checked_vname>
+</Vname_expression>
+<Int_type_denoter/>
+</Checked_expression>
+<Checked_operator>
 <Operator value="-"/>
-</CheckedOperator>
-<CheckedExpression>
-<IntegerExpression>
-<IntegerLiteral value="1"/>
-</IntegerExpression>
-<IntTypeDenoter/>
-</CheckedExpression>
-</BinaryExpression>
-<IntTypeDenoter/>
-</CheckedExpression>
-</AssignCommand>
-</SequentialCommand>
-</WhileCommand>
-<SequentialCommand>
-<CallCommand>
-<CheckedIdentifier>
+</Checked_operator>
+<Checked_expression>
+<Integer_expression>
+<Integer_literal value="1"/>
+</Integer_expression>
+<Int_type_denoter/>
+</Checked_expression>
+</Binary_expression>
+<Int_type_denoter/>
+</Checked_expression>
+</Assign_command>
+</Sequential_command>
+</While_command>
+<Sequential_command>
+<Call_command>
+<Checked_identifier>
 <Identifier value="putint"/>
-</CheckedIdentifier>
+</Checked_identifier>
 <SingleActualParameterSequence>
-<ConstActualParameter>
-<CheckedExpression>
-<VnameExpression>
-<CheckedVname variable="true" indexed="false" offset="0">
-<SimpleVname>
-<CheckedIdentifier>
+<Const_actual_parameter>
+<Checked_expression>
+<Vname_expression>
+<Checked_vname variable="true" indexed="false" offset="0">
+<Simple_vname>
+<Checked_identifier>
 <Identifier value="x"/>
-</CheckedIdentifier>
-</SimpleVname>
-<IntTypeDenoter/>
-</CheckedVname>
-</VnameExpression>
-<IntTypeDenoter/>
-</CheckedExpression>
-</ConstActualParameter>
+</Checked_identifier>
+</Simple_vname>
+<Int_type_denoter/>
+</Checked_vname>
+</Vname_expression>
+<Int_type_denoter/>
+</Checked_expression>
+</Const_actual_parameter>
 </SingleActualParameterSequence>
-</CallCommand>
-<EmptyCommand/>
-</SequentialCommand>
-</SequentialCommand>
-</SequentialCommand>
-</SequentialCommand>
-</SequentialCommand>
+</Call_command>
+<Empty_command/>
+</Sequential_command>
+</Sequential_command>
+</Sequential_command>
+</Sequential_command>
+</Sequential_command>
 </LetCommand>
 </Program>

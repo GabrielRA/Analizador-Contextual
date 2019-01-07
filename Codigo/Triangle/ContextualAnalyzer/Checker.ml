@@ -61,7 +61,7 @@ and check_command a = match a with
   | Assign_command(ix, v, e)      -> let vType = (check_vname v)
                                     and eType = (check_expression e) in
                                         (match (vType,eType) with
-                                           (CheckedVname(_,var,_,_,t),Checked_expression(_,tt)) -> if (var == false) then
+                                           (Checked_vname(_,var,_,_,t),Checked_expression(_,tt)) -> if (var == false) then
                                                                                                      ErrorReporter.reportError "LHS of assignment is not a variable" ix.pos;
                                                                                                   if ((compare_types t tt) == false) then
                                                                                                      ErrorReporter.reportError "Assignment incompatibility" ix.pos;
@@ -114,7 +114,7 @@ and check_command a = match a with
 and check_expression e = match e with
 
     (* Empty expression - does nothing, returns a null type denoter *)
-    Empty_expression(_)              -> Checked_expression(e, Null_type_denoter)
+    While_command(_)              -> Checked_expression(e, Null_type_denoter)
     
     (* Integer expression - returns an integer type denoter *)
   | Integer_expression(ix,il)        -> Checked_expression(e, check_integer_literal(il))
@@ -125,7 +125,7 @@ and check_expression e = match e with
     (* Value-or-variable name expression - returns the variable type *)
   | Vname_expression(ix, vn)         -> let vType = (check_vname vn) in
                                            (match vType with
-                                              CheckedVname(_,_,_,_,t) -> Checked_expression(Vname_expression(ix,vType), t)
+                                              Checked_vname(_,_,_,_,t) -> Checked_expression(Vname_expression(ix,vType), t)
                                             | _                       -> e)
 
 
@@ -264,10 +264,10 @@ and check_vname v = match v with
     Simple_vname(ix, id) -> let idType = (check_identifier id) in
                                (match idType with
                                   Checked_identifier(_,d)  -> (match !d with
-                                                                Const_declaration(_,_,e)                                   -> CheckedVname(Simple_vname(ix,idType), false, false, 0, (match (check_expression e) with Checked_expression(_,t) -> t | _ -> Error_type_denoter(ix)))
-                                                              | Var_declaration(_,_,t)                                     -> CheckedVname(Simple_vname(ix,idType), true, false, 0, t)
-                                                              | Formal_parameter_declaration(_,Const_formal_parameter(_,_,t)) -> CheckedVname(Simple_vname(ix,idType), false, false, 0, t)
-                                                              | Formal_parameter_declaration(_,Var_formal_parameter(_,_,t))   -> CheckedVname(Simple_vname(ix,idType), true, false, 0, t)
+                                                                Const_declaration(_,_,e)                                   -> Checked_vname(Simple_vname(ix,idType), false, false, 0, (match (check_expression e) with Checked_expression(_,t) -> t | _ -> Error_type_denoter(ix)))
+                                                              | Var_declaration(_,_,t)                                     -> Checked_vname(Simple_vname(ix,idType), true, false, 0, t)
+                                                              | Formal_parameter_declaration(_,Const_formal_parameter(_,_,t)) -> Checked_vname(Simple_vname(ix,idType), false, false, 0, t)
+                                                              | Formal_parameter_declaration(_,Var_formal_parameter(_,_,t))   -> Checked_vname(Simple_vname(ix,idType), true, false, 0, t)
                                                               | _                                                         -> ErrorReporter.reportError ((Identifier_name id) ^ " is not a const or var Identifier") ix.pos;
                                                                                                                              v)
                                 | _                      -> v)
@@ -275,12 +275,12 @@ and check_vname v = match v with
     (* Dot vnames - used over records *)
   | Dot_vname(ix, vn, id) -> let vType = (check_vname vn) in
                                (match vType with
-                                  CheckedVname(_,var,_,_,t) -> (match t with
+                                  Checked_vname(_,var,_,_,t) -> (match t with
                                                                   Record_type_denoter(_,ft) -> let fType = (visit_field_identifier ft id) in
                                                                                                  (match fType with
                                                                                                     Error_type_denoter(_) -> ErrorReporter.reportError ("No field " ^ (Identifier_name id) ^ " in this record type") ix.pos;
                                                                                                                            v
-                                                                                                  | _                   -> CheckedVname(Dot_vname(ix,vType,(check_identifier id)), var, false, 0,fType))
+                                                                                                  | _                   -> Checked_vname(Dot_vname(ix,vType,(check_identifier id)), var, false, 0,fType))
                                                                 | _                       -> ErrorReporter.reportError "Record expected here" ix.pos; 
                                                                                              v)
                                 | _                         -> v)
@@ -289,9 +289,9 @@ and check_vname v = match v with
   | Subscript_vname(ix, vn, e) -> let vType = (check_vname vn)
                                  and eType = (check_expression e) in
                                     (match vType with
-                                       CheckedVname(_,var,_,_,t) -> (match t with
+                                       Checked_vname(_,var,_,_,t) -> (match t with
                                                                         Array_type_denoter(_,_,tt) -> (match eType with
-                                                                                                      Checked_expression(ex, Int_type_denoter(_))  -> CheckedVname(Subscript_vname(ix,vType,eType), var, false, 0, tt)
+                                                                                                      Checked_expression(ex, Int_type_denoter(_))  -> Checked_vname(Subscript_vname(ix,vType,eType), var, false, 0, tt)
                                                                                                     | _                                         -> ErrorReporter.reportError "Integer expression expected here" ix.pos;
                                                                                                                                                         v)
                                                                       | _                        -> ErrorReporter.reportError "Array expected here" ix.pos;
@@ -300,7 +300,7 @@ and check_vname v = match v with
                                      | _                         -> v)
 
     (* Already checked vnames - do nothing *)
-  | CheckedVname(_,_,_,_,_) -> v
+  | Checked_vname(_,_,_,_,_) -> v
 
 
 (* Declarations *)
@@ -384,9 +384,9 @@ and check_actual_parameter a f = match a with
 
   | Var_actual_parameter(ix,v)   -> let vType = (check_vname v) in
                                      (match vType with
-                                        CheckedVname(_,false,_,_,_)  -> ErrorReporter.reportError "Actual parameter is not a variable" ix.pos;
+                                        Checked_vname(_,false,_,_,_)  -> ErrorReporter.reportError "Actual parameter is not a variable" ix.pos;
                                                                         a
-                                      | CheckedVname(_,true,_,_,tt)  -> (match f with
+                                      | Checked_vname(_,true,_,_,tt)  -> (match f with
                                                                           Var_formal_parameter(_,_,t) -> if ((compare_types t tt) == false) then
                                                                                                        begin
                                                                                                           ErrorReporter.reportError "Wrong type for var actual parameter" ix.pos;
