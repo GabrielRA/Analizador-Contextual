@@ -1,0 +1,5 @@
+! Prueba de FuncDeclaration. Debe fallar.
+let
+   func a() ~ 5
+in
+  putint(a())

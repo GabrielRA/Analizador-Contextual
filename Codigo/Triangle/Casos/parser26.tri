@@ -1,0 +1,17 @@
+! Prueba Vnames de Registro anidados. Debe funcionar
+let
+   type tx ~ record
+              a: Integer,
+              b: record
+                x: Char,
+                y: Char
+              end
+             end;
+   var a: tx
+in
+begin
+  get(var a.b.x);
+  get(var a.b.y);
+  put(a.b.y);
+  put(a.b.x)
+end

@@ -1,0 +1,8 @@
+! Prueba Vnames de arrays. Debe funcionar.
+let
+   var a: array 5 of Integer
+in
+begin
+  getint(var a[2]);
+  putint(a[2])
+end

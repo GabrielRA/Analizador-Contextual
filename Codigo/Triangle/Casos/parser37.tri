@@ -1,0 +1,6 @@
+! Prueba de FuncDeclaration. Debe funcionar.
+let
+   func x(a: Integer): Integer ~
+       a*a
+in
+  putint(x(16))

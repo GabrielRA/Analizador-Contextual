@@ -1,0 +1,7 @@
+! Prueba del LetExpression. Debe pasar.
+
+let func a(): Integer ~
+    let var b: Integer in
+       b
+in
+  putint(0)

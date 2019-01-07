@@ -1,0 +1,4 @@
+! Prueba del LetCommand. Deberia pasar.
+let
+   const x ~ 'x' in
+  put(x)

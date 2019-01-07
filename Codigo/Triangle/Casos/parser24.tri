@@ -1,0 +1,8 @@
+! Prueba del ArrayExpression. Debe funcionar.
+let
+   var x: array 10 of Integer
+in
+begin
+  x:= [1, 2, 4, 8, 16, 32, 64, 128, 256, 512];
+  putint(x[5])
+end

@@ -1,0 +1,13 @@
+! Prueba del comando de llamada, con funciones. Debe fallar.
+let
+   func media(a: Integer, b: Integer): Integer ~ (a+b)/2;
+   var z: Char;
+   var x: Integer
+in
+begin
+  z:= media(10,20);
+  x:= media('a','b');
+  x:= media(10,20,30);
+  x:= media(10);
+  putint(x)
+end

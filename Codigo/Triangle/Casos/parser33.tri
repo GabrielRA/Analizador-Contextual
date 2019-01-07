@@ -1,0 +1,6 @@
+! Prueba de ProcDeclaration. Debe funcionar.
+
+let
+   proc x() ~ put('z')
+in
+  x()

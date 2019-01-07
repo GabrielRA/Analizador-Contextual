@@ -1,0 +1,5 @@
+! revisa identificadores bien formados
+
+let
+   var 1pelon: Integer in
+  put(1pelon)a

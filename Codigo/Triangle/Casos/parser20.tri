@@ -1,0 +1,9 @@
+! prueba del IfExpression. Deberia funcionar.
+let
+   func a(): Char ~
+     if (5 = 5) then
+        'a'
+     else
+        'b' in
+put(a())
+       

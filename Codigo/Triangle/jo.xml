@@ -1,0 +1,22 @@
+<?xml version="1.0" standalone="yes"?>
+<Program>
+<SequentialCommand>
+<CallCommand>
+<Identifier value="putint"/>
+<SingleActualParameterSequence>
+<ConstActualParameter>
+<BinaryExpression>
+<IntegerExpression>
+<IntegerLiteral value="5"/>
+</IntegerExpression>
+<Operator value="+"/>
+<IntegerExpression>
+<IntegerLiteral value="4"/>
+</IntegerExpression>
+</BinaryExpression>
+</ConstActualParameter>
+</SingleActualParameterSequence>
+</CallCommand>
+<EmptyCommand/>
+</SequentialCommand>
+</Program>

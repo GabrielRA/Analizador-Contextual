@@ -1,0 +1,8 @@
+! Prueba del IfCommand. Deberia fallar.
+let
+  var x: Integer 
+  in
+    if (x := 12) then
+      put('z')
+    else
+      put('x')

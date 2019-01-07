@@ -1,0 +1,5 @@
+! Prueba de ProcDeclaration. Debe fallar.
+let
+   proc p(): Integer ~ put('!')
+in
+  p()

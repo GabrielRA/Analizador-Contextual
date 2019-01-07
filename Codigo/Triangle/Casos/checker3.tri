@@ -1,0 +1,20 @@
+! Prueba del comando de asignacion. Debe fallar.
+let
+   var v: Boolean;
+   var w: Integer;
+   var x: Char;
+   var y: array 5 of Integer;
+   var z: record
+           a: Integer,
+           b: Char
+          end
+in
+begin
+  v:= 5;
+  w:= 'a';
+  x:= false;
+  y:= ['a', 1, 5, 2, 3];
+  y:= ['a', 1, 5, 2, 3, 'z', 'm', 9];
+  y:= [2, 3, 4, 5, 6, 7, 8, 9, 0];
+  z:= {a ~ 'q', b ~ 3}
+end

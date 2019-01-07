@@ -1,0 +1,32 @@
+! Prueba los tipos de datos de arreglo. Debe funcionar.
+let
+   var x: array 2 of array 2 of array 2 of record
+                                             x: Integer,
+                                             y: Char
+                                           end
+in
+begin
+  x[0][0][0].x := 1;
+  x[0][0][0].y := 'u';
+
+  x[0][0][1].x := 2;
+  x[0][0][1].y := 'd';
+
+  x[0][1][0].x := 3;
+  x[0][1][0].y := 't';
+
+  x[0][1][1].x := 4;
+  x[0][1][1].y := 'c';
+
+  putint(x[0][0][0].x);
+  put(x[0][0][0].y);
+
+  putint(x[0][0][1].x);
+  put(x[0][0][1].y);
+
+  putint(x[0][1][0].x);
+  put(x[0][1][0].y);
+
+  putint(x[0][1][1].x);
+  put(x[0][1][1].y);
+end

@@ -1,0 +1,21 @@
+! Prueba del LetCommand. Revisa los scopes. Debe fallar.
+let
+   proc p() ~ let
+                 var x: Integer in
+                 begin
+                   getint(var x);
+                   putint(x)
+                 end;
+   var x: Char
+in
+begin
+  get(var x);
+  put(x);
+  let
+  var y: Integer in
+  begin
+    getint(var y);
+    putint(y)
+  end;
+  putint(y)
+end

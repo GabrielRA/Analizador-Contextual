@@ -1,0 +1,6 @@
+! Prueba de VarDeclaration. Debe funcionar.
+let
+   var x: Integer in
+begin
+  put('x')
+end

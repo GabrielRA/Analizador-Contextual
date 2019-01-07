@@ -1,0 +1,3 @@
+! Prueba de LetCommand. Deberia fallar.
+let var x: Integer in
+   'z'

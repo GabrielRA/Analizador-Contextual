@@ -1,0 +1,7 @@
+! Prueba de ConstDeclaration. Debe funcionar
+let
+   const t ~ 'a'
+in
+begin
+  put(t)
+end

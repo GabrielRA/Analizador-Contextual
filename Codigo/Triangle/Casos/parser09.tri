@@ -1,0 +1,9 @@
+! prueba de dos clausulas begin/end. Deberia pasar.
+begin
+   put('a');
+   put('b')
+end;
+begin
+   putint(5);
+   putint(6)
+end

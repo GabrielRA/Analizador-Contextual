@@ -1,0 +1,5 @@
+! Prueba del WhileCommand. Deberia pasar.
+while true do
+begin
+   putint(5)
+end

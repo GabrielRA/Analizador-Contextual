@@ -1,0 +1,5 @@
+! prueba
+! deber_í_a fallar (caracter í no reconocido)
+let var x: Integer in
+begin
+end

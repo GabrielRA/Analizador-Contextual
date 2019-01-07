@@ -1,0 +1,4 @@
+! Prueba del comando de asignacion. Deberia pasar.
+let
+   var x: Integer in
+  x := 123

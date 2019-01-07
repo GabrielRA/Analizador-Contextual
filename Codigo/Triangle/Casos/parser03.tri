@@ -1,0 +1,4 @@
+! comandos multiples con puntos/comas correctos. Debe pasar.
+put('a');
+put('x');
+putint(0)

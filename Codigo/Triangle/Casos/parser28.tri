@@ -1,0 +1,8 @@
+! Vnames de Array multidimensionales. Debe funcionar.
+let
+   var x: array 5 of array 5 of array 5 of Integer
+in
+begin
+  getint(var x[0][1][2]);
+  putint(x[0][1][2])
+end

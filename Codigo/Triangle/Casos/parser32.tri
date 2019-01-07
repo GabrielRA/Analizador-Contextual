@@ -1,0 +1,5 @@
+! Prueba de VarDeclaration. Debe fallar.
+let
+   var m: 'x'
+in
+   put('z')

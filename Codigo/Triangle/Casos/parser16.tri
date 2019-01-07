@@ -1,0 +1,7 @@
+! Prueba del WhileCommand. Debe fallar.
+let
+   var x: Integer in
+
+while (x := 10) do
+   putint(x)
+  

@@ -1,0 +1,6 @@
+! Prueba de FuncDeclaration. Debe funcionar.
+let
+   func x(): Integer ~
+      5
+in
+   putint(x())

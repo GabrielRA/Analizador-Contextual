@@ -1,0 +1,6 @@
+! prueba de comandos entre clausula begin/end. Debe pasar.
+begin
+  putint(6);
+  putint(7);
+  putint(8)
+end

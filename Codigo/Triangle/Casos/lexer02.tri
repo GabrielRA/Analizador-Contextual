@@ -1,0 +1,12 @@
+! prueba el descarte _total_ de los comentarios al final del codigo
+! deberia pasar
+
+let
+   var x: Integer
+in
+begin
+end
+! ok
+! fuafuafua
+
+

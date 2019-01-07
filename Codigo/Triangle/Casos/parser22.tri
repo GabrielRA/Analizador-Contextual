@@ -1,0 +1,6 @@
+! Prueba del UnaryExpression. Debe funcionar.
+let
+   func a(b: Boolean): Boolean ~
+        \b
+in
+  put('a')
