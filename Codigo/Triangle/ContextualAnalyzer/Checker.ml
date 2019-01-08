@@ -376,6 +376,7 @@ and check_declaration d = match d with
           IdentificationTable.enter (Identifier_name i) (ref (Var_declaration(ix,i,tType)));
           !(IdentificationTable.retrieve (Identifier_name i))
   
+
   | Proc_declaration(ix,i,fps,c)              -> 
       if (IdentificationTable.exists (Identifier_name i)) then
         ErrorReporter.reportError ("Identifier " ^ (Identifier_name i) ^ " already declared") ix.pos;
@@ -407,6 +408,7 @@ and check_declaration d = match d with
                         ErrorReporter.reportError ("Body of function " ^ (Identifier_name i) ^ " has wrong type") ix.pos
                   | _                       -> ());                                                                                             
                                                !(IdentificationTable.retrieve (Identifier_name i))
+
   
   | Type_declaration(ix,i,t)                  -> let tType = (check_type_denoter t) in
                                                     if (IdentificationTable.exists (Identifier_name i)) then
@@ -600,7 +602,7 @@ and check_type_denoter a = match a with
                                       
   | Array_type_denoter(ix,il,t) -> if ((int_of_string (match il with Integer_literal(_,s) -> s)) == 0) then
                                     ErrorReporter.reportError "Arrays must not be empty" (match il with Integer_literal(is,_) -> is).pos;
-                                 Array_type_denoter(ix,il,check_type_denoter(t))
+                                    Array_type_denoter(ix,il,check_type_denoter(t))
                                  
   | Record_type_denoter(ix,ft)  -> Record_type_denoter(ix, check_field_type_denoter(ft))
   
