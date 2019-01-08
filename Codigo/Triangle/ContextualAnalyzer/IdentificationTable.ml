@@ -12,8 +12,7 @@ open RuntimeEntity
 type id_entry = {mutable id: string; mutable attr: astDeclaration ref; mutable levl: int}
 
 type id_list = Nullid_list
-            | id_list of id_entry list
-            
+  | id_list of id_entry list            
 
 let level = ref 0
 
@@ -55,41 +54,95 @@ let integer_type = Int_type_denoter({pos=Lexing.dummy_pos;run=NullRuntimeEntity}
 let any_type     = Any_type_denoter({pos=Lexing.dummy_pos;run=NullRuntimeEntity})
 let error_type   = Error_type_denoter({pos=Lexing.dummy_pos;run=NullRuntimeEntity})
 
-let boolean_decl = Type_declaration({pos=Lexing.dummy_pos;run=NullRuntimeEntity}, Identifier({pos=Lexing.dummy_pos;run=NullRuntimeEntity}, "Boolean"), boolean_type)
-let char_decl    = Type_declaration({pos=Lexing.dummy_pos;run=NullRuntimeEntity}, Identifier({pos=Lexing.dummy_pos;run=NullRuntimeEntity}, "Char"), char_type)
-let integer_decl = Type_declaration({pos=Lexing.dummy_pos;run=NullRuntimeEntity}, Identifier({pos=Lexing.dummy_pos;run=NullRuntimeEntity}, "Integer"), integer_type)
+let boolean_decl = 
+  Type_declaration({pos=Lexing.dummy_pos;run=NullRuntimeEntity}, Identifier({pos=Lexing.dummy_pos;run=NullRuntimeEntity}, "Boolean"), boolean_type)
+  
+let char_decl = 
+  Type_declaration({pos=Lexing.dummy_pos;run=NullRuntimeEntity}, Identifier({pos=Lexing.dummy_pos;run=NullRuntimeEntity}, "Char"), char_type)
 
-let false_decl  = Const_declaration({pos=Lexing.dummy_pos;run=NullRuntimeEntity}, Identifier({pos=Lexing.dummy_pos;run=NullRuntimeEntity}, "false"), Checked_expression(Empty_expression({pos=Lexing.dummy_pos;run=NullRuntimeEntity}), boolean_type))
-let true_decl   = Const_declaration({pos=Lexing.dummy_pos;run=NullRuntimeEntity}, Identifier({pos=Lexing.dummy_pos;run=NullRuntimeEntity}, "true"), Checked_expression(Empty_expression({pos=Lexing.dummy_pos;run=NullRuntimeEntity}), boolean_type))
-let maxint_decl = Const_declaration({pos=Lexing.dummy_pos;run=NullRuntimeEntity}, Identifier({pos=Lexing.dummy_pos;run=NullRuntimeEntity}, "maxint"), Checked_expression(Empty_expression({pos=Lexing.dummy_pos;run=NullRuntimeEntity}), integer_type))
+  let integer_decl = 
+  Type_declaration({pos=Lexing.dummy_pos;run=NullRuntimeEntity}, Identifier({pos=Lexing.dummy_pos;run=NullRuntimeEntity}, "Integer"), integer_type)
 
-let not_decl = Unary_operator_declaration({pos=Lexing.dummy_pos;run=NullRuntimeEntity}, Operator({pos=Lexing.dummy_pos;run=NullRuntimeEntity}, "\\"), boolean_type, boolean_type)
+let false_decl = 
+  Const_declaration({pos=Lexing.dummy_pos;run=NullRuntimeEntity}, Identifier({pos=Lexing.dummy_pos;run=NullRuntimeEntity}, "false"), Checked_expression(Empty_expression({pos=Lexing.dummy_pos;run=NullRuntimeEntity}), boolean_type))
+  
+let true_decl = 
+  Const_declaration({pos=Lexing.dummy_pos;run=NullRuntimeEntity}, Identifier({pos=Lexing.dummy_pos;run=NullRuntimeEntity}, "true"), Checked_expression(Empty_expression({pos=Lexing.dummy_pos;run=NullRuntimeEntity}), boolean_type))
+  
+let maxint_decl = 
+  Const_declaration({pos=Lexing.dummy_pos;run=NullRuntimeEntity}, Identifier({pos=Lexing.dummy_pos;run=NullRuntimeEntity}, "maxint"), Checked_expression(Empty_expression({pos=Lexing.dummy_pos;run=NullRuntimeEntity}), integer_type))
 
-let and_decl        = Binary_operator_declaration({pos=Lexing.dummy_pos;run=NullRuntimeEntity}, Operator({pos=Lexing.dummy_pos;run=NullRuntimeEntity}, "/\\"), boolean_type, boolean_type, boolean_type)
-let or_decl         = Binary_operator_declaration({pos=Lexing.dummy_pos;run=NullRuntimeEntity}, Operator({pos=Lexing.dummy_pos;run=NullRuntimeEntity}, "\\/"), boolean_type, boolean_type, boolean_type)
-let add_decl        = Binary_operator_declaration({pos=Lexing.dummy_pos;run=NullRuntimeEntity}, Operator({pos=Lexing.dummy_pos;run=NullRuntimeEntity}, "+"), integer_type, integer_type, integer_type)
-let substractDecl  = Binary_operator_declaration({pos=Lexing.dummy_pos;run=NullRuntimeEntity}, Operator({pos=Lexing.dummy_pos;run=NullRuntimeEntity}, "-"), integer_type, integer_type, integer_type)
-let multiply_decl   = Binary_operator_declaration({pos=Lexing.dummy_pos;run=NullRuntimeEntity}, Operator({pos=Lexing.dummy_pos;run=NullRuntimeEntity}, "*"), integer_type, integer_type, integer_type)
-let divide_decl     = Binary_operator_declaration({pos=Lexing.dummy_pos;run=NullRuntimeEntity}, Operator({pos=Lexing.dummy_pos;run=NullRuntimeEntity}, "/"), integer_type, integer_type, integer_type)
-let modulo_decl     = Binary_operator_declaration({pos=Lexing.dummy_pos;run=NullRuntimeEntity}, Operator({pos=Lexing.dummy_pos;run=NullRuntimeEntity}, "//"), integer_type, integer_type, integer_type)
-let equal_decl      = Binary_operator_declaration({pos=Lexing.dummy_pos;run=NullRuntimeEntity}, Operator({pos=Lexing.dummy_pos;run=NullRuntimeEntity}, "="), any_type, any_type, boolean_type)
-let unequal_decl    = Binary_operator_declaration({pos=Lexing.dummy_pos;run=NullRuntimeEntity}, Operator({pos=Lexing.dummy_pos;run=NullRuntimeEntity}, "\\="), any_type, any_type, boolean_type)
-let less_decl       = Binary_operator_declaration({pos=Lexing.dummy_pos;run=NullRuntimeEntity}, Operator({pos=Lexing.dummy_pos;run=NullRuntimeEntity}, "<"), integer_type, integer_type, boolean_type)
-let notless_decl    = Binary_operator_declaration({pos=Lexing.dummy_pos;run=NullRuntimeEntity}, Operator({pos=Lexing.dummy_pos;run=NullRuntimeEntity}, ">="), integer_type, integer_type, boolean_type)
-let greater_decl    = Binary_operator_declaration({pos=Lexing.dummy_pos;run=NullRuntimeEntity}, Operator({pos=Lexing.dummy_pos;run=NullRuntimeEntity}, ">"), integer_type, integer_type, boolean_type)
-let notgreater_decl = Binary_operator_declaration({pos=Lexing.dummy_pos;run=NullRuntimeEntity}, Operator({pos=Lexing.dummy_pos;run=NullRuntimeEntity}, "<="), integer_type, integer_type, boolean_type)
+let not_decl = 
+  Unary_operator_declaration({pos=Lexing.dummy_pos;run=NullRuntimeEntity}, Operator({pos=Lexing.dummy_pos;run=NullRuntimeEntity}, "\\"), boolean_type, boolean_type)
 
-let get_decl    = Proc_declaration({pos=Lexing.dummy_pos;run=NullRuntimeEntity}, Identifier({pos=Lexing.dummy_pos;run=NullRuntimeEntity}, "get"), Single_formal_parameter_sequence({pos=Lexing.dummy_pos;run=NullRuntimeEntity}, Var_formal_parameter({pos=Lexing.dummy_pos;run=NullRuntimeEntity}, Identifier({pos=Lexing.dummy_pos;run=NullRuntimeEntity}, ""), char_type)), Empty_command({pos=Lexing.dummy_pos;run=NullRuntimeEntity}))
-let put_decl    = Proc_declaration({pos=Lexing.dummy_pos;run=NullRuntimeEntity}, Identifier({pos=Lexing.dummy_pos;run=NullRuntimeEntity}, "put"), Single_formal_parameter_sequence({pos=Lexing.dummy_pos;run=NullRuntimeEntity}, Const_formal_parameter({pos=Lexing.dummy_pos;run=NullRuntimeEntity}, Identifier({pos=Lexing.dummy_pos;run=NullRuntimeEntity}, ""), char_type)), Empty_command({pos=Lexing.dummy_pos;run=NullRuntimeEntity}))
-let getint_decl = Proc_declaration({pos=Lexing.dummy_pos;run=NullRuntimeEntity}, Identifier({pos=Lexing.dummy_pos;run=NullRuntimeEntity}, "getint"), Single_formal_parameter_sequence({pos=Lexing.dummy_pos;run=NullRuntimeEntity}, Var_formal_parameter({pos=Lexing.dummy_pos;run=NullRuntimeEntity}, Identifier({pos=Lexing.dummy_pos;run=NullRuntimeEntity}, ""), integer_type)), Empty_command({pos=Lexing.dummy_pos;run=NullRuntimeEntity}))
-let putint_decl = Proc_declaration({pos=Lexing.dummy_pos;run=NullRuntimeEntity}, Identifier({pos=Lexing.dummy_pos;run=NullRuntimeEntity}, "putint"), Single_formal_parameter_sequence({pos=Lexing.dummy_pos;run=NullRuntimeEntity}, Const_formal_parameter({pos=Lexing.dummy_pos;run=NullRuntimeEntity}, Identifier({pos=Lexing.dummy_pos;run=NullRuntimeEntity}, ""), integer_type)), Empty_command({pos=Lexing.dummy_pos;run=NullRuntimeEntity}))
-let geteol_decl = Proc_declaration({pos=Lexing.dummy_pos;run=NullRuntimeEntity}, Identifier({pos=Lexing.dummy_pos;run=NullRuntimeEntity}, "geteol"), Empty_formal_parameter_sequence({pos=Lexing.dummy_pos;run=NullRuntimeEntity}), Empty_command({pos=Lexing.dummy_pos;run=NullRuntimeEntity}))
+let and_decl = 
+  Binary_operator_declaration({pos=Lexing.dummy_pos;run=NullRuntimeEntity}, Operator({pos=Lexing.dummy_pos;run=NullRuntimeEntity}, "/\\"), boolean_type, boolean_type, boolean_type)
+  
+let or_decl = 
+  Binary_operator_declaration({pos=Lexing.dummy_pos;run=NullRuntimeEntity}, Operator({pos=Lexing.dummy_pos;run=NullRuntimeEntity}, "\\/"), boolean_type, boolean_type, boolean_type)
+
+let add_decl = 
+  Binary_operator_declaration({pos=Lexing.dummy_pos;run=NullRuntimeEntity}, Operator({pos=Lexing.dummy_pos;run=NullRuntimeEntity}, "+"), integer_type, integer_type, integer_type)
+  
+let substractDecl = 
+  Binary_operator_declaration({pos=Lexing.dummy_pos;run=NullRuntimeEntity}, Operator({pos=Lexing.dummy_pos;run=NullRuntimeEntity}, "-"), integer_type, integer_type, integer_type)
+  
+let multiply_decl = 
+  Binary_operator_declaration({pos=Lexing.dummy_pos;run=NullRuntimeEntity}, Operator({pos=Lexing.dummy_pos;run=NullRuntimeEntity}, "*"), integer_type, integer_type, integer_type)
+  
+let divide_decl = 
+  Binary_operator_declaration({pos=Lexing.dummy_pos;run=NullRuntimeEntity}, Operator({pos=Lexing.dummy_pos;run=NullRuntimeEntity}, "/"), integer_type, integer_type, integer_type)
+
+let modulo_decl = 
+  Binary_operator_declaration({pos=Lexing.dummy_pos;run=NullRuntimeEntity}, Operator({pos=Lexing.dummy_pos;run=NullRuntimeEntity}, "//"), integer_type, integer_type, integer_type)
+  
+let equal_decl = 
+  Binary_operator_declaration({pos=Lexing.dummy_pos;run=NullRuntimeEntity}, Operator({pos=Lexing.dummy_pos;run=NullRuntimeEntity}, "="), any_type, any_type, boolean_type)
+  
+let unequal_decl = 
+  Binary_operator_declaration({pos=Lexing.dummy_pos;run=NullRuntimeEntity}, Operator({pos=Lexing.dummy_pos;run=NullRuntimeEntity}, "\\="), any_type, any_type, boolean_type)
+
+let less_decl = 
+  Binary_operator_declaration({pos=Lexing.dummy_pos;run=NullRuntimeEntity}, Operator({pos=Lexing.dummy_pos;run=NullRuntimeEntity}, "<"), integer_type, integer_type, boolean_type)
+
+let notless_decl = 
+  Binary_operator_declaration({pos=Lexing.dummy_pos;run=NullRuntimeEntity}, Operator({pos=Lexing.dummy_pos;run=NullRuntimeEntity}, ">="), integer_type, integer_type, boolean_type)
+
+let greater_decl = 
+  Binary_operator_declaration({pos=Lexing.dummy_pos;run=NullRuntimeEntity}, Operator({pos=Lexing.dummy_pos;run=NullRuntimeEntity}, ">"), integer_type, integer_type, boolean_type)
+
+let notgreater_decl = 
+  Binary_operator_declaration({pos=Lexing.dummy_pos;run=NullRuntimeEntity}, Operator({pos=Lexing.dummy_pos;run=NullRuntimeEntity}, "<="), integer_type, integer_type, boolean_type)
+
+
+let get_decl = 
+  Proc_declaration({pos=Lexing.dummy_pos;run=NullRuntimeEntity}, Identifier({pos=Lexing.dummy_pos;run=NullRuntimeEntity}, "get"), Single_formal_parameter_sequence({pos=Lexing.dummy_pos;run=NullRuntimeEntity}, Var_formal_parameter({pos=Lexing.dummy_pos;run=NullRuntimeEntity}, Identifier({pos=Lexing.dummy_pos;run=NullRuntimeEntity}, ""), char_type)), Empty_command({pos=Lexing.dummy_pos;run=NullRuntimeEntity}))
+  
+let put_decl = 
+  Proc_declaration({pos=Lexing.dummy_pos;run=NullRuntimeEntity}, Identifier({pos=Lexing.dummy_pos;run=NullRuntimeEntity}, "put"), Single_formal_parameter_sequence({pos=Lexing.dummy_pos;run=NullRuntimeEntity}, Const_formal_parameter({pos=Lexing.dummy_pos;run=NullRuntimeEntity}, Identifier({pos=Lexing.dummy_pos;run=NullRuntimeEntity}, ""), char_type)), Empty_command({pos=Lexing.dummy_pos;run=NullRuntimeEntity}))
+  
+let getint_decl = 
+  Proc_declaration({pos=Lexing.dummy_pos;run=NullRuntimeEntity}, Identifier({pos=Lexing.dummy_pos;run=NullRuntimeEntity}, "getint"), Single_formal_parameter_sequence({pos=Lexing.dummy_pos;run=NullRuntimeEntity}, Var_formal_parameter({pos=Lexing.dummy_pos;run=NullRuntimeEntity}, Identifier({pos=Lexing.dummy_pos;run=NullRuntimeEntity}, ""), integer_type)), Empty_command({pos=Lexing.dummy_pos;run=NullRuntimeEntity}))
+
+let putint_decl = 
+  Proc_declaration({pos=Lexing.dummy_pos;run=NullRuntimeEntity}, Identifier({pos=Lexing.dummy_pos;run=NullRuntimeEntity}, "putint"), Single_formal_parameter_sequence({pos=Lexing.dummy_pos;run=NullRuntimeEntity}, Const_formal_parameter({pos=Lexing.dummy_pos;run=NullRuntimeEntity}, Identifier({pos=Lexing.dummy_pos;run=NullRuntimeEntity}, ""), integer_type)), Empty_command({pos=Lexing.dummy_pos;run=NullRuntimeEntity}))
+
+let geteol_decl = 
+  Proc_declaration({pos=Lexing.dummy_pos;run=NullRuntimeEntity}, Identifier({pos=Lexing.dummy_pos;run=NullRuntimeEntity}, "geteol"), Empty_formal_parameter_sequence({pos=Lexing.dummy_pos;run=NullRuntimeEntity}), Empty_command({pos=Lexing.dummy_pos;run=NullRuntimeEntity}))
+
 let puteol_decl = Proc_declaration({pos=Lexing.dummy_pos;run=NullRuntimeEntity}, Identifier({pos=Lexing.dummy_pos;run=NullRuntimeEntity}, "puteol"), Empty_formal_parameter_sequence({pos=Lexing.dummy_pos;run=NullRuntimeEntity}), Empty_command({pos=Lexing.dummy_pos;run=NullRuntimeEntity}))
 
-let chr_decl = Func_declaration({pos=Lexing.dummy_pos;run=NullRuntimeEntity}, Identifier({pos=Lexing.dummy_pos;run=NullRuntimeEntity}, "chr"), Single_formal_parameter_sequence({pos=Lexing.dummy_pos;run=NullRuntimeEntity}, Const_formal_parameter({pos=Lexing.dummy_pos;run=NullRuntimeEntity}, Identifier({pos=Lexing.dummy_pos;run=NullRuntimeEntity}, ""), integer_type)), char_type, Empty_expression({pos=Lexing.dummy_pos;run=NullRuntimeEntity}))
-let ord_decl = Func_declaration({pos=Lexing.dummy_pos;run=NullRuntimeEntity}, Identifier({pos=Lexing.dummy_pos;run=NullRuntimeEntity}, "ord"), Single_formal_parameter_sequence({pos=Lexing.dummy_pos;run=NullRuntimeEntity}, Const_formal_parameter({pos=Lexing.dummy_pos;run=NullRuntimeEntity}, Identifier({pos=Lexing.dummy_pos;run=NullRuntimeEntity}, ""), char_type)), integer_type, Empty_expression({pos=Lexing.dummy_pos;run=NullRuntimeEntity}))
-let eol_decl = Func_declaration({pos=Lexing.dummy_pos;run=NullRuntimeEntity}, Identifier({pos=Lexing.dummy_pos;run=NullRuntimeEntity}, "eol"), Empty_formal_parameter_sequence({pos=Lexing.dummy_pos;run=NullRuntimeEntity}), boolean_type, Empty_expression({pos=Lexing.dummy_pos;run=NullRuntimeEntity}))
-let eof_decl = Func_declaration({pos=Lexing.dummy_pos;run=NullRuntimeEntity}, Identifier({pos=Lexing.dummy_pos;run=NullRuntimeEntity}, "eof"), Empty_formal_parameter_sequence({pos=Lexing.dummy_pos;run=NullRuntimeEntity}), boolean_type, Empty_expression({pos=Lexing.dummy_pos;run=NullRuntimeEntity}))
+let chr_decl = 
+  Func_declaration({pos=Lexing.dummy_pos;run=NullRuntimeEntity}, Identifier({pos=Lexing.dummy_pos;run=NullRuntimeEntity}, "chr"), Single_formal_parameter_sequence({pos=Lexing.dummy_pos;run=NullRuntimeEntity}, Const_formal_parameter({pos=Lexing.dummy_pos;run=NullRuntimeEntity}, Identifier({pos=Lexing.dummy_pos;run=NullRuntimeEntity}, ""), integer_type)), char_type, Empty_expression({pos=Lexing.dummy_pos;run=NullRuntimeEntity}))
+
+let ord_decl = 
+  Func_declaration({pos=Lexing.dummy_pos;run=NullRuntimeEntity}, Identifier({pos=Lexing.dummy_pos;run=NullRuntimeEntity}, "ord"), Single_formal_parameter_sequence({pos=Lexing.dummy_pos;run=NullRuntimeEntity}, Const_formal_parameter({pos=Lexing.dummy_pos;run=NullRuntimeEntity}, Identifier({pos=Lexing.dummy_pos;run=NullRuntimeEntity}, ""), char_type)), integer_type, Empty_expression({pos=Lexing.dummy_pos;run=NullRuntimeEntity}))
+
+let eol_decl = 
+  Func_declaration({pos=Lexing.dummy_pos;run=NullRuntimeEntity}, Identifier({pos=Lexing.dummy_pos;run=NullRuntimeEntity}, "eol"), Empty_formal_parameter_sequence({pos=Lexing.dummy_pos;run=NullRuntimeEntity}), boolean_type, Empty_expression({pos=Lexing.dummy_pos;run=NullRuntimeEntity}))
+
+let eof_decl = 
+  Func_declaration({pos=Lexing.dummy_pos;run=NullRuntimeEntity}, Identifier({pos=Lexing.dummy_pos;run=NullRuntimeEntity}, "eof"), Empty_formal_parameter_sequence({pos=Lexing.dummy_pos;run=NullRuntimeEntity}), boolean_type, Empty_expression({pos=Lexing.dummy_pos;run=NullRuntimeEntity}))
 
 let _ = (enter "Boolean" (ref boolean_decl));
         (enter "Char" (ref char_decl));
