@@ -22,27 +22,27 @@ let unboxid_list t = match t with
     Nullid_list -> []
   | id_list s -> s
 
-let openScope() = incr(level)
+let open_scope() = incr(level)
 
-let closeScope() =     
+let close_scope() =     
     identifier_list := id_list(List.filter (fun x -> (x.levl != !level)) (unboxid_list !identifier_list));
     decr(level)
 
-let exists newId =
-    (List.exists (fun x -> (((String.compare x.id newId) == 0) && (x.levl == !level))) (unboxid_list !identifier_list))
+let exists new_id =
+    (List.exists (fun x -> (((String.compare x.id new_id) == 0) && (x.levl == !level))) (unboxid_list !identifier_list))
     
-let enter newId newDecl = 
-    let newEntry = {id=newId; attr=newDecl; levl=(!level)} in
-    identifier_list := id_list([newEntry] @ unboxid_list(!identifier_list))      
+let enter new_id newDecl = 
+    let new_entry = {id=new_id; attr=newDecl; levl=(!level)} in
+    identifier_list := id_list([new_entry] @ unboxid_list(!identifier_list))      
 
-let retrieve oldId =
+let retrieve old_Id =
     try
-       (List.find (fun x -> ((String.compare x.id oldId) == 0)) (unboxid_list !identifier_list)).attr
+       (List.find (fun x -> ((String.compare x.id old_Id) == 0)) (unboxid_list !identifier_list)).attr
     with Not_found -> ref Null_declaration
     
-let retrieve_element oldId =
+let retrieve_element old_Id =
     try
-       (List.find (fun x -> ((String.compare x.id oldId) == 0) && (x.levl == !level)) (unboxid_list !identifier_list))
+       (List.find (fun x -> ((String.compare x.id old_Id) == 0) && (x.levl == !level)) (unboxid_list !identifier_list))
     with Not_found -> {id="";attr=ref Null_declaration;levl=0}
 
     

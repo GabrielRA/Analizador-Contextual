@@ -90,9 +90,9 @@ and check_command a = match a with
   
     (* Let (declaration) command - opens a new scope and inserts the new declaration into the identification table *)
   | Let_command(ix, d, c) -> 
-      IdentificationTable.openScope();
+      IdentificationTable.open_scope();
       let dType = (check_declaration d) and cType = (check_command c) in
-        IdentificationTable.closeScope();
+        IdentificationTable.close_scope();
         Let_command(ix, dType, cType)
   
     (* If command - checks if the expression is boolean, then checks both limbs recursively *)
@@ -162,10 +162,10 @@ and check_expression e = match e with
 
     (* Let (declaration) expression - operns a new scope, checks the expression and inserts the new declaration into the identification table *)
   | Let_expression(ix, d, ex)  -> 
-      IdentificationTable.openScope();
+      IdentificationTable.open_scope();
       let dType = (check_declaration d) and 
           eType = (check_expression ex) in
-            IdentificationTable.closeScope();
+            IdentificationTable.close_scope();
             (match eType with
                 Checked_expression(_,t) -> Checked_expression(Let_expression(ix,dType,eType),t)
               | _                       -> e)
@@ -381,12 +381,12 @@ and check_declaration d = match d with
       if (IdentificationTable.exists (Identifier_name i)) then
         ErrorReporter.reportError ("Identifier " ^ (Identifier_name i) ^ " already declared") ix.pos;
         IdentificationTable.enter (Identifier_name i) (ref (Proc_declaration(ix,i,fps,c)));
-        let elem = IdentificationTable.retrieveElement (Identifier_name i) in
-          IdentificationTable.openScope();
+        let elem = IdentificationTable.retrieve_element (Identifier_name i) in
+          IdentificationTable.open_scope();
           let fpsType = (check_formal_parameter_sequence fps) in
             elem.attr <- (ref (Proc_declaration(ix,i,fpsType,c)));
             let cType = (check_command c) in
-              IdentificationTable.closeScope();
+              IdentificationTable.close_scope();
               elem.attr <- (ref (Proc_declaration(ix,i,fpsType,cType)));
               !(IdentificationTable.retrieve (Identifier_name i))
                                                     
@@ -395,12 +395,12 @@ and check_declaration d = match d with
         if (IdentificationTable.exists (Identifier_name i)) then
           ErrorReporter.reportError ("Identifier " ^ (Identifier_name i) ^ " already declared") ix.pos;
           IdentificationTable.enter (Identifier_name i) (ref (Func_declaration(ix,i,fps,tType,e)));
-          let elem = IdentificationTable.retrieveElement (Identifier_name i) in
-            IdentificationTable.openScope();
+          let elem = IdentificationTable.retrieve_element (Identifier_name i) in
+            IdentificationTable.open_scope();
             let fpsType = (check_formal_parameter_sequence fps) in
               elem.attr <- (ref (Func_declaration(ix,i,fpsType,tType,e)));
               let eType = (check_expression e) in
-                IdentificationTable.closeScope();
+                IdentificationTable.close_scope();
                 elem.attr <- (ref (Func_declaration(ix,i,fpsType,tType,eType)));
                 (match eType with
                     Checked_expression(_,t) -> 
@@ -552,9 +552,9 @@ and checkFormalParameter f = match f with
           IdentificationTable.enter (Identifier_name i) (ref (Formal_parameter_declaration(ix,vfp)));
           vfp
                                        
-  | Proc_formal_parameter(ix,i,fps)   -> IdentificationTable.openScope();
+  | Proc_formal_parameter(ix,i,fps)   -> IdentificationTable.open_scope();
       let fpsType = (check_formal_parameter_sequence fps) in
-        IdentificationTable.closeScope();
+        IdentificationTable.close_scope();
         if (IdentificationTable.exists (Identifier_name i)) then
           ErrorReporter.reportError ("Duplicated formal parameter " ^ (Identifier_name i)) ix.pos;
         let pfp = Proc_formal_parameter(ix,i,fpsType) in
@@ -562,10 +562,10 @@ and checkFormalParameter f = match f with
           pfp
 
   | Func_formal_parameter(ix,i,fps,t) -> 
-      IdentificationTable.openScope();
+      IdentificationTable.open_scope();
       let fpsType = (check_formal_parameter_sequence fps)
       and tType   = (check_type_denoter t) in
-          IdentificationTable.closeScope();
+          IdentificationTable.close_scope();
       if (IdentificationTable.exists (Identifier_name i)) then
           ErrorReporter.reportError ("Duplicated formal parameter " ^ (Identifier_name i)) ix.pos;
       let ffp = Func_formal_parameter(ix,i,fpsType,tType) in
@@ -592,17 +592,19 @@ and check_type_denoter a = match a with
   
   | Simple_type_denoter(ix,i)   -> let b = (check_identifier i) in
                                      (match b with
-                                        Checked_identifier(_,a) -> (match !a with
-                                                                      Null_declaration        -> report_undeclared_identifier b;
-                                                                                                Error_type_denoter(ix)
-                                                                    | Type_declaration(_,_,t) -> t
-                                                                    | _                      -> ErrorReporter.reportError ((Identifier_name i) ^ " is not a type Identifier") ix.pos;
-                                                                                                Error_type_denoter(ix))
+                                          Checked_identifier(_,a) -> 
+                                            (match !a with
+                                                Null_declaration        ->  report_undeclared_identifier b;
+                                                                            Error_type_denoter(ix)
+                                              | Type_declaration(_,_,t) ->  t
+                                              | _                       ->  ErrorReporter.reportError ((Identifier_name i) ^ " is not a type Identifier") ix.pos;
+                                                                            Error_type_denoter(ix))
                                       | _                      -> Error_type_denoter(ix))
                                       
-  | Array_type_denoter(ix,il,t) -> if ((int_of_string (match il with Integer_literal(_,s) -> s)) == 0) then
-                                    ErrorReporter.reportError "Arrays must not be empty" (match il with Integer_literal(is,_) -> is).pos;
-                                    Array_type_denoter(ix,il,check_type_denoter(t))
+  | Array_type_denoter(ix,il,t) ->  
+      if ((int_of_string (match il with Integer_literal(_,s) -> s)) == 0) then
+                              ErrorReporter.reportError "Arrays must not be empty" (match il with Integer_literal(is,_) -> is).pos;
+                              Array_type_denoter(ix,il,check_type_denoter(t))
                                  
   | Record_type_denoter(ix,ft)  -> Record_type_denoter(ix, check_field_type_denoter(ft))
   
