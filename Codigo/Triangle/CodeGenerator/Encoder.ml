@@ -132,7 +132,7 @@ let maxRoutineLevel = 7
 
 (* Obtains the astInfo for declaration d *)
 let obtainDeclAstInfo d = match d with
-    Null_declaration                       -> {pos=Lexing.dummy_pos; run=NullRuntimeEntity}
+    Null_declaration                       -> {pos=Lexing.dummy_pos; run=Null_runtime_entity}
   | Const_declaration(ix,_,_)
   | Var_declaration(ix,_,_)
   | Proc_declaration(ix,_,_,_)
@@ -151,17 +151,17 @@ let obtainIdentifierDeclaration i = match i with
 
 (* Obtains the size of runtime entity re *)
 let obtainRuntimeEntitySize re = match re with
-    NullRuntimeEntity -> 0
-  | KnownValue(s,_)
-  | UnknownValue(s,_)
-  | KnownAddress(s,_)
-  | UnknownAddress(s,_)
-  | KnownRoutine(s,_)
-  | UnknownRoutine(s,_)
-  | PrimitiveRoutine(s,_)
-  | EqualityRoutine(s,_)
+    Null_runtime_entity -> 0
+  | Known_value(s,_)
+  | Unknown_value(s,_)
+  | Known_address(s,_)
+  | Unknown_address(s,_)
+  | Known_routine(s,_)
+  | Unknown_routine(s,_)
+  | Primitive_routine(s,_)
+  | Equality_routine(s,_)
   | Field(s,_)
-  | TypeRepresentation(s)  -> s
+  | Type_representation(s)  -> s
   
 (* Returns if a Vname is indexed *)
 let isVnameIndexed v = match v with
@@ -174,20 +174,20 @@ let obtainVnameOffset v = match v with
   | _                       -> 0
 
 (* Returns the spelling of an identifier *)
-let rec Identifier_name id = match id with 
+let rec identifier_name id = match id with 
     Identifier(_,s)        -> s
-  | Checked_identifier(i,_) -> Identifier_name i
+  | Checked_identifier(i,_) -> identifier_name i
   
 (* Obtains the type of a field identifier *)
 let rec checkFieldIdentifier ft id = match ft with
-    Multiple_field_type_denoter(ix,i,t,mt) -> if ((String.compare (Identifier_name id) (Identifier_name i)) == 0) then
+    Multiple_field_type_denoter(ix,i,t,mt) -> if ((String.compare (identifier_name id) (identifier_name i)) == 0) then
                                             ix.run
                                           else 
                                             checkFieldIdentifier mt id
-  | Single_field_type_denoter(ix,i,t)     -> if ((String.compare (Identifier_name id) (Identifier_name i)) == 0) then
+  | Single_field_type_denoter(ix,i,t)     -> if ((String.compare (identifier_name id) (identifier_name i)) == 0) then
                                             ix.run
                                           else
-                                            NullRuntimeEntity
+                                            Null_runtime_entity
   
     
 
@@ -252,12 +252,12 @@ and visitCommand c f = match c with
   | Sequential_command(ix, c1, c2) -> visitCommand c1 f;
                                      visitCommand c2 f
                                      
-  | LetCommand(ix, d, c)          -> let esize = (visitDeclaration d f) in
+  | Let_command(ix, d, c)          -> let esize = (visitDeclaration d f) in
                                          visitCommand c {lev = f.lev ; size = f.size + esize};
                                          if (esize > 0) then
                                             emit opPOP 0 0 esize
                                             
-  | IfCommand(ix, e, c1, c2)      -> let vsize = (visitExpression e f) in
+  | If_command(ix, e, c1, c2)      -> let vsize = (visitExpression e f) in
                                          let jumpifaddr = !nextAddr in
                                              emit opJUMPIF falseRep rCB 0;
                                              visitCommand c1 f;
@@ -345,13 +345,13 @@ and visitArrayAggregate aa f = match aa with
                                                      let rsize = (visitArrayAggregate aax f1) in
                                                         fsize + rsize
                                                         
-  | CheckedArrayAggregate(aax, _)      -> (visitArrayAggregate aax f)
+  | Checked_array_aggregate(aax, _)      -> (visitArrayAggregate aax f)
 
 (* Record Aggregates *)    
 and visitRecordAggregate ra f = match ra with
-    SingleRecordAggregate(ix, i, e)        -> (visitExpression e f)
+    Single_record_aggregate(ix, i, e)        -> (visitExpression e f)
     
-  | MultipleRecordAggregate(ix, i, e, rax) -> let fsize = (visitExpression e f) in
+  | Multiple_record_aggregate(ix, i, e, rax) -> let fsize = (visitExpression e f) in
                                                   let f1 = {lev = f.lev ; size = f.size + fsize} in
                                                       let rsize = (visitRecordAggregate rax f1) in
                                                          fsize + rsize
@@ -406,19 +406,19 @@ and visitDeclaration d f = match d with
     Null_declaration                             -> 0
     
   | Const_declaration(ix, i, e)                  -> let vsize = ref 0
-                                                   and tdt = {dname=(Identifier_name i); dkind=""; dsize=""; dlevel=""; ddispl=""; dvalue=""} in
+                                                   and tdt = {dname=(identifier_name i); dkind=""; dsize=""; dlevel=""; ddispl=""; dvalue=""} in
                                                        (match e with
                                                           Checked_expression(Character_expression(_, cl),_)  -> let value = (visitCharacter_literal cl) in
-                                                                                                                  ix.run <- KnownValue(characterSize, value);
-                                                                                                                  tdt.dkind <- "KnownValue";
+                                                                                                                  ix.run <- Known_value(characterSize, value);
+                                                                                                                  tdt.dkind <- "Known_value";
                                                                                                                   tdt.dvalue <- string_of_int value;
                                                         | Checked_expression(Integer_expression(_, il),_)    -> let value = (visitInteger_literal il) in
-                                                                                                                  ix.run <- KnownValue(integerSize, value);
-                                                                                                                  tdt.dkind <- "KnownValue";
+                                                                                                                  ix.run <- Known_value(integerSize, value);
+                                                                                                                  tdt.dkind <- "Known_value";
                                                                                                                   tdt.dvalue <- string_of_int value;
                                                         | _                                                -> vsize := (visitExpression e f);
-                                                                                                              ix.run <- UnknownValue(!vsize, {level = f.lev ; displacement = f.size});
-                                                                                                              tdt.dkind <- "UnknownValue";
+                                                                                                              ix.run <- Unknown_value(!vsize, {level = f.lev ; displacement = f.size});
+                                                                                                              tdt.dkind <- "Unknown_value";
                                                                                                               tdt.dlevel <- string_of_int f.lev;
                                                                                                               tdt.ddispl <- string_of_int f.size);
                                                        tdt.dsize <- string_of_int !vsize;
@@ -427,14 +427,14 @@ and visitDeclaration d f = match d with
                                                        
   | Var_declaration(ix, i, t)                    -> let esize = (visitTypeDenoter t) in
                                                        emit opPUSH 0 0 esize;
-                                                       ix.run <- KnownAddress(addressSize, {level = f.lev ; displacement = f.size});
-                                                       addTable {dname=(Identifier_name i); dkind="KnownAddress"; dsize=(string_of_int addressSize); dlevel=(string_of_int f.lev); ddispl=(string_of_int f.size); dvalue=""};
+                                                       ix.run <- Known_address(addressSize, {level = f.lev ; displacement = f.size});
+                                                       addTable {dname=(identifier_name i); dkind="Known_address"; dsize=(string_of_int addressSize); dlevel=(string_of_int f.lev); ddispl=(string_of_int f.size); dvalue=""};
                                                        esize
                                                        
   | Proc_declaration(ix, i, fps, c)              -> let jaddr = !nextAddr 
                                                    and args = ref 0 in
                                                        emit opJUMP 0 rCB 0;
-                                                       ix.run <- KnownRoutine(closureSize, {level = f.lev ; displacement = !nextAddr});
+                                                       ix.run <- Known_routine(closureSize, {level = f.lev ; displacement = !nextAddr});
                                                        if (f.lev == maxRoutineLevel) then
                                                           ErrorReporter.reportRestriction "Can't nest routines so deeply"
                                                        else
@@ -446,14 +446,14 @@ and visitDeclaration d f = match d with
                                                        end;
                                                        emit opRETURN 0 0 !args;                                                       
                                                        patch jaddr !nextAddr;
-                                                       addTable {dname=(Identifier_name i); dkind="KnownRoutine"; dsize=(string_of_int closureSize); dlevel=(string_of_int f.lev); ddispl=(string_of_int jaddr); dvalue=""};
+                                                       addTable {dname=(identifier_name i); dkind="Known_routine"; dsize=(string_of_int closureSize); dlevel=(string_of_int f.lev); ddispl=(string_of_int jaddr); dvalue=""};
                                                        0
                                                
   | Func_declaration(ix, i, fps, t, e)           -> let jaddr = !nextAddr
                                                    and args = ref 0
                                                    and vals = ref 0 in
                                                        emit opJUMP 0 rCB 0;
-                                                       ix.run <- KnownRoutine(closureSize, {level = f.lev ; displacement = !nextAddr});
+                                                       ix.run <- Known_routine(closureSize, {level = f.lev ; displacement = !nextAddr});
                                                        if (f.lev == maxRoutineLevel) then
                                                           ErrorReporter.reportRestriction "Can't nest routines so deeply"
                                                        else
@@ -465,7 +465,7 @@ and visitDeclaration d f = match d with
                                                        end;
                                                        emit opRETURN !vals 0 !args;
                                                        patch jaddr !nextAddr;
-                                                       addTable {dname=(Identifier_name i); dkind="KnownRoutine"; dsize=(string_of_int closureSize); dlevel=(string_of_int f.lev); ddispl=(string_of_int jaddr); dvalue=""};
+                                                       addTable {dname=(identifier_name i); dkind="Known_routine"; dsize=(string_of_int closureSize); dlevel=(string_of_int f.lev); ddispl=(string_of_int jaddr); dvalue=""};
                                                        0
                                                        
   | Type_declaration(ix, i, t)                   -> let x = (visitTypeDenoter t) in
@@ -485,18 +485,18 @@ and visitDeclaration d f = match d with
 (* Formal parameters *)
 and visitFormalParameter fp f = match fp with
     Const_formal_parameter(ix, i, t)     -> let vsize = (visitTypeDenoter t) in
-                                              ix.run <- UnknownValue(vsize, {level=f.lev; displacement= -f.size - vsize});
-                                              addTable {dname=(Identifier_name i); dkind="UnknownValue"; dsize=(string_of_int vsize); dlevel=(string_of_int f.lev); ddispl=(string_of_int (-f.size - vsize)); dvalue=""};
+                                              ix.run <- Unknown_value(vsize, {level=f.lev; displacement= -f.size - vsize});
+                                              addTable {dname=(identifier_name i); dkind="Unknown_value"; dsize=(string_of_int vsize); dlevel=(string_of_int f.lev); ddispl=(string_of_int (-f.size - vsize)); dvalue=""};
                                               vsize
                                               
   | Var_formal_parameter(ix, i, t)       -> let vx = (visitTypeDenoter t) in
-                                              ix.run <- UnknownAddress(addressSize, {level=f.lev; displacement= -f.size - addressSize});
-                                              addTable {dname=(Identifier_name i); dkind="UnknownAddress"; dsize=(string_of_int addressSize); dlevel=(string_of_int f.lev); ddispl=(string_of_int (-f.size - addressSize)); dvalue=""};
+                                              ix.run <- Unknown_address(addressSize, {level=f.lev; displacement= -f.size - addressSize});
+                                              addTable {dname=(identifier_name i); dkind="Unknown_address"; dsize=(string_of_int addressSize); dlevel=(string_of_int f.lev); ddispl=(string_of_int (-f.size - addressSize)); dvalue=""};
                                               addressSize
                                           
   | Proc_formal_parameter(ix, i, fps)
-  | Func_formal_parameter(ix, i, fps, _) -> ix.run <- UnknownRoutine(closureSize, {level=f.lev; displacement= -f.size - closureSize});
-                                          addTable {dname=(Identifier_name i); dkind="UnknownRoutine"; dsize=(string_of_int closureSize); dlevel=(string_of_int f.lev); ddispl=(string_of_int (-f.size - closureSize)); dvalue=""};
+  | Func_formal_parameter(ix, i, fps, _) -> ix.run <- Unknown_routine(closureSize, {level=f.lev; displacement= -f.size - closureSize});
+                                          addTable {dname=(identifier_name i); dkind="Unknown_routine"; dsize=(string_of_int closureSize); dlevel=(string_of_int f.lev); ddispl=(string_of_int (-f.size - closureSize)); dvalue=""};
                                           closureSize
 
 (* Actual parameters *)
@@ -509,12 +509,12 @@ and visitActualParameter ap f = match ap with
   | Proc_actual_parameter(ix, i)
                                     
   | Func_actual_parameter(ix, i)  -> (match (obtainDeclAstInfo (obtainIdentifierDeclaration i)).run with
-                                      KnownRoutine(s, oa)    -> emit opLOADA 0 (displayRegister f.lev oa.level) 0;
+                                      Known_routine(s, oa)    -> emit opLOADA 0 (displayRegister f.lev oa.level) 0;
                                                                 emit opLOADA 0 rCB oa.displacement
                                                                 
-                                    | UnknownRoutine(s, oa)  -> emit opLOAD closureSize (displayRegister f.lev oa.level) oa.displacement
+                                    | Unknown_routine(s, oa)  -> emit opLOAD closureSize (displayRegister f.lev oa.level) oa.displacement
                                     
-                                    | PrimitiveRoutine(s, d) -> emit opLOADA 0 rSB 0;
+                                    | Primitive_routine(s, d) -> emit opLOADA 0 rSB 0;
                                                                 emit opLOADA 0 rPB d
                                     
                                     | _                      -> ());                                    
@@ -531,9 +531,9 @@ and visitFormalParameterSequence fps f = match fps with
 
 (* Actual parameter sequences *)
 and visitActualParameterSequence aps f = match aps with
-    EmptyActualParameterSequence(ix)              -> 0
-  | SingleActualParameterSequence(ix, ap)         -> (visitActualParameter ap f)
-  | MultipleActualParameterSequence(ix, ap, apsx) -> let args1 = (visitActualParameter ap f) in
+    Empty_actual_parameter_sequence(ix)              -> 0
+  | Single_actual_parameter_sequence(ix, ap)         -> (visitActualParameter ap f)
+  | Multiple_actual_parameter_sequence(ix, ap, apsx) -> let args1 = (visitActualParameter ap f) in
                                                      let f1 = {lev=f.lev; size=f.size+args1} in
                                                      let args2 = (visitActualParameterSequence apsx f1) in
                                                          args1 + args2
@@ -546,43 +546,43 @@ and visitTypeDenoter t = match t with
   
   | Any_type_denoter(ix)          -> 0
   
-  | SimpleTypeDenoter(ix, i)    -> 0
+  | Simple_type_denoter(ix, i)    -> 0
   
-  | Array_type_denoter(ix, il, t) -> if (ix.run == NullRuntimeEntity) then
+  | Array_type_denoter(ix, il, t) -> if (ix.run == Null_runtime_entity) then
                                       let esize = (visitTypeDenoter t) in
                                       let tsize = (visitInteger_literal il) * esize in
                                       begin
-                                        ix.run <- TypeRepresentation(tsize);                                        
+                                        ix.run <- Type_representation(tsize);                                        
                                         tsize
                                       end
                                    else
                                      (obtainRuntimeEntitySize ix.run)
                                      
-  | Record_type_denoter(ix, ft)   -> if (ix.run == NullRuntimeEntity) then
+  | Record_type_denoter(ix, ft)   -> if (ix.run == Null_runtime_entity) then
                                       let tsize = (visitFieldTypeDenoter ft 0) in
                                       begin
-                                        ix.run <- TypeRepresentation(tsize);
+                                        ix.run <- Type_representation(tsize);
                                         tsize
                                       end
                                    else
                                       (obtainRuntimeEntitySize ix.run)
   
-  | Bool_type_denoter(ix)         -> if (ix.run == NullRuntimeEntity) then
-                                      ix.run <- TypeRepresentation(booleanSize);
+  | Bool_type_denoter(ix)         -> if (ix.run == Null_runtime_entity) then
+                                      ix.run <- Type_representation(booleanSize);
                                    booleanSize
                                    
-  | Int_type_denoter(ix)          -> if (ix.run == NullRuntimeEntity) then
-                                      ix.run <- TypeRepresentation(integerSize);
+  | Int_type_denoter(ix)          -> if (ix.run == Null_runtime_entity) then
+                                      ix.run <- Type_representation(integerSize);
                                    integerSize
                                    
-  | Char_type_denoter(ix)         -> if (ix.run == NullRuntimeEntity) then
-                                      ix.run <- TypeRepresentation(characterSize);
+  | Char_type_denoter(ix)         -> if (ix.run == Null_runtime_entity) then
+                                      ix.run <- Type_representation(characterSize);
                                    characterSize
                                       
   
 (* Field type denoters *)
 and visitFieldTypeDenoter ft offset = match ft with
-    Single_field_type_denoter(ix, i, t)        -> if (ix.run == NullRuntimeEntity) then
+    Single_field_type_denoter(ix, i, t)        -> if (ix.run == Null_runtime_entity) then
                                                   let fsize = visitTypeDenoter t in
                                                   begin
                                                      ix.run <- Field(fsize, offset);
@@ -592,7 +592,7 @@ and visitFieldTypeDenoter ft offset = match ft with
                                                   (obtainRuntimeEntitySize ix.run)
 
   | Multiple_field_type_denoter(ix, i, t, ftx) -> let fsize = 
-                                                   if (ix.run == NullRuntimeEntity) then
+                                                   if (ix.run == Null_runtime_entity) then
                                                       let fx = visitTypeDenoter t in
                                                       begin
                                                          ix.run <- Field(fx, offset);
@@ -618,12 +618,12 @@ and visitCharacter_literal cl = match cl with
 and visitIdentifier i f = match i with
     Checked_identifier(i, d) -> let entity = (obtainDeclAstInfo !d).run in
                                    (match entity with
-                                      KnownRoutine(s,oa)      -> emit opCALL (displayRegister f.lev oa.level) rCB oa.displacement
-                                    | UnknownRoutine(s,oa)    -> emit opLOAD closureSize (displayRegister f.lev oa.level) oa.displacement;
+                                      Known_routine(s,oa)      -> emit opCALL (displayRegister f.lev oa.level) rCB oa.displacement
+                                    | Unknown_routine(s,oa)    -> emit opLOAD closureSize (displayRegister f.lev oa.level) oa.displacement;
                                                                  emit opCALLI 0 0 0
-                                    | PrimitiveRoutine(s,d)   -> if (d != idDisplacement) then
+                                    | Primitive_routine(s,d)   -> if (d != idDisplacement) then
                                                                     emit opCALL rSB rPB d
-                                    | EqualityRoutine(s,d)    -> emit opLOADL 0 0 (f.size / 2);
+                                    | Equality_routine(s,d)    -> emit opLOADL 0 0 (f.size / 2);
                                                                  emit opCALL rSB rPB d
                                     | _                       -> ())
   | _                       -> ()
@@ -632,12 +632,12 @@ and visitIdentifier i f = match i with
 and visitOperator o f = match o with
   | Checked_operator(i, d) -> let entity = (obtainDeclAstInfo !d).run in
                                    (match entity with
-                                      KnownRoutine(s,oa)      -> emit opCALL (displayRegister f.lev oa.level) rCB oa.displacement
-                                    | UnknownRoutine(s,oa)    -> emit opLOAD closureSize (displayRegister f.lev oa.level) oa.displacement;
+                                      Known_routine(s,oa)      -> emit opCALL (displayRegister f.lev oa.level) rCB oa.displacement
+                                    | Unknown_routine(s,oa)    -> emit opLOAD closureSize (displayRegister f.lev oa.level) oa.displacement;
                                                                  emit opCALLI 0 0 0
-                                    | PrimitiveRoutine(s,d)   -> if (d != idDisplacement) then
+                                    | Primitive_routine(s,d)   -> if (d != idDisplacement) then
                                                                     emit opCALL rSB rPB d
-                                    | EqualityRoutine(s,d)    -> emit opLOADL 0 0 (f.size / 2);
+                                    | Equality_routine(s,d)    -> emit opLOADL 0 0 (f.size / 2);
                                                                  emit opCALL rSB rPB d
                                     | _                       -> ())
   | _                     -> ()
@@ -654,7 +654,7 @@ and encodeStore v f s =
           valSize := 255
         end;
         match entity with
-          KnownAddress(s, oa)   -> if (isVnameIndexed v) then
+          Known_address(s, oa)   -> if (isVnameIndexed v) then
                                    begin
                                       emit opLOADA 0 (displayRegister f.lev oa.level) (oa.displacement + obtainVnameOffset v);
                                       emit opCALL rSB rPB addDisplacement;
@@ -663,7 +663,7 @@ and encodeStore v f s =
                                    else
                                      emit opSTORE !valSize (displayRegister f.lev oa.level) (oa.displacement + obtainVnameOffset v)
                                      
-        | UnknownAddress(s, oa) -> emit opLOAD addressSize (displayRegister f.lev oa.level) oa.displacement;
+        | Unknown_address(s, oa) -> emit opLOAD addressSize (displayRegister f.lev oa.level) oa.displacement;
                                    if (isVnameIndexed v) then
                                       emit opCALL rSB rPB addDisplacement;
                                    if ((obtainVnameOffset v) == 0) then
@@ -687,10 +687,10 @@ and encodeFetch v f s =
           valSize := 255
         end;
         match entity with
-          KnownValue(s, vx)      -> emit opLOADL 0 0 vx
+          Known_value(s, vx)      -> emit opLOADL 0 0 vx
           
-        | UnknownValue(s, oa)
-        | KnownAddress(s, oa)   -> if (isVnameIndexed v) then
+        | Unknown_value(s, oa)
+        | Known_address(s, oa)   -> if (isVnameIndexed v) then
                                    begin
                                       emit opLOADA 0 (displayRegister f.lev oa.level) (oa.displacement + obtainVnameOffset v);
                                       emit opCALL rSB rPB addDisplacement;
@@ -699,7 +699,7 @@ and encodeFetch v f s =
                                    else
                                       emit opLOAD !valSize (displayRegister f.lev oa.level) (oa.displacement + obtainVnameOffset v)
                                       
-        | UnknownAddress(s, oa) -> emit opLOAD addressSize (displayRegister f.lev oa.level) oa.displacement;
+        | Unknown_address(s, oa) -> emit opLOAD addressSize (displayRegister f.lev oa.level) oa.displacement;
                                    if (isVnameIndexed v) then
                                       emit opCALL rSB rPB addDisplacement;
                                    if ((obtainVnameOffset v) == 0) then
@@ -713,11 +713,11 @@ and encodeFetch v f s =
 
 (* Encodes an address fetching operation *)
 and encodeFetchAddress v f = let vx = (visitVname v f) in match (obtainVnameEntity vx) with
-    KnownAddress(s, oa)   -> emit opLOADA 0 (displayRegister f.lev oa.level) (oa.displacement + obtainVnameOffset vx);
+    Known_address(s, oa)   -> emit opLOADA 0 (displayRegister f.lev oa.level) (oa.displacement + obtainVnameOffset vx);
                              if (isVnameIndexed vx) then
                                 emit opCALL rSB rPB addDisplacement
 
-  | UnknownAddress(s, oa) -> emit opLOAD addressSize (displayRegister f.lev oa.level) oa.displacement;
+  | Unknown_address(s, oa) -> emit opLOAD addressSize (displayRegister f.lev oa.level) oa.displacement;
                              if (isVnameIndexed vx) then
                                 emit opCALL rSB rPB addDisplacement;
                              if ((obtainVnameOffset vx) == 0) then
@@ -734,17 +734,17 @@ and encodeFetchAddress v f = let vx = (visitVname v f) in match (obtainVnameEnti
 (* Decides run-time representation of a standard constant. *)
 let elaborateStdConst decl value = match decl with
     Const_declaration(ix,i,e) -> let typeSize = (visitExpression e {lev=0;size=0}) in
-                                    ix.run <- KnownValue(typeSize, value)
+                                    ix.run <- Known_value(typeSize, value)
   | _                        -> ()
 
 
 (* Decides run-time representation of a standard primitive routine. *)
 let elaborateStdPrimRoutine decl offset = 
-    (obtainDeclAstInfo decl).run <- PrimitiveRoutine(closureSize, offset)
+    (obtainDeclAstInfo decl).run <- Primitive_routine(closureSize, offset)
 
 (* Decides run-time representation of a standard equality routine. *)
 let elaborateStdEqRoutine decl offset =
-    (obtainDeclAstInfo decl).run <- EqualityRoutine(closureSize, offset)
+    (obtainDeclAstInfo decl).run <- Equality_routine(closureSize, offset)
 
 let _ = (elaborateStdConst (!(retrieve "false")) falseRep);
         (elaborateStdConst (!(retrieve "true")) trueRep);

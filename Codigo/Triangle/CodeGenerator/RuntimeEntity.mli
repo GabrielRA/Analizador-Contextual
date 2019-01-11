@@ -7,17 +7,17 @@
 (* --------------------------------------------- *)
 
 
-type objectAddress = { level: int; displacement: int }
+type object_address = { level: int; displacement: int }
 
                                            
-type runtimeEntity = NullRuntimeEntity     
-                   | KnownValue         of int*int (* size,value *)
-                   | UnknownValue       of int*objectAddress (* size *)
-                   | KnownAddress       of int*objectAddress (* size *)
-                   | UnknownAddress     of int*objectAddress (* size *)
-                   | KnownRoutine       of int*objectAddress (* size *)
-                   | UnknownRoutine     of int*objectAddress (* size *)
-                   | PrimitiveRoutine   of int*int (* size, displacement *)
-                   | EqualityRoutine    of int*int (* size, displacement *)
+type runtime_entity = Null_runtime_entity     
+                   | Known_value         of int*int (* size,value *)
+                   | Unknown_value       of int*object_address (* size *)
+                   | Known_address       of int*object_address (* size *)
+                   | Unknown_address     of int*object_address (* size *)
+                   | Known_routine       of int*object_address (* size *)
+                   | Unknown_routine     of int*object_address (* size *)
+                   | Primitive_routine   of int*int (* size, displacement *)
+                   | Equality_routine    of int*int (* size, displacement *)
                    | Field              of int*int (* size, fieldOffset *)
-                   | TypeRepresentation of int     (* size *)
+                   | Type_representation of int     (* size *)

@@ -8,11 +8,11 @@
 
 open Ast
 
-type idEntry = {mutable id: string; mutable attr: astDeclaration ref; mutable levl: int}
+type id_entry = {mutable id: string; mutable attr: ast_declaration ref; mutable levl: int}
 
 val open_scope: unit -> unit
 val close_scope: unit -> unit
-val enter: string -> astDeclaration ref -> unit
+val enter: string -> ast_declaration ref -> unit
 val exists: string -> bool
-val retrieve: string -> astDeclaration ref
-val retrieve_element: string -> idEntry
+val retrieve: string -> ast_declaration ref
+val retrieve_element: string -> id_entry

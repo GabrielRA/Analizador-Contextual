@@ -10,4 +10,4 @@ open Parser
 open Ast
 
 (* Semantically checks the program, returning a "decorated" abstract syntax tree *)
-val check_program: Ast.astProgram -> Ast.astProgram
+val check_program: Ast.ast_program -> Ast.ast_program

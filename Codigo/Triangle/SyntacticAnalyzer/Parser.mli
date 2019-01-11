@@ -35,4 +35,4 @@ type token =
   | EOF
 
 val parseProgram :
-  (Lexing.lexbuf  -> token) -> Lexing.lexbuf -> Ast.astProgram
+  (Lexing.lexbuf  -> token) -> Lexing.lexbuf -> Ast.ast_program

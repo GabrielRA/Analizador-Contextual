@@ -330,16 +330,16 @@ let yyact = [|
     let _1 = (peek_val parser_env 1 : 'Command) in
     Obj.repr(
 # 40 "Parser.mly"
-                            ( Program({pos=rhs_start_pos(1);run=NullRuntimeEntity}, _1) )
+                            ( Program({pos=rhs_start_pos(1);run=Null_runtime_entity}, _1) )
 # 335 "Parser.ml"
-               : Ast.astProgram))
+               : Ast.ast_program))
 ; (fun parser_env ->
     Obj.repr(
 # 41 "Parser.mly"
                             ( ErrorReporter.reportError "Command expected here." (rhs_start_pos(1)); 
                               raise Parse_error )
 # 342 "Parser.ml"
-               : Ast.astProgram))
+               : Ast.ast_program))
 ; (fun parser_env ->
     let _1 = (peek_val parser_env 0 : 'single_Command) in
     Obj.repr(
@@ -352,13 +352,13 @@ let yyact = [|
     let _3 = (peek_val parser_env 0 : 'Command) in
     Obj.repr(
 # 48 "Parser.mly"
-                                          ( Sequential_command({pos=rhs_start_pos(1);run=NullRuntimeEntity}, _1, _3) )
+                                          ( Sequential_command({pos=rhs_start_pos(1);run=Null_runtime_entity}, _1, _3) )
 # 357 "Parser.ml"
                : 'Command))
 ; (fun parser_env ->
     Obj.repr(
 # 51 "Parser.mly"
-                                                                      ( Empty_command({pos=rhs_start_pos(1);run=NullRuntimeEntity}) )
+                                                                      ( Empty_command({pos=rhs_start_pos(1);run=Null_runtime_entity}) )
 # 363 "Parser.ml"
                : 'single_Command))
 ; (fun parser_env ->
@@ -366,7 +366,7 @@ let yyact = [|
     let _3 = (peek_val parser_env 0 : 'Expression) in
     Obj.repr(
 # 52 "Parser.mly"
-                                                                      ( Assign_command({pos=rhs_start_pos(1);run=NullRuntimeEntity}, _1, _3) )
+                                                                      ( Assign_command({pos=rhs_start_pos(1);run=Null_runtime_entity}, _1, _3) )
 # 371 "Parser.ml"
                : 'single_Command))
 ; (fun parser_env ->
@@ -374,7 +374,7 @@ let yyact = [|
     let _3 = (peek_val parser_env 1 : 'Actual_Parameter_Sequence) in
     Obj.repr(
 # 53 "Parser.mly"
-                                                                      ( Call_command({pos=rhs_start_pos(1);run=NullRuntimeEntity}, _1, _3) )
+                                                                      ( Call_command({pos=rhs_start_pos(1);run=Null_runtime_entity}, _1, _3) )
 # 379 "Parser.ml"
                : 'single_Command))
 ; (fun parser_env ->
@@ -389,7 +389,7 @@ let yyact = [|
     let _4 = (peek_val parser_env 0 : 'single_Command) in
     Obj.repr(
 # 55 "Parser.mly"
-                                                                      ( LetCommand({pos=rhs_start_pos(1);run=NullRuntimeEntity}, _2, _4) )
+                                                                      ( Let_command({pos=rhs_start_pos(1);run=Null_runtime_entity}, _2, _4) )
 # 394 "Parser.ml"
                : 'single_Command))
 ; (fun parser_env ->
@@ -398,7 +398,7 @@ let yyact = [|
     let _6 = (peek_val parser_env 0 : 'single_Command) in
     Obj.repr(
 # 56 "Parser.mly"
-                                                                      ( IfCommand({pos=rhs_start_pos(1);run=NullRuntimeEntity}, _2, _4, _6) )
+                                                                      ( If_command({pos=rhs_start_pos(1);run=Null_runtime_entity}, _2, _4, _6) )
 # 403 "Parser.ml"
                : 'single_Command))
 ; (fun parser_env ->
@@ -406,7 +406,7 @@ let yyact = [|
     let _4 = (peek_val parser_env 0 : 'single_Command) in
     Obj.repr(
 # 57 "Parser.mly"
-                                                                      ( While_command({pos=rhs_start_pos(1);run=NullRuntimeEntity}, _2, _4) )
+                                                                      ( While_command({pos=rhs_start_pos(1);run=Null_runtime_entity}, _2, _4) )
 # 411 "Parser.ml"
                : 'single_Command))
 ; (fun parser_env ->
@@ -421,7 +421,7 @@ let yyact = [|
     let _4 = (peek_val parser_env 0 : 'Expression) in
     Obj.repr(
 # 63 "Parser.mly"
-                                                             ( Let_expression({pos=rhs_start_pos(1);run=NullRuntimeEntity}, _2, _4) )
+                                                             ( Let_expression({pos=rhs_start_pos(1);run=Null_runtime_entity}, _2, _4) )
 # 426 "Parser.ml"
                : 'Expression))
 ; (fun parser_env ->
@@ -430,7 +430,7 @@ let yyact = [|
     let _6 = (peek_val parser_env 0 : 'Expression) in
     Obj.repr(
 # 64 "Parser.mly"
-                                                             ( If_expression({pos=rhs_start_pos(1);run=NullRuntimeEntity}, _2, _4, _6) )
+                                                             ( If_expression({pos=rhs_start_pos(1);run=Null_runtime_entity}, _2, _4, _6) )
 # 435 "Parser.ml"
                : 'Expression))
 ; (fun parser_env ->
@@ -453,28 +453,28 @@ let yyact = [|
     let _3 = (peek_val parser_env 0 : 'primary_Expression) in
     Obj.repr(
 # 71 "Parser.mly"
-                                                                       ( Binary_expression({pos=rhs_start_pos(1);run=NullRuntimeEntity}, _1, _2, _3) )
+                                                                       ( Binary_expression({pos=rhs_start_pos(1);run=Null_runtime_entity}, _1, _2, _3) )
 # 458 "Parser.ml"
                : 'secondary_Expression))
 ; (fun parser_env ->
     let _1 = (peek_val parser_env 0 : 'Integer_Literal) in
     Obj.repr(
 # 74 "Parser.mly"
-                                                                       ( Integer_expression({pos=rhs_start_pos(1); run=NullRuntimeEntity}, _1) )
+                                                                       ( Integer_expression({pos=rhs_start_pos(1); run=Null_runtime_entity}, _1) )
 # 465 "Parser.ml"
                : 'primary_Expression))
 ; (fun parser_env ->
     let _1 = (peek_val parser_env 0 : 'Character_Literal) in
     Obj.repr(
 # 75 "Parser.mly"
-                                                                       ( Character_expression({pos=rhs_start_pos(1);run=NullRuntimeEntity},_1) )
+                                                                       ( Character_expression({pos=rhs_start_pos(1);run=Null_runtime_entity},_1) )
 # 472 "Parser.ml"
                : 'primary_Expression))
 ; (fun parser_env ->
     let _1 = (peek_val parser_env 0 : 'Vname) in
     Obj.repr(
 # 76 "Parser.mly"
-                                                                       ( Vname_expression({pos=rhs_start_pos(1);run=NullRuntimeEntity}, _1) )
+                                                                       ( Vname_expression({pos=rhs_start_pos(1);run=Null_runtime_entity}, _1) )
 # 479 "Parser.ml"
                : 'primary_Expression))
 ; (fun parser_env ->
@@ -482,7 +482,7 @@ let yyact = [|
     let _3 = (peek_val parser_env 1 : 'Actual_Parameter_Sequence) in
     Obj.repr(
 # 77 "Parser.mly"
-                                                                       ( Call_expression({pos=rhs_start_pos(1);run=NullRuntimeEntity}, _1, _3) )
+                                                                       ( Call_expression({pos=rhs_start_pos(1);run=Null_runtime_entity}, _1, _3) )
 # 487 "Parser.ml"
                : 'primary_Expression))
 ; (fun parser_env ->
@@ -490,7 +490,7 @@ let yyact = [|
     let _2 = (peek_val parser_env 0 : 'primary_Expression) in
     Obj.repr(
 # 78 "Parser.mly"
-                                                                       ( Unary_expression({pos=rhs_start_pos(1);run=NullRuntimeEntity}, _1, _2) )
+                                                                       ( Unary_expression({pos=rhs_start_pos(1);run=Null_runtime_entity}, _1, _2) )
 # 495 "Parser.ml"
                : 'primary_Expression))
 ; (fun parser_env ->
@@ -504,14 +504,14 @@ let yyact = [|
     let _2 = (peek_val parser_env 1 : 'Record_Aggregate) in
     Obj.repr(
 # 80 "Parser.mly"
-                                                                       ( Record_expression({pos=rhs_start_pos(1);run=NullRuntimeEntity}, _2) )
+                                                                       ( Record_expression({pos=rhs_start_pos(1);run=Null_runtime_entity}, _2) )
 # 509 "Parser.ml"
                : 'primary_Expression))
 ; (fun parser_env ->
     let _2 = (peek_val parser_env 1 : 'Array_Aggregate) in
     Obj.repr(
 # 81 "Parser.mly"
-                                                                       ( Array_expression({pos=rhs_start_pos(1);run=NullRuntimeEntity}, _2) )
+                                                                       ( Array_expression({pos=rhs_start_pos(1);run=Null_runtime_entity}, _2) )
 # 516 "Parser.ml"
                : 'primary_Expression))
 ; (fun parser_env ->
@@ -519,7 +519,7 @@ let yyact = [|
     let _3 = (peek_val parser_env 0 : 'Expression) in
     Obj.repr(
 # 85 "Parser.mly"
-                                                                  ( SingleRecordAggregate({pos=rhs_start_pos(1);run=NullRuntimeEntity}, _1, _3) )
+                                                                  ( Single_record_aggregate({pos=rhs_start_pos(1);run=Null_runtime_entity}, _1, _3) )
 # 524 "Parser.ml"
                : 'Record_Aggregate))
 ; (fun parser_env ->
@@ -528,14 +528,14 @@ let yyact = [|
     let _5 = (peek_val parser_env 0 : 'Record_Aggregate) in
     Obj.repr(
 # 86 "Parser.mly"
-                                                                  ( MultipleRecordAggregate({pos=rhs_start_pos(1);run=NullRuntimeEntity}, _1, _3, _5) )
+                                                                  ( Multiple_record_aggregate({pos=rhs_start_pos(1);run=Null_runtime_entity}, _1, _3, _5) )
 # 533 "Parser.ml"
                : 'Record_Aggregate))
 ; (fun parser_env ->
     let _1 = (peek_val parser_env 0 : 'Expression) in
     Obj.repr(
 # 90 "Parser.mly"
-                                                  ( Single_array_aggregate({pos=rhs_start_pos(1);run=NullRuntimeEntity}, _1) )
+                                                  ( Single_array_aggregate({pos=rhs_start_pos(1);run=Null_runtime_entity}, _1) )
 # 540 "Parser.ml"
                : 'Array_Aggregate))
 ; (fun parser_env ->
@@ -543,14 +543,14 @@ let yyact = [|
     let _3 = (peek_val parser_env 0 : 'Array_Aggregate) in
     Obj.repr(
 # 91 "Parser.mly"
-                                                  ( Multiple_array_aggregate({pos=rhs_start_pos(1);run=NullRuntimeEntity}, _1, _3) )
+                                                  ( Multiple_array_aggregate({pos=rhs_start_pos(1);run=Null_runtime_entity}, _1, _3) )
 # 548 "Parser.ml"
                : 'Array_Aggregate))
 ; (fun parser_env ->
     let _1 = (peek_val parser_env 0 : 'Identifier) in
     Obj.repr(
 # 95 "Parser.mly"
-                                          ( Simple_vname({pos=rhs_start_pos(1);run=NullRuntimeEntity}, _1) )
+                                          ( Simple_vname({pos=rhs_start_pos(1);run=Null_runtime_entity}, _1) )
 # 555 "Parser.ml"
                : 'Vname))
 ; (fun parser_env ->
@@ -558,7 +558,7 @@ let yyact = [|
     let _3 = (peek_val parser_env 0 : 'Identifier) in
     Obj.repr(
 # 96 "Parser.mly"
-                                          ( Dot_vname({pos=rhs_start_pos(1);run=NullRuntimeEntity}, _1, _3) )
+                                          ( Dot_vname({pos=rhs_start_pos(1);run=Null_runtime_entity}, _1, _3) )
 # 563 "Parser.ml"
                : 'Vname))
 ; (fun parser_env ->
@@ -566,7 +566,7 @@ let yyact = [|
     let _3 = (peek_val parser_env 1 : 'Expression) in
     Obj.repr(
 # 97 "Parser.mly"
-                                          ( Subscript_vname({pos=rhs_start_pos(1);run=NullRuntimeEntity}, _1, _3) )
+                                          ( Subscript_vname({pos=rhs_start_pos(1);run=Null_runtime_entity}, _1, _3) )
 # 571 "Parser.ml"
                : 'Vname))
 ; (fun parser_env ->
@@ -581,7 +581,7 @@ let yyact = [|
     let _3 = (peek_val parser_env 0 : 'single_Declaration) in
     Obj.repr(
 # 102 "Parser.mly"
-                                                      ( Sequential_declaration({pos=rhs_start_pos(1);run=NullRuntimeEntity}, _1, _3) )
+                                                      ( Sequential_declaration({pos=rhs_start_pos(1);run=Null_runtime_entity}, _1, _3) )
 # 586 "Parser.ml"
                : 'Declaration))
 ; (fun parser_env ->
@@ -596,7 +596,7 @@ let yyact = [|
     let _4 = (peek_val parser_env 0 : 'Expression) in
     Obj.repr(
 # 107 "Parser.mly"
-                                                                                                             ( Const_declaration({pos=rhs_start_pos(1);run=NullRuntimeEntity}, _2, _4) )
+                                                                                                             ( Const_declaration({pos=rhs_start_pos(1);run=Null_runtime_entity}, _2, _4) )
 # 601 "Parser.ml"
                : 'single_Declaration))
 ; (fun parser_env ->
@@ -604,7 +604,7 @@ let yyact = [|
     let _4 = (peek_val parser_env 0 : 'Type_denoter) in
     Obj.repr(
 # 108 "Parser.mly"
-                                                                                                             ( Var_declaration({pos=rhs_start_pos(1);run=NullRuntimeEntity}, _2, _4) )
+                                                                                                             ( Var_declaration({pos=rhs_start_pos(1);run=Null_runtime_entity}, _2, _4) )
 # 609 "Parser.ml"
                : 'single_Declaration))
 ; (fun parser_env ->
@@ -613,7 +613,7 @@ let yyact = [|
     let _7 = (peek_val parser_env 0 : 'single_Command) in
     Obj.repr(
 # 109 "Parser.mly"
-                                                                                                             ( Proc_declaration({pos=rhs_start_pos(1);run=NullRuntimeEntity}, _2, _4, _7) )
+                                                                                                             ( Proc_declaration({pos=rhs_start_pos(1);run=Null_runtime_entity}, _2, _4, _7) )
 # 618 "Parser.ml"
                : 'single_Declaration))
 ; (fun parser_env ->
@@ -623,7 +623,7 @@ let yyact = [|
     let _9 = (peek_val parser_env 0 : 'Expression) in
     Obj.repr(
 # 110 "Parser.mly"
-                                                                                                             ( Func_declaration({pos=rhs_start_pos(1);run=NullRuntimeEntity}, _2, _4, _7, _9) )
+                                                                                                             ( Func_declaration({pos=rhs_start_pos(1);run=Null_runtime_entity}, _2, _4, _7, _9) )
 # 628 "Parser.ml"
                : 'single_Declaration))
 ; (fun parser_env ->
@@ -631,13 +631,13 @@ let yyact = [|
     let _4 = (peek_val parser_env 0 : 'Type_denoter) in
     Obj.repr(
 # 111 "Parser.mly"
-                                                                                                             ( Type_declaration({pos=rhs_start_pos(1);run=NullRuntimeEntity}, _2, _4) )
+                                                                                                             ( Type_declaration({pos=rhs_start_pos(1);run=Null_runtime_entity}, _2, _4) )
 # 636 "Parser.ml"
                : 'single_Declaration))
 ; (fun parser_env ->
     Obj.repr(
 # 115 "Parser.mly"
-                                                            ( Empty_formal_parameter_sequence({pos=rhs_start_pos(1);run=NullRuntimeEntity}) )
+                                                            ( Empty_formal_parameter_sequence({pos=rhs_start_pos(1);run=Null_runtime_entity}) )
 # 642 "Parser.ml"
                : 'Formal_Parameter_Sequence))
 ; (fun parser_env ->
@@ -651,7 +651,7 @@ let yyact = [|
     let _1 = (peek_val parser_env 0 : 'Formal_Parameter) in
     Obj.repr(
 # 119 "Parser.mly"
-                                                                                          ( Single_formal_parameter_sequence({pos=rhs_start_pos(1);run=NullRuntimeEntity},_1) )
+                                                                                          ( Single_formal_parameter_sequence({pos=rhs_start_pos(1);run=Null_runtime_entity},_1) )
 # 656 "Parser.ml"
                : 'proper_Formal_Parameter_Sequence))
 ; (fun parser_env ->
@@ -659,7 +659,7 @@ let yyact = [|
     let _3 = (peek_val parser_env 0 : 'proper_Formal_Parameter_Sequence) in
     Obj.repr(
 # 120 "Parser.mly"
-                                                                                          ( Multiple_formal_parameter_sequence({pos=rhs_start_pos(1);run=NullRuntimeEntity}, _1, _3) )
+                                                                                          ( Multiple_formal_parameter_sequence({pos=rhs_start_pos(1);run=Null_runtime_entity}, _1, _3) )
 # 664 "Parser.ml"
                : 'proper_Formal_Parameter_Sequence))
 ; (fun parser_env ->
@@ -667,7 +667,7 @@ let yyact = [|
     let _3 = (peek_val parser_env 0 : 'Type_denoter) in
     Obj.repr(
 # 123 "Parser.mly"
-                                                                                             ( Const_formal_parameter({pos=rhs_start_pos(1);run=NullRuntimeEntity}, _1, _3) )
+                                                                                             ( Const_formal_parameter({pos=rhs_start_pos(1);run=Null_runtime_entity}, _1, _3) )
 # 672 "Parser.ml"
                : 'Formal_Parameter))
 ; (fun parser_env ->
@@ -675,7 +675,7 @@ let yyact = [|
     let _4 = (peek_val parser_env 0 : 'Type_denoter) in
     Obj.repr(
 # 124 "Parser.mly"
-                                                                                             ( Var_formal_parameter({pos=rhs_start_pos(1);run=NullRuntimeEntity}, _2, _4) )
+                                                                                             ( Var_formal_parameter({pos=rhs_start_pos(1);run=Null_runtime_entity}, _2, _4) )
 # 680 "Parser.ml"
                : 'Formal_Parameter))
 ; (fun parser_env ->
@@ -683,7 +683,7 @@ let yyact = [|
     let _4 = (peek_val parser_env 1 : 'Formal_Parameter_Sequence) in
     Obj.repr(
 # 125 "Parser.mly"
-                                                                                             ( Proc_formal_parameter({pos=rhs_start_pos(1);run=NullRuntimeEntity}, _2, _4) )
+                                                                                             ( Proc_formal_parameter({pos=rhs_start_pos(1);run=Null_runtime_entity}, _2, _4) )
 # 688 "Parser.ml"
                : 'Formal_Parameter))
 ; (fun parser_env ->
@@ -692,13 +692,13 @@ let yyact = [|
     let _7 = (peek_val parser_env 0 : 'Type_denoter) in
     Obj.repr(
 # 126 "Parser.mly"
-                                                                                             ( Func_formal_parameter({pos=rhs_start_pos(1);run=NullRuntimeEntity}, _2, _4, _7) )
+                                                                                             ( Func_formal_parameter({pos=rhs_start_pos(1);run=Null_runtime_entity}, _2, _4, _7) )
 # 697 "Parser.ml"
                : 'Formal_Parameter))
 ; (fun parser_env ->
     Obj.repr(
 # 130 "Parser.mly"
-                                                            ( EmptyActualParameterSequence({pos=rhs_start_pos(1);run=NullRuntimeEntity}) )
+                                                            ( Empty_actual_parameter_sequence({pos=rhs_start_pos(1);run=Null_runtime_entity}) )
 # 703 "Parser.ml"
                : 'Actual_Parameter_Sequence))
 ; (fun parser_env ->
@@ -712,7 +712,7 @@ let yyact = [|
     let _1 = (peek_val parser_env 0 : 'Actual_Parameter) in
     Obj.repr(
 # 134 "Parser.mly"
-                                                                                          ( SingleActualParameterSequence({pos=rhs_start_pos(1);run=NullRuntimeEntity}, _1) )
+                                                                                          ( Single_actual_parameter_sequence({pos=rhs_start_pos(1);run=Null_runtime_entity}, _1) )
 # 717 "Parser.ml"
                : 'proper_Actual_Parameter_Sequence))
 ; (fun parser_env ->
@@ -720,42 +720,42 @@ let yyact = [|
     let _3 = (peek_val parser_env 0 : 'proper_Actual_Parameter_Sequence) in
     Obj.repr(
 # 135 "Parser.mly"
-                                                                                          ( MultipleActualParameterSequence({pos=rhs_start_pos(1);run=NullRuntimeEntity}, _1, _3) )
+                                                                                          ( Multiple_actual_parameter_sequence({pos=rhs_start_pos(1);run=Null_runtime_entity}, _1, _3) )
 # 725 "Parser.ml"
                : 'proper_Actual_Parameter_Sequence))
 ; (fun parser_env ->
     let _1 = (peek_val parser_env 0 : 'Expression) in
     Obj.repr(
 # 138 "Parser.mly"
-                                  ( Const_actual_parameter({pos=rhs_start_pos(1);run=NullRuntimeEntity}, _1) )
+                                  ( Const_actual_parameter({pos=rhs_start_pos(1);run=Null_runtime_entity}, _1) )
 # 732 "Parser.ml"
                : 'Actual_Parameter))
 ; (fun parser_env ->
     let _2 = (peek_val parser_env 0 : 'Vname) in
     Obj.repr(
 # 139 "Parser.mly"
-                                  ( Var_actual_parameter({pos=rhs_start_pos(1);run=NullRuntimeEntity}, _2) )
+                                  ( Var_actual_parameter({pos=rhs_start_pos(1);run=Null_runtime_entity}, _2) )
 # 739 "Parser.ml"
                : 'Actual_Parameter))
 ; (fun parser_env ->
     let _2 = (peek_val parser_env 0 : 'Identifier) in
     Obj.repr(
 # 140 "Parser.mly"
-                                  ( Proc_actual_parameter({pos=rhs_start_pos(1);run=NullRuntimeEntity}, _2) )
+                                  ( Proc_actual_parameter({pos=rhs_start_pos(1);run=Null_runtime_entity}, _2) )
 # 746 "Parser.ml"
                : 'Actual_Parameter))
 ; (fun parser_env ->
     let _2 = (peek_val parser_env 0 : 'Identifier) in
     Obj.repr(
 # 141 "Parser.mly"
-                                  ( Func_actual_parameter({pos=rhs_start_pos(1);run=NullRuntimeEntity}, _2) )
+                                  ( Func_actual_parameter({pos=rhs_start_pos(1);run=Null_runtime_entity}, _2) )
 # 753 "Parser.ml"
                : 'Actual_Parameter))
 ; (fun parser_env ->
     let _1 = (peek_val parser_env 0 : 'Identifier) in
     Obj.repr(
 # 145 "Parser.mly"
-                                                    ( SimpleTypeDenoter({pos=rhs_start_pos(1);run=NullRuntimeEntity}, _1) )
+                                                    ( Simple_type_denoter({pos=rhs_start_pos(1);run=Null_runtime_entity}, _1) )
 # 760 "Parser.ml"
                : 'Type_denoter))
 ; (fun parser_env ->
@@ -763,14 +763,14 @@ let yyact = [|
     let _4 = (peek_val parser_env 0 : 'Type_denoter) in
     Obj.repr(
 # 146 "Parser.mly"
-                                                    ( Array_type_denoter({pos=rhs_start_pos(1);run=NullRuntimeEntity}, _2, _4) )
+                                                    ( Array_type_denoter({pos=rhs_start_pos(1);run=Null_runtime_entity}, _2, _4) )
 # 768 "Parser.ml"
                : 'Type_denoter))
 ; (fun parser_env ->
     let _2 = (peek_val parser_env 1 : 'Record_Type_denoter) in
     Obj.repr(
 # 147 "Parser.mly"
-                                                    ( Record_type_denoter({pos=rhs_start_pos(1);run=NullRuntimeEntity}, _2) )
+                                                    ( Record_type_denoter({pos=rhs_start_pos(1);run=Null_runtime_entity}, _2) )
 # 775 "Parser.ml"
                : 'Type_denoter))
 ; (fun parser_env ->
@@ -778,7 +778,7 @@ let yyact = [|
     let _3 = (peek_val parser_env 0 : 'Type_denoter) in
     Obj.repr(
 # 150 "Parser.mly"
-                                                                             ( Single_field_type_denoter({pos=rhs_start_pos(1);run=NullRuntimeEntity}, _1, _3) )
+                                                                             ( Single_field_type_denoter({pos=rhs_start_pos(1);run=Null_runtime_entity}, _1, _3) )
 # 783 "Parser.ml"
                : 'Record_Type_denoter))
 ; (fun parser_env ->
@@ -787,35 +787,35 @@ let yyact = [|
     let _5 = (peek_val parser_env 0 : 'Record_Type_denoter) in
     Obj.repr(
 # 151 "Parser.mly"
-                                                                             ( Multiple_field_type_denoter({pos=rhs_start_pos(1);run=NullRuntimeEntity}, _1, _3, _5) )
+                                                                             ( Multiple_field_type_denoter({pos=rhs_start_pos(1);run=Null_runtime_entity}, _1, _3, _5) )
 # 792 "Parser.ml"
                : 'Record_Type_denoter))
 ; (fun parser_env ->
     let _1 = (peek_val parser_env 0 : string) in
     Obj.repr(
 # 155 "Parser.mly"
-                            ( Integer_literal({pos=rhs_start_pos(1);run=NullRuntimeEntity}, _1) )
+                            ( Integer_literal({pos=rhs_start_pos(1);run=Null_runtime_entity}, _1) )
 # 799 "Parser.ml"
                : 'Integer_Literal))
 ; (fun parser_env ->
     let _1 = (peek_val parser_env 0 : string) in
     Obj.repr(
 # 159 "Parser.mly"
-                               ( Character_literal({pos=rhs_start_pos(1);run=NullRuntimeEntity}, _1) )
+                               ( Character_literal({pos=rhs_start_pos(1);run=Null_runtime_entity}, _1) )
 # 806 "Parser.ml"
                : 'Character_Literal))
 ; (fun parser_env ->
     let _1 = (peek_val parser_env 0 : string) in
     Obj.repr(
 # 163 "Parser.mly"
-                       ( Identifier({pos=rhs_start_pos(1);run=NullRuntimeEntity}, _1) )
+                       ( Identifier({pos=rhs_start_pos(1);run=Null_runtime_entity}, _1) )
 # 813 "Parser.ml"
                : 'Identifier))
 ; (fun parser_env ->
     let _1 = (peek_val parser_env 0 : string) in
     Obj.repr(
 # 167 "Parser.mly"
-                   ( Operator({pos=rhs_start_pos(1);run=NullRuntimeEntity}, _1) )
+                   ( Operator({pos=rhs_start_pos(1);run=Null_runtime_entity}, _1) )
 # 820 "Parser.ml"
                : 'Operator))
 (* Entry parseProgram *)
@@ -839,5 +839,5 @@ let yytables =
     names_const=yynames_const;
     names_block=yynames_block }
 let parseProgram (lexfun : Lexing.lexbuf -> token) (lexbuf : Lexing.lexbuf) =
-   (yyparse yytables 1 lexfun lexbuf : Ast.astProgram)
+   (yyparse yytables 1 lexfun lexbuf : Ast.ast_program)
 ;;

@@ -9,7 +9,7 @@
 open Ast
 
 (* Generates the machine code for the program and saves it in the specified file name *)
-val encodeProgram: Ast.astProgram -> string -> unit
+val encodeProgram: Ast.ast_program -> string -> unit
 
 (* Writes the current table details to the specified XML file *)
 val writeXMLTable: string -> unit

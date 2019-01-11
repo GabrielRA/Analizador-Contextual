@@ -42,10 +42,10 @@ and writeCommand t chan = match t with
                                      writeCommand c2 chan;
                                      output_string chan "</Sequential_command>\n"
 
-  | LetCommand        (_,d,c)     -> output_string chan "<LetCommand>\n";
+  | Let_command        (_,d,c)     -> output_string chan "<Let_command>\n";
                                      writeDeclaration d chan;
                                      writeCommand c chan;
-                                     output_string chan "</LetCommand>\n"
+                                     output_string chan "</Let_command>\n"
 
   | If_command         (_,e,c1,c2) -> output_string chan "<If_command>\n";
                                      writeExpression e chan;
@@ -124,21 +124,21 @@ and writeArrayAggregate t chan = match t with
                                        writeArrayAggregate aa chan;
                                        output_string chan "</Multiple_array_aggregate>\n"
 
-  | CheckedArrayAggregate  (aa,i)   -> output_string chan ("<CheckedArrayAggregate elementCount=\"" ^ string_of_int i ^ "\">\n");
+  | Checked_array_aggregate  (aa,i)   -> output_string chan ("<Checked_array_aggregate elementCount=\"" ^ string_of_int i ^ "\">\n");
                                        writeArrayAggregate aa chan;
-                                       output_string chan "</CheckedArrayAggregate>\n"
+                                       output_string chan "</Checked_array_aggregate>\n"
 
 and writeRecordAggregate t chan = match t with
-    SingleRecordAggregate   (_,i,e)    -> output_string chan "<SingleRecordAggregate>\n";
+    Single_record_aggregate   (_,i,e)    -> output_string chan "<Single_record_aggregate>\n";
                                           writeIdentifier i chan;
                                           writeExpression e chan;
-                                          output_string chan "</SingleRecordAggregate>\n"
+                                          output_string chan "</Single_record_aggregate>\n"
 
-  | MultipleRecordAggregate (_,i,e,ra) -> output_string chan "<MultipleRecordAggregate>\n";
+  | Multiple_record_aggregate (_,i,e,ra) -> output_string chan "<Multiple_record_aggregate>\n";
                                           writeIdentifier i chan;
                                           writeExpression e chan;
                                           writeRecordAggregate ra chan;
-                                          output_string chan "</MultipleRecordAggregate>\n"
+                                          output_string chan "</Multiple_record_aggregate>\n"
 
   | Checked_record_aggregate  (ra,t)     -> output_string chan ("<Checked_record_aggregate>\n");
                                           writeRecordAggregate ra chan;
@@ -272,16 +272,16 @@ and writeFormalParameterSequence t chan = match t with
                                                   output_string chan "</Multiple_formal_parameter_sequence>\n"
 
 and writeActualParameterSequence t chan = match t with
-    EmptyActualParameterSequence (_)           -> output_string chan "<EmptyActualParameterSequence/>\n"
+    Empty_actual_parameter_sequence (_)           -> output_string chan "<Empty_actual_parameter_sequence/>\n"
 
-  | SingleActualParameterSequence (_,ap)       -> output_string chan "<SingleActualParameterSequence>\n";
+  | Single_actual_parameter_sequence (_,ap)       -> output_string chan "<Single_actual_parameter_sequence>\n";
                                                   writeActualParameter ap chan;
-                                                  output_string chan "</SingleActualParameterSequence>\n"
+                                                  output_string chan "</Single_actual_parameter_sequence>\n"
 
-  | MultipleActualParameterSequence (_,ap,aps) -> output_string chan "<MultipleActualParameterSequence>\n";
+  | Multiple_actual_parameter_sequence (_,ap,aps) -> output_string chan "<Multiple_actual_parameter_sequence>\n";
                                                   writeActualParameter ap chan;
                                                   writeActualParameterSequence aps chan;
-                                                  output_string chan "</MultipleActualParameterSequence>\n"
+                                                  output_string chan "</Multiple_actual_parameter_sequence>\n"
 
 and writeTypeDenoter t chan = match t with
     Null_type_denoter           -> output_string chan "<Null_type_denoter/>\n"
@@ -289,9 +289,9 @@ and writeTypeDenoter t chan = match t with
 
   | Any_type_denoter (_)        -> output_string chan "<Any_type_denoter/>\n"
 
-  | SimpleTypeDenoter (_,i)   -> output_string chan "<SimpleTypeDenoter>\n";
+  | Simple_type_denoter (_,i)   -> output_string chan "<Simple_type_denoter>\n";
                                  writeIdentifier i chan;
-                                 output_string chan "</SimpleTypeDenoter>\n"
+                                 output_string chan "</Simple_type_denoter>\n"
 
   | Array_type_denoter (_,il,t) -> output_string chan "<Array_type_denoter>\n";
                                  writeInteger_literal il chan;

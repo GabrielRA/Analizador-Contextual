@@ -27,8 +27,8 @@ ocamlc -c Checker.ml
 ocamlc -c Encoder.ml
 ocamlc -c -pp camlp4o Compiler.ml
 
-ocamlc ErrorReporter.cmo IdentificationTable.cmo TreeDrawer.cmo Parser.cmo Scanner.cmo Checker.cmo Encoder.cmo Compiler.cmo -o Triangle.exe
+ocamlc ErrorReporter.cmo IdentificationTable.cmo TreeDrawer.cmo Parser.cmo Scanner.cmo Checker.cmo Encoder.cmo Compiler.cmo -o Triangle2.exe
 
-move Triangle.exe ..
+move Triangle2.exe ..
 cd ..
 rd /s /q temp

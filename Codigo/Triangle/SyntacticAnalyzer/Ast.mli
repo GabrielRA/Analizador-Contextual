@@ -35,7 +35,7 @@ and ast_command =
 
 (** Definition of the possible structure of an expression *)
 and ast_expression =
-    While_command of ast_info
+    Empty_expression of ast_info
   | Integer_expression of ast_info * ast_integer_literal
   | Character_expression of ast_info * ast_character_literal
   | Vname_expression of ast_info * ast_vname

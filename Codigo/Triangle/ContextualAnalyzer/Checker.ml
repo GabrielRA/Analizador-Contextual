@@ -23,9 +23,9 @@ let rec report_undeclared_operator a = match a with
   | Checked_operator(b,_) -> report_undeclared_operator b
 
 (* Returns the spelling of an Identifier *)
-let rec Identifier_name id = match id with 
+let rec identifier_name id = match id with 
     Identifier(_,s) -> s
-  | Checked_identifier(i,_) -> Identifier_name i
+  | Checked_identifier(i,_) -> identifier_name i
   
 (* Returns the spelling of an operator *)
 let rec operator_name id = match id with
@@ -36,12 +36,12 @@ let rec operator_name id = match id with
 (* Obtains the type of a field Identifier *)
 let rec visit_field_identifier ft id = match ft with
     Multiple_field_type_denoter(ix,i,t,mt) -> 
-      if ((String.compare (Identifier_name id) (Identifier_name i)) == 0) then
+      if ((String.compare (identifier_name id) (identifier_name i)) == 0) then
         t
       else 
         visit_field_identifier mt id
   | Single_field_type_denoter(ix,i,t) -> 
-    if ((String.compare (Identifier_name id) (Identifier_name i)) == 0) then
+    if ((String.compare (identifier_name id) (identifier_name i)) == 0) then
       t
     else
       Error_type_denoter(ix)
@@ -61,7 +61,8 @@ and check_command a = match a with
     
     (* Assign command - checks if LHS is a variable and if both sides have the same types *)
   | Assign_command(ix, v, e) -> 
-    let vType = (check_vname v) and eType = (check_expression e) in
+    let vType = (check_vname v) and 
+        eType = (check_expression e) in
       (match (vType,eType) with
           (Checked_vname(_,var,_,_,t),Checked_expression(_,tt)) -> 
             if (var == false) then
@@ -80,7 +81,7 @@ and check_command a = match a with
             Null_declaration -> report_undeclared_identifier i; a
           | Proc_declaration(ix,_,fps,_)
           | Formal_parameter_declaration(ix,Proc_formal_parameter(_,_,fps)) -> Call_command(ix,iType,(check_actual_parameter_sequence aps fps))
-          | _ -> ErrorReporter.reportError ((Identifier_name i) ^ " is not a procedure Identifier") ix.pos;a
+          | _ -> ErrorReporter.reportError ((identifier_name i) ^ " is not a procedure Identifier") ix.pos;a
         )
         | _ -> a)
   
@@ -116,7 +117,7 @@ and check_command a = match a with
 and check_expression e = match e with
 
     (* Empty expression - does nothing, returns a null type denoter *)
-    While_command(_) -> Checked_expression(e, Null_type_denoter)
+    Empty_expression(_) -> Checked_expression(e, Null_type_denoter)
     
     (* Integer expression - returns an integer type denoter *)
   | Integer_expression(ix,il) -> Checked_expression(e, check_integer_literal(il))
@@ -140,7 +141,7 @@ and check_expression e = match e with
                   Null_declaration -> report_undeclared_identifier i; e
                 | Func_declaration(_,_,fps,t,_)
                 | Formal_parameter_declaration(_,Func_formal_parameter(_,_,fps,t)) -> Checked_expression(Call_expression(ix,iType,(check_actual_parameter_sequence ap fps)),t)
-                | _ -> ErrorReporter.reportError ((Identifier_name i) ^ " is not a function Identifier") ix.pos; e
+                | _ -> ErrorReporter.reportError ((identifier_name i) ^ " is not a function Identifier") ix.pos; e
               )
         | _ -> e)
   
@@ -163,7 +164,7 @@ and check_expression e = match e with
     (* Let (declaration) expression - operns a new scope, checks the expression and inserts the new declaration into the identification table *)
 
   | Let_expression(ix, d, ex) -> 
-      IdentificationTable.openScope();
+      IdentificationTable.open_scope();
       let dType = (check_declaration d) and 
           eType = (check_expression ex) in
             IdentificationTable.close_scope();
@@ -309,7 +310,7 @@ and check_vname v = match v with
                 | Var_declaration(_,_,t) -> Checked_vname(Simple_vname(ix,idType), true, false, 0, t)
                 | Formal_parameter_declaration(_,Const_formal_parameter(_,_,t)) -> Checked_vname(Simple_vname(ix,idType), false, false, 0, t)
                 | Formal_parameter_declaration(_,Var_formal_parameter(_,_,t)) -> Checked_vname(Simple_vname(ix,idType), true, false, 0, t)
-                | _ -> ErrorReporter.reportError ((Identifier_name id) ^ " is not a const or var Identifier") ix.pos; v
+                | _ -> ErrorReporter.reportError ((identifier_name id) ^ " is not a const or var Identifier") ix.pos; v
               )
           | _ -> v
         )
@@ -324,7 +325,7 @@ and check_vname v = match v with
                     let fType = (visit_field_identifier ft id) in
                       (match fType with
                           Error_type_denoter(_) -> 
-                            ErrorReporter.reportError ("No field " ^ (Identifier_name id) ^ " in this record type") ix.pos; v
+                            ErrorReporter.reportError ("No field " ^ (identifier_name id) ^ " in this record type") ix.pos; v
                         | _ -> 
                             Checked_vname(Dot_vname(ix,vType,(check_identifier id)), var, false, 0,fType)
                       )
@@ -362,38 +363,38 @@ and check_declaration d = match d with
     
   | Const_declaration(ix,i,e) -> 
     let eType = (check_expression e) in
-      if (IdentificationTable.exists (Identifier_name i)) then
-        ErrorReporter.reportError ("Identifier " ^ (Identifier_name i) ^ " already declared") ix.pos;
-        IdentificationTable.enter (Identifier_name i) (ref (Const_declaration(ix,i,eType)));
-        !(IdentificationTable.retrieve (Identifier_name i))
+      if (IdentificationTable.exists (identifier_name i)) then
+        ErrorReporter.reportError ("Identifier " ^ (identifier_name i) ^ " already declared") ix.pos;
+        IdentificationTable.enter (identifier_name i) (ref (Const_declaration(ix,i,eType)));
+        !(IdentificationTable.retrieve (identifier_name i))
   
   | Var_declaration(ix,i,t) -> 
       let tType = (check_type_denoter t) in
-        if (IdentificationTable.exists (Identifier_name i)) then
-          ErrorReporter.reportError ("Identifier " ^ (Identifier_name i) ^ " already declared") ix.pos;
-          IdentificationTable.enter (Identifier_name i) (ref (Var_declaration(ix,i,tType)));
-          !(IdentificationTable.retrieve (Identifier_name i))
+        if (IdentificationTable.exists (identifier_name i)) then
+          ErrorReporter.reportError ("Identifier " ^ (identifier_name i) ^ " already declared") ix.pos;
+          IdentificationTable.enter (identifier_name i) (ref (Var_declaration(ix,i,tType)));
+          !(IdentificationTable.retrieve (identifier_name i))
   
 
   | Proc_declaration(ix,i,fps,c) ->
-      if (IdentificationTable.exists (Identifier_name i)) then
-        ErrorReporter.reportError ("Identifier " ^ (Identifier_name i) ^ " already declared") ix.pos;
-        IdentificationTable.enter (Identifier_name i) (ref (Proc_declaration(ix,i,fps,c)));
-        let elem = IdentificationTable.retrieve_element (Identifier_name i) in
+      if (IdentificationTable.exists (identifier_name i)) then
+        ErrorReporter.reportError ("Identifier " ^ (identifier_name i) ^ " already declared") ix.pos;
+        IdentificationTable.enter (identifier_name i) (ref (Proc_declaration(ix,i,fps,c)));
+        let elem = IdentificationTable.retrieve_element (identifier_name i) in
           IdentificationTable.open_scope();
           let fpsType = (check_formal_parameter_sequence fps) in
             elem.attr <- (ref (Proc_declaration(ix,i,fpsType,c)));
             let cType = (check_command c) in
               IdentificationTable.close_scope();
               elem.attr <- (ref (Proc_declaration(ix,i,fpsType,cType)));
-              !(IdentificationTable.retrieve (Identifier_name i))
+              !(IdentificationTable.retrieve (identifier_name i))
                                                     
   | Func_declaration(ix,i,fps,t,e) -> 
       let tType = (check_type_denoter t) in
-        if (IdentificationTable.exists (Identifier_name i)) then
-          ErrorReporter.reportError ("Identifier " ^ (Identifier_name i) ^ " already declared") ix.pos;
-          IdentificationTable.enter (Identifier_name i) (ref (Func_declaration(ix,i,fps,tType,e)));
-          let elem = IdentificationTable.retrieve_element (Identifier_name i) in
+        if (IdentificationTable.exists (identifier_name i)) then
+          ErrorReporter.reportError ("Identifier " ^ (identifier_name i) ^ " already declared") ix.pos;
+          IdentificationTable.enter (identifier_name i) (ref (Func_declaration(ix,i,fps,tType,e)));
+          let elem = IdentificationTable.retrieve_element (identifier_name i) in
             IdentificationTable.open_scope();
             let fpsType = (check_formal_parameter_sequence fps) in
               elem.attr <- (ref (Func_declaration(ix,i,fpsType,tType,e)));
@@ -403,17 +404,17 @@ and check_declaration d = match d with
                 (match eType with
                     Checked_expression(_,t) -> 
                       if (t != tType) then
-                        ErrorReporter.reportError ("Body of function " ^ (Identifier_name i) ^ " has wrong type") ix.pos
+                        ErrorReporter.reportError ("Body of function " ^ (identifier_name i) ^ " has wrong type") ix.pos
                   | _ -> ()
                 ); 
-                !(IdentificationTable.retrieve (Identifier_name i))
+                !(IdentificationTable.retrieve (identifier_name i))
 
   
   | Type_declaration(ix,i,t) -> let tType = (check_type_denoter t) in
-                                                    if (IdentificationTable.exists (Identifier_name i)) then
-                                                       ErrorReporter.reportError ("Identifier " ^ (Identifier_name i) ^ " already declared") ix.pos;
-                                                    IdentificationTable.enter (Identifier_name i) (ref (Type_declaration(ix,i,tType)));
-                                                    !(IdentificationTable.retrieve (Identifier_name i))
+                                                    if (IdentificationTable.exists (identifier_name i)) then
+                                                       ErrorReporter.reportError ("Identifier " ^ (identifier_name i) ^ " already declared") ix.pos;
+                                                    IdentificationTable.enter (identifier_name i) (ref (Type_declaration(ix,i,tType)));
+                                                    !(IdentificationTable.retrieve (identifier_name i))
 
   | Unary_operator_declaration(ix,o,t1,t2) -> d
   
@@ -476,9 +477,9 @@ and check_actual_parameter a f = match a with
                         | Formal_parameter_declaration(_,Proc_formal_parameter(_,i,fps))
                         | Proc_declaration(_,i,fps,_) -> 
                             if ((compare_fps fp fps) == false) then
-                              ErrorReporter.reportError ("Wrong signature for procedure " ^ (Identifier_name i)) ix.pos;
+                              ErrorReporter.reportError ("Wrong signature for procedure " ^ (identifier_name i)) ix.pos;
                             Proc_actual_parameter(ix,idType)
-                        | _ -> ErrorReporter.reportError ((Identifier_name i) ^ " is not a procedure Identifier") ix.pos; a
+                        | _ -> ErrorReporter.reportError ((identifier_name i) ^ " is not a procedure Identifier") ix.pos; a
                       )
                 | _ -> a
               )
@@ -497,11 +498,11 @@ and check_actual_parameter a f = match a with
                       | Formal_parameter_declaration(_,Func_formal_parameter(_,i,fps,tp))
                       | Func_declaration(_,i,fps,tp,_) -> 
                           if ((compare_fps fp fps) == false) then
-                            ErrorReporter.reportError ("Wrong signature for function " ^ (Identifier_name i)) ix.pos
+                            ErrorReporter.reportError ("Wrong signature for function " ^ (identifier_name i)) ix.pos
                           else if ((compare_types t tp) == false) then
-                            ErrorReporter.reportError ("Wrong type for function " ^ (Identifier_name i)) ix.pos;
+                            ErrorReporter.reportError ("Wrong type for function " ^ (identifier_name i)) ix.pos;
                             Func_actual_parameter(ix,idType)
-                      | _ -> ErrorReporter.reportError ((Identifier_name i) ^ " is not a function Identifier") ix.pos; a
+                      | _ -> ErrorReporter.reportError ((identifier_name i) ^ " is not a function Identifier") ix.pos; a
                     )
                 | _ -> a
               )
@@ -517,18 +518,18 @@ and check_actual_parameter_sequence a f = match a with
         | _ -> ErrorReporter.reportError "Too few actual parameters" ix.pos; a
       )
                                                                                        
-  | SingleActualParameterSequence(ix,b) -> 
+  | Single_actual_parameter_sequence(ix,b) -> 
       (match f with
-          Single_formal_parameter_sequence(ixx,fp) -> SingleActualParameterSequence(ixx, (check_actual_parameter b fp))
+          Single_formal_parameter_sequence(ixx,fp) -> Single_actual_parameter_sequence(ixx, (check_actual_parameter b fp))
         | _ -> ErrorReporter.reportError "Incorrect number of actual parameters" ix.pos; a
       )
                                                                                            
-  | MultipleActualParameterSequence(ix,b,c) -> 
+  | Multiple_actual_parameter_sequence(ix,b,c) -> 
       (match f with
           Multiple_formal_parameter_sequence(ixx,fp,fps) -> 
             let fpType = (check_actual_parameter b fp) and 
                 fpsType = (check_actual_parameter_sequence c fps) in 
-                  MultipleActualParameterSequence(ixx, fpType, fpsType)
+                  Multiple_actual_parameter_sequence(ixx, fpType, fpsType)
         | _ -> ErrorReporter.reportError "Too many actual parameters" ix.pos; a
       )
 
@@ -537,27 +538,27 @@ and check_actual_parameter_sequence a f = match a with
 and checkFormalParameter f = match f with
     Const_formal_parameter(ix,i,t) -> 
       let tType = (check_type_denoter t) in
-        if (IdentificationTable.exists (Identifier_name i)) then
-          ErrorReporter.reportError ("Duplicated formal parameter " ^ (Identifier_name i)) ix.pos;
+        if (IdentificationTable.exists (identifier_name i)) then
+          ErrorReporter.reportError ("Duplicated formal parameter " ^ (identifier_name i)) ix.pos;
         let cfp = Const_formal_parameter(ix,i,tType) in
-          IdentificationTable.enter (Identifier_name i) (ref (Formal_parameter_declaration(ix,cfp)));
+          IdentificationTable.enter (identifier_name i) (ref (Formal_parameter_declaration(ix,cfp)));
           cfp
                                                                                   
   | Var_formal_parameter(ix,i,t) -> 
       let tType = (check_type_denoter t) in
-        if (IdentificationTable.exists (Identifier_name i)) then
-          ErrorReporter.reportError ("Duplicated formal parameter " ^ (Identifier_name i)) ix.pos;
+        if (IdentificationTable.exists (identifier_name i)) then
+          ErrorReporter.reportError ("Duplicated formal parameter " ^ (identifier_name i)) ix.pos;
         let vfp = Var_formal_parameter(ix,i,tType) in
-          IdentificationTable.enter (Identifier_name i) (ref (Formal_parameter_declaration(ix,vfp)));
+          IdentificationTable.enter (identifier_name i) (ref (Formal_parameter_declaration(ix,vfp)));
           vfp
                                        
   | Proc_formal_parameter(ix,i,fps) -> IdentificationTable.open_scope();
       let fpsType = (check_formal_parameter_sequence fps) in
         IdentificationTable.close_scope();
-        if (IdentificationTable.exists (Identifier_name i)) then
-          ErrorReporter.reportError ("Duplicated formal parameter " ^ (Identifier_name i)) ix.pos;
+        if (IdentificationTable.exists (identifier_name i)) then
+          ErrorReporter.reportError ("Duplicated formal parameter " ^ (identifier_name i)) ix.pos;
         let pfp = Proc_formal_parameter(ix,i,fpsType) in
-          IdentificationTable.enter (Identifier_name i) (ref (Formal_parameter_declaration(ix,pfp)));
+          IdentificationTable.enter (identifier_name i) (ref (Formal_parameter_declaration(ix,pfp)));
           pfp
 
   | Func_formal_parameter(ix,i,fps,t) -> 
@@ -565,10 +566,10 @@ and checkFormalParameter f = match f with
       let fpsType = (check_formal_parameter_sequence fps)
       and tType   = (check_type_denoter t) in
           IdentificationTable.close_scope();
-      if (IdentificationTable.exists (Identifier_name i)) then
-          ErrorReporter.reportError ("Duplicated formal parameter " ^ (Identifier_name i)) ix.pos;
+      if (IdentificationTable.exists (identifier_name i)) then
+          ErrorReporter.reportError ("Duplicated formal parameter " ^ (identifier_name i)) ix.pos;
       let ffp = Func_formal_parameter(ix,i,fpsType,tType) in
-          IdentificationTable.enter (Identifier_name i) (ref (Formal_parameter_declaration(ix,ffp)));
+          IdentificationTable.enter (identifier_name i) (ref (Formal_parameter_declaration(ix,ffp)));
           ffp
 
 (* Formal Parameter Sequences *)
@@ -596,7 +597,7 @@ and check_type_denoter a = match a with
                                             Null_declaration -> report_undeclared_identifier b;
                                                                 Error_type_denoter(ix)
                                           | Type_declaration(_,_,t) -> t
-                                          | _                       -> ErrorReporter.reportError ((Identifier_name i) ^ " is not a type Identifier") ix.pos;
+                                          | _                       -> ErrorReporter.reportError ((identifier_name i) ^ " is not a type Identifier") ix.pos;
                                                                        Error_type_denoter(ix))
                                     | _ -> Error_type_denoter(ix)
                                   )
@@ -682,9 +683,9 @@ and compare_types t1 t2 = match (t1,t2) with
       let rec compareFTs f1 f2 = 
         (match (f1,f2) with
             (Single_field_type_denoter(_,i1,tx1),Single_field_type_denoter(_,i2,tx2)) -> 
-              (compare_types tx1 tx2) && ((String.compare (Identifier_name i1) (Identifier_name i2)) == 0)
+              (compare_types tx1 tx2) && ((String.compare (identifier_name i1) (identifier_name i2)) == 0)
           | (Multiple_field_type_denoter(_,i1,tx1,ftx1),Multiple_field_type_denoter(_,i2,tx2,ftx2)) -> 
-              (compare_types tx1 tx2) && ((String.compare (Identifier_name i1) (Identifier_name i2)) == 0) && (compareFTs ftx1 ftx2)
+              (compare_types tx1 tx2) && ((String.compare (identifier_name i1) (identifier_name i2)) == 0) && (compareFTs ftx1 ftx2)
           | _ -> false
         ) in
           (compareFTs ft1 ft2)
