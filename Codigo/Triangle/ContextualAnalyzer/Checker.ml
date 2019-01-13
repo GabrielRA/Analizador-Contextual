@@ -1,16 +1,21 @@
-(* ------------------------------------- *)
-(* Contextual Analyzer for Caml-Triangle *)
-(* Implementation file                   *)
-(*                                       *)
-(* (c) 2006 Luis Leopoldo P?rez.         *)
-(* Last modification: March 12, 2006     *)
-(* ------------------------------------- *)
+(*
+This program was made by Luis Leopoldo Pérez at March 12, 2006.
+This program was repaired, completed, verified and validated by students
+of ITCR at 2018.
+Contextual Analyzer for Caml-Triangle
+Implementation file                                  
+
+@author Luis Leopoldo Pérez
+@author Christian León Guevara
+@author Gabriel Ramírez Ramírez
+
+Last modification: January, 2019
+*)
 
 open Parser
 open Ast
 open ErrorReporter
 open IdentificationTable
-
 
 (* Reports an Identifier as undeclared *)
 let rec report_undeclared_identifier a = match a with
