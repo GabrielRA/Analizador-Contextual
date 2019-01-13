@@ -389,33 +389,34 @@ let eof_decl =
   	Empty_expression({pos = Lexing.dummy_pos; run = Null_runtime_entity})
   )
 
-let _ = (enter "Boolean" (ref boolean_decl));
-        (enter "Char" (ref char_decl));
-        (enter "Integer" (ref integer_decl));
-        (enter "false" (ref false_decl));
-        (enter "true" (ref true_decl));
-        (enter "maxint" (ref maxint_decl));
-        (enter "\\" (ref not_decl));
-        (enter "/\\" (ref and_decl));
-        (enter "\\/" (ref or_decl));
-        (enter "+" (ref add_decl));
-        (enter "-" (ref substractDecl));
-        (enter "*" (ref multiply_decl));
-        (enter "/" (ref divide_decl));
-        (enter "//" (ref modulo_decl));
-        (enter "=" (ref equal_decl));
-        (enter "\\=" (ref unequal_decl));
-        (enter "<" (ref less_decl));
-        (enter ">=" (ref notless_decl));
-        (enter ">" (ref greater_decl));
-        (enter "<=" (ref notgreater_decl));
-        (enter "get" (ref get_decl));
-        (enter "put" (ref put_decl));
-        (enter "getint" (ref getint_decl));
-        (enter "putint" (ref putint_decl));
-        (enter "geteol" (ref geteol_decl));
-        (enter "puteol" (ref puteol_decl));
-        (enter "chr" (ref chr_decl));
-        (enter "ord" (ref ord_decl));
-        (enter "eol" (ref eol_decl));
-        (enter "eof" (ref eof_decl))
+let _ =
+  (enter "Boolean" (ref boolean_decl));
+  (enter "Char" (ref char_decl));
+  (enter "Integer" (ref integer_decl));
+  (enter "false" (ref false_decl));
+  (enter "true" (ref true_decl));
+  (enter "maxint" (ref maxint_decl));
+  (enter "\\" (ref not_decl));
+  (enter "/\\" (ref and_decl));
+  (enter "\\/" (ref or_decl));
+  (enter "+" (ref add_decl));
+  (enter "-" (ref substractDecl));
+  (enter "*" (ref multiply_decl));
+  (enter "/" (ref divide_decl));
+  (enter "//" (ref modulo_decl));
+  (enter "=" (ref equal_decl));
+  (enter "\\=" (ref unequal_decl));
+  (enter "<" (ref less_decl));
+  (enter ">=" (ref notless_decl));
+  (enter ">" (ref greater_decl));
+  (enter "<=" (ref notgreater_decl));
+  (enter "get" (ref get_decl));
+  (enter "put" (ref put_decl));
+  (enter "getint" (ref getint_decl));
+  (enter "putint" (ref putint_decl));
+  (enter "geteol" (ref geteol_decl));
+  (enter "puteol" (ref puteol_decl));
+  (enter "chr" (ref chr_decl));
+  (enter "ord" (ref ord_decl));
+  (enter "eol" (ref eol_decl));
+  (enter "eof" (ref eof_decl))
