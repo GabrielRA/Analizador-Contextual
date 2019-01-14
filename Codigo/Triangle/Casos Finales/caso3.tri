@@ -1,0 +1,8 @@
+! Prueba de validación de tipo.
+! Resultado correcto.
+let
+   var n: Integer
+in
+   n := 0
+   while n < 5
+	  n := n + 1

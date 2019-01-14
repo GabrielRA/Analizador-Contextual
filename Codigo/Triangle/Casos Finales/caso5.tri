@@ -1,0 +1,8 @@
+! Prueba de validación de tipo.
+! Resultado incorrecto - ln8->El tipo n es Integer.
+let
+   var n: Integer
+in
+   n := 0
+   while n < 5
+	  n := 'n' + 1

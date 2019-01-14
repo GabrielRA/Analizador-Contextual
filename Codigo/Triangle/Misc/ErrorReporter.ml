@@ -48,8 +48,7 @@ let num_errors() = !error_count
 let report_error e p =
   error_list:= 
     Error_list(unbox_error_list() @ [{msg = e; pos = p; kind = Error}]);
-    incr error_count
-                      
+    incr error_count                      
 
 (* Reports a restriction, adding it to the error list *)
 let report_restriction e = 
