@@ -19,284 +19,313 @@ open IdentificationTable
 
 (* Reports an Identifier as undeclared *)
 let rec report_undeclared_identifier a = match a with
-    Identifier(i,s) -> ErrorReporter.report_error (s ^ " is not declared") i.pos
-  | Checked_identifier(b,_) -> report_undeclared_identifier b
+  Identifier(i,s) -> ErrorReporter.report_error (s ^ " is not declared") i.pos
+| Checked_identifier(b,_) -> report_undeclared_identifier b
 
 (* Reports an operator as undeclared *)
 let rec report_undeclared_operator a = match a with
-    Operator(i,s) -> ErrorReporter.report_error (s ^ " is not declared") i.pos
-  | Checked_operator(b,_) -> report_undeclared_operator b
+  Operator(i,s) -> ErrorReporter.report_error (s ^ " is not declared") i.pos
+| Checked_operator(b,_) -> report_undeclared_operator b
 
 (* Returns the spelling of an Identifier *)
 let rec identifier_name id = match id with 
-    Identifier(_,s) -> s
-  | Checked_identifier(i,_) -> identifier_name i
+  Identifier(_,s) -> s
+| Checked_identifier(i,_) -> identifier_name i
   
 (* Returns the spelling of an operator *)
 let rec operator_name id = match id with
-    Operator(_,s) -> s
-  | Checked_operator(o,_) -> operator_name o
-
+  Operator(_,s) -> s
+| Checked_operator(o,_) -> operator_name o
 
 (* Obtains the type of a field Identifier *)
 let rec visit_field_identifier ft id = match ft with
-    Multiple_field_type_denoter(ix,i,t,mt) -> 
-      if ((String.compare (identifier_name id) (identifier_name i)) == 0) then
-        t
-      else 
-        visit_field_identifier mt id
-  | Single_field_type_denoter(ix,i,t) -> 
+  Multiple_field_type_denoter(ix,i,t,mt) -> 
+    if ((String.compare (identifier_name id) (identifier_name i)) == 0) then
+      t
+    else 
+      visit_field_identifier mt id
+| Single_field_type_denoter(ix,i,t) -> 
     if ((String.compare (identifier_name id) (identifier_name i)) == 0) then
       t
     else
       Error_type_denoter(ix)
-
- 
+	  
 (* Semantically checks the program, returning a "decorated" abstract syntax tree *)
 let rec check_program a = match a with
-    Null_program  -> Null_program
-  | Program(ix,b) -> Program(ix, check_command b)
-
+  Null_program -> Null_program
+| Program(ix,b) -> Program(ix, check_command b)
 
 (* Commands *)
-and check_command a = match a with
-
-    (* Empty command - does nothing *)
-    Empty_command(_) -> a
-    
-    (* Assign command - checks if LHS is a variable and if both sides have the same types *)
-  | Assign_command(ix, v, e) -> 
+and check_command a = match a with    
+  Empty_command(_) -> a (* Empty command - does nothing *)
+  (*Checks if LHS is a variable and if both sides have the same types *)
+| Assign_command(ix, v, e) -> 
     let vType = (check_vname v) and 
-        eType = (check_expression e) in
+    eType = (check_expression e) in
       (match (vType,eType) with
-          (Checked_vname(_,var,_,_,t),Checked_expression(_,tt)) -> 
-            if (var == false) then
-              ErrorReporter.report_error "LHS of assignment is not a variable" ix.pos;
-            if ((compare_types t tt) == false) then
-              ErrorReporter.report_error "Assignment incompatibility" ix.pos;
-              Assign_command(ix,vType,eType)
-        | _ -> a)
-                                    
+        (Checked_vname(_,var,_,_,t),Checked_expression(_,tt)) -> 
+          if (var == false) then
+            ErrorReporter.report_error "LHS of assignment is not a variable" ix.pos;
+          if ((compare_types t tt) == false) then
+            ErrorReporter.report_error "Assignment incompatibility" ix.pos;
+            Assign_command(ix,vType,eType)
+      | _ -> a)
   
     (* Call command - checks if the procedure exists and if the parameters are valid *)
-  | Call_command(ix, i, aps)  -> 
+| Call_command(ix, i, aps)  -> 
     let iType = (check_identifier i) in
       (match iType with Checked_identifier(_,d) -> 
         (match !d with
-            Null_declaration -> report_undeclared_identifier i; a
-          | Proc_declaration(ix,_,fps,_)
-          | Formal_parameter_declaration(ix,Proc_formal_parameter(_,_,fps)) -> Call_command(ix,iType,(check_actual_parameter_sequence aps fps))
-          | _ -> ErrorReporter.report_error ((identifier_name i) ^ " is not a procedure Identifier") ix.pos;a
+          Null_declaration -> report_undeclared_identifier i; a
+        | Proc_declaration(ix,_,fps,_)
+        | Formal_parameter_declaration(ix,Proc_formal_parameter(_,_,fps)) -> 
+		    Call_command(ix,iType,(check_actual_parameter_sequence aps fps))
+        | _ -> 
+		    ErrorReporter.report_error (
+			  (identifier_name i) 
+			  ^ " is not a procedure Identifier"
+			  ) ix.pos;a
         )
-        | _ -> a)
+      | _ -> a)
   
     (* Sequential command - checks both commands recursively *)
-  | Sequential_command(ix, c1, c2) -> let c1Type = (check_command c1) and c2Type = (check_command c2) in
-    Sequential_command(ix, c1Type, c2Type)
+| Sequential_command(ix, c1, c2) -> 
+    let c1Type = (check_command c1) and c2Type = (check_command c2) in
+      Sequential_command(ix, c1Type, c2Type)
   
-    (* Let (declaration) command - opens a new scope and inserts the new declaration into the identification table *)
-  | Let_command(ix, d, c) -> 
-      IdentificationTable.open_scope();
-      let dType = (check_declaration d) and cType = (check_command c) in
-        IdentificationTable.close_scope();
-        Let_command(ix, dType, cType)
+    (* Let (declaration) command - opens a new scope and
+	inserts the new declaration into the identification table *)
+| Let_command(ix, d, c) -> 
+    IdentificationTable.open_scope();
+    let dType = (check_declaration d) and cType = (check_command c) in
+      IdentificationTable.close_scope();
+      Let_command(ix, dType, cType)
   
     (* If command - checks if the expression is boolean, then checks both limbs recursively *)
-  | If_command(ix, e, c1, c2) -> 
-      let eType = (check_expression e) in
-        (match eType with
-          Checked_expression(_,Bool_type_denoter(_)) -> ()
-        | _ -> ErrorReporter.report_error "Boolean expression expected here" ix.pos);
-      let c1Type = (check_command c1) and c2Type = (check_command c2) in
-       If_command(ix, eType, c1Type, c2Type)
+| If_command(ix, e, c1, c2) -> 
+    let eType = (check_expression e) in
+      (match eType with
+        Checked_expression(_,Bool_type_denoter(_)) -> ()
+      | _ -> 
+	      ErrorReporter.report_error "Boolean expression expected here" ix.pos
+	  );
+    let c1Type = (check_command c1) and c2Type = (check_command c2) in
+      If_command(ix, eType, c1Type, c2Type)
   
     (* While command - checks if the expression is boolean, then checks the inner command recursively *)
-  | While_command(ix, e, c)        -> let eType = (check_expression e) in
+| While_command(ix, e, c) -> let eType = (check_expression e) in
     (match eType with 
-        Checked_expression(_,Bool_type_denoter(_)) -> ()
-      | _ -> ErrorReporter.report_error "Boolean expression expected here" ix.pos);
+      Checked_expression(_,Bool_type_denoter(_)) -> ()
+    | _ -> 
+	    ErrorReporter.report_error "Boolean expression expected here" ix.pos);
     let cType = (check_command c) in
-     While_command(ix, eType, cType)
+      While_command(ix, eType, cType)
   
 (* Expressions *)
 and check_expression e = match e with
-
     (* Empty expression - does nothing, returns a null type denoter *)
-    Empty_expression(_) -> Checked_expression(e, Null_type_denoter)
+  Empty_expression(_) -> Checked_expression(e, Null_type_denoter)
     
     (* Integer expression - returns an integer type denoter *)
-  | Integer_expression(ix,il) -> Checked_expression(e, check_integer_literal(il))
+| Integer_expression(ix,il) -> 
+    Checked_expression(e, check_integer_literal(il))
   
     (* Character expression - returns a character type denoter *)
-  | Character_expression(ix, cl) -> Checked_expression(e, check_character_literal(cl))
+| Character_expression(ix, cl) -> 
+    Checked_expression(e, check_character_literal(cl))
   
     (* Value-or-variable name expression - returns the variable type *)
-  | Vname_expression(ix, vn) -> let vType = (check_vname vn) in
+| Vname_expression(ix, vn) -> let vType = (check_vname vn) in
     (match vType with
-        Checked_vname(_,_,_,_,t) -> Checked_expression(Vname_expression(ix,vType), t)
-      | _ -> e)
-
+      Checked_vname(_,_,_,_,t) -> 
+	    Checked_expression(Vname_expression(ix,vType), t)
+    | _ -> e)
 
     (* Call expression - checks if the function exists and if the parameters are valid *)
-  | Call_expression(ix, i, ap) -> 
-      let iType = (check_identifier i) in
-          (match iType with
-            Checked_identifier(_,d) -> 
-              (match !d with
-                  Null_declaration -> report_undeclared_identifier i; e
-                | Func_declaration(_,_,fps,t,_)
-                | Formal_parameter_declaration(_,Func_formal_parameter(_,_,fps,t)) -> Checked_expression(Call_expression(ix,iType,(check_actual_parameter_sequence ap fps)),t)
-                | _ -> ErrorReporter.report_error ((identifier_name i) ^ " is not a function Identifier") ix.pos; e
-              )
-        | _ -> e)
-  
-    (* If expression - checks if the first expression is boolean, then checks if both limbs have the same type *)
-  | If_expression(ix, e1, e2, e3) -> 
-      let e1Type = (check_expression e1) and 
-          e2Type = (check_expression e2) and 
-          e3Type = (check_expression e3) in
-            (match (e1Type, e2Type, e3Type) with 
-                (Checked_expression(_,t1),Checked_expression(_,t2),Checked_expression(_,t3)) -> 
-                  (match t1 with 
-                    Bool_type_denoter(_) ->
-                      if ((compare_types t2 t3) == false) then 
-                        ErrorReporter.report_error "Incompatible limbs in if-expression" ix.pos;
-                        Checked_expression(If_expression(ix,e1Type,e2Type,e3Type),t2)
-                | _ -> ErrorReporter.report_error "Boolean expression expected here" ix.pos; e
-                )
-              | _ -> e)
-
-    (* Let (declaration) expression - operns a new scope, checks the expression and inserts the new declaration into the identification table *)
-
-  | Let_expression(ix, d, ex) -> 
-      IdentificationTable.open_scope();
-      let dType = (check_declaration d) and 
-          eType = (check_expression ex) in
-            IdentificationTable.close_scope();
-            (match eType with
-                Checked_expression(_,t) -> Checked_expression(Let_expression(ix,dType,eType),t)
-              | _  -> e)
-
-    (* Unary expression - checks if the operator exists, then checks if the operator and expression types are the same *)
-  | Unary_expression(ix, o, ex) -> 
-      let eType = (check_expression ex) and 
-          oType = (check_operator o) in
-            (match oType with
-                Checked_operator(_,d) -> 
-                  (match !d with
-                      Null_declaration -> report_undeclared_operator o; Checked_expression(e, Error_type_denoter(ix))
-                    | Unary_operator_declaration(_,o,t,tr) -> 
-                        (match eType with
-                            Checked_expression(_,tt) -> 
-                              if ((compare_types t tt) == false) then
-                                ErrorReporter.report_error ("Wrong argument type for " ^ (operator_name o)) ix.pos;
-                                Checked_expression(Unary_expression(ix,oType,eType), tr)
-                          | _ -> e
-                        )
-                    | _ -> ErrorReporter.report_error ((operator_name o) ^ " is not an unary operator") ix.pos; e
-                  )
-              | _ -> e
+| Call_expression(ix, i, ap) -> 
+    let iType = (check_identifier i) in
+      (match iType with
+        Checked_identifier(_,d) -> 
+        (match !d with
+          Null_declaration -> report_undeclared_identifier i; e
+        | Func_declaration(_,_,fps,t,_)
+        | Formal_parameter_declaration(_,Func_formal_parameter(_,_,fps,t)) ->
+		    Checked_expression(Call_expression(ix,iType,(check_actual_parameter_sequence ap fps)),t)
+        | _ -> 
+		    ErrorReporter.report_error (
+		      (identifier_name i) 
+			  ^ " is not a function Identifier") ix.pos; e
             )
+      | _ -> e)
+  
+    (* If expression - checks if the first expression is boolean, 
+	then checks if both limbs have the same type *)
+| If_expression(ix, e1, e2, e3) -> 
+    let e1Type = (check_expression e1) and 
+    e2Type = (check_expression e2) and 
+    e3Type = (check_expression e3) in
+      (match (e1Type, e2Type, e3Type) with 
+        (Checked_expression(_,t1),Checked_expression(_,t2),Checked_expression(_,t3)) -> 
+          (match t1 with 
+            Bool_type_denoter(_) ->
+              if ((compare_types t2 t3) == false) then 
+                ErrorReporter.report_error "Incompatible limbs in if-expression" ix.pos;
+                Checked_expression(If_expression(ix,e1Type,e2Type,e3Type),t2)
+          | _ -> ErrorReporter.report_error "Boolean expression expected here" ix.pos; e
+          )
+      | _ -> e)
+
+    (* Let (declaration) expression - operns a new scope, checks the expression 
+	and inserts the new declaration into the identification table *)
+| Let_expression(ix, d, ex) -> 
+    IdentificationTable.open_scope();
+    let dType = (check_declaration d) and 
+    eType = (check_expression ex) in
+      IdentificationTable.close_scope();
+      (match eType with
+        Checked_expression(_,t) -> 
+	      Checked_expression(Let_expression(ix,dType,eType),t)
+      | _  -> e)
+
+    (* Unary expression - checks if the operator exists, 
+	then checks if the operator and expression types are the same *)
+| Unary_expression(ix, o, ex) -> 
+    let eType = (check_expression ex) and 
+    oType = (check_operator o) in
+      (match oType with
+        Checked_operator(_,d) -> 
+          (match !d with
+            Null_declaration -> 
+	          report_undeclared_operator o; 
+			  Checked_expression(e, Error_type_denoter(ix))
+          | Unary_operator_declaration(_,o,t,tr) -> 
+              (match eType with
+                Checked_expression(_,tt) -> 
+                  if ((compare_types t tt) == false) then
+                    ErrorReporter.report_error ("Wrong argument type for " ^ (operator_name o)) ix.pos;
+                    Checked_expression(Unary_expression(ix,oType,eType), tr)
+              | _ -> e)
+          | _ -> ErrorReporter.report_error ((operator_name o) ^ " is not an unary operator") ix.pos; e
+          )
+      | _ -> e
+	  )
   
     (* Binary expression - checks if the operator exists, then checks if the expression and operator types are the same *)
-  | Binary_expression(ix, e1, o, e2) -> 
-      let e1Type = (check_expression e1) and 
-          e2Type = (check_expression e2)and 
-          oType  = (check_operator o) in
-            (match oType with
-                Checked_operator(_,d) -> 
-                  (match !d with
-                      Null_declaration-> report_undeclared_operator o;
-                      Checked_expression(e, Error_type_denoter(ix))
-                    | Binary_operator_declaration(_,o,t1,t2,tr) -> 
-                      (match (e1Type,e2Type) with
-                          (Checked_expression(_,te1),Checked_expression(_,te2)) -> 
-                            (match t1 with
-                                Any_type_denoter(_) -> 
-                                  if ((compare_types te1 te2) == false) then
-                                    ErrorReporter.report_error ("Incompatible argument types for " ^ (operator_name o)) ix.pos
-                              | _ -> 
-                                  if (((compare_types t1 te1) == false) || ((compare_types t2 te2) == false)) then
-                                    ErrorReporter.report_error ("Wrong argument type for " ^ (operator_name o)) ix.pos
-                            )
-                        | _ -> ()); 
-                        Checked_expression(Binary_expression(ix,e1Type,oType,e2Type),tr)
-                    | _ -> ErrorReporter.report_error ((operator_name o) ^ " is not a binary operator") ix.pos; e
+| Binary_expression(ix, e1, o, e2) -> 
+    let e1Type = (check_expression e1) and 
+    e2Type = (check_expression e2)and 
+    oType  = (check_operator o) in
+      (match oType with
+        Checked_operator(_,d) -> 
+          (match !d with
+            Null_declaration-> 
+			  report_undeclared_operator o;
+              Checked_expression(e, Error_type_denoter(ix))
+          | Binary_operator_declaration(_,o,t1,t2,tr) -> 
+              (match (e1Type,e2Type) with
+                (Checked_expression(_,te1),Checked_expression(_,te2)) -> 
+                  (match t1 with
+                    Any_type_denoter(_) -> 
+                      if ((compare_types te1 te2) == false) then
+                        ErrorReporter.report_error ("Incompatible argument types for " ^ (operator_name o)) ix.pos
+                  | _ -> 
+				      if (((compare_types t1 te1) == false) || ((compare_types t2 te2) == false)) then
+                        ErrorReporter.report_error ("Wrong argument type for " ^ (operator_name o)) ix.pos
                   )
-              | _ -> e
-            )
+              | _ -> ()
+			  ); 
+              Checked_expression(Binary_expression(ix,e1Type,oType,e2Type),tr)
+          | _ -> ErrorReporter.report_error ((operator_name o) ^ " is not a binary operator") ix.pos; e
+          )
+      | _ -> e
+      )
   
   
     (* Array expression - returns an array type denoter *)
-  | Array_expression(ix, aa) -> 
-      let aaType = (check_array_aggregate aa) in
-        (match aaType with
-         Checked_array_aggregate(Single_array_aggregate(_,Checked_expression(_,t)),i)
-         | Checked_array_aggregate(Multiple_array_aggregate(_,Checked_expression(_,t),_),i) -> 
-            Checked_expression(Array_expression(ix,aaType),Array_type_denoter(ix,Integer_literal(ix,string_of_int i),t))
-         | _ -> e)
-                                            
-    (* Record expression - returns a record type denoter *)
-  | Record_expression(ix, ra) -> 
-      let raType = (check_record_aggregate ra) in
-        (match raType with
-            Checked_record_aggregate(_,t) -> Checked_expression(Record_expression(ix,raType),Record_type_denoter(ix,t))
-          | _ -> e)
-                                        
-    (* Already checked expression - does nothing *)
-  | Checked_expression(_,_) -> e
+| Array_expression(ix, aa) -> 
+    let aaType = (check_array_aggregate aa) in
+      (match aaType with
+        Checked_array_aggregate(Single_array_aggregate(_,Checked_expression(_,t)),i)
+      | Checked_array_aggregate(Multiple_array_aggregate(_,Checked_expression(_,t),_),i) -> 
+          Checked_expression(
+		    Array_expression(ix,aaType),
+		    Array_type_denoter(ix,Integer_literal(ix,string_of_int i),t)
+		  )
+      | _ -> e
+	  )
 
+	  (* Record expression - returns a record type denoter *)
+| Record_expression(ix, ra) -> 
+    let raType = (check_record_aggregate ra) in
+      (match raType with
+        Checked_record_aggregate(_,t) -> 
+		  Checked_expression(Record_expression(ix,raType),Record_type_denoter(ix,t))
+      | _ -> e)
+	  
+    (* Already checked expression - does nothing *)
+| Checked_expression(_,_) -> e
 
 (* Array Aggregates *)
 and check_array_aggregate a = 
   match a with
-      Single_array_aggregate(ix,e) -> Checked_array_aggregate(Single_array_aggregate(ix,(check_expression e)),1)
-    
-    | Multiple_array_aggregate(ix,e,aa) -> 
-        let eType  = (check_expression e) and 
-            aaType = (check_array_aggregate aa) in
-              (match eType with
-                  Checked_expression(_,t) -> 
-                    (match aaType with
-                     Checked_array_aggregate(Single_array_aggregate(_,Checked_expression(_,tt)), i)
-                     | Checked_array_aggregate(Multiple_array_aggregate(_,Checked_expression(_,tt),_), i) -> 
-                        if ((compare_types t tt) == false) then
-                         ErrorReporter.report_error ("Incompatible array-aggregate element") ix.pos;
-                         Checked_array_aggregate(Multiple_array_aggregate(ix, eType, aaType), i+1)
-                      | _ -> a
-                    )
-                | _ -> a
-              )
-                                        
-    | Checked_array_aggregate(_,_) -> a
+    Single_array_aggregate(ix,e) -> 
+	  Checked_array_aggregate(Single_array_aggregate(ix,(check_expression e)),1)
+  | Multiple_array_aggregate(ix,e,aa) -> 
+      let eType  = (check_expression e) and 
+      aaType = (check_array_aggregate aa) in
+        (match eType with
+          Checked_expression(_,t) -> 
+            (match aaType with
+              Checked_array_aggregate(Single_array_aggregate(_,Checked_expression(_,tt)), i)
+            | Checked_array_aggregate(Multiple_array_aggregate(_,Checked_expression(_,tt),_), i) -> 
+                if ((compare_types t tt) == false) then
+                  ErrorReporter.report_error ("Incompatible array-aggregate element") ix.pos;
+                  Checked_array_aggregate(Multiple_array_aggregate(ix, eType, aaType), i+1)
+            | _ -> a
+            )
+        | _ -> a
+        )                                        
+  | Checked_array_aggregate(_,_) -> a
 
 
 (* Record Aggregates *)
 and check_record_aggregate r = 
   match r with
-      Single_record_aggregate(ix,i,e) -> 
-        let eType = (check_expression e) in
-          (match eType with
-              Checked_expression(_,t) -> Checked_record_aggregate(Single_record_aggregate(ix,i,eType),Single_field_type_denoter(ix,i,t))
-            | _ -> r
-          )                                           
-    | Multiple_record_aggregate(ix,i,e,r) -> 
-        let eType = (check_expression e) and 
-            rType = (check_record_aggregate r) in
-              (match rType with
-                  Checked_record_aggregate(_,t) -> 
-                    let fType = (visit_field_identifier t i) in
-                      (match fType with
-                       Error_type_denoter(_) -> ()
-                       | _ -> ErrorReporter.report_error ("Duplicate field in record") ix.pos);
-                              Checked_record_aggregate(Multiple_record_aggregate(ix, i, eType, rType),
-                                                 Multiple_field_type_denoter(ix, i, 
-                                                 (match eType with 
-                                                  Checked_expression(_,tt) -> tt 
-                                                  | _ -> Error_type_denoter(ix)), t))
-                                                  | _ -> r)
-                                                 
-    | Checked_record_aggregate(_,_) -> r
+    Single_record_aggregate(ix,i,e) -> 
+      let eType = (check_expression e) in
+        (match eType with
+          Checked_expression(_,t) -> 
+		    Checked_record_aggregate(
+			  Single_record_aggregate(ix,i,eType),
+			  Single_field_type_denoter(ix,i,t)
+			)
+        | _ -> r
+        )                                           
+  | Multiple_record_aggregate(ix,i,e,r) -> 
+      let eType = (check_expression e) and 
+      rType = (check_record_aggregate r) in
+        (match rType with
+          Checked_record_aggregate(_,t) -> 
+            let fType = (visit_field_identifier t i) in
+              (match fType with
+                Error_type_denoter(_) -> ()
+              | _ -> ErrorReporter.report_error ("Duplicate field in record") ix.pos
+			  );
+            Checked_record_aggregate(
+			  Multiple_record_aggregate(ix, i, eType, rType),
+			  Multiple_field_type_denoter(
+			    ix,
+				i, 
+				(match eType with 
+                  Checked_expression(_,tt) -> tt 
+                | _ -> Error_type_denoter(ix)
+				),
+				t
+			  )
+			)
+        | _ -> r
+		)                                                 
+  | Checked_record_aggregate(_,_) -> r
 
 (* Value-or-variable names *)
 and check_vname v = match v with

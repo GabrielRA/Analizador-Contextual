@@ -69,7 +69,7 @@ let show_errors() =
 		    printf "ERROR: %s [%i:%i]\n" a.msg a.pos.pos_lnum (a.pos.pos_cnum-a.pos.pos_bol)
         | Restriction -> printf "RESTRICTION: %s\n" a.msg);
 	      print_list b
-      | [] -> ()
+    | [] -> ()
     ) in
     print_list (unbox_error_list())
 

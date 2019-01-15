@@ -36,7 +36,8 @@ and ast_command =
 (** Definition of the possible structure of an expression *)
 and ast_expression =
     Empty_expression of ast_info
-  | Array_expression of ast_info * ast_array_aggregate| Binary_expression of ast_info * ast_expression * ast_operator
+  | Array_expression of ast_info * ast_array_aggregate
+  | Binary_expression of ast_info * ast_expression * ast_operator
   * ast_expression
   | Call_expression of ast_info * ast_identifier * ast_actual_parameter_sequence
   | Character_expression of ast_info * ast_character_literal
