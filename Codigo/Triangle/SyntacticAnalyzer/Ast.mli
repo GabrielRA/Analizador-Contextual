@@ -77,9 +77,9 @@ and ast_declaration =
   | Const_declaration of ast_info * ast_identifier * ast_expression
   | Formal_parameter_declaration of ast_info * ast_formal_parameter
   | Func_declaration of ast_info * ast_identifier
+  * ast_formal_parameter_sequence * ast_type_denoter * ast_expression
   | Proc_declaration of ast_info * ast_identifier
   * ast_formal_parameter_sequence * ast_command
-  * ast_formal_parameter_sequence * ast_type_denoter * ast_expression
   | Sequential_declaration of ast_info * ast_declaration * ast_declaration
   | Type_declaration of ast_info * ast_identifier * ast_type_denoter
   | Unary_operator_declaration of ast_info * ast_operator * ast_type_denoter
