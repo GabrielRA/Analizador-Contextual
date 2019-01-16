@@ -48,8 +48,7 @@ let num_errors() = !error_count
 let report_error e p =
   error_list:= 
     Error_list(unbox_error_list() @ [{msg = e; pos = p; kind = Error}]);
-    incr error_count
-                      
+    incr error_count                      
 
 (* Reports a restriction, adding it to the error list *)
 let report_restriction e = 
@@ -70,7 +69,7 @@ let show_errors() =
 		    printf "ERROR: %s [%i:%i]\n" a.msg a.pos.pos_lnum (a.pos.pos_cnum-a.pos.pos_bol)
         | Restriction -> printf "RESTRICTION: %s\n" a.msg);
 	      print_list b
-      | [] -> ()
+    | [] -> ()
     ) in
     print_list (unbox_error_list())
 

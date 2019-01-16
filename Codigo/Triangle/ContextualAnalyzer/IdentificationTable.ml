@@ -35,8 +35,8 @@ let open_scope() = incr(level)
 let close_scope() =
   identifier_list := 
     Id_list(
-	    List.filter (fun x -> (x.levl != !level)) 
-	    (unboxid_list !identifier_list)
+	  List.filter (fun x -> (x.levl != !level)) 
+	  (unboxid_list !identifier_list)
     );
   decr(level)
     (* Invocacion del generador de Xml del level actual id_list(List.filter (fun x -> (x.levl = !level)) (unboxid_list !identifier_list)) *)     
@@ -85,21 +85,21 @@ let boolean_decl =
   Type_declaration(
     {pos = Lexing.dummy_pos; run = Null_runtime_entity}, 
     Identifier({pos = Lexing.dummy_pos; run = Null_runtime_entity}, "Boolean"),
-	  boolean_type
+	boolean_type
   )
   
 let char_decl = 
   Type_declaration(
     {pos = Lexing.dummy_pos;run = Null_runtime_entity}, 
     Identifier({pos = Lexing.dummy_pos;run = Null_runtime_entity}, "Char"),
-	  char_type
+	char_type
   )
 
 let integer_decl = 
   Type_declaration(
     {pos = Lexing.dummy_pos; run = Null_runtime_entity},
     Identifier({pos = Lexing.dummy_pos; run = Null_runtime_entity}, "Integer"), 
-	  integer_type
+	integer_type
   )
 
 let false_decl = 
@@ -136,62 +136,62 @@ let not_decl =
   Unary_operator_declaration(
     {pos = Lexing.dummy_pos; run = Null_runtime_entity},
     Operator({pos = Lexing.dummy_pos; run = Null_runtime_entity}, "\\"),
-	  boolean_type, 
-	  boolean_type
+	boolean_type, 
+	boolean_type
   )
 
 let and_decl = 
   Binary_operator_declaration(
     {pos = Lexing.dummy_pos; run = Null_runtime_entity},
     Operator({pos = Lexing.dummy_pos; run = Null_runtime_entity}, "/\\"),
-	  boolean_type,
-	  boolean_type,
-	  boolean_type
+	boolean_type,
+	boolean_type,
+	boolean_type
   )
   
 let or_decl = 
   Binary_operator_declaration(
     {pos = Lexing.dummy_pos; run = Null_runtime_entity},
     Operator({pos = Lexing.dummy_pos; run = Null_runtime_entity}, "\\/"),
-	  boolean_type,
-	  boolean_type,
-	  boolean_type
+	boolean_type,
+	boolean_type,
+	boolean_type
   )
 
 let add_decl = 
   Binary_operator_declaration(
     {pos = Lexing.dummy_pos; run = Null_runtime_entity},
     Operator({pos = Lexing.dummy_pos; run = Null_runtime_entity}, "+"),
-	  integer_type,
-	  integer_type,
-	  integer_type
+	integer_type,
+	integer_type,
+	integer_type
   )
   
 let substractDecl = 
   Binary_operator_declaration(
     {pos = Lexing.dummy_pos; run = Null_runtime_entity},
     Operator({pos = Lexing.dummy_pos; run = Null_runtime_entity}, "-"),
-	  integer_type,
-	  integer_type, 
-	  integer_type
+	integer_type,
+	integer_type, 
+	integer_type
   )
   
 let multiply_decl = 
   Binary_operator_declaration(
     {pos = Lexing.dummy_pos; run = Null_runtime_entity}, 
     Operator({pos = Lexing.dummy_pos; run = Null_runtime_entity}, "*"), 
-	  integer_type,
-	  integer_type,
-	  integer_type
+	integer_type,
+	integer_type,
+	integer_type
   )
   
 let divide_decl = 
   Binary_operator_declaration(
     {pos = Lexing.dummy_pos; run = Null_runtime_entity},
     Operator({pos = Lexing.dummy_pos; run = Null_runtime_entity}, "/"),
-	  integer_type, 
-	  integer_type, 
-	  integer_type
+	integer_type, 
+	integer_type, 
+	integer_type
   )
 
 let modulo_decl = 
@@ -199,16 +199,16 @@ let modulo_decl =
     {pos = Lexing.dummy_pos; run = Null_runtime_entity}, 
     Operator({pos = Lexing.dummy_pos; run = Null_runtime_entity}, "//"), 
     integer_type,
-	  integer_type,
-	  integer_type
+	integer_type,
+	integer_type
   )
   
 let equal_decl = 
   Binary_operator_declaration(
     {pos = Lexing.dummy_pos; run = Null_runtime_entity},
     Operator({pos = Lexing.dummy_pos; run = Null_runtime_entity}, "="), 
-	  any_type,
-	  any_type,
+	any_type,
+	any_type,
   	boolean_type
   )
   
@@ -216,18 +216,18 @@ let unequal_decl =
   Binary_operator_declaration(
     {pos = Lexing.dummy_pos; run = Null_runtime_entity}, 
     Operator({pos = Lexing.dummy_pos; run = Null_runtime_entity}, "\\="), 
-	  any_type, 
-	  any_type, 
-	  boolean_type
+	any_type, 
+	any_type, 
+	boolean_type
   )
 
 let less_decl = 
   Binary_operator_declaration(
     {pos = Lexing.dummy_pos; run = Null_runtime_entity},
     Operator({pos = Lexing.dummy_pos; run = Null_runtime_entity}, "<"), 
-	  integer_type,
+	integer_type,
   	integer_type, 
-	  boolean_type
+	boolean_type
   )
 
 let notless_decl = 
@@ -235,7 +235,7 @@ let notless_decl =
     {pos = Lexing.dummy_pos; run = Null_runtime_entity}, 
     Operator({pos = Lexing.dummy_pos; run = Null_runtime_entity}, ">="), 
   	integer_type,
-	  integer_type, 
+	integer_type, 
   	boolean_type
   )
 
@@ -243,18 +243,18 @@ let greater_decl =
   Binary_operator_declaration(
     {pos = Lexing.dummy_pos; run = Null_runtime_entity}, 
     Operator({pos = Lexing.dummy_pos; run = Null_runtime_entity}, ">"), 
-	  integer_type,
-	  integer_type, 
-	  boolean_type
+	integer_type,
+	integer_type, 
+	boolean_type
   )
 
 let notgreater_decl = 
   Binary_operator_declaration(
     {pos = Lexing.dummy_pos; run = Null_runtime_entity}, 
     Operator({pos = Lexing.dummy_pos; run = Null_runtime_entity}, "<="), 
-	  integer_type, 
-	  integer_type, 
-	  boolean_type
+	integer_type, 
+	integer_type, 
+	boolean_type
   )
 
 let get_decl = 
@@ -262,11 +262,11 @@ let get_decl =
     {pos = Lexing.dummy_pos; run = Null_runtime_entity}, 
     Identifier({pos = Lexing.dummy_pos; run = Null_runtime_entity}, "get"), 
   	Single_formal_parameter_sequence(
-	    {pos = Lexing.dummy_pos; run = Null_runtime_entity}, 
+	  {pos = Lexing.dummy_pos; run = Null_runtime_entity}, 
   	  Var_formal_parameter(
-	      {pos = Lexing.dummy_pos; run = Null_runtime_entity},
+	    {pos = Lexing.dummy_pos; run = Null_runtime_entity},
   	    Identifier({pos = Lexing.dummy_pos; run = Null_runtime_entity}, ""),
-		    char_type
+		char_type
 	    )
 	  ),
   	Empty_command({pos = Lexing.dummy_pos; run = Null_runtime_entity})
@@ -277,13 +277,13 @@ let put_decl =
     {pos = Lexing.dummy_pos; run = Null_runtime_entity}, 
     Identifier({pos = Lexing.dummy_pos; run = Null_runtime_entity}, "put"), 
   	Single_formal_parameter_sequence(
+	  {pos = Lexing.dummy_pos; run = Null_runtime_entity}, 
+  	  Const_formal_parameter(
 	    {pos = Lexing.dummy_pos; run = Null_runtime_entity}, 
-  	    Const_formal_parameter(
-	        {pos = Lexing.dummy_pos; run = Null_runtime_entity}, 
-  	      Identifier({pos = Lexing.dummy_pos; run = Null_runtime_entity}, ""), 
-		      char_type
-	      )
-	  ), 
+  	    Identifier({pos = Lexing.dummy_pos; run = Null_runtime_entity}, ""), 
+		char_type
+	  )
+	), 
   	Empty_command({pos = Lexing.dummy_pos; run = Null_runtime_entity})
   )
     
@@ -294,11 +294,11 @@ let getint_decl =
   	Single_formal_parameter_sequence(
       {pos = Lexing.dummy_pos; run = Null_runtime_entity},
   	  Var_formal_parameter(
-	      {pos = Lexing.dummy_pos; run = Null_runtime_entity}, 
+	    {pos = Lexing.dummy_pos; run = Null_runtime_entity}, 
   	    Identifier({pos = Lexing.dummy_pos; run = Null_runtime_entity}, ""), 
-		    integer_type
-	    )
-	  ),
+		integer_type
+	  )
+	),
   	Empty_command({pos = Lexing.dummy_pos; run = Null_runtime_entity})
   )
 
@@ -307,13 +307,13 @@ let putint_decl =
     {pos = Lexing.dummy_pos; run = Null_runtime_entity}, 
     Identifier({pos = Lexing.dummy_pos; run = Null_runtime_entity}, "putint"), 
   	Single_formal_parameter_sequence(
-	    {pos = Lexing.dummy_pos; run = Null_runtime_entity},
+	  {pos = Lexing.dummy_pos; run = Null_runtime_entity},
   	  Const_formal_parameter(
-	      {pos = Lexing.dummy_pos; run = Null_runtime_entity}, 
+	    {pos = Lexing.dummy_pos; run = Null_runtime_entity}, 
   	    Identifier({pos = Lexing.dummy_pos; run = Null_runtime_entity}, ""),
-		    integer_type
-	    )
-	  ),
+		integer_type
+	  )
+	),
   	Empty_command({pos = Lexing.dummy_pos; run = Null_runtime_entity})
   )
 
@@ -322,8 +322,8 @@ let geteol_decl =
     {pos = Lexing.dummy_pos; run = Null_runtime_entity}, 
     Identifier({pos = Lexing.dummy_pos; run = Null_runtime_entity}, "geteol"),
   	Empty_formal_parameter_sequence(
-	    {pos = Lexing.dummy_pos; run = Null_runtime_entity}
-	  ), 
+	  {pos = Lexing.dummy_pos; run = Null_runtime_entity}
+	), 
   	Empty_command({pos = Lexing.dummy_pos; run = Null_runtime_entity})
   )
 
@@ -332,8 +332,8 @@ let puteol_decl =
     {pos = Lexing.dummy_pos; run = Null_runtime_entity}, 
     Identifier({pos = Lexing.dummy_pos; run = Null_runtime_entity}, "puteol"), 
   	Empty_formal_parameter_sequence(
-	    {pos = Lexing.dummy_pos; run = Null_runtime_entity}
-	  ), 
+	  {pos = Lexing.dummy_pos; run = Null_runtime_entity}
+	), 
   	Empty_command({pos = Lexing.dummy_pos; run = Null_runtime_entity})
   )
 
@@ -342,14 +342,14 @@ let chr_decl =
     {pos = Lexing.dummy_pos; run = Null_runtime_entity}, 
     Identifier({pos = Lexing.dummy_pos; run = Null_runtime_entity}, "chr"), 
     Single_formal_parameter_sequence(
-	    {pos = Lexing.dummy_pos; run = Null_runtime_entity},
-	    Const_formal_parameter(
-	      {pos = Lexing.dummy_pos; run = Null_runtime_entity}, 
-	      Identifier({pos = Lexing.dummy_pos; run = Null_runtime_entity}, ""),
-		    integer_type
-	    )
-	  ), 
-	  char_type,
+	  {pos = Lexing.dummy_pos; run = Null_runtime_entity},
+	  Const_formal_parameter(
+	    {pos = Lexing.dummy_pos; run = Null_runtime_entity}, 
+	    Identifier({pos = Lexing.dummy_pos; run = Null_runtime_entity}, ""),
+	    integer_type
+	  )
+	), 
+	char_type,
     Empty_expression({pos = Lexing.dummy_pos; run = Null_runtime_entity})
   )
 
@@ -358,14 +358,14 @@ let ord_decl =
     {pos = Lexing.dummy_pos; run = Null_runtime_entity}, 
     Identifier({pos = Lexing.dummy_pos; run = Null_runtime_entity}, "ord"), 
   	Single_formal_parameter_sequence(
+	  {pos = Lexing.dummy_pos; run = Null_runtime_entity}, 
+  	  Const_formal_parameter(
 	    {pos = Lexing.dummy_pos; run = Null_runtime_entity}, 
-  	    Const_formal_parameter(
-	        {pos = Lexing.dummy_pos; run = Null_runtime_entity}, 
-  	      Identifier({pos = Lexing.dummy_pos; run = Null_runtime_entity}, ""),
-		      char_type
-	      )
-	  ),
-	  integer_type, 
+  	    Identifier({pos = Lexing.dummy_pos; run = Null_runtime_entity}, ""),
+	    char_type
+	  )
+	),
+	integer_type, 
   	Empty_expression({pos = Lexing.dummy_pos; run = Null_runtime_entity})
   )
 
@@ -374,9 +374,9 @@ let eol_decl =
     {pos = Lexing.dummy_pos; run = Null_runtime_entity}, 
     Identifier({pos = Lexing.dummy_pos; run = Null_runtime_entity}, "eol"), 
   	Empty_formal_parameter_sequence(
-	    {pos = Lexing.dummy_pos; run = Null_runtime_entity}
-	  ),
-	  boolean_type, 
+	  {pos = Lexing.dummy_pos; run = Null_runtime_entity}
+	),
+	boolean_type, 
   	Empty_expression({pos = Lexing.dummy_pos; run = Null_runtime_entity})
   )
 
@@ -385,9 +385,9 @@ let eof_decl =
     {pos = Lexing.dummy_pos; run = Null_runtime_entity}, 
     Identifier({pos = Lexing.dummy_pos; run = Null_runtime_entity}, "eof"), 
   	Empty_formal_parameter_sequence(
-	    {pos = Lexing.dummy_pos; run = Null_runtime_entity}
-	  ), 
-	  boolean_type, 
+	  {pos = Lexing.dummy_pos; run = Null_runtime_entity}
+	), 
+	boolean_type, 
   	Empty_expression({pos = Lexing.dummy_pos; run = Null_runtime_entity})
   )
 
