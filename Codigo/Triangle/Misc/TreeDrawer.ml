@@ -1,13 +1,13 @@
 (*
-This program was made by Luis Leopoldo Pérez at March 12, 2006.
+This program was made by Luis Leopoldo PÃ©rez at March 12, 2006.
 This program was repaired, completed, verified and validated by students
 of ITCR at 2018.
 Abstract Syntax Tree Drawing Library for Caml-Triangle
 Implementation file                                  
 
-@author Luis Leopoldo Pérez
-@author Christian León Guevara
-@author Gabriel Ramírez Ramírez
+@author Luis Leopoldo PÃ©rez
+@author Christian LeÃ³n Guevara
+@author Gabriel RamÃ­rez RamÃ­rez
 
 Last modification: January, 2019
 *)
@@ -32,8 +32,9 @@ let rec write_program t chan = match t with
 
 and write_command t chan = match t with
   Empty_command (_) -> output_string chan "<Empty_command/>\n"
-| Assign_command (_,v,e) -> 
+| Assign_command (a,v,e) -> 
     output_string chan "<Assign_command>\n";
+    output_string chan ("<ast_info  pos_lnum=\""^ (string_of_int a.pos.pos_lnum) ^ "\"/>\n");
 	write_vname v chan;
 	write_expression e chan;
 	output_string chan "</Assign_command>\n"
@@ -227,11 +228,13 @@ and write_declaration t chan = match t with
 	output_string chan "<Formal_parameter_declaration>\n";
 	write_formal_parameter fp chan;
 	output_string chan "</Formal_parameter_declaration>\n"	
-| Sequential_declaration (_,d1,d2) -> 
-	output_string chan "<Sequential_declaration>\n";
+| Sequential_declaration (a,d1,d2) -> 
+	output_string chan "<Sequential_declaration>" ;
+	
+	output_string chan ("<ast_info  pos_lnum=\""^ (string_of_int a.pos.pos_lnum) ^ "\" pos_cnum=\""^ (string_of_int a.pos.pos_cnum) ^ "\" />\n");
 	write_declaration d1 chan;
 	write_declaration d2 chan;
-	output_string chan "</Sequential_declaration>\n"
+	output_string chan "</Sequential_declaration>" 
 
 and write_formal_parameter t chan = match t with
   Const_formal_parameter (_,i,t) -> 

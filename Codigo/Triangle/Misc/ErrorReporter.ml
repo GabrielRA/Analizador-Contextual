@@ -36,7 +36,7 @@ let error_list = ref Null_error_list
 
 (* Unboxing *)
 let unbox_error_list() = 
-  match !Error_list with
+  match !error_list with
     Null_error_list -> []
   | Error_list (s) -> s
 

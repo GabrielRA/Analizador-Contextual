@@ -147,6 +147,6 @@ rule scanToken 	= parse
 			}
 		| _ as param (* Anything else is reported as unrecognized *)
 			{
-				reportError ("Unrecognized symbol '" ^ (Char.escaped param) ^ "'") lexbuf.lex_curr_p;
+				report_error ("Unrecognized symbol '" ^ (Char.escaped param) ^ "'") lexbuf.lex_curr_p;
                                 raise LexingError
 			}

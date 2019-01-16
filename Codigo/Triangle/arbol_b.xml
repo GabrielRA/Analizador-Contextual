@@ -1,10 +1,10 @@
 <?xml version="1.0" standalone="yes"?>
 <Program>
 <Let_command>
-<Sequential_declaration><ast_info  pos_lnum="3" pos_cnum="59"/>
-<Sequential_declaration><ast_info  pos_lnum="3" pos_cnum="59"/>
-<Sequential_declaration><ast_info  pos_lnum="3" pos_cnum="59"/>
-<Sequential_declaration><ast_info  pos_lnum="3" pos_cnum="59"/>
+<Sequential_declaration value 3>
+<Sequential_declaration value 3>
+<Sequential_declaration value 3>
+<Sequential_declaration value 3>
 <Var_declaration>
 <Identifier value="v"/>
 <Simple_type_denoter>
@@ -51,7 +51,6 @@
 </Var_declaration>
 </Sequential_declaration><Sequential_command>
 <Assign_command>
-<ast_info  pos_lnum="13"/>
 <Simple_vname>
 <Identifier value="v"/>
 </Simple_vname>
@@ -63,7 +62,6 @@
 </Assign_command>
 <Sequential_command>
 <Assign_command>
-<ast_info  pos_lnum="14"/>
 <Simple_vname>
 <Identifier value="w"/>
 </Simple_vname>
@@ -73,7 +71,6 @@
 </Assign_command>
 <Sequential_command>
 <Assign_command>
-<ast_info  pos_lnum="15"/>
 <Simple_vname>
 <Identifier value="x"/>
 </Simple_vname>
@@ -83,7 +80,6 @@
 </Assign_command>
 <Sequential_command>
 <Assign_command>
-<ast_info  pos_lnum="16"/>
 <Simple_vname>
 <Identifier value="y"/>
 </Simple_vname>
@@ -116,7 +112,6 @@
 </Array_expression>
 </Assign_command>
 <Assign_command>
-<ast_info  pos_lnum="17"/>
 <Simple_vname>
 <Identifier value="z"/>
 </Simple_vname>

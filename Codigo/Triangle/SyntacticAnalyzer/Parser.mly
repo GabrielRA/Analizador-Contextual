@@ -38,7 +38,7 @@
 
 /* Programs (starting rule) */
 parseProgram: Command EOF   { Program({pos=rhs_start_pos(1);run=Null_runtime_entity}, $1) }
-            | error         { ErrorReporter.reportError "Command expected here." (rhs_start_pos(1)); 
+            | error         { ErrorReporter.report_error "Command expected here." (rhs_start_pos(1)); 
                               raise Parse_error }
             ;
 
@@ -62,7 +62,7 @@ single_Command:                                                       { Empty_co
 Expression: secondary_Expression                             { $1 }
           | LET Declaration IN Expression                    { Let_expression({pos=rhs_start_pos(1);run=Null_runtime_entity}, $2, $4) }
           | IF Expression THEN Expression ELSE Expression    { If_expression({pos=rhs_start_pos(1);run=Null_runtime_entity}, $2, $4, $6) }
-          | error                                            { ErrorReporter.reportError "Expression expected here." (rhs_start_pos(1)); 
+          | error                                            { ErrorReporter.report_error "Expression expected here." (rhs_start_pos(1)); 
                                                                raise Parse_error }
           ;
 
@@ -100,7 +100,7 @@ Vname: Identifier                         { Simple_vname({pos=rhs_start_pos(1);r
 /* Declarations */
 Declaration: single_Declaration                       { $1 }
            | Declaration SEMICOLON single_Declaration { Sequential_declaration({pos=rhs_start_pos(1);run=Null_runtime_entity}, $1, $3) }
-           | error                                    { ErrorReporter.reportError "Declaration expected here." (rhs_start_pos(1)); 
+           | error                                    { ErrorReporter.report_error "Declaration expected here." (rhs_start_pos(1)); 
                                                         raise Parse_error }
            ;
 

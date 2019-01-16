@@ -9,4 +9,4 @@
 open Ast
 
 (* Writes an entire abstract syntax tree into an XML file *)
-val writeXMLTree: ast_program -> string -> unit
+val write_XML_tree: ast_program -> string -> unit

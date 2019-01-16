@@ -1210,7 +1210,7 @@ and __ocaml_lex_scanToken_rec lexbuf __ocaml_lex_state =
   let param = Lexing.sub_lexeme_char lexbuf lexbuf.Lexing.lex_start_pos in
 # 149 "Scanner.mll"
    (
-				reportError ("Unrecognized symbol '" ^ (Char.escaped param) ^ "'") lexbuf.lex_curr_p;
+				report_error ("Unrecognized symbol '" ^ (Char.escaped param) ^ "'") lexbuf.lex_curr_p;
                                 raise LexingError
 			)
 # 1217 "Scanner.ml"

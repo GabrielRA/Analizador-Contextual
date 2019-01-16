@@ -93,13 +93,13 @@ let main () =
         try
           compile inputFile !output_file;
           if ((String.compare !xml_error_file "") != 0) then
-            ErrorReporter.writeXMLErrors !xml_error_file;
+            ErrorReporter.write_XML_errors !xml_error_file;
 
           if ((String.compare !xml_tree_file "") != 0) then
-            TreeDrawer.writeXMLTree !astree !xml_tree_file;
+            TreeDrawer.write_XML_tree !astree !xml_tree_file;
 
           if ((String.compare !xml_dtree_file "") != 0) then
-            TreeDrawer.writeXMLTree !dastree !xml_dtree_file;              
+            TreeDrawer.write_XML_tree !dastree !xml_dtree_file;              
            
           if ((String.compare !xml_table_file "") != 0) then
             Encoder.writeXMLTable !xml_table_file           

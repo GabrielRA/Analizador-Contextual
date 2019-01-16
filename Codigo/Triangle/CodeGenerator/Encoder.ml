@@ -203,12 +203,12 @@ let rec obtainVnameEntity v = match v with
 (* Appends an instruction, with the given fields, to the object code. *)
 let emit xop xn xr xd =
     if (!nextAddr == pb) then
-       ErrorReporter.reportRestriction "Too many instructions for code segment"
+       ErrorReporter.report_restriction "Too many instructions for code segment"
     else
     begin
        if (xn > 255) then
        begin
-          ErrorReporter.reportRestriction "Length of operand can't exceed 255 words";
+          ErrorReporter.report_restriction "Length of operand can't exceed 255 words";
           Array.set codestore !nextAddr {op=xop; r=xr; n=255; d=xd}
        end
        else
@@ -229,7 +229,7 @@ let displayRegister currentLevel objectLevel =
        rLB + currentLevel - objectLevel
     else
     begin
-       ErrorReporter.reportRestriction "can't access data more than 6 levels out";
+       ErrorReporter.report_restriction "can't access data more than 6 levels out";
        rL6
     end
 
@@ -436,7 +436,7 @@ and visitDeclaration d f = match d with
                                                        emit opJUMP 0 rCB 0;
                                                        ix.run <- Known_routine(closureSize, {level = f.lev ; displacement = !nextAddr});
                                                        if (f.lev == maxRoutineLevel) then
-                                                          ErrorReporter.reportRestriction "Can't nest routines so deeply"
+                                                          ErrorReporter.report_restriction "Can't nest routines so deeply"
                                                        else
                                                        begin
                                                           let f1 = {lev = f.lev + 1 ; size = 0} in
@@ -455,7 +455,7 @@ and visitDeclaration d f = match d with
                                                        emit opJUMP 0 rCB 0;
                                                        ix.run <- Known_routine(closureSize, {level = f.lev ; displacement = !nextAddr});
                                                        if (f.lev == maxRoutineLevel) then
-                                                          ErrorReporter.reportRestriction "Can't nest routines so deeply"
+                                                          ErrorReporter.report_restriction "Can't nest routines so deeply"
                                                        else
                                                        begin
                                                           let f1 = {lev = f.lev + 1 ; size = 0} in
@@ -650,7 +650,7 @@ and encodeStore v f s =
     and valSize = ref s in
         if (s > 255) then
         begin
-          ErrorReporter.reportRestriction "can't store values larger than 255 words";
+          ErrorReporter.report_restriction "can't store values larger than 255 words";
           valSize := 255
         end;
         match entity with
@@ -683,7 +683,7 @@ and encodeFetch v f s =
     and valSize = ref s in
         if (s > 255) then
         begin
-          ErrorReporter.reportRestriction "can't load values larger than 255 words";
+          ErrorReporter.report_restriction "can't load values larger than 255 words";
           valSize := 255
         end;
         match entity with

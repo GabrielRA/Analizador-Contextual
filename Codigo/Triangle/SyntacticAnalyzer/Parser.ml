@@ -336,7 +336,7 @@ let yyact = [|
 ; (fun parser_env ->
     Obj.repr(
 # 41 "Parser.mly"
-                            ( ErrorReporter.reportError "Command expected here." (rhs_start_pos(1)); 
+                            ( ErrorReporter.report_error "Command expected here." (rhs_start_pos(1)); 
                               raise Parse_error )
 # 342 "Parser.ml"
                : Ast.ast_program))
@@ -436,7 +436,7 @@ let yyact = [|
 ; (fun parser_env ->
     Obj.repr(
 # 65 "Parser.mly"
-                                                             ( ErrorReporter.reportError "Expression expected here." (rhs_start_pos(1)); 
+                                                             ( ErrorReporter.report_error "Expression expected here." (rhs_start_pos(1)); 
                                                                raise Parse_error )
 # 442 "Parser.ml"
                : 'Expression))
@@ -587,7 +587,7 @@ let yyact = [|
 ; (fun parser_env ->
     Obj.repr(
 # 103 "Parser.mly"
-                                                      ( ErrorReporter.reportError "Declaration expected here." (rhs_start_pos(1)); 
+                                                      ( ErrorReporter.report_error "Declaration expected here." (rhs_start_pos(1)); 
                                                         raise Parse_error )
 # 593 "Parser.ml"
                : 'Declaration))

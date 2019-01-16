@@ -7,16 +7,16 @@
 (* ----------------------------------------- *)
 
 (* Returns the number of errors found *)
-val numErrors: unit -> int
+val num_errors: unit -> int
 
 (* Reports an error, adding it to the error list *)
-val reportError: string -> Lexing.position -> unit
+val report_error: string -> Lexing.position -> unit
 
 (* Reports a restriction, *)
-val reportRestriction: string -> unit
+val report_restriction: string -> unit
 
 (* Prints the entire error list *)
-val showErrors: unit -> unit
+val show_errors: unit -> unit
 
 (* Writes the error list in the specified XML file *)
-val writeXMLErrors: string -> unit
+val write_XML_errors: string -> unit

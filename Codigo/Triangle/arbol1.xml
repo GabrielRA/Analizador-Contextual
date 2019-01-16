@@ -1,0 +1,247 @@
+<?xml version="1.0" standalone="yes"?>
+<Program>
+<Let_command>
+<Sequential_declaration><ast_info  pos_lnum="3" pos_cnum="59"/>
+<Sequential_declaration><ast_info  pos_lnum="3" pos_cnum="59"/>
+<Sequential_declaration><ast_info  pos_lnum="3" pos_cnum="59"/>
+<Sequential_declaration><ast_info  pos_lnum="3" pos_cnum="59"/>
+<Var_declaration>
+<Identifier value="v"/>
+<Bool_type_denoter/>
+</Var_declaration>
+<Var_declaration>
+<Identifier value="w"/>
+<Int_type_denoter/>
+</Var_declaration>
+</Sequential_declaration><Var_declaration>
+<Identifier value="x"/>
+<Char_type_denoter/>
+</Var_declaration>
+</Sequential_declaration><Var_declaration>
+<Identifier value="y"/>
+<Array_type_denoter>
+<Integer_literal value="5"/>
+<Int_type_denoter/>
+</Array_type_denoter>
+</Var_declaration>
+</Sequential_declaration><Var_declaration>
+<Identifier value="z"/>
+<Record_type_denoter>
+<Multiple_field_type_denoter>
+<Identifier value="a"/>
+<Int_type_denoter/>
+<Single_field_type_denoter>
+<Identifier value="b"/>
+<Char_type_denoter/>
+</Single_field_type_denoter>
+</Multiple_field_type_denoter>
+</Record_type_denoter>
+</Var_declaration>
+</Sequential_declaration><Sequential_command>
+<Assign_command>
+<ast_info  pos_lnum="13"/>
+<Checked_vname variable="true" indexed="false" offset="0">
+<Simple_vname>
+<Checked_identifier>
+<Identifier value="v"/>
+</Checked_identifier>
+</Simple_vname>
+<Bool_type_denoter/>
+</Checked_vname>
+<Checked_expression>
+<Vname_expression>
+<Checked_vname variable="false" indexed="false" offset="0">
+<Simple_vname>
+<Checked_identifier>
+<Identifier value="true"/>
+</Checked_identifier>
+</Simple_vname>
+<Bool_type_denoter/>
+</Checked_vname>
+</Vname_expression>
+<Bool_type_denoter/>
+</Checked_expression>
+</Assign_command>
+<Sequential_command>
+<Assign_command>
+<ast_info  pos_lnum="14"/>
+<Checked_vname variable="true" indexed="false" offset="0">
+<Simple_vname>
+<Checked_identifier>
+<Identifier value="w"/>
+</Checked_identifier>
+</Simple_vname>
+<Int_type_denoter/>
+</Checked_vname>
+<Checked_expression>
+<Integer_expression>
+<Integer_literal value="5"/>
+</Integer_expression>
+<Int_type_denoter/>
+</Checked_expression>
+</Assign_command>
+<Sequential_command>
+<Assign_command>
+<ast_info  pos_lnum="15"/>
+<Checked_vname variable="true" indexed="false" offset="0">
+<Simple_vname>
+<Checked_identifier>
+<Identifier value="x"/>
+</Checked_identifier>
+</Simple_vname>
+<Char_type_denoter/>
+</Checked_vname>
+<Checked_expression>
+<Character_expression>
+<Character_literal value="'?'"/>
+</Character_expression>
+<Char_type_denoter/>
+</Checked_expression>
+</Assign_command>
+<Sequential_command>
+<Assign_command>
+<ast_info  pos_lnum="16"/>
+<Checked_vname variable="true" indexed="false" offset="0">
+<Simple_vname>
+<Checked_identifier>
+<Identifier value="y"/>
+</Checked_identifier>
+</Simple_vname>
+<Array_type_denoter>
+<Integer_literal value="5"/>
+<Int_type_denoter/>
+</Array_type_denoter>
+</Checked_vname>
+<Checked_expression>
+<Array_expression>
+<Checked_array_aggregate elementCount="5">
+<Multiple_array_aggregate>
+<Checked_expression>
+<Integer_expression>
+<Integer_literal value="1"/>
+</Integer_expression>
+<Int_type_denoter/>
+</Checked_expression>
+<Checked_array_aggregate elementCount="4">
+<Multiple_array_aggregate>
+<Checked_expression>
+<Integer_expression>
+<Integer_literal value="2"/>
+</Integer_expression>
+<Int_type_denoter/>
+</Checked_expression>
+<Checked_array_aggregate elementCount="3">
+<Multiple_array_aggregate>
+<Checked_expression>
+<Integer_expression>
+<Integer_literal value="6"/>
+</Integer_expression>
+<Int_type_denoter/>
+</Checked_expression>
+<Checked_array_aggregate elementCount="2">
+<Multiple_array_aggregate>
+<Checked_expression>
+<Integer_expression>
+<Integer_literal value="24"/>
+</Integer_expression>
+<Int_type_denoter/>
+</Checked_expression>
+<Checked_array_aggregate elementCount="1">
+<Single_array_aggregate>
+<Checked_expression>
+<Integer_expression>
+<Integer_literal value="120"/>
+</Integer_expression>
+<Int_type_denoter/>
+</Checked_expression>
+</Single_array_aggregate>
+</Checked_array_aggregate>
+</Multiple_array_aggregate>
+</Checked_array_aggregate>
+</Multiple_array_aggregate>
+</Checked_array_aggregate>
+</Multiple_array_aggregate>
+</Checked_array_aggregate>
+</Multiple_array_aggregate>
+</Checked_array_aggregate>
+</Array_expression>
+<Array_type_denoter>
+<Integer_literal value="5"/>
+<Int_type_denoter/>
+</Array_type_denoter>
+</Checked_expression>
+</Assign_command>
+<Assign_command>
+<ast_info  pos_lnum="17"/>
+<Checked_vname variable="true" indexed="false" offset="0">
+<Simple_vname>
+<Checked_identifier>
+<Identifier value="z"/>
+</Checked_identifier>
+</Simple_vname>
+<Record_type_denoter>
+<Multiple_field_type_denoter>
+<Identifier value="a"/>
+<Int_type_denoter/>
+<Single_field_type_denoter>
+<Identifier value="b"/>
+<Char_type_denoter/>
+</Single_field_type_denoter>
+</Multiple_field_type_denoter>
+</Record_type_denoter>
+</Checked_vname>
+<Checked_expression>
+<Record_expression>
+<Checked_record_aggregate>
+<Multiple_record_aggregate>
+<Identifier value="a"/>
+<Checked_expression>
+<Integer_expression>
+<Integer_literal value="99"/>
+</Integer_expression>
+<Int_type_denoter/>
+</Checked_expression>
+<Checked_record_aggregate>
+<Single_record_aggregate>
+<Identifier value="b"/>
+<Checked_expression>
+<Character_expression>
+<Character_literal value="'z'"/>
+</Character_expression>
+<Char_type_denoter/>
+</Checked_expression>
+</Single_record_aggregate>
+<Single_field_type_denoter>
+<Identifier value="b"/>
+<Char_type_denoter/>
+</Single_field_type_denoter>
+</Checked_record_aggregate>
+</Multiple_record_aggregate>
+<Multiple_field_type_denoter>
+<Identifier value="a"/>
+<Int_type_denoter/>
+<Single_field_type_denoter>
+<Identifier value="b"/>
+<Char_type_denoter/>
+</Single_field_type_denoter>
+</Multiple_field_type_denoter>
+</Checked_record_aggregate>
+</Record_expression>
+<Record_type_denoter>
+<Multiple_field_type_denoter>
+<Identifier value="a"/>
+<Int_type_denoter/>
+<Single_field_type_denoter>
+<Identifier value="b"/>
+<Char_type_denoter/>
+</Single_field_type_denoter>
+</Multiple_field_type_denoter>
+</Record_type_denoter>
+</Checked_expression>
+</Assign_command>
+</Sequential_command>
+</Sequential_command>
+</Sequential_command>
+</Sequential_command>
+</Let_command>
+</Program>
