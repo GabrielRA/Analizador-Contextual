@@ -1,0 +1,273 @@
+! Test of end with 3 units
+endendend
+
+! Test of end with array
+array end
+arrayend
+arrayendarray
+array end end end array
+
+! Test of end with begin
+begin end
+beginend
+beginendbegin
+begin end end end begin
+
+! Test of end with const
+const end
+constend
+constendconst
+const end end end const
+
+! Test of end with do
+do end
+doend
+doenddo
+do end end end do
+
+! Test of end with else
+else end
+elseend
+elseendelse
+else end end end else
+
+! Test of end with end
+end end
+endend
+endendend
+end end end end end
+
+! Test of end with func
+func end
+funcend
+funcendfunc
+func end end end func
+
+! Test of end with if
+if end
+ifend
+ifendif
+if end end end if
+
+! Test of end with in
+in end
+inend
+inendin
+in end end end in
+
+! Test of end with let
+let end
+letend
+letendlet
+let end end end let
+
+! Test of end with of
+of end
+ofend
+ofendof
+of end end end of
+
+! Test of end with proc
+proc end
+procend
+procendproc
+proc end end end proc
+
+! Test of end with record
+record end
+recordend
+recordendrecord
+record end end end record
+
+! Test of end with then
+then end
+thenend
+thenendthen
+then end end end then
+
+! Test of end with type
+type end
+typeend
+typeendtype
+type end end end type
+
+! Test of end with var
+var end
+varend
+varendvar
+var end end end var
+
+! Test of end with while
+while end
+whileend
+whileendwhile
+while end end end while
+
+! Test of end with .
+. end
+.end
+.end.
+. end end end .
+
+! Test of end with colon
+: end
+:end
+:end:
+: end end end :
+
+! Test of end with ;
+; end
+;end
+;end;
+; end end end ;
+
+! Test of end with ,
+, end
+,end
+,end,
+, end end end ,
+
+! Test of end with becomes
+:= end
+:=end
+:=end:=
+:= end end end :=
+
+! Test of end with ~
+~ end
+~end
+~end~
+~ end end end ~
+
+! Test of end with (
+( end
+(end
+(end(
+( end end end (
+
+! Test of end with )
+) end
+)end
+)end)
+) end end end )
+
+! Test of end with [
+[ end
+[end
+[end[
+[ end end end [
+
+! Test of end with ]
+] end
+]end
+]end]
+] end end end ]
+
+! Test of end with {
+{ end
+{end
+{end{
+{ end end end {
+
+! Test of end with }
+} end
+}end
+}end}
+} end end end }
+
+! Test of end with +
++ end
++end
++end+
++ end end end +
+
+! Test of end with -
+- end
+-end
+-end-
+- end end end -
+
+! Test of end with asterisk
+* end
+*end
+*end*
+* end end end *
+
+! Test of end with backSlash
+/ end
+/end
+/end/
+/ end end end /
+
+! Test of end with =
+= end
+=end
+=end=
+= end end end =
+
+! Test of end with lessThan
+< end
+<end
+<end<
+< end end end <
+
+! Test of end with moreThan
+> end
+>end
+>end>
+> end end end >
+
+! Test of end with slash
+\ end
+\end
+\end\
+\ end end end \
+
+! Test of end with &
+& end
+&end
+&end&
+& end end end &
+
+! Test of end with @
+@ end
+@end
+@end@
+@ end end end @
+
+! Test of end with %
+% end
+%end
+%end%
+% end end end %
+
+! Test of end with ^
+^ end
+^end
+^end^
+^ end end end ^
+
+! Test of end with questionMark
+? end
+?end
+?end?
+? end end end ?
+
+! Test of end with CharLiteral
+'V' end
+'r'end
+'8'end'{'
+'f' end end end 'Q'
+
+! Test of end with IntLiteral
+4575513453926857302 end
+447107664778449786end
+131610285753end12684935991898
+8955094957 end end end 5342145734619718
+
+! Test of end with Indentifier
+nPfztamksvk6aJ7g3k4Dv end
+sbf2KG87EChnGNvweJend
+EiSx0KQuXHfATBlCPVOrvendUBDivnn9ig0lJ4E
+shnYPI1zKlwdfy end end end Q5kH6l54ptLWZR
+

@@ -1,0 +1,273 @@
+! Test of ) with 3 units
+)))
+
+! Test of ) with array
+array )
+array)
+array)array
+array ) ) ) array
+
+! Test of ) with begin
+begin )
+begin)
+begin)begin
+begin ) ) ) begin
+
+! Test of ) with const
+const )
+const)
+const)const
+const ) ) ) const
+
+! Test of ) with do
+do )
+do)
+do)do
+do ) ) ) do
+
+! Test of ) with else
+else )
+else)
+else)else
+else ) ) ) else
+
+! Test of ) with end
+end )
+end)
+end)end
+end ) ) ) end
+
+! Test of ) with func
+func )
+func)
+func)func
+func ) ) ) func
+
+! Test of ) with if
+if )
+if)
+if)if
+if ) ) ) if
+
+! Test of ) with in
+in )
+in)
+in)in
+in ) ) ) in
+
+! Test of ) with let
+let )
+let)
+let)let
+let ) ) ) let
+
+! Test of ) with of
+of )
+of)
+of)of
+of ) ) ) of
+
+! Test of ) with proc
+proc )
+proc)
+proc)proc
+proc ) ) ) proc
+
+! Test of ) with record
+record )
+record)
+record)record
+record ) ) ) record
+
+! Test of ) with then
+then )
+then)
+then)then
+then ) ) ) then
+
+! Test of ) with type
+type )
+type)
+type)type
+type ) ) ) type
+
+! Test of ) with var
+var )
+var)
+var)var
+var ) ) ) var
+
+! Test of ) with while
+while )
+while)
+while)while
+while ) ) ) while
+
+! Test of ) with .
+. )
+.)
+.).
+. ) ) ) .
+
+! Test of ) with colon
+: )
+:)
+:):
+: ) ) ) :
+
+! Test of ) with ;
+; )
+;)
+;);
+; ) ) ) ;
+
+! Test of ) with ,
+, )
+,)
+,),
+, ) ) ) ,
+
+! Test of ) with becomes
+:= )
+:=)
+:=):=
+:= ) ) ) :=
+
+! Test of ) with ~
+~ )
+~)
+~)~
+~ ) ) ) ~
+
+! Test of ) with (
+( )
+()
+()(
+( ) ) ) (
+
+! Test of ) with )
+) )
+))
+)))
+) ) ) ) )
+
+! Test of ) with [
+[ )
+[)
+[)[
+[ ) ) ) [
+
+! Test of ) with ]
+] )
+])
+])]
+] ) ) ) ]
+
+! Test of ) with {
+{ )
+{)
+{){
+{ ) ) ) {
+
+! Test of ) with }
+} )
+})
+})}
+} ) ) ) }
+
+! Test of ) with +
++ )
++)
++)+
++ ) ) ) +
+
+! Test of ) with -
+- )
+-)
+-)-
+- ) ) ) -
+
+! Test of ) with asterisk
+* )
+*)
+*)*
+* ) ) ) *
+
+! Test of ) with backSlash
+/ )
+/)
+/)/
+/ ) ) ) /
+
+! Test of ) with =
+= )
+=)
+=)=
+= ) ) ) =
+
+! Test of ) with lessThan
+< )
+<)
+<)<
+< ) ) ) <
+
+! Test of ) with moreThan
+> )
+>)
+>)>
+> ) ) ) >
+
+! Test of ) with slash
+\ )
+\)
+\)\
+\ ) ) ) \
+
+! Test of ) with &
+& )
+&)
+&)&
+& ) ) ) &
+
+! Test of ) with @
+@ )
+@)
+@)@
+@ ) ) ) @
+
+! Test of ) with %
+% )
+%)
+%)%
+% ) ) ) %
+
+! Test of ) with ^
+^ )
+^)
+^)^
+^ ) ) ) ^
+
+! Test of ) with questionMark
+? )
+?)
+?)?
+? ) ) ) ?
+
+! Test of ) with CharLiteral
+'[' )
+'	')
+'v')'.'
+'3' ) ) ) ' '
+
+! Test of ) with IntLiteral
+103869289001 )
+5132848240813271)
+963856396909447479)998980507231748760
+1419136956747 ) ) ) 217922248927778
+
+! Test of ) with Indentifier
+wxB438wp1s48 )
+N8U30ZmN0087KFt8aBa4)
+dHRO6240rtNiv0CK7X)r0D4uW14WncE8A836EO
+CQBhI536Psb77y ) ) ) wzayJ6ePS94H
+

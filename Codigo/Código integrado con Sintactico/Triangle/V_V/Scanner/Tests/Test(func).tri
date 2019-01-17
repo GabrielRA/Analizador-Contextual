@@ -1,0 +1,273 @@
+! Test of func with 3 units
+funcfuncfunc
+
+! Test of func with array
+array func
+arrayfunc
+arrayfuncarray
+array func func func array
+
+! Test of func with begin
+begin func
+beginfunc
+beginfuncbegin
+begin func func func begin
+
+! Test of func with const
+const func
+constfunc
+constfuncconst
+const func func func const
+
+! Test of func with do
+do func
+dofunc
+dofuncdo
+do func func func do
+
+! Test of func with else
+else func
+elsefunc
+elsefuncelse
+else func func func else
+
+! Test of func with end
+end func
+endfunc
+endfuncend
+end func func func end
+
+! Test of func with func
+func func
+funcfunc
+funcfuncfunc
+func func func func func
+
+! Test of func with if
+if func
+iffunc
+iffuncif
+if func func func if
+
+! Test of func with in
+in func
+infunc
+infuncin
+in func func func in
+
+! Test of func with let
+let func
+letfunc
+letfunclet
+let func func func let
+
+! Test of func with of
+of func
+offunc
+offuncof
+of func func func of
+
+! Test of func with proc
+proc func
+procfunc
+procfuncproc
+proc func func func proc
+
+! Test of func with record
+record func
+recordfunc
+recordfuncrecord
+record func func func record
+
+! Test of func with then
+then func
+thenfunc
+thenfuncthen
+then func func func then
+
+! Test of func with type
+type func
+typefunc
+typefunctype
+type func func func type
+
+! Test of func with var
+var func
+varfunc
+varfuncvar
+var func func func var
+
+! Test of func with while
+while func
+whilefunc
+whilefuncwhile
+while func func func while
+
+! Test of func with .
+. func
+.func
+.func.
+. func func func .
+
+! Test of func with colon
+: func
+:func
+:func:
+: func func func :
+
+! Test of func with ;
+; func
+;func
+;func;
+; func func func ;
+
+! Test of func with ,
+, func
+,func
+,func,
+, func func func ,
+
+! Test of func with becomes
+:= func
+:=func
+:=func:=
+:= func func func :=
+
+! Test of func with ~
+~ func
+~func
+~func~
+~ func func func ~
+
+! Test of func with (
+( func
+(func
+(func(
+( func func func (
+
+! Test of func with )
+) func
+)func
+)func)
+) func func func )
+
+! Test of func with [
+[ func
+[func
+[func[
+[ func func func [
+
+! Test of func with ]
+] func
+]func
+]func]
+] func func func ]
+
+! Test of func with {
+{ func
+{func
+{func{
+{ func func func {
+
+! Test of func with }
+} func
+}func
+}func}
+} func func func }
+
+! Test of func with +
++ func
++func
++func+
++ func func func +
+
+! Test of func with -
+- func
+-func
+-func-
+- func func func -
+
+! Test of func with asterisk
+* func
+*func
+*func*
+* func func func *
+
+! Test of func with backSlash
+/ func
+/func
+/func/
+/ func func func /
+
+! Test of func with =
+= func
+=func
+=func=
+= func func func =
+
+! Test of func with lessThan
+< func
+<func
+<func<
+< func func func <
+
+! Test of func with moreThan
+> func
+>func
+>func>
+> func func func >
+
+! Test of func with slash
+\ func
+\func
+\func\
+\ func func func \
+
+! Test of func with &
+& func
+&func
+&func&
+& func func func &
+
+! Test of func with @
+@ func
+@func
+@func@
+@ func func func @
+
+! Test of func with %
+% func
+%func
+%func%
+% func func func %
+
+! Test of func with ^
+^ func
+^func
+^func^
+^ func func func ^
+
+! Test of func with questionMark
+? func
+?func
+?func?
+? func func func ?
+
+! Test of func with CharLiteral
+';' func
+'h'func
+' 'func'5'
+' ' func func func 'j'
+
+! Test of func with IntLiteral
+5176575612412435315 func
+03026860937216744func
+8914954785668029568func6379677660441684349
+1007081296487 func func func 04320057643860024
+
+! Test of func with Indentifier
+hRr4YU5y7DqIhq9 func
+l6Kj7uvinF77Y2o8oKqpfunc
+nNFOVsCdi2RS7h0funckRw1yL88vSYcm17Y06
+mL1jmVHu0Ja func func func E0939NIV1jOpcxFaSK
+

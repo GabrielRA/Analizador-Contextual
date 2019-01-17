@@ -1,0 +1,5 @@
+! Test of if command, doesn't runs correctly.
+if ('a' = 'b') then
+   8
+else
+   12

@@ -1,0 +1,273 @@
+! Test of moreThan with 3 units
+>>>
+
+! Test of moreThan with array
+array >
+array>
+array>array
+array > > > array
+
+! Test of moreThan with begin
+begin >
+begin>
+begin>begin
+begin > > > begin
+
+! Test of moreThan with const
+const >
+const>
+const>const
+const > > > const
+
+! Test of moreThan with do
+do >
+do>
+do>do
+do > > > do
+
+! Test of moreThan with else
+else >
+else>
+else>else
+else > > > else
+
+! Test of moreThan with end
+end >
+end>
+end>end
+end > > > end
+
+! Test of moreThan with func
+func >
+func>
+func>func
+func > > > func
+
+! Test of moreThan with if
+if >
+if>
+if>if
+if > > > if
+
+! Test of moreThan with in
+in >
+in>
+in>in
+in > > > in
+
+! Test of moreThan with let
+let >
+let>
+let>let
+let > > > let
+
+! Test of moreThan with of
+of >
+of>
+of>of
+of > > > of
+
+! Test of moreThan with proc
+proc >
+proc>
+proc>proc
+proc > > > proc
+
+! Test of moreThan with record
+record >
+record>
+record>record
+record > > > record
+
+! Test of moreThan with then
+then >
+then>
+then>then
+then > > > then
+
+! Test of moreThan with type
+type >
+type>
+type>type
+type > > > type
+
+! Test of moreThan with var
+var >
+var>
+var>var
+var > > > var
+
+! Test of moreThan with while
+while >
+while>
+while>while
+while > > > while
+
+! Test of moreThan with .
+. >
+.>
+.>.
+. > > > .
+
+! Test of moreThan with colon
+: >
+:>
+:>:
+: > > > :
+
+! Test of moreThan with ;
+; >
+;>
+;>;
+; > > > ;
+
+! Test of moreThan with ,
+, >
+,>
+,>,
+, > > > ,
+
+! Test of moreThan with becomes
+:= >
+:=>
+:=>:=
+:= > > > :=
+
+! Test of moreThan with ~
+~ >
+~>
+~>~
+~ > > > ~
+
+! Test of moreThan with (
+( >
+(>
+(>(
+( > > > (
+
+! Test of moreThan with )
+) >
+)>
+)>)
+) > > > )
+
+! Test of moreThan with [
+[ >
+[>
+[>[
+[ > > > [
+
+! Test of moreThan with ]
+] >
+]>
+]>]
+] > > > ]
+
+! Test of moreThan with {
+{ >
+{>
+{>{
+{ > > > {
+
+! Test of moreThan with }
+} >
+}>
+}>}
+} > > > }
+
+! Test of moreThan with +
++ >
++>
++>+
++ > > > +
+
+! Test of moreThan with -
+- >
+->
+->-
+- > > > -
+
+! Test of moreThan with asterisk
+* >
+*>
+*>*
+* > > > *
+
+! Test of moreThan with backSlash
+/ >
+/>
+/>/
+/ > > > /
+
+! Test of moreThan with =
+= >
+=>
+=>=
+= > > > =
+
+! Test of moreThan with lessThan
+< >
+<>
+<><
+< > > > <
+
+! Test of moreThan with moreThan
+> >
+>>
+>>>
+> > > > >
+
+! Test of moreThan with slash
+\ >
+\>
+\>\
+\ > > > \
+
+! Test of moreThan with &
+& >
+&>
+&>&
+& > > > &
+
+! Test of moreThan with @
+@ >
+@>
+@>@
+@ > > > @
+
+! Test of moreThan with %
+% >
+%>
+%>%
+% > > > %
+
+! Test of moreThan with ^
+^ >
+^>
+^>^
+^ > > > ^
+
+! Test of moreThan with questionMark
+? >
+?>
+?>?
+? > > > ?
+
+! Test of moreThan with CharLiteral
+'I' >
+'T'>
+'6'>'t'
+'"' > > > 'p'
+
+! Test of moreThan with IntLiteral
+3732509103 >
+3028150653783750>
+18831759415563794>2069059912750403256
+73007787779 > > > 19355289106231
+
+! Test of moreThan with Indentifier
+vCy8j8FpuqYM43rD3 >
+WZKeZKq0g4cnDX8CqfF>
+u70585HMP6i7O72w>r7Pi96ReCXJFAavTWi7I
+in3Rv2E6hKWEj > > > SCrhXw2jtDfdF438c0
+

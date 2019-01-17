@@ -1,0 +1,4 @@
+! Test of commands, it runs correctly
+put('a');
+put('x');
+putint(0)

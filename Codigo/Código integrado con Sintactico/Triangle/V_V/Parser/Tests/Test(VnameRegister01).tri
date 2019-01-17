@@ -1,0 +1,15 @@
+! Test of Variable names on registers, it runs correctly.
+let
+   type X ~ record
+            a: Integer,
+            b: Char
+           end;
+   var a: X
+in
+begin
+  a.a := 5;
+  a.b := 'x';
+  putint(a.a);
+  put(a.b)
+end
+  

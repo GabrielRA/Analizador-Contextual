@@ -1,0 +1,3 @@
+! Test of begin-end, it runs correctly
+
+begin puteol() end

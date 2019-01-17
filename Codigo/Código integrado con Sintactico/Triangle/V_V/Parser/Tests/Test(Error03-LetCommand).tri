@@ -1,0 +1,3 @@
+! Test of let in command, doesn't runs correctly.
+let var x: Integer in
+   'z'

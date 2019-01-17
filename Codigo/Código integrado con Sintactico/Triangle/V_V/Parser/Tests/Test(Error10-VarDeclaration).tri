@@ -1,0 +1,6 @@
+! Test of variable declaration, doesn't runs correctly.
+
+let
+   var m: 'x'
+in
+   put('z')

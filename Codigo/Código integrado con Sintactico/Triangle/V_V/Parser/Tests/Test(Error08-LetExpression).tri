@@ -1,0 +1,7 @@
+! Test of let in expression, doesn't runs correctly.
+let
+   func a(): Integer ~
+        let var b: Integer in
+            b:= 5
+in
+  putint(0)

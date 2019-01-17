@@ -1,0 +1,273 @@
+! Test of backSlash with 3 units
+///
+
+! Test of backSlash with array
+array /
+array/
+array/array
+array / / / array
+
+! Test of backSlash with begin
+begin /
+begin/
+begin/begin
+begin / / / begin
+
+! Test of backSlash with const
+const /
+const/
+const/const
+const / / / const
+
+! Test of backSlash with do
+do /
+do/
+do/do
+do / / / do
+
+! Test of backSlash with else
+else /
+else/
+else/else
+else / / / else
+
+! Test of backSlash with end
+end /
+end/
+end/end
+end / / / end
+
+! Test of backSlash with func
+func /
+func/
+func/func
+func / / / func
+
+! Test of backSlash with if
+if /
+if/
+if/if
+if / / / if
+
+! Test of backSlash with in
+in /
+in/
+in/in
+in / / / in
+
+! Test of backSlash with let
+let /
+let/
+let/let
+let / / / let
+
+! Test of backSlash with of
+of /
+of/
+of/of
+of / / / of
+
+! Test of backSlash with proc
+proc /
+proc/
+proc/proc
+proc / / / proc
+
+! Test of backSlash with record
+record /
+record/
+record/record
+record / / / record
+
+! Test of backSlash with then
+then /
+then/
+then/then
+then / / / then
+
+! Test of backSlash with type
+type /
+type/
+type/type
+type / / / type
+
+! Test of backSlash with var
+var /
+var/
+var/var
+var / / / var
+
+! Test of backSlash with while
+while /
+while/
+while/while
+while / / / while
+
+! Test of backSlash with .
+. /
+./
+./.
+. / / / .
+
+! Test of backSlash with colon
+: /
+:/
+:/:
+: / / / :
+
+! Test of backSlash with ;
+; /
+;/
+;/;
+; / / / ;
+
+! Test of backSlash with ,
+, /
+,/
+,/,
+, / / / ,
+
+! Test of backSlash with becomes
+:= /
+:=/
+:=/:=
+:= / / / :=
+
+! Test of backSlash with ~
+~ /
+~/
+~/~
+~ / / / ~
+
+! Test of backSlash with (
+( /
+(/
+(/(
+( / / / (
+
+! Test of backSlash with )
+) /
+)/
+)/)
+) / / / )
+
+! Test of backSlash with [
+[ /
+[/
+[/[
+[ / / / [
+
+! Test of backSlash with ]
+] /
+]/
+]/]
+] / / / ]
+
+! Test of backSlash with {
+{ /
+{/
+{/{
+{ / / / {
+
+! Test of backSlash with }
+} /
+}/
+}/}
+} / / / }
+
+! Test of backSlash with +
++ /
++/
++/+
++ / / / +
+
+! Test of backSlash with -
+- /
+-/
+-/-
+- / / / -
+
+! Test of backSlash with asterisk
+* /
+*/
+*/*
+* / / / *
+
+! Test of backSlash with backSlash
+/ /
+//
+///
+/ / / / /
+
+! Test of backSlash with =
+= /
+=/
+=/=
+= / / / =
+
+! Test of backSlash with lessThan
+< /
+</
+</<
+< / / / <
+
+! Test of backSlash with moreThan
+> /
+>/
+>/>
+> / / / >
+
+! Test of backSlash with slash
+\ /
+\/
+\/\
+\ / / / \
+
+! Test of backSlash with &
+& /
+&/
+&/&
+& / / / &
+
+! Test of backSlash with @
+@ /
+@/
+@/@
+@ / / / @
+
+! Test of backSlash with %
+% /
+%/
+%/%
+% / / / %
+
+! Test of backSlash with ^
+^ /
+^/
+^/^
+^ / / / ^
+
+! Test of backSlash with questionMark
+? /
+?/
+?/?
+? / / / ?
+
+! Test of backSlash with CharLiteral
+'d' /
+'4'/
+' '/' '
+'`' / / / ')'
+
+! Test of backSlash with IntLiteral
+58261912929191469710 /
+5007402100526273/
+2502953123987101/34605224836
+6509569995397 / / / 17555193670074575
+
+! Test of backSlash with Indentifier
+r1F0F8LQhUfvMk4t /
+ooSSe0F44Q7/
+in0X6PZTYpU1vt8wIKEf/VrkOz0rUSN0j
+GAAmNT8df2uC2aw7tf / / / jPZrgb22KVexPuPF4A25
+

@@ -1,0 +1,273 @@
+! Test of while with 3 units
+whilewhilewhile
+
+! Test of while with array
+array while
+arraywhile
+arraywhilearray
+array while while while array
+
+! Test of while with begin
+begin while
+beginwhile
+beginwhilebegin
+begin while while while begin
+
+! Test of while with const
+const while
+constwhile
+constwhileconst
+const while while while const
+
+! Test of while with do
+do while
+dowhile
+dowhiledo
+do while while while do
+
+! Test of while with else
+else while
+elsewhile
+elsewhileelse
+else while while while else
+
+! Test of while with end
+end while
+endwhile
+endwhileend
+end while while while end
+
+! Test of while with func
+func while
+funcwhile
+funcwhilefunc
+func while while while func
+
+! Test of while with if
+if while
+ifwhile
+ifwhileif
+if while while while if
+
+! Test of while with in
+in while
+inwhile
+inwhilein
+in while while while in
+
+! Test of while with let
+let while
+letwhile
+letwhilelet
+let while while while let
+
+! Test of while with of
+of while
+ofwhile
+ofwhileof
+of while while while of
+
+! Test of while with proc
+proc while
+procwhile
+procwhileproc
+proc while while while proc
+
+! Test of while with record
+record while
+recordwhile
+recordwhilerecord
+record while while while record
+
+! Test of while with then
+then while
+thenwhile
+thenwhilethen
+then while while while then
+
+! Test of while with type
+type while
+typewhile
+typewhiletype
+type while while while type
+
+! Test of while with var
+var while
+varwhile
+varwhilevar
+var while while while var
+
+! Test of while with while
+while while
+whilewhile
+whilewhilewhile
+while while while while while
+
+! Test of while with .
+. while
+.while
+.while.
+. while while while .
+
+! Test of while with colon
+: while
+:while
+:while:
+: while while while :
+
+! Test of while with ;
+; while
+;while
+;while;
+; while while while ;
+
+! Test of while with ,
+, while
+,while
+,while,
+, while while while ,
+
+! Test of while with becomes
+:= while
+:=while
+:=while:=
+:= while while while :=
+
+! Test of while with ~
+~ while
+~while
+~while~
+~ while while while ~
+
+! Test of while with (
+( while
+(while
+(while(
+( while while while (
+
+! Test of while with )
+) while
+)while
+)while)
+) while while while )
+
+! Test of while with [
+[ while
+[while
+[while[
+[ while while while [
+
+! Test of while with ]
+] while
+]while
+]while]
+] while while while ]
+
+! Test of while with {
+{ while
+{while
+{while{
+{ while while while {
+
+! Test of while with }
+} while
+}while
+}while}
+} while while while }
+
+! Test of while with +
++ while
++while
++while+
++ while while while +
+
+! Test of while with -
+- while
+-while
+-while-
+- while while while -
+
+! Test of while with asterisk
+* while
+*while
+*while*
+* while while while *
+
+! Test of while with backSlash
+/ while
+/while
+/while/
+/ while while while /
+
+! Test of while with =
+= while
+=while
+=while=
+= while while while =
+
+! Test of while with lessThan
+< while
+<while
+<while<
+< while while while <
+
+! Test of while with moreThan
+> while
+>while
+>while>
+> while while while >
+
+! Test of while with slash
+\ while
+\while
+\while\
+\ while while while \
+
+! Test of while with &
+& while
+&while
+&while&
+& while while while &
+
+! Test of while with @
+@ while
+@while
+@while@
+@ while while while @
+
+! Test of while with %
+% while
+%while
+%while%
+% while while while %
+
+! Test of while with ^
+^ while
+^while
+^while^
+^ while while while ^
+
+! Test of while with questionMark
+? while
+?while
+?while?
+? while while while ?
+
+! Test of while with CharLiteral
+'3' while
+'#'while
+'_'while'R'
+'I' while while while '	'
+
+! Test of while with IntLiteral
+9907972273635 while
+0589800891517while
+84755997672while738730463300408
+4509145927406 while while while 942915598810
+
+! Test of while with Indentifier
+hms8wYTuKJuCQopQLKWc while
+IfM8Z1KbHVyk48XSjh10while
+yLyhy22wy5BLMwhileu7JBsZKQia3150a
+idZtCs6hlyW3z9 while while while MlgKjLd5Ys18FpP
+

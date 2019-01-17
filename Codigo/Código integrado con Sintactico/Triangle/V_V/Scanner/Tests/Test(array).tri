@@ -1,0 +1,273 @@
+! Test of array with 3 units
+arrayarrayarray
+
+! Test of array with array
+array array
+arrayarray
+arrayarrayarray
+array array array array array
+
+! Test of array with begin
+begin array
+beginarray
+beginarraybegin
+begin array array array begin
+
+! Test of array with const
+const array
+constarray
+constarrayconst
+const array array array const
+
+! Test of array with do
+do array
+doarray
+doarraydo
+do array array array do
+
+! Test of array with else
+else array
+elsearray
+elsearrayelse
+else array array array else
+
+! Test of array with end
+end array
+endarray
+endarrayend
+end array array array end
+
+! Test of array with func
+func array
+funcarray
+funcarrayfunc
+func array array array func
+
+! Test of array with if
+if array
+ifarray
+ifarrayif
+if array array array if
+
+! Test of array with in
+in array
+inarray
+inarrayin
+in array array array in
+
+! Test of array with let
+let array
+letarray
+letarraylet
+let array array array let
+
+! Test of array with of
+of array
+ofarray
+ofarrayof
+of array array array of
+
+! Test of array with proc
+proc array
+procarray
+procarrayproc
+proc array array array proc
+
+! Test of array with record
+record array
+recordarray
+recordarrayrecord
+record array array array record
+
+! Test of array with then
+then array
+thenarray
+thenarraythen
+then array array array then
+
+! Test of array with type
+type array
+typearray
+typearraytype
+type array array array type
+
+! Test of array with var
+var array
+vararray
+vararrayvar
+var array array array var
+
+! Test of array with while
+while array
+whilearray
+whilearraywhile
+while array array array while
+
+! Test of array with .
+. array
+.array
+.array.
+. array array array .
+
+! Test of array with colon
+: array
+:array
+:array:
+: array array array :
+
+! Test of array with ;
+; array
+;array
+;array;
+; array array array ;
+
+! Test of array with ,
+, array
+,array
+,array,
+, array array array ,
+
+! Test of array with becomes
+:= array
+:=array
+:=array:=
+:= array array array :=
+
+! Test of array with ~
+~ array
+~array
+~array~
+~ array array array ~
+
+! Test of array with (
+( array
+(array
+(array(
+( array array array (
+
+! Test of array with )
+) array
+)array
+)array)
+) array array array )
+
+! Test of array with [
+[ array
+[array
+[array[
+[ array array array [
+
+! Test of array with ]
+] array
+]array
+]array]
+] array array array ]
+
+! Test of array with {
+{ array
+{array
+{array{
+{ array array array {
+
+! Test of array with }
+} array
+}array
+}array}
+} array array array }
+
+! Test of array with +
++ array
++array
++array+
++ array array array +
+
+! Test of array with -
+- array
+-array
+-array-
+- array array array -
+
+! Test of array with asterisk
+* array
+*array
+*array*
+* array array array *
+
+! Test of array with backSlash
+/ array
+/array
+/array/
+/ array array array /
+
+! Test of array with =
+= array
+=array
+=array=
+= array array array =
+
+! Test of array with lessThan
+< array
+<array
+<array<
+< array array array <
+
+! Test of array with moreThan
+> array
+>array
+>array>
+> array array array >
+
+! Test of array with slash
+\ array
+\array
+\array\
+\ array array array \
+
+! Test of array with &
+& array
+&array
+&array&
+& array array array &
+
+! Test of array with @
+@ array
+@array
+@array@
+@ array array array @
+
+! Test of array with %
+% array
+%array
+%array%
+% array array array %
+
+! Test of array with ^
+^ array
+^array
+^array^
+^ array array array ^
+
+! Test of array with questionMark
+? array
+?array
+?array?
+? array array array ?
+
+! Test of array with CharLiteral
+':' array
+'7'array
+'('array'X'
+' ' array array array '	'
+
+! Test of array with IntLiteral
+066499171351995 array
+3856268601932075893array
+9230236747086035365array33129603555909594
+5248727904258806 array array array 551051029241172230
+
+! Test of array with Indentifier
+L1tMQQv2E6NOZ7ZEWw array
+WRD738WgX7V46kbP7Qf5array
+E7h8v200vZPb7fgyR5arrayr3K26SIdf6K6Lo1l868
+Gt5Ko54F77x83ZY array array array xg8LJiZ618ad
+

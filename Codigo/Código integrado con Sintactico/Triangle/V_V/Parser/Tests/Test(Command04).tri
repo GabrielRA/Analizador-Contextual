@@ -1,0 +1,2 @@
+! Test of call command, doesn't runs correctly.
+put('z');

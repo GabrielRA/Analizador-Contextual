@@ -1,0 +1,12 @@
+! Test of Variable names on registers, it runs correctly.
+
+let
+
+  var a : Integer
+
+in
+  a:= 1; 
+
+  putint (a) ! imprime 1
+
+

@@ -1,0 +1,5 @@
+! Test of function declaration, doesn't runs correctly.
+let
+   func a() ~ 5
+in
+  putint(a())

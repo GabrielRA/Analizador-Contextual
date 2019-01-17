@@ -1,0 +1,273 @@
+! Test of record with 3 units
+recordrecordrecord
+
+! Test of record with array
+array record
+arrayrecord
+arrayrecordarray
+array record record record array
+
+! Test of record with begin
+begin record
+beginrecord
+beginrecordbegin
+begin record record record begin
+
+! Test of record with const
+const record
+constrecord
+constrecordconst
+const record record record const
+
+! Test of record with do
+do record
+dorecord
+dorecorddo
+do record record record do
+
+! Test of record with else
+else record
+elserecord
+elserecordelse
+else record record record else
+
+! Test of record with end
+end record
+endrecord
+endrecordend
+end record record record end
+
+! Test of record with func
+func record
+funcrecord
+funcrecordfunc
+func record record record func
+
+! Test of record with if
+if record
+ifrecord
+ifrecordif
+if record record record if
+
+! Test of record with in
+in record
+inrecord
+inrecordin
+in record record record in
+
+! Test of record with let
+let record
+letrecord
+letrecordlet
+let record record record let
+
+! Test of record with of
+of record
+ofrecord
+ofrecordof
+of record record record of
+
+! Test of record with proc
+proc record
+procrecord
+procrecordproc
+proc record record record proc
+
+! Test of record with record
+record record
+recordrecord
+recordrecordrecord
+record record record record record
+
+! Test of record with then
+then record
+thenrecord
+thenrecordthen
+then record record record then
+
+! Test of record with type
+type record
+typerecord
+typerecordtype
+type record record record type
+
+! Test of record with var
+var record
+varrecord
+varrecordvar
+var record record record var
+
+! Test of record with while
+while record
+whilerecord
+whilerecordwhile
+while record record record while
+
+! Test of record with .
+. record
+.record
+.record.
+. record record record .
+
+! Test of record with colon
+: record
+:record
+:record:
+: record record record :
+
+! Test of record with ;
+; record
+;record
+;record;
+; record record record ;
+
+! Test of record with ,
+, record
+,record
+,record,
+, record record record ,
+
+! Test of record with becomes
+:= record
+:=record
+:=record:=
+:= record record record :=
+
+! Test of record with ~
+~ record
+~record
+~record~
+~ record record record ~
+
+! Test of record with (
+( record
+(record
+(record(
+( record record record (
+
+! Test of record with )
+) record
+)record
+)record)
+) record record record )
+
+! Test of record with [
+[ record
+[record
+[record[
+[ record record record [
+
+! Test of record with ]
+] record
+]record
+]record]
+] record record record ]
+
+! Test of record with {
+{ record
+{record
+{record{
+{ record record record {
+
+! Test of record with }
+} record
+}record
+}record}
+} record record record }
+
+! Test of record with +
++ record
++record
++record+
++ record record record +
+
+! Test of record with -
+- record
+-record
+-record-
+- record record record -
+
+! Test of record with asterisk
+* record
+*record
+*record*
+* record record record *
+
+! Test of record with backSlash
+/ record
+/record
+/record/
+/ record record record /
+
+! Test of record with =
+= record
+=record
+=record=
+= record record record =
+
+! Test of record with lessThan
+< record
+<record
+<record<
+< record record record <
+
+! Test of record with moreThan
+> record
+>record
+>record>
+> record record record >
+
+! Test of record with slash
+\ record
+\record
+\record\
+\ record record record \
+
+! Test of record with &
+& record
+&record
+&record&
+& record record record &
+
+! Test of record with @
+@ record
+@record
+@record@
+@ record record record @
+
+! Test of record with %
+% record
+%record
+%record%
+% record record record %
+
+! Test of record with ^
+^ record
+^record
+^record^
+^ record record record ^
+
+! Test of record with questionMark
+? record
+?record
+?record?
+? record record record ?
+
+! Test of record with CharLiteral
+'!' record
+'A'record
+'U'record'~'
+'	' record record record '"'
+
+! Test of record with IntLiteral
+26505061081634192738 record
+7478576537583record
+9576877479894record0629865549802
+8402226853 record record record 4011195777651738691
+
+! Test of record with Indentifier
+sdTBO2BLVan0L51 record
+Cq3YHZ8jHI8UoLlf501Drecord
+XxC3TZI0jeU4oOtyn69recordE8QA39Lw62063ras1QC78
+vcr0TupKcj3c7O0Y record record record mopT4p0WB8w42n8lQN
+

@@ -1,0 +1,7 @@
+! Test of function declaration, doesn't runs correctly.
+
+let
+   func f(): func ~
+        'e'
+in
+  put(f())

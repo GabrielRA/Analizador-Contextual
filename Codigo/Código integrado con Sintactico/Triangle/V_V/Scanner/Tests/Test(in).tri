@@ -1,0 +1,273 @@
+! Test of in with 3 units
+ininin
+
+! Test of in with array
+array in
+arrayin
+arrayinarray
+array in in in array
+
+! Test of in with begin
+begin in
+beginin
+begininbegin
+begin in in in begin
+
+! Test of in with const
+const in
+constin
+constinconst
+const in in in const
+
+! Test of in with do
+do in
+doin
+doindo
+do in in in do
+
+! Test of in with else
+else in
+elsein
+elseinelse
+else in in in else
+
+! Test of in with end
+end in
+endin
+endinend
+end in in in end
+
+! Test of in with func
+func in
+funcin
+funcinfunc
+func in in in func
+
+! Test of in with if
+if in
+ifin
+ifinif
+if in in in if
+
+! Test of in with in
+in in
+inin
+ininin
+in in in in in
+
+! Test of in with let
+let in
+letin
+letinlet
+let in in in let
+
+! Test of in with of
+of in
+ofin
+ofinof
+of in in in of
+
+! Test of in with proc
+proc in
+procin
+procinproc
+proc in in in proc
+
+! Test of in with record
+record in
+recordin
+recordinrecord
+record in in in record
+
+! Test of in with then
+then in
+thenin
+theninthen
+then in in in then
+
+! Test of in with type
+type in
+typein
+typeintype
+type in in in type
+
+! Test of in with var
+var in
+varin
+varinvar
+var in in in var
+
+! Test of in with while
+while in
+whilein
+whileinwhile
+while in in in while
+
+! Test of in with .
+. in
+.in
+.in.
+. in in in .
+
+! Test of in with colon
+: in
+:in
+:in:
+: in in in :
+
+! Test of in with ;
+; in
+;in
+;in;
+; in in in ;
+
+! Test of in with ,
+, in
+,in
+,in,
+, in in in ,
+
+! Test of in with becomes
+:= in
+:=in
+:=in:=
+:= in in in :=
+
+! Test of in with ~
+~ in
+~in
+~in~
+~ in in in ~
+
+! Test of in with (
+( in
+(in
+(in(
+( in in in (
+
+! Test of in with )
+) in
+)in
+)in)
+) in in in )
+
+! Test of in with [
+[ in
+[in
+[in[
+[ in in in [
+
+! Test of in with ]
+] in
+]in
+]in]
+] in in in ]
+
+! Test of in with {
+{ in
+{in
+{in{
+{ in in in {
+
+! Test of in with }
+} in
+}in
+}in}
+} in in in }
+
+! Test of in with +
++ in
++in
++in+
++ in in in +
+
+! Test of in with -
+- in
+-in
+-in-
+- in in in -
+
+! Test of in with asterisk
+* in
+*in
+*in*
+* in in in *
+
+! Test of in with backSlash
+/ in
+/in
+/in/
+/ in in in /
+
+! Test of in with =
+= in
+=in
+=in=
+= in in in =
+
+! Test of in with lessThan
+< in
+<in
+<in<
+< in in in <
+
+! Test of in with moreThan
+> in
+>in
+>in>
+> in in in >
+
+! Test of in with slash
+\ in
+\in
+\in\
+\ in in in \
+
+! Test of in with &
+& in
+&in
+&in&
+& in in in &
+
+! Test of in with @
+@ in
+@in
+@in@
+@ in in in @
+
+! Test of in with %
+% in
+%in
+%in%
+% in in in %
+
+! Test of in with ^
+^ in
+^in
+^in^
+^ in in in ^
+
+! Test of in with questionMark
+? in
+?in
+?in?
+? in in in ?
+
+! Test of in with CharLiteral
+'2' in
+' 'in
+')'in'5'
+'X' in in in 'V'
+
+! Test of in with IntLiteral
+008104191590 in
+3627857755443782410in
+095781157885in25436627995842706559
+62408014245198335172 in in in 8623810603001917
+
+! Test of in with Indentifier
+C1d6ulyN0sCZGA7 in
+Nez84UJ15YKin
+V77zZ5p1kiipDvine9iTvNmShQdo174pfSF
+urz2n5H3eiN67NhEn in in in f6292x5952UsI0wARx03
+

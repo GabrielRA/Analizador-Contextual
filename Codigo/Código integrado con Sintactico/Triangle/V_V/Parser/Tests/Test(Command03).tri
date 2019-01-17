@@ -1,0 +1,4 @@
+!! Test of multiple commands, it runs correctly.
+putint(0);
+putint(1);
+putint(2);

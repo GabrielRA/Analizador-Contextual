@@ -1,0 +1,273 @@
+! Test of else with 3 units
+elseelseelse
+
+! Test of else with array
+array else
+arrayelse
+arrayelsearray
+array else else else array
+
+! Test of else with begin
+begin else
+beginelse
+beginelsebegin
+begin else else else begin
+
+! Test of else with const
+const else
+constelse
+constelseconst
+const else else else const
+
+! Test of else with do
+do else
+doelse
+doelsedo
+do else else else do
+
+! Test of else with else
+else else
+elseelse
+elseelseelse
+else else else else else
+
+! Test of else with end
+end else
+endelse
+endelseend
+end else else else end
+
+! Test of else with func
+func else
+funcelse
+funcelsefunc
+func else else else func
+
+! Test of else with if
+if else
+ifelse
+ifelseif
+if else else else if
+
+! Test of else with in
+in else
+inelse
+inelsein
+in else else else in
+
+! Test of else with let
+let else
+letelse
+letelselet
+let else else else let
+
+! Test of else with of
+of else
+ofelse
+ofelseof
+of else else else of
+
+! Test of else with proc
+proc else
+procelse
+procelseproc
+proc else else else proc
+
+! Test of else with record
+record else
+recordelse
+recordelserecord
+record else else else record
+
+! Test of else with then
+then else
+thenelse
+thenelsethen
+then else else else then
+
+! Test of else with type
+type else
+typeelse
+typeelsetype
+type else else else type
+
+! Test of else with var
+var else
+varelse
+varelsevar
+var else else else var
+
+! Test of else with while
+while else
+whileelse
+whileelsewhile
+while else else else while
+
+! Test of else with .
+. else
+.else
+.else.
+. else else else .
+
+! Test of else with colon
+: else
+:else
+:else:
+: else else else :
+
+! Test of else with ;
+; else
+;else
+;else;
+; else else else ;
+
+! Test of else with ,
+, else
+,else
+,else,
+, else else else ,
+
+! Test of else with becomes
+:= else
+:=else
+:=else:=
+:= else else else :=
+
+! Test of else with ~
+~ else
+~else
+~else~
+~ else else else ~
+
+! Test of else with (
+( else
+(else
+(else(
+( else else else (
+
+! Test of else with )
+) else
+)else
+)else)
+) else else else )
+
+! Test of else with [
+[ else
+[else
+[else[
+[ else else else [
+
+! Test of else with ]
+] else
+]else
+]else]
+] else else else ]
+
+! Test of else with {
+{ else
+{else
+{else{
+{ else else else {
+
+! Test of else with }
+} else
+}else
+}else}
+} else else else }
+
+! Test of else with +
++ else
++else
++else+
++ else else else +
+
+! Test of else with -
+- else
+-else
+-else-
+- else else else -
+
+! Test of else with asterisk
+* else
+*else
+*else*
+* else else else *
+
+! Test of else with backSlash
+/ else
+/else
+/else/
+/ else else else /
+
+! Test of else with =
+= else
+=else
+=else=
+= else else else =
+
+! Test of else with lessThan
+< else
+<else
+<else<
+< else else else <
+
+! Test of else with moreThan
+> else
+>else
+>else>
+> else else else >
+
+! Test of else with slash
+\ else
+\else
+\else\
+\ else else else \
+
+! Test of else with &
+& else
+&else
+&else&
+& else else else &
+
+! Test of else with @
+@ else
+@else
+@else@
+@ else else else @
+
+! Test of else with %
+% else
+%else
+%else%
+% else else else %
+
+! Test of else with ^
+^ else
+^else
+^else^
+^ else else else ^
+
+! Test of else with questionMark
+? else
+?else
+?else?
+? else else else ?
+
+! Test of else with CharLiteral
+'!' else
+'8'else
+'W'else'H'
+'o' else else else 'Q'
+
+! Test of else with IntLiteral
+01269163082011 else
+6441643323528890398else
+40726145484else213491238550985
+800577506550 else else else 8397801657450628
+
+! Test of else with Indentifier
+wkJgu3R9nt1n4v4Ob2 else
+wwj2A64cM04zDnq00else
+QT9Cv9J8AQ9OgelselCAd1yCSAt203l85rWI
+AS115SDXZuS8bYz1WZG else else else wr3Z875Qq1510Snj99Jq
+

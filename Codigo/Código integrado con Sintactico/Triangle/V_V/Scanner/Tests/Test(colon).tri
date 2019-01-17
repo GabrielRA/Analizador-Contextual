@@ -1,0 +1,273 @@
+! Test of colon with 3 units
+:::
+
+! Test of colon with array
+array :
+array:
+array:array
+array : : : array
+
+! Test of colon with begin
+begin :
+begin:
+begin:begin
+begin : : : begin
+
+! Test of colon with const
+const :
+const:
+const:const
+const : : : const
+
+! Test of colon with do
+do :
+do:
+do:do
+do : : : do
+
+! Test of colon with else
+else :
+else:
+else:else
+else : : : else
+
+! Test of colon with end
+end :
+end:
+end:end
+end : : : end
+
+! Test of colon with func
+func :
+func:
+func:func
+func : : : func
+
+! Test of colon with if
+if :
+if:
+if:if
+if : : : if
+
+! Test of colon with in
+in :
+in:
+in:in
+in : : : in
+
+! Test of colon with let
+let :
+let:
+let:let
+let : : : let
+
+! Test of colon with of
+of :
+of:
+of:of
+of : : : of
+
+! Test of colon with proc
+proc :
+proc:
+proc:proc
+proc : : : proc
+
+! Test of colon with record
+record :
+record:
+record:record
+record : : : record
+
+! Test of colon with then
+then :
+then:
+then:then
+then : : : then
+
+! Test of colon with type
+type :
+type:
+type:type
+type : : : type
+
+! Test of colon with var
+var :
+var:
+var:var
+var : : : var
+
+! Test of colon with while
+while :
+while:
+while:while
+while : : : while
+
+! Test of colon with .
+. :
+.:
+.:.
+. : : : .
+
+! Test of colon with colon
+: :
+::
+:::
+: : : : :
+
+! Test of colon with ;
+; :
+;:
+;:;
+; : : : ;
+
+! Test of colon with ,
+, :
+,:
+,:,
+, : : : ,
+
+! Test of colon with becomes
+:= :
+:=:
+:=::=
+:= : : : :=
+
+! Test of colon with ~
+~ :
+~:
+~:~
+~ : : : ~
+
+! Test of colon with (
+( :
+(:
+(:(
+( : : : (
+
+! Test of colon with )
+) :
+):
+):)
+) : : : )
+
+! Test of colon with [
+[ :
+[:
+[:[
+[ : : : [
+
+! Test of colon with ]
+] :
+]:
+]:]
+] : : : ]
+
+! Test of colon with {
+{ :
+{:
+{:{
+{ : : : {
+
+! Test of colon with }
+} :
+}:
+}:}
+} : : : }
+
+! Test of colon with +
++ :
++:
++:+
++ : : : +
+
+! Test of colon with -
+- :
+-:
+-:-
+- : : : -
+
+! Test of colon with asterisk
+* :
+*:
+*:*
+* : : : *
+
+! Test of colon with backSlash
+/ :
+/:
+/:/
+/ : : : /
+
+! Test of colon with =
+= :
+=:
+=:=
+= : : : =
+
+! Test of colon with lessThan
+< :
+<:
+<:<
+< : : : <
+
+! Test of colon with moreThan
+> :
+>:
+>:>
+> : : : >
+
+! Test of colon with slash
+\ :
+\:
+\:\
+\ : : : \
+
+! Test of colon with &
+& :
+&:
+&:&
+& : : : &
+
+! Test of colon with @
+@ :
+@:
+@:@
+@ : : : @
+
+! Test of colon with %
+% :
+%:
+%:%
+% : : : %
+
+! Test of colon with ^
+^ :
+^:
+^:^
+^ : : : ^
+
+! Test of colon with questionMark
+? :
+?:
+?:?
+? : : : ?
+
+! Test of colon with CharLiteral
+'1' :
+'P':
+'s':'0'
+'o' : : : '.'
+
+! Test of colon with IntLiteral
+40970886774684420799 :
+951707910883253:
+26921120499466:9613664001197632
+81594311204409120316 : : : 66046253935974
+
+! Test of colon with Indentifier
+oI4XU61a7V9jyc7 :
+Ei3mXWYDN3w6yRtW:
+V09u8u3c2uCD2:SNiz5CEUO167H2XBW
+Rs4qRuDN8926GKvMDGC : : : uVMXBmyYSD9YHp
+

@@ -1,0 +1,6 @@
+! Test of Variable declarations, it runs correctly.
+let
+   var x: Integer in
+begin
+  put('x')
+end

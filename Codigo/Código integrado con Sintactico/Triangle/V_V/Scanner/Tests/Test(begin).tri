@@ -1,0 +1,273 @@
+! Test of begin with 3 units
+beginbeginbegin
+
+! Test of begin with array
+array begin
+arraybegin
+arraybeginarray
+array begin begin begin array
+
+! Test of begin with begin
+begin begin
+beginbegin
+beginbeginbegin
+begin begin begin begin begin
+
+! Test of begin with const
+const begin
+constbegin
+constbeginconst
+const begin begin begin const
+
+! Test of begin with do
+do begin
+dobegin
+dobegindo
+do begin begin begin do
+
+! Test of begin with else
+else begin
+elsebegin
+elsebeginelse
+else begin begin begin else
+
+! Test of begin with end
+end begin
+endbegin
+endbeginend
+end begin begin begin end
+
+! Test of begin with func
+func begin
+funcbegin
+funcbeginfunc
+func begin begin begin func
+
+! Test of begin with if
+if begin
+ifbegin
+ifbeginif
+if begin begin begin if
+
+! Test of begin with in
+in begin
+inbegin
+inbeginin
+in begin begin begin in
+
+! Test of begin with let
+let begin
+letbegin
+letbeginlet
+let begin begin begin let
+
+! Test of begin with of
+of begin
+ofbegin
+ofbeginof
+of begin begin begin of
+
+! Test of begin with proc
+proc begin
+procbegin
+procbeginproc
+proc begin begin begin proc
+
+! Test of begin with record
+record begin
+recordbegin
+recordbeginrecord
+record begin begin begin record
+
+! Test of begin with then
+then begin
+thenbegin
+thenbeginthen
+then begin begin begin then
+
+! Test of begin with type
+type begin
+typebegin
+typebegintype
+type begin begin begin type
+
+! Test of begin with var
+var begin
+varbegin
+varbeginvar
+var begin begin begin var
+
+! Test of begin with while
+while begin
+whilebegin
+whilebeginwhile
+while begin begin begin while
+
+! Test of begin with .
+. begin
+.begin
+.begin.
+. begin begin begin .
+
+! Test of begin with colon
+: begin
+:begin
+:begin:
+: begin begin begin :
+
+! Test of begin with ;
+; begin
+;begin
+;begin;
+; begin begin begin ;
+
+! Test of begin with ,
+, begin
+,begin
+,begin,
+, begin begin begin ,
+
+! Test of begin with becomes
+:= begin
+:=begin
+:=begin:=
+:= begin begin begin :=
+
+! Test of begin with ~
+~ begin
+~begin
+~begin~
+~ begin begin begin ~
+
+! Test of begin with (
+( begin
+(begin
+(begin(
+( begin begin begin (
+
+! Test of begin with )
+) begin
+)begin
+)begin)
+) begin begin begin )
+
+! Test of begin with [
+[ begin
+[begin
+[begin[
+[ begin begin begin [
+
+! Test of begin with ]
+] begin
+]begin
+]begin]
+] begin begin begin ]
+
+! Test of begin with {
+{ begin
+{begin
+{begin{
+{ begin begin begin {
+
+! Test of begin with }
+} begin
+}begin
+}begin}
+} begin begin begin }
+
+! Test of begin with +
++ begin
++begin
++begin+
++ begin begin begin +
+
+! Test of begin with -
+- begin
+-begin
+-begin-
+- begin begin begin -
+
+! Test of begin with asterisk
+* begin
+*begin
+*begin*
+* begin begin begin *
+
+! Test of begin with backSlash
+/ begin
+/begin
+/begin/
+/ begin begin begin /
+
+! Test of begin with =
+= begin
+=begin
+=begin=
+= begin begin begin =
+
+! Test of begin with lessThan
+< begin
+<begin
+<begin<
+< begin begin begin <
+
+! Test of begin with moreThan
+> begin
+>begin
+>begin>
+> begin begin begin >
+
+! Test of begin with slash
+\ begin
+\begin
+\begin\
+\ begin begin begin \
+
+! Test of begin with &
+& begin
+&begin
+&begin&
+& begin begin begin &
+
+! Test of begin with @
+@ begin
+@begin
+@begin@
+@ begin begin begin @
+
+! Test of begin with %
+% begin
+%begin
+%begin%
+% begin begin begin %
+
+! Test of begin with ^
+^ begin
+^begin
+^begin^
+^ begin begin begin ^
+
+! Test of begin with questionMark
+? begin
+?begin
+?begin?
+? begin begin begin ?
+
+! Test of begin with CharLiteral
+'	' begin
+'n'begin
+'h'begin'4'
+'q' begin begin begin '	'
+
+! Test of begin with IntLiteral
+992464419462494 begin
+229860122959694352begin
+85435172824326822935begin699759506365078
+2932750345708 begin begin begin 7738742432
+
+! Test of begin with Indentifier
+D59wyT4OX4C1a5u begin
+O42wu4Ye6m8bVgucTbegin
+uxKmM3PC3YTuA66Y74U7beginw4W3Em48966uz31Xq
+klQ6O3F52501NorIw3g begin begin begin q5LDpRR2reWJ678
+

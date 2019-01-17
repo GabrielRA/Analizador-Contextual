@@ -1,0 +1,8 @@
+! Test of if command, doesn't runs correctly.
+let
+  var x: Integer 
+  in
+    if (x := 12) then
+      put('z')
+    else
+      put('x')

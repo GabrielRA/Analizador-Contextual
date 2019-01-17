@@ -1,0 +1,273 @@
+! Test of asterisk with 3 units
+***
+
+! Test of asterisk with array
+array *
+array*
+array*array
+array * * * array
+
+! Test of asterisk with begin
+begin *
+begin*
+begin*begin
+begin * * * begin
+
+! Test of asterisk with const
+const *
+const*
+const*const
+const * * * const
+
+! Test of asterisk with do
+do *
+do*
+do*do
+do * * * do
+
+! Test of asterisk with else
+else *
+else*
+else*else
+else * * * else
+
+! Test of asterisk with end
+end *
+end*
+end*end
+end * * * end
+
+! Test of asterisk with func
+func *
+func*
+func*func
+func * * * func
+
+! Test of asterisk with if
+if *
+if*
+if*if
+if * * * if
+
+! Test of asterisk with in
+in *
+in*
+in*in
+in * * * in
+
+! Test of asterisk with let
+let *
+let*
+let*let
+let * * * let
+
+! Test of asterisk with of
+of *
+of*
+of*of
+of * * * of
+
+! Test of asterisk with proc
+proc *
+proc*
+proc*proc
+proc * * * proc
+
+! Test of asterisk with record
+record *
+record*
+record*record
+record * * * record
+
+! Test of asterisk with then
+then *
+then*
+then*then
+then * * * then
+
+! Test of asterisk with type
+type *
+type*
+type*type
+type * * * type
+
+! Test of asterisk with var
+var *
+var*
+var*var
+var * * * var
+
+! Test of asterisk with while
+while *
+while*
+while*while
+while * * * while
+
+! Test of asterisk with .
+. *
+.*
+.*.
+. * * * .
+
+! Test of asterisk with colon
+: *
+:*
+:*:
+: * * * :
+
+! Test of asterisk with ;
+; *
+;*
+;*;
+; * * * ;
+
+! Test of asterisk with ,
+, *
+,*
+,*,
+, * * * ,
+
+! Test of asterisk with becomes
+:= *
+:=*
+:=*:=
+:= * * * :=
+
+! Test of asterisk with ~
+~ *
+~*
+~*~
+~ * * * ~
+
+! Test of asterisk with (
+( *
+(*
+(*(
+( * * * (
+
+! Test of asterisk with )
+) *
+)*
+)*)
+) * * * )
+
+! Test of asterisk with [
+[ *
+[*
+[*[
+[ * * * [
+
+! Test of asterisk with ]
+] *
+]*
+]*]
+] * * * ]
+
+! Test of asterisk with {
+{ *
+{*
+{*{
+{ * * * {
+
+! Test of asterisk with }
+} *
+}*
+}*}
+} * * * }
+
+! Test of asterisk with +
++ *
++*
++*+
++ * * * +
+
+! Test of asterisk with -
+- *
+-*
+-*-
+- * * * -
+
+! Test of asterisk with asterisk
+* *
+**
+***
+* * * * *
+
+! Test of asterisk with backSlash
+/ *
+/*
+/*/
+/ * * * /
+
+! Test of asterisk with =
+= *
+=*
+=*=
+= * * * =
+
+! Test of asterisk with lessThan
+< *
+<*
+<*<
+< * * * <
+
+! Test of asterisk with moreThan
+> *
+>*
+>*>
+> * * * >
+
+! Test of asterisk with slash
+\ *
+\*
+\*\
+\ * * * \
+
+! Test of asterisk with &
+& *
+&*
+&*&
+& * * * &
+
+! Test of asterisk with @
+@ *
+@*
+@*@
+@ * * * @
+
+! Test of asterisk with %
+% *
+%*
+%*%
+% * * * %
+
+! Test of asterisk with ^
+^ *
+^*
+^*^
+^ * * * ^
+
+! Test of asterisk with questionMark
+? *
+?*
+?*?
+? * * * ?
+
+! Test of asterisk with CharLiteral
+'2' *
+'2'*
+'2'*'v'
+'	' * * * '4'
+
+! Test of asterisk with IntLiteral
+72175696543 *
+4047197367313*
+9707170146*837440819647
+59671777996127 * * * 0485516721
+
+! Test of asterisk with Indentifier
+erP93ubscP1b6m *
+bvf4ex013N57dbo*
+r69OW771fU9l969NF8H*xK804D2nYUeck94DlgIr
+wpd282s79o78Hdf * * * IMgwbE251yOed63VJhR0
+
