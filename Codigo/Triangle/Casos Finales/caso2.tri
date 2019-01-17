@@ -3,10 +3,10 @@
 let
    var v: Boolean;
    var w: Integer;
-   var x: Char;
+   var x: Char
 in
 begin
    v:= false;
    w:= 5;
-   x:= 'A';
+   x:= 'A'
 end
