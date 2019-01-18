@@ -1,0 +1,142 @@
+<?xml version="1.0" standalone="yes"?>
+<Program>
+<LetCommand>
+<SequentialDeclaration>
+<SequentialDeclaration>
+<SequentialDeclaration>
+<SequentialDeclaration>
+<VarDeclaration>
+<Identifier value="v"/>
+<SimpleTypeDenoter>
+<Identifier value="Boolean"/>
+</SimpleTypeDenoter>
+</VarDeclaration>
+<VarDeclaration>
+<Identifier value="w"/>
+<SimpleTypeDenoter>
+<Identifier value="Integer"/>
+</SimpleTypeDenoter>
+</VarDeclaration>
+</SequentialDeclaration>
+<VarDeclaration>
+<Identifier value="x"/>
+<SimpleTypeDenoter>
+<Identifier value="Char"/>
+</SimpleTypeDenoter>
+</VarDeclaration>
+</SequentialDeclaration>
+<VarDeclaration>
+<Identifier value="y"/>
+<ArrayTypeDenoter>
+<IntegerLiteral value="5"/>
+<SimpleTypeDenoter>
+<Identifier value="Integer"/>
+</SimpleTypeDenoter>
+</ArrayTypeDenoter>
+</VarDeclaration>
+</SequentialDeclaration>
+<VarDeclaration>
+<Identifier value="z"/>
+<RecordTypeDenoter>
+<MultipleFieldTypeDenoter>
+<Identifier value="a"/>
+<SimpleTypeDenoter>
+<Identifier value="Integer"/>
+</SimpleTypeDenoter>
+<SingleFieldTypeDenoter>
+<Identifier value="b"/>
+<SimpleTypeDenoter>
+<Identifier value="Char"/>
+</SimpleTypeDenoter>
+</SingleFieldTypeDenoter>
+</MultipleFieldTypeDenoter>
+</RecordTypeDenoter>
+</VarDeclaration>
+</SequentialDeclaration>
+<SequentialCommand>
+<AssignCommand>
+<SimpleVname>
+<Identifier value="v"/>
+</SimpleVname>
+<VnameExpression>
+<SimpleVname>
+<Identifier value="true"/>
+</SimpleVname>
+</VnameExpression>
+</AssignCommand>
+<SequentialCommand>
+<AssignCommand>
+<SimpleVname>
+<Identifier value="w"/>
+</SimpleVname>
+<IntegerExpression>
+<IntegerLiteral value="5"/>
+</IntegerExpression>
+</AssignCommand>
+<SequentialCommand>
+<AssignCommand>
+<SimpleVname>
+<Identifier value="x"/>
+</SimpleVname>
+<CharacterExpression>
+<CharacterLiteral value="'?'"/>
+</CharacterExpression>
+</AssignCommand>
+<SequentialCommand>
+<AssignCommand>
+<SimpleVname>
+<Identifier value="y"/>
+</SimpleVname>
+<ArrayExpression>
+<MultipleArrayAggregate>
+<IntegerExpression>
+<IntegerLiteral value="1"/>
+</IntegerExpression>
+<MultipleArrayAggregate>
+<IntegerExpression>
+<IntegerLiteral value="2"/>
+</IntegerExpression>
+<MultipleArrayAggregate>
+<IntegerExpression>
+<IntegerLiteral value="6"/>
+</IntegerExpression>
+<MultipleArrayAggregate>
+<IntegerExpression>
+<IntegerLiteral value="24"/>
+</IntegerExpression>
+<SingleArrayAggregate>
+<IntegerExpression>
+<IntegerLiteral value="120"/>
+</IntegerExpression>
+</SingleArrayAggregate>
+</MultipleArrayAggregate>
+</MultipleArrayAggregate>
+</MultipleArrayAggregate>
+</MultipleArrayAggregate>
+</ArrayExpression>
+</AssignCommand>
+<AssignCommand>
+<SimpleVname>
+<Identifier value="z"/>
+</SimpleVname>
+<RecordExpression>
+<MultipleRecordAggregate>
+<Identifier value="a"/>
+<IntegerExpression>
+<IntegerLiteral value="99"/>
+</IntegerExpression>
+<SingleRecordAggregate>
+<Identifier value="b"/>
+<CharacterExpression>
+<CharacterLiteral value="'z'"/>
+</CharacterExpression>
+</SingleRecordAggregate>
+</MultipleRecordAggregate>
+</RecordExpression>
+</AssignCommand>
+</SequentialCommand>
+</SequentialCommand>
+</SequentialCommand>
+</SequentialCommand>
+</LetCommand>
+</Program>

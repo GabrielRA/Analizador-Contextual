@@ -32,6 +32,7 @@ ocamlc -c Checker.ml
 ocamlc -c TokenPrinter_Pipe.ml
 ocamlc -c TokenPrinter_XML.ml
 ocamlc -c TokenPrinter_HTML.ml
+ocamlc -c IdentificationTablePrinter_XML.ml
 ocamlc -c -pp camlp4o Compiler.ml
 
 ocamlc ErrorReporter.cmo TreeDrawer.cmo TokenPrinter_Pipe.cmo TokenPrinter_XML.cmo TokenPrinter_HTML.cmo Parser.cmo Scanner.cmo IdentificationTable.cmo Checker.cmo Compiler.cmo -o Triangle.exe

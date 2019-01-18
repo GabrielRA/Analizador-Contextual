@@ -33,19 +33,21 @@ let unboxid_list t =
 let open_scope() = incr(level)
 
 let close_scope() =
+  (* Invocacion del generador de Xml del level actual id_list(List.filter (fun x -> (x.levl = !level)) (unboxid_list !identifier_list)) *)
   identifier_list := 
     Id_list(
-	  List.filter (fun x -> (x.levl != !level)) 
-	  (unboxid_list !identifier_list)
+	    List.filter (fun x -> (x.levl != !level)) 
+	    (unboxid_list !identifier_list)
     );
-  decr(level)
-    (* Invocacion del generador de Xml del level actual id_list(List.filter (fun x -> (x.levl = !level)) (unboxid_list !identifier_list)) *)     
+    decr(level)
+    
     
 
 let exists new_id =
   (List.exists (fun x -> 
-	(((String.compare x.id new_id) == 0) && (x.levl == !level))) 
-	(unboxid_list !identifier_list))
+	  (((String.compare x.id new_id) == 0) && (x.levl == !level))) 
+	  (unboxid_list !identifier_list)
+  )
     
 let enter new_id new_decl = 
   let new_entry = {id=new_id; attr=new_decl; levl=(!level)} in
@@ -54,17 +56,17 @@ let enter new_id new_decl =
 let retrieve old_Id =
   try
     (List.find 
-	  (fun x -> ((String.compare x.id old_Id) == 0)) 
-	  (unboxid_list !identifier_list)
-	).attr
+	    (fun x -> ((String.compare x.id old_Id) == 0)) 
+	    (unboxid_list !identifier_list)
+	  ).attr
     with Not_found -> ref Null_declaration
     
 let retrieve_element old_Id =
   try
     (List.find 
       (fun x -> ((String.compare x.id old_Id) == 0) && (x.levl == !level)) 
-	  (unboxid_list !identifier_list)
-	)
+	    (unboxid_list !identifier_list)
+  	)
   with Not_found -> {id="";attr=ref Null_declaration;levl=0}
 
     
@@ -85,7 +87,7 @@ let boolean_decl =
   Type_declaration(
     {pos = Lexing.dummy_pos; run = Null_runtime_entity}, 
     Identifier({pos = Lexing.dummy_pos; run = Null_runtime_entity}, "Boolean"),
-	boolean_type
+	  boolean_type
   )
   
 let char_decl = 
@@ -106,10 +108,10 @@ let false_decl =
   Const_declaration(
     {pos = Lexing.dummy_pos; run = Null_runtime_entity}, 
     Identifier({pos = Lexing.dummy_pos; run = Null_runtime_entity}, "false"),
-	Checked_expression(
-	  Empty_expression({pos = Lexing.dummy_pos; run = Null_runtime_entity}),
-	  boolean_type
-	)
+  	Checked_expression(
+  	  Empty_expression({pos = Lexing.dummy_pos; run = Null_runtime_entity}),
+  	  boolean_type
+  	)
   )
   
 let true_decl = 

@@ -1,0 +1,246 @@
+<?xml version="1.0" standalone="yes"?>
+<Program>
+<LetCommand>
+<SequentialDeclaration>
+<SequentialDeclaration>
+<SequentialDeclaration>
+<SequentialDeclaration>
+<VarDeclaration>
+<Identifier value="v"/>
+<BoolTypeDenoter/>
+</VarDeclaration>
+<VarDeclaration>
+<Identifier value="w"/>
+<IntTypeDenoter/>
+</VarDeclaration>
+</SequentialDeclaration>
+<VarDeclaration>
+<Identifier value="x"/>
+<CharTypeDenoter/>
+</VarDeclaration>
+</SequentialDeclaration>
+<VarDeclaration>
+<Identifier value="y"/>
+<ArrayTypeDenoter>
+<IntegerLiteral value="5"/>
+<IntTypeDenoter/>
+</ArrayTypeDenoter>
+</VarDeclaration>
+</SequentialDeclaration>
+<VarDeclaration>
+<Identifier value="z"/>
+<RecordTypeDenoter>
+<MultipleFieldTypeDenoter>
+<Identifier value="a"/>
+<IntTypeDenoter/>
+<SingleFieldTypeDenoter>
+<Identifier value="b"/>
+<CharTypeDenoter/>
+</SingleFieldTypeDenoter>
+</MultipleFieldTypeDenoter>
+</RecordTypeDenoter>
+</VarDeclaration>
+</SequentialDeclaration>
+<SequentialCommand>
+<AssignCommand>
+<CheckedVname variable="true" indexed="false" offset="0">
+<SimpleVname>
+<CheckedIdentifier>
+<Identifier value="v"/>
+</CheckedIdentifier>
+</SimpleVname>
+<BoolTypeDenoter/>
+</CheckedVname>
+<CheckedExpression>
+<VnameExpression>
+<CheckedVname variable="false" indexed="false" offset="0">
+<SimpleVname>
+<CheckedIdentifier>
+<Identifier value="true"/>
+</CheckedIdentifier>
+</SimpleVname>
+<BoolTypeDenoter/>
+</CheckedVname>
+</VnameExpression>
+<BoolTypeDenoter/>
+</CheckedExpression>
+</AssignCommand>
+<SequentialCommand>
+<AssignCommand>
+<CheckedVname variable="true" indexed="false" offset="0">
+<SimpleVname>
+<CheckedIdentifier>
+<Identifier value="w"/>
+</CheckedIdentifier>
+</SimpleVname>
+<IntTypeDenoter/>
+</CheckedVname>
+<CheckedExpression>
+<IntegerExpression>
+<IntegerLiteral value="5"/>
+</IntegerExpression>
+<IntTypeDenoter/>
+</CheckedExpression>
+</AssignCommand>
+<SequentialCommand>
+<AssignCommand>
+<CheckedVname variable="true" indexed="false" offset="0">
+<SimpleVname>
+<CheckedIdentifier>
+<Identifier value="x"/>
+</CheckedIdentifier>
+</SimpleVname>
+<CharTypeDenoter/>
+</CheckedVname>
+<CheckedExpression>
+<CharacterExpression>
+<CharacterLiteral value="'?'"/>
+</CharacterExpression>
+<CharTypeDenoter/>
+</CheckedExpression>
+</AssignCommand>
+<SequentialCommand>
+<AssignCommand>
+<CheckedVname variable="true" indexed="false" offset="0">
+<SimpleVname>
+<CheckedIdentifier>
+<Identifier value="y"/>
+</CheckedIdentifier>
+</SimpleVname>
+<ArrayTypeDenoter>
+<IntegerLiteral value="5"/>
+<IntTypeDenoter/>
+</ArrayTypeDenoter>
+</CheckedVname>
+<CheckedExpression>
+<ArrayExpression>
+<CheckedArrayAggregate elementCount="5">
+<MultipleArrayAggregate>
+<CheckedExpression>
+<IntegerExpression>
+<IntegerLiteral value="1"/>
+</IntegerExpression>
+<IntTypeDenoter/>
+</CheckedExpression>
+<CheckedArrayAggregate elementCount="4">
+<MultipleArrayAggregate>
+<CheckedExpression>
+<IntegerExpression>
+<IntegerLiteral value="2"/>
+</IntegerExpression>
+<IntTypeDenoter/>
+</CheckedExpression>
+<CheckedArrayAggregate elementCount="3">
+<MultipleArrayAggregate>
+<CheckedExpression>
+<IntegerExpression>
+<IntegerLiteral value="6"/>
+</IntegerExpression>
+<IntTypeDenoter/>
+</CheckedExpression>
+<CheckedArrayAggregate elementCount="2">
+<MultipleArrayAggregate>
+<CheckedExpression>
+<IntegerExpression>
+<IntegerLiteral value="24"/>
+</IntegerExpression>
+<IntTypeDenoter/>
+</CheckedExpression>
+<CheckedArrayAggregate elementCount="1">
+<SingleArrayAggregate>
+<CheckedExpression>
+<IntegerExpression>
+<IntegerLiteral value="120"/>
+</IntegerExpression>
+<IntTypeDenoter/>
+</CheckedExpression>
+</SingleArrayAggregate>
+</CheckedArrayAggregate>
+</MultipleArrayAggregate>
+</CheckedArrayAggregate>
+</MultipleArrayAggregate>
+</CheckedArrayAggregate>
+</MultipleArrayAggregate>
+</CheckedArrayAggregate>
+</MultipleArrayAggregate>
+</CheckedArrayAggregate>
+</ArrayExpression>
+<ArrayTypeDenoter>
+<IntegerLiteral value="5"/>
+<IntTypeDenoter/>
+</ArrayTypeDenoter>
+</CheckedExpression>
+</AssignCommand>
+<AssignCommand>
+<CheckedVname variable="true" indexed="false" offset="0">
+<SimpleVname>
+<CheckedIdentifier>
+<Identifier value="z"/>
+</CheckedIdentifier>
+</SimpleVname>
+<RecordTypeDenoter>
+<MultipleFieldTypeDenoter>
+<Identifier value="a"/>
+<IntTypeDenoter/>
+<SingleFieldTypeDenoter>
+<Identifier value="b"/>
+<CharTypeDenoter/>
+</SingleFieldTypeDenoter>
+</MultipleFieldTypeDenoter>
+</RecordTypeDenoter>
+</CheckedVname>
+<CheckedExpression>
+<RecordExpression>
+<CheckedRecordAggregate>
+<MultipleRecordAggregate>
+<Identifier value="a"/>
+<CheckedExpression>
+<IntegerExpression>
+<IntegerLiteral value="99"/>
+</IntegerExpression>
+<IntTypeDenoter/>
+</CheckedExpression>
+<CheckedRecordAggregate>
+<SingleRecordAggregate>
+<Identifier value="b"/>
+<CheckedExpression>
+<CharacterExpression>
+<CharacterLiteral value="'z'"/>
+</CharacterExpression>
+<CharTypeDenoter/>
+</CheckedExpression>
+</SingleRecordAggregate>
+<SingleFieldTypeDenoter>
+<Identifier value="b"/>
+<CharTypeDenoter/>
+</SingleFieldTypeDenoter>
+</CheckedRecordAggregate>
+</MultipleRecordAggregate>
+<MultipleFieldTypeDenoter>
+<Identifier value="a"/>
+<IntTypeDenoter/>
+<SingleFieldTypeDenoter>
+<Identifier value="b"/>
+<CharTypeDenoter/>
+</SingleFieldTypeDenoter>
+</MultipleFieldTypeDenoter>
+</CheckedRecordAggregate>
+</RecordExpression>
+<RecordTypeDenoter>
+<MultipleFieldTypeDenoter>
+<Identifier value="a"/>
+<IntTypeDenoter/>
+<SingleFieldTypeDenoter>
+<Identifier value="b"/>
+<CharTypeDenoter/>
+</SingleFieldTypeDenoter>
+</MultipleFieldTypeDenoter>
+</RecordTypeDenoter>
+</CheckedExpression>
+</AssignCommand>
+</SequentialCommand>
+</SequentialCommand>
+</SequentialCommand>
+</SequentialCommand>
+</LetCommand>
+</Program>

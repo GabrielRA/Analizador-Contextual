@@ -2,7 +2,7 @@
 
 let func a(): Integer ~
     let var b: Integer in
-       let var c: Char in 
+       let var c: Integer in 
        		c
   
 in
