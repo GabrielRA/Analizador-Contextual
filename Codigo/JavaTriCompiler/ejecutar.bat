@@ -1,0 +1,1 @@
+java Triangle.Compiler caso1.tri

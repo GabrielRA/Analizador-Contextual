@@ -6,5 +6,3 @@ javac -cp C:\JavaTriCompiler;C:\JavaTriCompiler\Triangle Triangle/CodeGenerator/
 javac -cp C:\JavaTriCompiler;C:\JavaTriCompiler\Triangle Triangle/ContextualAnalyzer/Checker.java
 javac -cp C:\JavaTriCompiler;C:\JavaTriCompiler\Triangle Triangle/Printers/*.java
 javac -cp C:\JavaTriCompiler;C:\JavaTriCompiler\Triangle Triangle/Compiler.java
-
-java Triangle.Compiler caso1.tri
