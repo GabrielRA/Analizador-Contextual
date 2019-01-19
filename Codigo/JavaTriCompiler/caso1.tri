@@ -1,0 +1,12 @@
+! Prueba de asignacion y tipos.
+! Resultado correcto.
+let
+   var v: Boolean;
+   var w: Integer;
+   var x: Char
+in
+begin
+   v:= false;
+   w:= 5;
+   x:= 'A'
+end
