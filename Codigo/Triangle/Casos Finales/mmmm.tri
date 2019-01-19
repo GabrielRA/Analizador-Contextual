@@ -1,8 +1,8 @@
 ! Prueba de validación de tipo.
-! Resultado incorrecto - ln8->El tipo n es Integer.
+! Resultado incorrecto - ln8->no definido a.
 let
    var n: Integer
 in
    n := 0
    while n < 5 do
-	  n := 'n' + 1
+	  'a' := n + 1

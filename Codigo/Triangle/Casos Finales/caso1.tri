@@ -1,5 +1,5 @@
 ! Prueba de asignacion y tipos.
-! Resultado incorrecto.
+! Resultado correcto.
 let
    var v: Boolean;
    var w: Integer;
@@ -7,6 +7,6 @@ let
 in
 begin
    v:= false;
-   w:= '5';
+   w:= 5;
    x:= 'A'
 end

@@ -1,0 +1,10 @@
+! Prueba de validación de tipo.
+! Resultado correcto - ln8 -> el valor de b debe ser Booleano.
+let
+   var n: Integer;
+   var b: Boolean   
+in
+   n := 0;
+   b := 5
+   while n < 5 do
+	  n := n + 1;

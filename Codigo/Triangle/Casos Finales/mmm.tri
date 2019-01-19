@@ -1,0 +1,8 @@
+! Prueba de validación de tipo.
+! Resultado incorrecto - ln7->No Booleano en el While.
+let
+   var n: Integer
+in
+   n := 0
+   while n / 2 do
+	  n := n + 1
