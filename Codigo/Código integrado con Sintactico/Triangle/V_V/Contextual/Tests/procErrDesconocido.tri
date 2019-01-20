@@ -1,0 +1,7 @@
+! Error: proc llamado es desconocido
+
+let
+  proc Q (x : Integer) ~
+    putint (x * 2)
+in
+  P (10) ! P no está declarado

@@ -1,0 +1,17 @@
+! Con error contextual cantidad de parámetros en get
+! Modos están bien
+
+let
+
+  var a : array 10 of Char;
+
+  var b : array 10 of Integer
+
+in begin
+
+  get (var a[8], var b[2]); ! Error contextual: get espera un sólo parámetro real (argumento), pasado por variable (referencia).
+
+  putint (b [9])
+
+end
+

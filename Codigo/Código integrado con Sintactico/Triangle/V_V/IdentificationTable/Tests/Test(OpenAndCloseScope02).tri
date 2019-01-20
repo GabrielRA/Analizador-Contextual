@@ -1,0 +1,14 @@
+! Prueba de niveles de la tabla de identificacion
+let 
+  var a : Integer;
+  var b : Char
+in
+  let
+    var c : Integer;
+	var d : Boolean
+  in
+    let
+	  var e : Integer;
+	  var f : Char
+	in
+	  putint(2);

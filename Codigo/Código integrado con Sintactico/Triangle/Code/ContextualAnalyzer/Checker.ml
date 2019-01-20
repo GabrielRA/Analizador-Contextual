@@ -151,7 +151,7 @@ and check_expression e = match e with
           Null_declaration -> report_undeclared_identifier i; e
         | Func_declaration(_,_,fps,t,_)
         | Formal_parameter_declaration(_,Func_formal_parameter(_,_,fps,t)) ->
-		    Checked_expression(Call_expression(ix,iType,(check_actual_parameter_sequence ap fps)),t)
+		      Checked_expression(Call_expression(ix,iType,(check_actual_parameter_sequence ap fps)),t)
         | _ -> 
 		    ErrorReporter.report_error (
 		      (identifier_name i) 
@@ -336,22 +336,18 @@ and check_vname v = match v with
         Checked_identifier(_,d) -> 
           (match !d with
             Const_declaration(_,_,e) ->
-			  Checked_vname(
-			    Simple_vname(ix,idType),
-				false,
-				false,
-				0,
-				(match (check_expression e) with 
+      			  Checked_vname(Simple_vname(ix,idType),false,false,0,
+      				  (match (check_expression e) with 
                   Checked_expression(_,t) -> t 
                 | _ -> Error_type_denoter(ix)
-				)
-			  )
+      				  )
+      			  )
           | Var_declaration(_,_,t) -> 
-		      Checked_vname(Simple_vname(ix,idType), true, false, 0, t)
+  	        Checked_vname(Simple_vname(ix,idType), true, false, 0, t)
           | Formal_parameter_declaration(_,Const_formal_parameter(_,_,t)) ->
-              Checked_vname(Simple_vname(ix,idType), false, false, 0, t)
+            Checked_vname(Simple_vname(ix,idType), false, false, 0, t)
           | Formal_parameter_declaration(_,Var_formal_parameter(_,_,t)) -> 
-		      Checked_vname(Simple_vname(ix,idType), true, false, 0, t)
+  	        Checked_vname(Simple_vname(ix,idType), true, false, 0, t)
           | _ -> ErrorReporter.report_error ((identifier_name id) ^ " is not a const or var Identifier") ix.pos; v
           )
       | _ -> v
@@ -421,15 +417,15 @@ and check_declaration d = match d with
 | Proc_declaration(ix,i,fps,c) ->
     if (IdentificationTable.exists (identifier_name i)) then
       ErrorReporter.report_error ("Identifier " ^ (identifier_name i) ^ " already declared") ix.pos;
-      IdentificationTable.enter (identifier_name i) (ref (Proc_declaration(ix,i,fps,c)));
-      let elem = IdentificationTable.retrieve_element (identifier_name i) in
-        IdentificationTable.open_scope();
-      let fpsType = (check_formal_parameter_sequence fps) in
-        elem.attr <- (ref (Proc_declaration(ix,i,fpsType,c)));
-      let cType = (check_command c) in
-        IdentificationTable.close_scope();
-      elem.attr <- (ref (Proc_declaration(ix,i,fpsType,cType)));
-      !(IdentificationTable.retrieve (identifier_name i))
+    IdentificationTable.enter (identifier_name i) (ref (Proc_declaration(ix,i,fps,c)));
+    let elem = IdentificationTable.retrieve_element (identifier_name i) in
+      IdentificationTable.open_scope();
+    let fpsType = (check_formal_parameter_sequence fps) in
+      elem.attr <- (ref (Proc_declaration(ix,i,fpsType,c)));
+    let cType = (check_command c) in
+      IdentificationTable.close_scope();
+    elem.attr <- (ref (Proc_declaration(ix,i,fpsType,cType)));
+    !(IdentificationTable.retrieve (identifier_name i))
 	  
 | Func_declaration(ix,i,fps,t,e) -> 
     let tType = (check_type_denoter t) in

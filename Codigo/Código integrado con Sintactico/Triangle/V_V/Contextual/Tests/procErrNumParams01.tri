@@ -1,0 +1,7 @@
+! Error: proc llamado con demasiados parámetros
+
+let
+  proc P (x : Integer) ~
+    putint (x * 2)
+in
+  P (10, 20) ! Demasiados parámetros reales (argumentos)

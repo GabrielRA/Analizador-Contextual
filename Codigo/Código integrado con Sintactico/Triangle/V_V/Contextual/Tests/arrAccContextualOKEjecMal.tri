@@ -1,0 +1,17 @@
+! Sin errores contextuales
+! Debe dar error de mal acceso a arreglo EN TIEMPO DE EJECUCIÓN
+
+let
+
+  var a : array 10 of Char;
+
+  var b : array 10 of Integer
+
+in begin
+
+  get (var a[19]); ! Sin error contextual.  Con error de ejecución (si se están verificando cotas de arreglos).
+
+  putint (b [9])
+
+end
+

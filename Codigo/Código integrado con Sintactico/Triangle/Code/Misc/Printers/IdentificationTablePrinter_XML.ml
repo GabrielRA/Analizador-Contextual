@@ -9,16 +9,16 @@ in which it will be written). It is responsible for creating the file *)
 let buf = ref ("<?xml version=\"1.0\" standalone=\"yes\"?>\n")
 
 let write_open_scope_declarations level =
-  buf := ("<Nivel"^(string_of_int level)^"/>\n")
+  buf := (!buf ^ "<Nivel"^(string_of_int level)^">\n")
 
 
 let rec write_close_scope_declarations level decl_list =
   match decl_list with
-    [] -> buf := (!buf ^("<Nivel"^ (string_of_int level) ^"/>\n"))
+    [] -> buf := (!buf ^("</Nivel"^ (string_of_int level) ^">\n"))
   | _  -> 
     let decl = 
       (List.hd decl_list) in 
-        buf := !buf ^("<Declaration id=\"" ^ decl.id ^ "\" level=\"" ^ (string_of_int level)^ "\"/>\n" );
+        buf := (!buf ^("<Declaration id=\"" ^ decl.id ^ "\" level=\"" ^ (string_of_int level)^ "\"/>\n" ));
         write_close_scope_declarations level (List.tl decl_list) 
 
 let write_file file_name =

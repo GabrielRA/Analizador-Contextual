@@ -1,0 +1,16 @@
+! Con error contextual en tipo de argumento enviado a putint
+
+let
+
+  var a : array 10 of Char;
+
+  var b : array 10 of Integer
+
+in begin
+
+  get (var b[2]); 
+
+  putint (a [5]) ! Error contextual: putint espera un parámetro de tipo Integer.
+
+end
+

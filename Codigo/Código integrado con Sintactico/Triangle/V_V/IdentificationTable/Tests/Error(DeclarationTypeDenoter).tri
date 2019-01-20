@@ -1,0 +1,14 @@
+! Prueba El tipo de la declaracion
+let 
+  var a : int;
+  var b : char
+in
+  let
+    var c : int;
+	var d : boolean
+  in
+    let
+	  var e : int;
+	  var f : char
+	in
+	  put(2);
