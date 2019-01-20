@@ -7,8 +7,7 @@
 (* --------------------------------------------- *)
 
 open Ast
-
-type id_entry = {mutable id: string; mutable attr: ast_declaration ref; mutable levl: int}
+open Id_entry
 
 val open_scope: unit -> unit
 val close_scope: unit -> unit

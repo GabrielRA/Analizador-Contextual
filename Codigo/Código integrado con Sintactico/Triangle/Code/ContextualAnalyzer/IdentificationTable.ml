@@ -14,8 +14,8 @@ Last modification: January, 2019
 
 open Ast
 open RuntimeEntity
-
-type id_entry = {mutable id: string; mutable attr: ast_declaration ref; mutable levl: int}
+open Id_entry
+open IdentificationTablePrinter_XML
 
 type id_list = 
   Nullid_list
@@ -30,10 +30,18 @@ let unboxid_list t =
     Nullid_list -> []
   | Id_list s -> s
 
-let open_scope() = incr(level)
+let open_scope() = 
+  incr(level);
+  write_open_scope_declarations !level
 
 let close_scope() =
   (* Invocacion del generador de Xml del level actual id_list(List.filter (fun x -> (x.levl = !level)) (unboxid_list !identifier_list)) *)
+  write_close_scope_declarations
+  !level
+  (unboxid_list (Id_list(
+      List.filter (fun x -> (x.levl = !level)) 
+      (unboxid_list !identifier_list)
+    )));
   identifier_list := 
     Id_list(
 	    List.filter (fun x -> (x.levl != !level)) 

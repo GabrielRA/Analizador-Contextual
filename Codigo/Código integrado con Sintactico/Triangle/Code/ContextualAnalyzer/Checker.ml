@@ -16,6 +16,7 @@ open Parser
 open Ast
 open ErrorReporter
 open IdentificationTable
+open Id_entry
 
 (* Reports an Identifier as undeclared *)
 let rec report_undeclared_identifier a = match a with

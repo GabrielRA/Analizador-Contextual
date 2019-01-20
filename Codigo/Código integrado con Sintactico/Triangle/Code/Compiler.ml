@@ -17,6 +17,8 @@ open Scanner
 open ErrorReporter
 open Printf
 open Lexing
+open IdentificationTable
+open IdentificationTablePrinter_XML
 
 (** File output variables for printers *)
 let output_file = ref "a.out"
@@ -113,6 +115,7 @@ let compile inpt outpt =
   begin
      printf "Contextual Analysis ...\n";
      dastree := Checker.check_program !astree;
+     write_file "tabla.xml"
      (* Uncomment the generation of code *)
      (*
      if (ErrorReporter.num_errors() == 0) then
