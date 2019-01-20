@@ -1,0 +1,57 @@
+<?xml version="1.0" standalone="yes"?>
+<Program>
+<LetCommand>
+<SequentialDeclaration>
+<SequentialDeclaration>
+<VarDeclaration>
+<Identifier value="v"/>
+<SimpleTypeDenoter>
+<Identifier value="Boolean"/>
+</SimpleTypeDenoter>
+</VarDeclaration>
+<VarDeclaration>
+<Identifier value="w"/>
+<SimpleTypeDenoter>
+<Identifier value="Integer"/>
+</SimpleTypeDenoter>
+</VarDeclaration>
+</SequentialDeclaration>
+<VarDeclaration>
+<Identifier value="x"/>
+<SimpleTypeDenoter>
+<Identifier value="Char"/>
+</SimpleTypeDenoter>
+</VarDeclaration>
+</SequentialDeclaration>
+<SequentialCommand>
+<SequentialCommand>
+<AssignCommand>
+<SimpleVname>
+<Identifier value="v"/>
+</SimpleVname>
+<VnameExpression>
+<SimpleVname>
+<Identifier value="false"/>
+</SimpleVname>
+</VnameExpression>
+</AssignCommand>
+<AssignCommand>
+<SimpleVname>
+<Identifier value="w"/>
+</SimpleVname>
+<IntegerExpression>
+<IntegerLiteral value="5"/>
+</IntegerExpression>
+</AssignCommand>
+</SequentialCommand>
+<AssignCommand>
+<SimpleVname>
+<Identifier value="x"/>
+</SimpleVname>
+<CharacterExpression>
+<CharacterLiteral value="'A'"/>
+</CharacterExpression>
+</AssignCommand>
+</SequentialCommand>
+</LetCommand>
+</Program>

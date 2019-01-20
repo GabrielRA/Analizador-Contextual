@@ -1,0 +1,8 @@
+! Prueba de validación de tipo.
+! Resultado incorrecto - ln8->no definido a.
+let
+   var n: Integer
+in
+   n := 0
+   while n < 5 do
+	  'a' := n + 1

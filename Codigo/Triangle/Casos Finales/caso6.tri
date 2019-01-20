@@ -1,8 +1,11 @@
 ! Prueba de validación de tipo.
-! Resultado incorrecto - ln8->no definido a.
+! Resultado correcto.
 let
-   var n: Integer
+   var n: Integer;
+   var c: Char
+   
 in
    n := 0
    while n < 5 do
-	  'a' := n + 1
+      c := 'A' + 1
+	  n := n + 1

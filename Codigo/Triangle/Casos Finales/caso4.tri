@@ -1,8 +1,8 @@
 ! Prueba de validación de tipo.
-! Resultado incorrecto - ln7->No Booleano en el While.
+! Resultado incorrecto - ln8->El tipo n es Integer.
 let
    var n: Integer
 in
    n := 0
-   while n / 2 do
-	  n := n + 1
+   while n < 5 do
+	  n := 'n' + 1
