@@ -6,7 +6,7 @@ open Printf
 (** This function receives the AST to be printed and the name of the file
 in which it will be written). It is responsible for creating the file *)
 
-let buf = ref ("<?xml version=\"1.0\" standalone=\"yes\"?>\n")
+let buf = ref ("<?xml version=\"1.0\" standalone=\"yes\"?>\n<Table>\n")
 
 let write_open_scope_declarations level =
   buf := (!buf ^ "<Nivel"^(string_of_int level)^">\n")
@@ -22,6 +22,7 @@ let rec write_close_scope_declarations level decl_list =
         write_close_scope_declarations level (List.tl decl_list) 
 
 let write_file file_name =
+  buf := (!buf ^ "</Table>");
   let chan = open_out file_name in
     output_string chan !buf;
     close_out_noerr chan

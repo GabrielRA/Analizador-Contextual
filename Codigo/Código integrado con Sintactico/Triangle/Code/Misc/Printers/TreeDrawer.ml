@@ -1,14 +1,14 @@
 (**
-This program was originally written by Luis Leopoldo Pérez on April 12, 2006.
+This program was originally written by Luis Leopoldo PÃ©rez on April 12, 2006.
 This program was reviewed, repaired, completed, verified, and validated by
 students of ITCR in January 2019
 Abstract Syntax Tree Drawing Library for Caml-Triangle
 Implementation file
 
-@author Luis Leopoldo Pérez
-@author Jose Antonio Alpízar Aguilar
-@author Pablo Josué Brenes Jimenes
-@author Luis José Castillo Valverde
+@author Luis Leopoldo PÃ©rez
+@author Jose Antonio AlpÃ­zar Aguilar
+@author Pablo JosuÃ© Brenes Jimenes
+@author Luis JosÃ© Castillo Valverde
 *)
 
 open Ast

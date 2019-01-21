@@ -1,0 +1,19 @@
+! En una misma abstraccion (funcion, procedimiento), cada parametro debe aparecer una sola vez en la secuencia
+
+let
+  var pru : Integer;
+  proc P (var x : Integer, y : Integer, x : Char ) ~ ! Error: no debe repetirse un nombre en una misma secuencia de parametros formales 
+    putint (x * 2) ! Implementacion en Pascal si permite la repeticion y falla el tipo, porque usa la segunda ocurrencia de x
+    ! La implementacion en Java si detecta el parametro repetido y da un error
+in
+  P (var pru, pru, 'a') ! Esta no es la fuente del error
+
+
+! Consola de la implementacion en Java:
+! ********** Triangle Compiler (IDE-Triangle 1.0) **********
+! Syntactic Analysis ...
+! Contextual Analysis ...
+! ERROR: duplicated formal parameter "x" 5..5
+! ERROR: wrong argument type for "*" 6..6
+! Compilation was unsuccessful.
+

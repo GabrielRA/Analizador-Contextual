@@ -133,9 +133,15 @@ public final class WriterVisitor implements Visitor {
 
   // Expressions
   public Object visitArrayExpression(ArrayExpression ast, Object obj) {
+    if(ast.type == null){
+      writeLineHTML("<CheckedExpression>");
+    }
     writeLineHTML("<ArrayExpression>");
     ast.AA.visit(this, null);
     writeLineHTML("</ArrayExpression>");
+    if(ast.type == null){
+      writeLineHTML("</CheckedExpression>");
+    }
     return null;
   }
 

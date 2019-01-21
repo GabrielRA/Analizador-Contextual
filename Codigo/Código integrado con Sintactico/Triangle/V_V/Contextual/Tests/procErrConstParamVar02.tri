@@ -1,4 +1,4 @@
-! Error: proc llamado con argumento const para parámetro var
+! Error: proc llamado con argumento const para parametro var
 
 let
   const k ~ 10;

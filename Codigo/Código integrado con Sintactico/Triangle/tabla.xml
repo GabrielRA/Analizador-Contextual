@@ -1,5 +1,7 @@
 <?xml version="1.0" standalone="yes"?>
+<Table>
 <Nivel1>
 <Declaration id="b" level="1"/>
 <Declaration id="a" level="1"/>
 </Nivel1>
+</Table>

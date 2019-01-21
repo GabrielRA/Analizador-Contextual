@@ -1,0 +1,7 @@
+!Doble declaracion del mismo identificador en el mismo nivel
+!Da error
+let
+  const x ~ 2;
+  const x ~ 3
+in
+  putint(x)

@@ -1,0 +1,7 @@
+! Chequeo de parametros con nombres repetidos
+! Da error
+let
+  func a(var par1 : Char, var par1 : Integer): Char ~ 'C';
+  proc b(var par2 : Char, var par2 : Integer) ~ if true then else
+in
+  ;

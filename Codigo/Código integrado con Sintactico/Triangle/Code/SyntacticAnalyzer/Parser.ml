@@ -1,733 +1,817 @@
+open Parsing;;
+let _ = parse_error;;
+# 2 "Parser.mly"
+
 (**
-This program was written by students of ITCR in January 2019.
-This program is the Parser component of the Triangle's language compiler.
+This program was originally written by Luis Leopoldo Pérez on April 12, 2006.
+This program was reviewed, repaired, completed, verified, and validated by students of ITCR in January 2019.
+LParser generator file (ocamlyacc) for Caml-Triangle                                    
 
-@author Jose Antonio AlpÃ­zar Aguilar
-@author Pablo JosuÃ© Brenes Jimenes
-@author Luis JosÃ© Castillo Valverde
-
+@author Luis Leopoldo Pérez
+@author Jose Antonio Alpízar Aguilar
+@author Pablo Josué Brenes Jimenes
+@author Luis José Castillo Valverde
 *)
 
 
+
 open Ast
+open Parsing
 open ErrorReporter
-open Lexing
 open RuntimeEntity
 open Token
 
 (** This is the declaration of exception of program *)
 exception Synt_error of string;;
 
-(**
-This function is used to report errors.
+let parse_error s = ()
+# 65 "Parser.ml"
+let yytransl_const = [|
+  261 (* Array *);
+  262 (* Begin *);
+  263 (* Const *);
+  264 (* Do *);
+  265 (* Else *);
+  266 (* End *);
+  267 (* Func *);
+  268 (* If *);
+  269 (* In *);
+  270 (* Let *);
+  271 (* Of *);
+  272 (* Proc *);
+  273 (* Record *);
+  274 (* Then *);
+  275 (* Type *);
+  276 (* Var *);
+  277 (* While *);
+  278 (* Dot *);
+  279 (* Colon *);
+  280 (* Semicolon *);
+  281 (* Comma *);
+  282 (* Becomes *);
+  283 (* Is *);
+  284 (* Lparen *);
+  285 (* Rparen *);
+  286 (* Lbracket *);
+  287 (* Rbracket *);
+  288 (* Lcurly *);
+  289 (* Rcurly *);
+  290 (* Eof *);
+    0|]
 
-@param in_token Is the input token
-@return returns a string that decribes the token.
-*)
-let token_to_str in_token = (
-  match in_token with
-    Int_literal(a) -> "integer literal"
-  | Char_literal(a) -> "character literal"
-  | Identifier(a) -> "identifier"
-  | Operator(a) -> "operator"
-  | Array -> "array"
-  | Begin -> "begin"
-  | Const -> "const"
-  | Do -> "do"
-  | Else -> "else"
-  | End -> "end"
-  | Func -> "func"
-  | If -> "if"
-  | In -> "in"
-  | Let -> "let"
-  | Of -> "of"
-  | Proc -> "proc"
-  | Record -> "record"
-  | Then -> "then"
-  | Type -> "type"
-  | Var -> "var"
-  | While -> "while"
-  | Dot -> "."
-  | Colon -> ":"
-  | Semicolon -> ";"
-  | Comma -> ","
-  | Becomes -> ":="
-  | Is -> "~"
-  | Lparen -> "("
-  | Rparen -> ")"
-  | Lbracket -> "["
-  | Rbracket -> "]"
-  | Lcurly -> "{"
-  | Rcurly -> "}"
-  | Eof -> "end of file");;
+let yytransl_block = [|
+  257 (* Int_literal *);
+  258 (* Char_literal *);
+  259 (* Identifier *);
+  260 (* Operator *);
+    0|]
 
-(**
-  This is the main function.
+let yylhs = "\255\255\
+\001\000\002\000\002\000\003\000\003\000\003\000\003\000\003\000\
+\003\000\003\000\003\000\005\000\005\000\005\000\005\000\009\000\
+\009\000\010\000\010\000\010\000\010\000\010\000\010\000\010\000\
+\010\000\014\000\014\000\015\000\015\000\004\000\004\000\004\000\
+\008\000\008\000\008\000\016\000\016\000\016\000\016\000\016\000\
+\018\000\018\000\019\000\019\000\020\000\020\000\020\000\020\000\
+\020\000\007\000\007\000\021\000\021\000\022\000\022\000\022\000\
+\022\000\017\000\017\000\017\000\017\000\023\000\023\000\012\000\
+\013\000\006\000\011\000\000\000"
 
-  @param scan_func is the function given by scanner
-  @param lb is the lex buffer given by scanner
+let yylen = "\002\000\
+\002\000\001\000\003\000\000\000\003\000\004\000\003\000\004\000\
+\006\000\004\000\001\000\001\000\004\000\006\000\001\000\001\000\
+\003\000\001\000\001\000\001\000\004\000\002\000\003\000\003\000\
+\003\000\003\000\005\000\001\000\003\000\001\000\003\000\004\000\
+\001\000\003\000\001\000\004\000\004\000\007\000\009\000\004\000\
+\000\000\001\000\001\000\003\000\003\000\004\000\005\000\007\000\
+\001\000\000\000\001\000\001\000\003\000\001\000\002\000\002\000\
+\002\000\001\000\004\000\003\000\001\000\003\000\005\000\001\000\
+\001\000\001\000\001\000\002\000"
 
-  @return The Ast program in there aren't errors, in the other case
-  returns Null_program
-*)
-let parse_program scan_func lb = (
+let yydefred = "\000\000\
+\000\000\000\000\011\000\066\000\000\000\000\000\000\000\000\000\
+\068\000\000\000\002\000\000\000\000\000\000\000\015\000\064\000\
+\065\000\067\000\000\000\000\000\000\000\000\000\000\000\000\000\
+\000\000\000\000\000\000\016\000\000\000\018\000\019\000\035\000\
+\000\000\000\000\000\000\000\000\000\000\000\000\033\000\000\000\
+\000\000\001\000\000\000\000\000\000\000\000\000\007\000\000\000\
+\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\
+\000\000\022\000\000\000\000\000\000\000\000\000\000\000\000\000\
+\000\000\000\000\003\000\031\000\005\000\000\000\000\000\000\000\
+\000\000\054\000\000\000\051\000\000\000\000\000\000\000\023\000\
+\000\000\025\000\000\000\024\000\000\000\000\000\017\000\000\000\
+\000\000\000\000\000\000\000\000\008\000\034\000\010\000\032\000\
+\057\000\056\000\000\000\030\000\006\000\000\000\000\000\013\000\
+\029\000\000\000\000\000\021\000\036\000\049\000\000\000\000\000\
+\000\000\000\000\000\000\042\000\000\000\000\000\061\000\000\000\
+\000\000\058\000\040\000\037\000\053\000\000\000\000\000\009\000\
+\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\
+\000\000\000\000\014\000\027\000\000\000\000\000\000\000\045\000\
+\000\000\044\000\000\000\000\000\000\000\060\000\000\000\000\000\
+\046\000\000\000\038\000\059\000\000\000\000\000\047\000\000\000\
+\000\000\000\000\039\000\063\000\048\000"
 
-  (** current_token is the principal variable of function, the ref (Eof) is
-  only the initial value. *)
-  let rec current_token = ref (Eof)
+let yydgoto = "\002\000\
+\009\000\010\000\011\000\024\000\074\000\026\000\075\000\038\000\
+\027\000\028\000\029\000\030\000\031\000\054\000\052\000\039\000\
+\123\000\115\000\116\000\117\000\076\000\077\000\138\000"
 
+let yysindex = "\005\000\
+\101\255\000\000\000\000\000\000\101\255\172\255\118\255\172\255\
+\000\000\243\254\000\000\054\255\246\254\248\254\000\000\000\000\
+\000\000\000\000\172\255\118\255\172\255\172\255\012\255\009\255\
+\006\255\051\255\033\255\000\000\186\255\000\000\000\000\000\000\
+\012\255\012\255\012\255\012\255\012\255\252\254\000\000\073\255\
+\101\255\000\000\012\255\172\255\172\255\151\255\000\000\075\255\
+\032\255\066\255\080\255\077\255\087\255\067\255\101\255\151\255\
+\186\255\000\000\090\255\093\255\096\255\105\255\112\255\101\255\
+\192\255\101\255\000\000\000\000\000\000\108\255\012\255\012\255\
+\012\255\000\000\099\255\000\000\120\255\172\255\172\255\000\000\
+\172\255\000\000\172\255\000\000\134\255\121\255\000\000\172\255\
+\058\255\058\255\047\255\047\255\000\000\000\000\000\000\000\000\
+\000\000\000\000\009\255\000\000\000\000\151\255\147\255\000\000\
+\000\000\132\255\101\255\000\000\000\000\000\000\012\255\012\255\
+\012\255\135\255\130\255\000\000\141\255\139\255\000\000\168\255\
+\012\255\000\000\000\000\000\000\000\000\172\255\012\255\000\000\
+\142\255\149\255\155\255\047\255\157\255\058\255\158\255\167\255\
+\169\255\181\255\000\000\000\000\058\255\058\255\047\255\000\000\
+\047\255\000\000\101\255\047\255\047\255\000\000\164\255\165\255\
+\000\000\170\255\000\000\000\000\171\255\175\255\000\000\172\255\
+\012\255\047\255\000\000\000\000\000\000"
 
-  (** This funcion is to move along the chain of tokens
-    @return the next token usign the functions of scanner.
-  *)
-  and accept_it () = current_token := scan_func lb
+let yyrindex = "\000\000\
+\043\255\000\000\000\000\000\000\251\254\000\000\000\000\000\000\
+\000\000\000\000\000\000\000\000\097\255\000\000\000\000\000\000\
+\000\000\000\000\000\000\000\000\000\000\000\000\000\000\225\255\
+\000\000\197\255\252\255\000\000\000\000\000\000\000\000\000\000\
+\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\
+\017\255\000\000\000\000\000\000\000\000\166\255\000\000\000\000\
+\000\000\000\000\178\255\000\000\000\000\000\000\204\255\166\255\
+\000\000\000\000\000\000\000\000\000\000\000\000\000\000\004\255\
+\000\000\004\255\000\000\000\000\000\000\000\000\000\000\000\000\
+\000\000\000\000\000\000\000\000\188\255\000\000\000\000\000\000\
+\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\
+\191\255\191\255\000\000\000\000\000\000\000\000\000\000\000\000\
+\000\000\000\000\069\255\000\000\000\000\000\000\000\000\000\000\
+\000\000\190\255\004\255\000\000\000\000\000\000\000\000\000\000\
+\000\000\000\000\000\000\000\000\195\255\000\000\000\000\000\000\
+\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\
+\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\
+\000\000\000\000\000\000\000\000\191\255\191\255\000\000\000\000\
+\000\000\000\000\049\255\000\000\000\000\000\000\000\000\000\000\
+\000\000\000\000\000\000\000\000\215\255\000\000\000\000\000\000\
+\000\000\000\000\000\000\000\000\000\000"
 
-  (**
-    This function is to get an especific token from the chain of tokens.
-    @param expected_token is the input token
-    @return the next token if is correct, otherwise raise an exception.
-  *)
-  and accept expected_token = (
-    if (!current_token == expected_token) then
-      accept_it()
-    else begin
-      let error_message = token_to_str (!current_token) ^ " expected here" in
-      ErrorReporter.report_error error_message lb.Lexing.lex_curr_p;
-      raise (Synt_error "Syntactical error")
-    end
-  )
+let yygindex = "\000\000\
+\000\000\227\000\245\255\002\000\004\000\255\255\180\000\217\000\
+\000\000\228\255\212\000\120\000\000\000\114\000\161\000\179\000\
+\210\255\174\255\111\000\000\000\144\000\000\000\086\000"
 
-  (*   parse_integer_literal parses an integer-literal, and constructs
-       a leaf Ast to represent it. *)
-  and parse_integer_literal () = (
-    match !current_token with
-    | Int_literal(a) ->
-      begin
-        let ast =
-          Integer_literal({pos = lb.lex_curr_p; run = Null_runtime_entity}, a)
-        in
-        accept_it();
-        ast
-      end
-    | _ ->
-      begin
-        let error_message = token_to_str(!current_token) ^ "  expected here" in
-        ErrorReporter.report_error error_message lb.Lexing.lex_curr_p;
-        raise (Synt_error "Syntactical error")
-      end
-  )
+let yytablesize = 286
+let yytable = "\013\000\
+\058\000\047\000\012\000\013\000\004\000\001\000\012\000\118\000\
+\064\000\025\000\041\000\040\000\004\000\004\000\004\000\041\000\
+\004\000\046\000\004\000\065\000\042\000\053\000\048\000\055\000\
+\050\000\051\000\004\000\004\000\087\000\067\000\043\000\059\000\
+\060\000\061\000\062\000\063\000\018\000\004\000\045\000\013\000\
+\004\000\068\000\012\000\085\000\079\000\124\000\119\000\069\000\
+\070\000\004\000\004\000\120\000\093\000\013\000\095\000\065\000\
+\012\000\110\000\151\000\152\000\004\000\004\000\013\000\121\000\
+\013\000\012\000\004\000\012\000\111\000\097\000\098\000\100\000\
+\004\000\112\000\099\000\043\000\004\000\113\000\056\000\044\000\
+\066\000\103\000\104\000\045\000\051\000\144\000\106\000\114\000\
+\114\000\122\000\122\000\109\000\078\000\055\000\080\000\128\000\
+\153\000\055\000\154\000\084\000\003\000\156\000\157\000\004\000\
+\081\000\013\000\005\000\082\000\012\000\129\000\130\000\131\000\
+\006\000\083\000\007\000\165\000\088\000\032\000\030\000\137\000\
+\089\000\008\000\030\000\090\000\033\000\053\000\030\000\101\000\
+\034\000\139\000\122\000\091\000\114\000\035\000\092\000\155\000\
+\036\000\037\000\096\000\114\000\114\000\122\000\107\000\122\000\
+\102\000\013\000\122\000\122\000\012\000\108\000\015\000\016\000\
+\017\000\004\000\018\000\126\000\127\000\132\000\133\000\137\000\
+\122\000\071\000\019\000\163\000\020\000\134\000\072\000\135\000\
+\016\000\141\000\073\000\015\000\016\000\017\000\004\000\018\000\
+\142\000\143\000\021\000\145\000\022\000\148\000\023\000\019\000\
+\147\000\020\000\016\000\017\000\004\000\018\000\150\000\149\000\
+\158\000\159\000\050\000\161\000\160\000\162\000\033\000\021\000\
+\030\000\022\000\034\000\023\000\030\000\030\000\030\000\035\000\
+\028\000\030\000\036\000\037\000\004\000\021\000\030\000\022\000\
+\052\000\023\000\030\000\041\000\030\000\030\000\026\000\043\000\
+\062\000\030\000\030\000\030\000\020\000\030\000\030\000\014\000\
+\020\000\020\000\020\000\086\000\049\000\020\000\057\000\136\000\
+\140\000\105\000\020\000\094\000\146\000\125\000\164\000\000\000\
+\020\000\020\000\000\000\000\000\000\000\020\000\000\000\020\000\
+\000\000\020\000\020\000\012\000\012\000\012\000\000\000\000\000\
+\012\000\000\000\000\000\000\000\000\000\012\000\000\000\000\000\
+\000\000\000\000\000\000\012\000\012\000\000\000\000\000\000\000\
+\012\000\000\000\012\000\000\000\012\000\012\000"
 
-  (*   parse_char_literal parses an char-literal, and constructs
-       a leaf Ast to represent it. *)
-  and parse_char_literal () = (
-    match !current_token with
-    | Char_literal(a) ->
-      begin
-        let ast =
-          Character_literal({pos = lb.lex_curr_p; run = Null_runtime_entity}, a)
-        in
-        accept_it();
-        ast
-        end
-    | _ ->
-      begin
-        let error_message = token_to_str(!current_token) ^ "  expected here" in
-        ErrorReporter.report_error error_message lb.Lexing.lex_curr_p;
-        raise (Synt_error "Syntactical error")
-      end
-  )
+let yycheck = "\001\000\
+\029\000\010\001\001\000\005\000\010\001\001\000\005\000\090\000\
+\013\001\006\000\024\001\008\000\009\001\010\001\003\001\024\001\
+\013\001\028\001\024\001\024\001\034\001\023\000\019\000\018\001\
+\021\000\022\000\010\001\024\001\057\000\041\000\022\001\033\000\
+\034\000\035\000\036\000\037\000\004\001\034\001\030\001\041\000\
+\024\001\043\000\041\000\055\000\013\001\092\000\000\001\044\000\
+\045\000\003\001\034\001\005\001\064\000\055\000\066\000\024\001\
+\055\000\000\001\141\000\142\000\003\001\013\001\064\000\017\001\
+\066\000\064\000\024\001\066\000\011\001\071\000\072\000\073\000\
+\024\001\016\001\073\000\022\001\034\001\020\001\028\001\026\001\
+\008\001\078\000\079\000\030\001\081\000\132\000\083\000\089\000\
+\090\000\091\000\092\000\088\000\018\001\025\001\029\001\107\000\
+\143\000\029\001\145\000\033\001\000\001\148\000\149\000\003\001\
+\025\001\107\000\006\001\031\001\107\000\111\000\112\000\113\000\
+\012\001\027\001\014\001\162\000\027\001\000\001\022\001\121\000\
+\028\001\021\001\026\001\028\001\007\001\127\000\030\001\029\001\
+\011\001\126\000\132\000\027\001\134\000\016\001\023\001\147\000\
+\019\001\020\001\031\001\141\000\142\000\143\000\009\001\145\000\
+\025\001\147\000\148\000\149\000\147\000\029\001\000\001\001\001\
+\002\001\003\001\004\001\009\001\025\001\023\001\029\001\161\000\
+\162\000\011\001\012\001\160\000\014\001\025\001\016\001\029\001\
+\001\001\028\001\020\001\000\001\001\001\002\001\003\001\004\001\
+\028\001\023\001\028\001\023\001\030\001\015\001\032\001\012\001\
+\027\001\014\001\001\001\002\001\003\001\004\001\010\001\023\001\
+\029\001\029\001\029\001\025\001\027\001\023\001\007\001\028\001\
+\004\001\030\001\011\001\032\001\008\001\009\001\010\001\016\001\
+\031\001\013\001\019\001\020\001\009\001\028\001\018\001\030\001\
+\029\001\032\001\022\001\029\001\024\001\025\001\033\001\029\001\
+\010\001\029\001\030\001\031\001\004\001\033\001\034\001\005\000\
+\008\001\009\001\010\001\056\000\020\000\013\001\027\000\120\000\
+\127\000\081\000\018\001\065\000\134\000\102\000\161\000\255\255\
+\024\001\025\001\255\255\255\255\255\255\029\001\255\255\031\001\
+\255\255\033\001\034\001\008\001\009\001\010\001\255\255\255\255\
+\013\001\255\255\255\255\255\255\255\255\018\001\255\255\255\255\
+\255\255\255\255\255\255\024\001\025\001\255\255\255\255\255\255\
+\029\001\255\255\031\001\255\255\033\001\034\001"
 
-  (*   parse_identifier parses an identifier-literal, and constructs
-       a leaf Ast to represent it. *) 
-  and parse_identifier () = (
-    match !current_token with
-    | Identifier(a) ->
-      begin
-        let ast =
-          Ast.Identifier({pos = lb.lex_curr_p; run = Null_runtime_entity}, a) in
-        accept_it();
-        ast
-      end
-    | _ ->
-      begin
-        let error_message = token_to_str(!current_token) ^ "  expected here" in
-        ErrorReporter.report_error error_message lb.Lexing.lex_curr_p;
-        raise (Synt_error "Syntactical error")
-      end
-  )
+let yynames_const = "\
+  Array\000\
+  Begin\000\
+  Const\000\
+  Do\000\
+  Else\000\
+  End\000\
+  Func\000\
+  If\000\
+  In\000\
+  Let\000\
+  Of\000\
+  Proc\000\
+  Record\000\
+  Then\000\
+  Type\000\
+  Var\000\
+  While\000\
+  Dot\000\
+  Colon\000\
+  Semicolon\000\
+  Comma\000\
+  Becomes\000\
+  Is\000\
+  Lparen\000\
+  Rparen\000\
+  Lbracket\000\
+  Rbracket\000\
+  Lcurly\000\
+  Rcurly\000\
+  Eof\000\
+  "
 
-  (*   parse_operator parses an operator-literal, and constructs
-       a leaf Ast to represent it. *) 
-  and parse_operator () = (
-    match !current_token with
-    | Operator(a) ->
-      begin
-        let ast =
-          Ast.Operator({pos = lb.lex_curr_p; run = Null_runtime_entity}, a) in
-        accept_it();
-        ast
-      end
-    | _ ->
-      begin
-        let error_message = token_to_str(!current_token) ^ "  expected here" in
-        ErrorReporter.report_error error_message lb.Lexing.lex_curr_p;
-        raise (Synt_error "Syntactical error")
-      end
-  )
+let yynames_block = "\
+  Int_literal\000\
+  Char_literal\000\
+  Identifier\000\
+  Operator\000\
+  "
 
-  (*  parse_single_command is part of parse_command (read below). *)
-  and parse_single_command ()  = (
-    match !current_token with
-    | Identifier(a) ->
-      begin
-        let i_ast = (parse_identifier()) in
-        match !current_token with
-        | Lparen ->
-          begin
-            accept_it();
-            let aps_ast = (parse_actual_parameter_sequence()) in
-            accept Rparen;
-            let ast_info = {pos = lb.lex_curr_p; run = Null_runtime_entity} in 
-            Call_command(ast_info, i_ast, aps_ast)
-          end
-        | _ ->
-          begin
-            let v_ast = parse_rest_of_vname(i_ast) in
-            accept Becomes;
-            let e_ast = (parse_expression()) in
-            let ast_info = {pos = lb.lex_curr_p; run = Null_runtime_entity} in 
-            Assign_command(ast_info, v_ast, e_ast)
-          end
-      end
-    | Begin ->
-      begin
-        accept_it();
-        let c_ast = parse_command() in
-        accept End;
-        c_ast
-      end
-    | Let ->
-      begin
-        accept_it();
-        let d_ast = parse_declaration() in
-        accept In;
-        let sc_ast = parse_single_command() in
-        let ast_info = {pos = lb.lex_curr_p; run = Null_runtime_entity} in
-        Let_command(ast_info, d_ast, sc_ast)
-      end
-    | If ->
-      begin
-        accept_it();
-        let e_ast = parse_expression() in
-        accept Then;
-        let sc1_ast = parse_single_command() in
-        accept Else;
-        let sc2_ast = parse_single_command() in
-        let ast_info = {pos = lb.lex_curr_p; run = Null_runtime_entity} in 
-        If_command(ast_info, e_ast, sc1_ast, sc2_ast)
-      end
-    | While ->
-      begin
-        accept_it();
-        let e_ast = parse_expression() in
-        accept Do;
-        let sc_ast = parse_single_command() in
-        let ast_info = {pos = lb.lex_curr_p; run = Null_runtime_entity} in
-        While_command(ast_info, e_ast, sc_ast)
-       end
-    | Semicolon
-    | End
-    | Else
-    | In
-    | Eof ->
-      Empty_command({pos = lb.lex_curr_p; run = Null_runtime_entity})
-    | _ ->
-      begin
-        let error_message = 
-          token_to_str(!current_token) ^ "  cannot start a command" in
-        ErrorReporter.report_error error_message lb.Lexing.lex_curr_p;
-        raise (Synt_error "Syntactical error")
-      end
-  )
-
-  (*parse_command parses the command, and constructs an Ast
-    to represent its phrase structure. *)
-  and parse_command ()  = (
-    let c1_ast = ref (parse_single_command()) in
-    while (!current_token == Semicolon) do
-      accept_it();
-      let c2_ast = parse_single_command() in
-      let ast_info = {pos = lb.lex_curr_p; run = Null_runtime_entity} in
-      c1_ast := Sequential_command(ast_info, !c1_ast, c2_ast)   
-    done;
-    !c1_ast
-  )
-
-
-  (*parse_expression parses the expression and constructs an Ast to represent
-    its structure.
-    This function uses other functions to divide the problem and check
-    correctly the expression.
-  *)
-  and parse_expression ()  = (
-    match !current_token with
-    | Let ->
-      accept_it();
-      let d_ast = parse_declaration() in
-      accept In;
-      let e_ast = parse_expression() in
-      let ast_info = {pos = lb.lex_curr_p; run = Null_runtime_entity} in
-      let expression_ast = Let_expression(ast_info, d_ast, e_ast) in
-      expression_ast
-    | If ->
-      accept_it();
-      let e1_ast = parse_expression() in
-      accept Then;
-      let e2_ast = parse_expression() in
-      accept Else;
-      let e3_ast = parse_expression() in
-      let ast_info = {pos = lb.lex_curr_p; run = Null_runtime_entity} in
-      let expression_ast = If_expression(ast_info, e1_ast, e2_ast, e3_ast) in
-      expression_ast
-    | _ ->
-      let expression_ast = parse_secondary_expression() in
-      expression_ast
-  )
-
-  (*parse_record_aggregate parses the expression of Record and returns an Ast.*)
-  and parse_record_aggregate ()  = (
-    let i_ast = parse_identifier() in
-    accept Is;
-    let e_ast = parse_expression() in
-    if (!current_token == Comma) then begin
-      accept_it();
-      let a_ast = parse_record_aggregate() in
-      let ast_info = {pos = lb.lex_curr_p; run = Null_runtime_entity} in
-      let aggregate_ast =
-        Multiple_record_aggregate(ast_info, i_ast, e_ast, a_ast) in
-      aggregate_ast
-    end else begin
-      let ast_info = {pos = lb.lex_curr_p; run = Null_runtime_entity} in
-      let aggregate_ast = Single_record_aggregate(ast_info, i_ast, e_ast) in
-      aggregate_ast
-    end
-  )
-
-  (*parse_array_aggregate parses the expression of Array and returns an Ast. *)
-  and parse_array_aggregate ()  = (
-    let e_ast = parse_expression() in
-    if (!current_token == Comma) then begin
-      accept_it();
-      let a_ast = parse_array_aggregate() in
-      let ast_info = {pos = lb.lex_curr_p; run = Null_runtime_entity} in
-      let aggregate_ast = Multiple_array_aggregate(ast_info, e_ast, a_ast) in
-      aggregate_ast
-    end else begin
-      let ast_info = {pos = lb.lex_curr_p; run = Null_runtime_entity} in
-      let aggregate_ast = Single_array_aggregate(ast_info, e_ast) in
-      aggregate_ast
-    end
-  )
-
-
-  (** parse_primary_expression parses an estricted form of expression *)
-  and parse_primary_expression ()  = (
-    match !current_token with
-    | Int_literal(a) ->
-      let i1_ast = parse_integer_literal() in
-      let ast_info = {pos = lb.lex_curr_p; run = Null_runtime_entity} in
-      let expression_ast = Integer_expression(ast_info, i1_ast) in
-      expression_ast
-    | Char_literal(a) ->
-      let c1_ast = parse_char_literal() in
-      let ast_info = {pos = lb.lex_curr_p; run = Null_runtime_entity} in
-      let expression_ast = Character_expression(ast_info, c1_ast) in
-      expression_ast
-    | Lbracket ->
-      accept_it();
-      let aa_ast = parse_array_aggregate() in
-      accept Rbracket;
-      let ast_info = {pos = lb.lex_curr_p; run = Null_runtime_entity} in
-      let expression_ast = Array_expression(ast_info, aa_ast) in
-      expression_ast
-    | Lcurly ->
-      accept_it();
-      let ra_ast = parse_record_aggregate() in
-      accept Rcurly;
-      let ast_info = {pos = lb.lex_curr_p; run = Null_runtime_entity} in
-      let expression_ast = Record_expression(ast_info, ra_ast) in
-      expression_ast
-    | Identifier(a) ->
-      let i_ast = parse_identifier() in
-      if (!current_token == Lparen) then begin
-        accept_it();
-        let aps_ast = parse_actual_parameter_sequence() in
-        accept Rparen;
-        let ast_info = {pos = lb.lex_curr_p; run = Null_runtime_entity} in
-        let expression_ast = Call_expression(ast_info, i_ast, aps_ast) in
-        expression_ast
-      end else begin
-        let v_ast = (parse_rest_of_vname(i_ast)) in
-        let ast_info = {pos = lb.lex_curr_p; run = Null_runtime_entity} in
-        let expression_ast = Vname_expression(ast_info, v_ast) in
-        expression_ast      
-      end
-    | Operator(a) ->
-      let op_ast = parse_operator() in
-      let e_ast = parse_primary_expression() in
-      let ast_info = {pos = lb.lex_curr_p; run = Null_runtime_entity} in
-      let expression_ast = Unary_expression(ast_info, op_ast, e_ast) in
-      expression_ast
-    | Lparen ->
-      accept_it();
-      let expression_ast = parse_expression() in
-      accept Rparen;
-      expression_ast
-    | _ ->
-      begin
-        let error_message =
-          token_to_str(!current_token) ^ "  cannot start an expression" in
-        ErrorReporter.report_error error_message lb.Lexing.lex_curr_p;
-        raise (Synt_error "Syntactical error")
-      end
-  )
-
-  (** parse_secondary_expression parses an estricted form of expression *)
-  and parse_secondary_expression ()  = (
-    let expression_ast = ref (parse_primary_expression()) in
-    while (
-      match !current_token with
-      | Operator(a) -> true
-      | _ -> false) 
-    do
-      let op_ast = parse_operator() in
-      let e2_ast = parse_primary_expression() in
-      let ast_info = {pos = lb.lex_curr_p; run = Null_runtime_entity} in
-      expression_ast :=
-        Binary_expression(ast_info, !expression_ast, op_ast, e2_ast)
-    done;
-    !expression_ast
-  )
-
-  (*parse_vname parses the name of variable and checks if the variable
-    is from record and return the Ast *)
-  and parse_vname ()  =
-    let i_ast = parse_identifier() in
-    let v_ast = parse_rest_of_vname(i_ast) in
-    v_ast
-
-  (** parse_rest_of_vname parses identifier with '.' or '[' and return the Ast*)
-  and parse_rest_of_vname i_ast  = (
-    let ast_info = {pos = lb.lex_curr_p; run = Null_runtime_entity} in
-    let v_ast = ref (Simple_vname(ast_info, i_ast)) in
-    while (!current_token == Dot || !current_token == Lbracket) do
-      if (!current_token == Dot) then begin
-        accept_it();
-        let i_ast = parse_identifier() in
-        let ast_info = {pos = lb.lex_curr_p; run = Null_runtime_entity} in
-        v_ast := Dot_vname(ast_info, !v_ast, i_ast)
-      end else begin
-        accept_it();
-        let e_ast = parse_expression() in
-        accept Rbracket;
-        let ast_info = {pos = lb.lex_curr_p; run = Null_runtime_entity} in
-        v_ast := Subscript_vname(ast_info, !v_ast, e_ast)
-      end
-    done;
-    !v_ast
-  )
-
-  (** parse_single_declaration parses a restricted form of declaration and
-      return the Ast *)
-  and parse_single_declaration ()  = (
-    match !current_token with
-    | Const ->
-      accept_it();
-      let i_ast = parse_identifier() in
-      accept Is;
-      let e_ast = parse_expression() in
-      let ast_info = {pos = lb.lex_curr_p; run = Null_runtime_entity} in
-      let declaration_ast = Const_declaration(ast_info, i_ast, e_ast) in
-      declaration_ast
-    | Var ->
-      accept_it();
-      let i_ast = parse_identifier() in
-      accept Colon;
-      let t_ast = parse_type_denoter() in
-      let ast_info = {pos = lb.lex_curr_p; run = Null_runtime_entity} in
-      let declaration_ast = Var_declaration(ast_info, i_ast, t_ast) in
-      declaration_ast
-    | Proc ->
-      accept_it();
-      let i_ast = parse_identifier() in
-      accept Lparen;
-      let fps_ast = parse_formal_parameter_sequence() in
-      accept Rparen;
-      accept Is;
-      let c_ast = parse_single_command() in
-      let ast_info = {pos = lb.lex_curr_p; run = Null_runtime_entity} in
-      let declaration_ast = Proc_declaration(ast_info, i_ast, fps_ast, c_ast) in
-      declaration_ast
-    | Func ->
-      accept_it();
-      let i_ast = parse_identifier() in
-      accept Lparen;
-      let fps_ast = parse_formal_parameter_sequence() in
-      accept Rparen;
-      accept Colon;
-      let t_ast = parse_type_denoter() in
-      accept Is;
-      let e_ast = parse_expression() in
-      let ast_info = {pos = lb.lex_curr_p; run = Null_runtime_entity} in
-      let declaration_ast =
-        Func_declaration(ast_info, i_ast, fps_ast, t_ast, e_ast) in
-      declaration_ast
-    | Type ->
-      accept_it();
-      let i_ast = parse_identifier() in
-      accept Is;
-      let t_ast = parse_type_denoter() in
-      let ast_info = {pos = lb.lex_curr_p; run = Null_runtime_entity} in
-      let declaration_ast = Type_declaration(ast_info, i_ast, t_ast) in
-      declaration_ast
-    | _ ->
-      let error_message =
-        token_to_str(!current_token) ^ "  cannot start a declaration" in
-      ErrorReporter.report_error error_message lb.Lexing.lex_curr_p;
-      raise (Synt_error "Syntactical error")
-  )
-
-  (** parse_declaration parses the declarations that are used to produce
-      bindings, and return the Ast *)
-  and parse_declaration ()  = (
-    let declaration_ast = ref (parse_single_declaration()) in
-    while !current_token == Semicolon do
-      accept_it();
-      let d2_ast = parse_single_declaration() in
-      let ast_info = {pos = lb.lex_curr_p; run = Null_runtime_entity} in
-      declaration_ast :=
-        Sequential_declaration(ast_info, !declaration_ast, d2_ast)
-    done;
-    !declaration_ast
-    )
-
-  (** parse_proper_formal_parameter_sequence parses the sequence of parameteres
-      with parse_formal_parameter *)
-  and parse_proper_formal_parameter_sequence ()  = (
-    let fp_ast = parse_formal_parameter() in
-    if (!current_token == Comma) then begin
-      accept_it();
-      let fps_ast = parse_proper_formal_parameter_sequence() in
-      let ast_info = {pos = lb.lex_curr_p; run = Null_runtime_entity} in
-      let formals_ast =
-        Multiple_formal_parameter_sequence(ast_info, fp_ast, fps_ast) in
-      formals_ast
-    end else begin
-      let ast_info = {pos = lb.lex_curr_p; run = Null_runtime_entity} in
-      let formals_ast = Single_formal_parameter_sequence(ast_info, fp_ast) in
-      formals_ast
-    end
-  )
-
-  (** parse_formal_parameter_sequence return the Ast of Formal parameter
-      sequence.*)
-  and parse_formal_parameter_sequence ()  = (
-    if (!current_token == Rparen) then begin
-      let ast_info = {pos = lb.lex_curr_p; run = Null_runtime_entity} in
-      let formals_ast = Empty_formal_parameter_sequence(ast_info) in
-      formals_ast
-    end else begin
-      let formals_ast = parse_proper_formal_parameter_sequence() in
-      formals_ast
-    end
-  )
-
-  (** parse_formal_parameter parses the parameteres and checks the type
-      denoter *)
-  and parse_formal_parameter ()  = (
-    match !current_token with
-    | Identifier(a) ->
-      let i_ast = parse_identifier() in
-      accept Colon;
-      let t_ast = parse_type_denoter() in
-      let ast_info = {pos = lb.lex_curr_p; run = Null_runtime_entity} in
-      let formal_ast = Const_formal_parameter(ast_info, i_ast, t_ast) in
-      formal_ast
-    | Var ->
-      accept_it();
-      let i_ast = parse_identifier() in
-      accept Colon;
-      let t_ast = parse_type_denoter() in
-      let ast_info = {pos = lb.lex_curr_p; run = Null_runtime_entity} in
-      let formal_ast = Var_formal_parameter(ast_info, i_ast, t_ast) in
-      formal_ast
-    | Proc ->
-      accept_it();
-      let i_ast = parse_identifier() in
-      accept Lparen;
-      let fps_ast = parse_formal_parameter_sequence() in
-      accept Rparen;
-      let ast_info = {pos = lb.lex_curr_p; run = Null_runtime_entity} in
-      let formal_ast = Proc_formal_parameter(ast_info, i_ast , fps_ast) in
-      formal_ast
-    | Func ->
-      accept_it();
-      let i_ast = parse_identifier() in
-      accept Lparen;
-      let fps_ast = parse_formal_parameter_sequence() in
-      accept Rparen;
-      accept Colon;
-      let t_ast = parse_type_denoter() in
-      let ast_info = {pos = lb.lex_curr_p; run = Null_runtime_entity} in
-      let formal_ast = Func_formal_parameter(ast_info, i_ast, fps_ast, t_ast) in
-      formal_ast
-    | _ ->
-      let error_message =
-        token_to_str(!current_token) ^ " cannot start a formal parameter" in
-      ErrorReporter.report_error error_message lb.Lexing.lex_curr_p;
-      raise (Synt_error "Syntactical error")
-  )
-
-  (** parse_actual_parameter_sequence return the Ast of Actual parameter
-      sequence. *)
-  and parse_actual_parameter_sequence ()  = (
-    if (!current_token == Rparen) then begin
-      let ast_info = {pos = lb.lex_curr_p; run = Null_runtime_entity} in
-      let actuals_ast = Empty_actual_parameter_sequence(ast_info) in
-      actuals_ast
-    end else begin
-      let actuals_ast = parse_proper_actual_paramerer_sequence() in
-      actuals_ast
-    end
-  )
-
-  (** parse_actual_parameter parses the actual parameter and returns the actual
-      Ast *)
-  and parse_actual_parameter ()  = (
-    match !current_token with
-    | Identifier(a)
-    | Int_literal(a)
-    | Char_literal(a)
-    | Operator(a) ->
-      let e_ast = parse_expression() in
-      let ast_info = {pos = lb.lex_curr_p; run = Null_runtime_entity} in
-      let actual_ast = Const_actual_parameter(ast_info, e_ast) in
-      actual_ast
-    | Let
-    | If
-    | Lparen
-    | Lbracket
-    | Lcurly ->
-      let e_ast = parse_expression() in
-      let ast_info = {pos = lb.lex_curr_p; run = Null_runtime_entity} in
-      let actual_ast = Const_actual_parameter(ast_info, e_ast) in
-      actual_ast
-    | Var ->
-      accept_it();
-      let i_ast = parse_vname() in
-      let ast_info = {pos = lb.lex_curr_p; run = Null_runtime_entity} in
-      let actual_ast = Var_actual_parameter(ast_info, i_ast) in
-      actual_ast
-    | Proc ->
-      accept_it();
-      let i_ast = parse_identifier() in
-      let ast_info = {pos = lb.lex_curr_p; run = Null_runtime_entity} in
-      let actual_ast = Proc_actual_parameter(ast_info, i_ast) in
-      actual_ast
-    | Func ->
-      accept_it();
-      let i_ast = parse_identifier() in
-      let ast_info = {pos = lb.lex_curr_p; run = Null_runtime_entity} in
-      let actual_ast = Func_actual_parameter(ast_info, i_ast) in
-      actual_ast
-    | _ ->
-      let error_message =
-        token_to_str(!current_token) ^ " cannot start an actual parameter" in
-      ErrorReporter.report_error error_message lb.Lexing.lex_curr_p;
-      raise (Synt_error "Syntactical error")
-  )
-
-  (** parse_proper_actual_paramerer_sequence parses the sequence of parameteres
-      with parse_actual_parameter *)
-  and parse_proper_actual_paramerer_sequence ()  = (
-    let ap_ast = parse_actual_parameter() in
-    if (!current_token == Comma) then begin
-      accept_it();
-      let aps_ast = parse_proper_actual_paramerer_sequence() in
-      let ast_info = {pos = lb.lex_curr_p; run = Null_runtime_entity} in
-      let actuals_ast =
-        Multiple_actual_parameter_sequence(ast_info, ap_ast, aps_ast) in 
-      actuals_ast
-    end else begin
-      let ast_info = {pos = lb.lex_curr_p; run = Null_runtime_entity} in
-      let actuals_ast = Single_actual_parameter_sequence(ast_info, ap_ast) in
-      actuals_ast
-    end
-  )
-
-  (** parse_type_denoter parses the type of every value, constant, variable,
-      function and return the Ast *)
-  and parse_type_denoter ()  = (
-    match !current_token with
-    | Identifier(a) ->
-      let i_ast = parse_identifier() in
-      let ast_info = {pos = lb.lex_curr_p; run = Null_runtime_entity} in
-      let type_ast = Simple_type_denoter(ast_info, i_ast) in
-      type_ast
-    | Array ->
-      accept_it();
-      let il_ast = parse_integer_literal() in
-      accept Of;
-      let t_ast = parse_type_denoter() in
-      let ast_info = {pos = lb.lex_curr_p; run = Null_runtime_entity} in
-      let type_ast = Array_type_denoter(ast_info, il_ast, t_ast) in
-      type_ast
-    | Record ->
-      accept_it();
-      let f_ast = parse_field_type_denoter() in
-      accept End;
-      let ast_info = {pos = lb.lex_curr_p; run = Null_runtime_entity} in
-      let type_ast = Record_type_denoter(ast_info, f_ast) in
-      type_ast
-    | _ ->
-      let error_message =
-        token_to_str(!current_token) ^ " cannot start a type denoter" in
-      ErrorReporter.report_error error_message lb.Lexing.lex_curr_p;
-      raise (Synt_error "Syntactical error")
-  )
-
-  (** parse_field_type_denoter parses a field of declaration of type denoter and
-      return the Ast*)
-  and parse_field_type_denoter ()  = (
-    let i_ast = parse_identifier() in
-    accept Colon;
-    let t_ast = parse_type_denoter() in
-    if (!current_token == Comma) then begin
-      accept_it();
-      let f_ast = parse_field_type_denoter() in
-      let ast_info = {pos = lb.lex_curr_p; run = Null_runtime_entity} in
-      let field_ast =
-        Multiple_field_type_denoter(ast_info, i_ast , t_ast, f_ast) in 
-      field_ast
-    end else begin
-      let ast_info = {pos = lb.lex_curr_p; run = Null_runtime_entity} in
-      let field_ast = Single_field_type_denoter(ast_info, i_ast , t_ast) in
-      field_ast
-    end
-  ) in
-
-  (** Here the function become to parse the program, beginning from
-      parse_command and returns the Ast program*)
-  (
-    current_token := (scan_func lb);
-    let ast_command = parse_command() in
-    if (!current_token <> Eof) then begin
-      ErrorReporter.report_error "End of File expected." lb.Lexing.lex_curr_p;
-      raise (Synt_error "End Of file expected");   
-    end else begin
-      let ast_info = {pos = lb.lex_curr_p; run = Null_runtime_entity} in
-      let ast_program = Program(ast_info, ast_command) in
-      ast_program
-    end
-  )
-)
+let yyact = [|
+  (fun _ -> failwith "parser")
+; (fun __caml_parser_env ->
+    let _1 = (Parsing.peek_val __caml_parser_env 1 : 'Command) in
+    Obj.repr(
+# 51 "Parser.mly"
+                             ( Program({pos=rhs_start_pos(1);run=Null_runtime_entity}, _1) )
+# 331 "Parser.ml"
+               : Ast.ast_program))
+; (fun __caml_parser_env ->
+    let _1 = (Parsing.peek_val __caml_parser_env 0 : 'single_Command) in
+    Obj.repr(
+# 56 "Parser.mly"
+                                          ( _1 )
+# 338 "Parser.ml"
+               : 'Command))
+; (fun __caml_parser_env ->
+    let _1 = (Parsing.peek_val __caml_parser_env 2 : 'Command) in
+    let _3 = (Parsing.peek_val __caml_parser_env 0 : 'single_Command) in
+    Obj.repr(
+# 57 "Parser.mly"
+                                          ( Sequential_command({pos=rhs_start_pos(1);run=Null_runtime_entity}, _1, _3) )
+# 346 "Parser.ml"
+               : 'Command))
+; (fun __caml_parser_env ->
+    Obj.repr(
+# 60 "Parser.mly"
+                                                                      ( Empty_command({pos=rhs_start_pos(1);run=Null_runtime_entity}) )
+# 352 "Parser.ml"
+               : 'single_Command))
+; (fun __caml_parser_env ->
+    let _1 = (Parsing.peek_val __caml_parser_env 2 : 'Vname) in
+    let _3 = (Parsing.peek_val __caml_parser_env 0 : 'Expression) in
+    Obj.repr(
+# 61 "Parser.mly"
+                                                                      ( Assign_command({pos=rhs_start_pos(1);run=Null_runtime_entity}, _1, _3) )
+# 360 "Parser.ml"
+               : 'single_Command))
+; (fun __caml_parser_env ->
+    let _1 = (Parsing.peek_val __caml_parser_env 3 : 'R_Identifier) in
+    let _3 = (Parsing.peek_val __caml_parser_env 1 : 'Actual_Parameter_Sequence) in
+    Obj.repr(
+# 62 "Parser.mly"
+                                                                        ( Call_command({pos=rhs_start_pos(1);run=Null_runtime_entity}, _1, _3) )
+# 368 "Parser.ml"
+               : 'single_Command))
+; (fun __caml_parser_env ->
+    let _2 = (Parsing.peek_val __caml_parser_env 1 : 'Command) in
+    Obj.repr(
+# 63 "Parser.mly"
+                                                                      ( _2 )
+# 375 "Parser.ml"
+               : 'single_Command))
+; (fun __caml_parser_env ->
+    let _2 = (Parsing.peek_val __caml_parser_env 2 : 'Declaration) in
+    let _4 = (Parsing.peek_val __caml_parser_env 0 : 'single_Command) in
+    Obj.repr(
+# 64 "Parser.mly"
+                                                                      ( Let_command({pos=rhs_start_pos(1);run=Null_runtime_entity}, _2, _4) )
+# 383 "Parser.ml"
+               : 'single_Command))
+; (fun __caml_parser_env ->
+    let _2 = (Parsing.peek_val __caml_parser_env 4 : 'Expression) in
+    let _4 = (Parsing.peek_val __caml_parser_env 2 : 'single_Command) in
+    let _6 = (Parsing.peek_val __caml_parser_env 0 : 'single_Command) in
+    Obj.repr(
+# 65 "Parser.mly"
+                                                                      ( If_command({pos=rhs_start_pos(1);run=Null_runtime_entity}, _2, _4, _6) )
+# 392 "Parser.ml"
+               : 'single_Command))
+; (fun __caml_parser_env ->
+    let _2 = (Parsing.peek_val __caml_parser_env 2 : 'Expression) in
+    let _4 = (Parsing.peek_val __caml_parser_env 0 : 'single_Command) in
+    Obj.repr(
+# 66 "Parser.mly"
+                                                                      ( While_command({pos=rhs_start_pos(1);run=Null_runtime_entity}, _2, _4) )
+# 400 "Parser.ml"
+               : 'single_Command))
+; (fun __caml_parser_env ->
+    Obj.repr(
+# 67 "Parser.mly"
+                                                                      ( ErrorReporter.report_error "Cannot start a command." (rhs_start_pos(1)); 
+                                                                        raise (Synt_error "Syntactical error") )
+# 407 "Parser.ml"
+               : 'single_Command))
+; (fun __caml_parser_env ->
+    let _1 = (Parsing.peek_val __caml_parser_env 0 : 'secondary_Expression) in
+    Obj.repr(
+# 72 "Parser.mly"
+                                                             ( _1 )
+# 414 "Parser.ml"
+               : 'Expression))
+; (fun __caml_parser_env ->
+    let _2 = (Parsing.peek_val __caml_parser_env 2 : 'Declaration) in
+    let _4 = (Parsing.peek_val __caml_parser_env 0 : 'Expression) in
+    Obj.repr(
+# 73 "Parser.mly"
+                                                             ( Let_expression({pos=rhs_start_pos(1);run=Null_runtime_entity}, _2, _4) )
+# 422 "Parser.ml"
+               : 'Expression))
+; (fun __caml_parser_env ->
+    let _2 = (Parsing.peek_val __caml_parser_env 4 : 'Expression) in
+    let _4 = (Parsing.peek_val __caml_parser_env 2 : 'Expression) in
+    let _6 = (Parsing.peek_val __caml_parser_env 0 : 'Expression) in
+    Obj.repr(
+# 74 "Parser.mly"
+                                                             ( If_expression({pos=rhs_start_pos(1);run=Null_runtime_entity}, _2, _4, _6) )
+# 431 "Parser.ml"
+               : 'Expression))
+; (fun __caml_parser_env ->
+    Obj.repr(
+# 75 "Parser.mly"
+                                                             ( ErrorReporter.report_error "Cannot start a expression." (rhs_start_pos(1)); 
+                                                               raise (Synt_error "Syntactical error") )
+# 438 "Parser.ml"
+               : 'Expression))
+; (fun __caml_parser_env ->
+    let _1 = (Parsing.peek_val __caml_parser_env 0 : 'primary_Expression) in
+    Obj.repr(
+# 80 "Parser.mly"
+                                                                       ( _1 )
+# 445 "Parser.ml"
+               : 'secondary_Expression))
+; (fun __caml_parser_env ->
+    let _1 = (Parsing.peek_val __caml_parser_env 2 : 'secondary_Expression) in
+    let _2 = (Parsing.peek_val __caml_parser_env 1 : 'R_Operator) in
+    let _3 = (Parsing.peek_val __caml_parser_env 0 : 'primary_Expression) in
+    Obj.repr(
+# 81 "Parser.mly"
+                                                                         ( Binary_expression({pos=rhs_start_pos(1);run=Null_runtime_entity}, _1, _2, _3) )
+# 454 "Parser.ml"
+               : 'secondary_Expression))
+; (fun __caml_parser_env ->
+    let _1 = (Parsing.peek_val __caml_parser_env 0 : 'Integer_Literal) in
+    Obj.repr(
+# 84 "Parser.mly"
+                                                                       ( Integer_expression({pos=rhs_start_pos(1); run=Null_runtime_entity}, _1) )
+# 461 "Parser.ml"
+               : 'primary_Expression))
+; (fun __caml_parser_env ->
+    let _1 = (Parsing.peek_val __caml_parser_env 0 : 'Character_Literal) in
+    Obj.repr(
+# 85 "Parser.mly"
+                                                                       ( Character_expression({pos=rhs_start_pos(1);run=Null_runtime_entity},_1) )
+# 468 "Parser.ml"
+               : 'primary_Expression))
+; (fun __caml_parser_env ->
+    let _1 = (Parsing.peek_val __caml_parser_env 0 : 'Vname) in
+    Obj.repr(
+# 86 "Parser.mly"
+                                                                       ( Vname_expression({pos=rhs_start_pos(1);run=Null_runtime_entity}, _1) )
+# 475 "Parser.ml"
+               : 'primary_Expression))
+; (fun __caml_parser_env ->
+    let _1 = (Parsing.peek_val __caml_parser_env 3 : 'R_Identifier) in
+    let _3 = (Parsing.peek_val __caml_parser_env 1 : 'Actual_Parameter_Sequence) in
+    Obj.repr(
+# 87 "Parser.mly"
+                                                                         ( Call_expression({pos=rhs_start_pos(1);run=Null_runtime_entity}, _1, _3) )
+# 483 "Parser.ml"
+               : 'primary_Expression))
+; (fun __caml_parser_env ->
+    let _1 = (Parsing.peek_val __caml_parser_env 1 : 'R_Operator) in
+    let _2 = (Parsing.peek_val __caml_parser_env 0 : 'primary_Expression) in
+    Obj.repr(
+# 88 "Parser.mly"
+                                                                         ( Unary_expression({pos=rhs_start_pos(1);run=Null_runtime_entity}, _1, _2) )
+# 491 "Parser.ml"
+               : 'primary_Expression))
+; (fun __caml_parser_env ->
+    let _2 = (Parsing.peek_val __caml_parser_env 1 : 'Expression) in
+    Obj.repr(
+# 89 "Parser.mly"
+                                                                       ( _2 )
+# 498 "Parser.ml"
+               : 'primary_Expression))
+; (fun __caml_parser_env ->
+    let _2 = (Parsing.peek_val __caml_parser_env 1 : 'Record_Aggregate) in
+    Obj.repr(
+# 90 "Parser.mly"
+                                                                       ( Record_expression({pos=rhs_start_pos(1);run=Null_runtime_entity}, _2) )
+# 505 "Parser.ml"
+               : 'primary_Expression))
+; (fun __caml_parser_env ->
+    let _2 = (Parsing.peek_val __caml_parser_env 1 : 'Array_Aggregate) in
+    Obj.repr(
+# 91 "Parser.mly"
+                                                                       ( Array_expression({pos=rhs_start_pos(1);run=Null_runtime_entity}, _2) )
+# 512 "Parser.ml"
+               : 'primary_Expression))
+; (fun __caml_parser_env ->
+    let _1 = (Parsing.peek_val __caml_parser_env 2 : 'R_Identifier) in
+    let _3 = (Parsing.peek_val __caml_parser_env 0 : 'Expression) in
+    Obj.repr(
+# 95 "Parser.mly"
+                                                                    ( Single_record_aggregate({pos=rhs_start_pos(1);run=Null_runtime_entity}, _1, _3) )
+# 520 "Parser.ml"
+               : 'Record_Aggregate))
+; (fun __caml_parser_env ->
+    let _1 = (Parsing.peek_val __caml_parser_env 4 : 'R_Identifier) in
+    let _3 = (Parsing.peek_val __caml_parser_env 2 : 'Expression) in
+    let _5 = (Parsing.peek_val __caml_parser_env 0 : 'Record_Aggregate) in
+    Obj.repr(
+# 96 "Parser.mly"
+                                                                    ( Multiple_record_aggregate({pos=rhs_start_pos(1);run=Null_runtime_entity}, _1, _3, _5) )
+# 529 "Parser.ml"
+               : 'Record_Aggregate))
+; (fun __caml_parser_env ->
+    let _1 = (Parsing.peek_val __caml_parser_env 0 : 'Expression) in
+    Obj.repr(
+# 100 "Parser.mly"
+                                                  ( Single_array_aggregate({pos=rhs_start_pos(1);run=Null_runtime_entity}, _1) )
+# 536 "Parser.ml"
+               : 'Array_Aggregate))
+; (fun __caml_parser_env ->
+    let _1 = (Parsing.peek_val __caml_parser_env 2 : 'Expression) in
+    let _3 = (Parsing.peek_val __caml_parser_env 0 : 'Array_Aggregate) in
+    Obj.repr(
+# 101 "Parser.mly"
+                                                  ( Multiple_array_aggregate({pos=rhs_start_pos(1);run=Null_runtime_entity}, _1, _3) )
+# 544 "Parser.ml"
+               : 'Array_Aggregate))
+; (fun __caml_parser_env ->
+    let _1 = (Parsing.peek_val __caml_parser_env 0 : 'R_Identifier) in
+    Obj.repr(
+# 105 "Parser.mly"
+                                            ( Simple_vname({pos=rhs_start_pos(1);run=Null_runtime_entity}, _1) )
+# 551 "Parser.ml"
+               : 'Vname))
+; (fun __caml_parser_env ->
+    let _1 = (Parsing.peek_val __caml_parser_env 2 : 'Vname) in
+    let _3 = (Parsing.peek_val __caml_parser_env 0 : 'R_Identifier) in
+    Obj.repr(
+# 106 "Parser.mly"
+                                            ( Dot_vname({pos=rhs_start_pos(1);run=Null_runtime_entity}, _1, _3) )
+# 559 "Parser.ml"
+               : 'Vname))
+; (fun __caml_parser_env ->
+    let _1 = (Parsing.peek_val __caml_parser_env 3 : 'Vname) in
+    let _3 = (Parsing.peek_val __caml_parser_env 1 : 'Expression) in
+    Obj.repr(
+# 107 "Parser.mly"
+                                          ( Subscript_vname({pos=rhs_start_pos(1);run=Null_runtime_entity}, _1, _3) )
+# 567 "Parser.ml"
+               : 'Vname))
+; (fun __caml_parser_env ->
+    let _1 = (Parsing.peek_val __caml_parser_env 0 : 'single_Declaration) in
+    Obj.repr(
+# 111 "Parser.mly"
+                                                      ( _1 )
+# 574 "Parser.ml"
+               : 'Declaration))
+; (fun __caml_parser_env ->
+    let _1 = (Parsing.peek_val __caml_parser_env 2 : 'Declaration) in
+    let _3 = (Parsing.peek_val __caml_parser_env 0 : 'single_Declaration) in
+    Obj.repr(
+# 112 "Parser.mly"
+                                                      ( Sequential_declaration({pos=rhs_start_pos(1);run=Null_runtime_entity}, _1, _3) )
+# 582 "Parser.ml"
+               : 'Declaration))
+; (fun __caml_parser_env ->
+    Obj.repr(
+# 113 "Parser.mly"
+                                                      ( ErrorReporter.report_error "Cannot start a declaration." (rhs_start_pos(1)); 
+                                                        raise (Synt_error "Syntactical error") )
+# 589 "Parser.ml"
+               : 'Declaration))
+; (fun __caml_parser_env ->
+    let _2 = (Parsing.peek_val __caml_parser_env 2 : 'R_Identifier) in
+    let _4 = (Parsing.peek_val __caml_parser_env 0 : 'Expression) in
+    Obj.repr(
+# 117 "Parser.mly"
+                                                                                                               ( Const_declaration({pos=rhs_start_pos(1);run=Null_runtime_entity}, _2, _4) )
+# 597 "Parser.ml"
+               : 'single_Declaration))
+; (fun __caml_parser_env ->
+    let _2 = (Parsing.peek_val __caml_parser_env 2 : 'R_Identifier) in
+    let _4 = (Parsing.peek_val __caml_parser_env 0 : 'Type_denoter) in
+    Obj.repr(
+# 118 "Parser.mly"
+                                                                                                               ( Var_declaration({pos=rhs_start_pos(1);run=Null_runtime_entity}, _2, _4) )
+# 605 "Parser.ml"
+               : 'single_Declaration))
+; (fun __caml_parser_env ->
+    let _2 = (Parsing.peek_val __caml_parser_env 5 : 'R_Identifier) in
+    let _4 = (Parsing.peek_val __caml_parser_env 3 : 'Formal_Parameter_Sequence) in
+    let _7 = (Parsing.peek_val __caml_parser_env 0 : 'single_Command) in
+    Obj.repr(
+# 119 "Parser.mly"
+                                                                                                               ( Proc_declaration({pos=rhs_start_pos(1);run=Null_runtime_entity}, _2, _4, _7) )
+# 614 "Parser.ml"
+               : 'single_Declaration))
+; (fun __caml_parser_env ->
+    let _2 = (Parsing.peek_val __caml_parser_env 7 : 'R_Identifier) in
+    let _4 = (Parsing.peek_val __caml_parser_env 5 : 'Formal_Parameter_Sequence) in
+    let _7 = (Parsing.peek_val __caml_parser_env 2 : 'Type_denoter) in
+    let _9 = (Parsing.peek_val __caml_parser_env 0 : 'Expression) in
+    Obj.repr(
+# 120 "Parser.mly"
+                                                                                                               ( Func_declaration({pos=rhs_start_pos(1);run=Null_runtime_entity}, _2, _4, _7, _9) )
+# 624 "Parser.ml"
+               : 'single_Declaration))
+; (fun __caml_parser_env ->
+    let _2 = (Parsing.peek_val __caml_parser_env 2 : 'R_Identifier) in
+    let _4 = (Parsing.peek_val __caml_parser_env 0 : 'Type_denoter) in
+    Obj.repr(
+# 121 "Parser.mly"
+                                                                                                               ( Type_declaration({pos=rhs_start_pos(1);run=Null_runtime_entity}, _2, _4) )
+# 632 "Parser.ml"
+               : 'single_Declaration))
+; (fun __caml_parser_env ->
+    Obj.repr(
+# 125 "Parser.mly"
+                                                            ( Empty_formal_parameter_sequence({pos=rhs_start_pos(1);run=Null_runtime_entity}) )
+# 638 "Parser.ml"
+               : 'Formal_Parameter_Sequence))
+; (fun __caml_parser_env ->
+    let _1 = (Parsing.peek_val __caml_parser_env 0 : 'proper_Formal_Parameter_Sequence) in
+    Obj.repr(
+# 126 "Parser.mly"
+                                                            ( _1 )
+# 645 "Parser.ml"
+               : 'Formal_Parameter_Sequence))
+; (fun __caml_parser_env ->
+    let _1 = (Parsing.peek_val __caml_parser_env 0 : 'Formal_Parameter) in
+    Obj.repr(
+# 129 "Parser.mly"
+                                                                                          ( Single_formal_parameter_sequence({pos=rhs_start_pos(1);run=Null_runtime_entity},_1) )
+# 652 "Parser.ml"
+               : 'proper_Formal_Parameter_Sequence))
+; (fun __caml_parser_env ->
+    let _1 = (Parsing.peek_val __caml_parser_env 2 : 'Formal_Parameter) in
+    let _3 = (Parsing.peek_val __caml_parser_env 0 : 'proper_Formal_Parameter_Sequence) in
+    Obj.repr(
+# 130 "Parser.mly"
+                                                                                          ( Multiple_formal_parameter_sequence({pos=rhs_start_pos(1);run=Null_runtime_entity}, _1, _3) )
+# 660 "Parser.ml"
+               : 'proper_Formal_Parameter_Sequence))
+; (fun __caml_parser_env ->
+    let _1 = (Parsing.peek_val __caml_parser_env 2 : 'R_Identifier) in
+    let _3 = (Parsing.peek_val __caml_parser_env 0 : 'Type_denoter) in
+    Obj.repr(
+# 133 "Parser.mly"
+                                                                                               ( Const_formal_parameter({pos=rhs_start_pos(1);run=Null_runtime_entity}, _1, _3) )
+# 668 "Parser.ml"
+               : 'Formal_Parameter))
+; (fun __caml_parser_env ->
+    let _2 = (Parsing.peek_val __caml_parser_env 2 : 'R_Identifier) in
+    let _4 = (Parsing.peek_val __caml_parser_env 0 : 'Type_denoter) in
+    Obj.repr(
+# 134 "Parser.mly"
+                                                                                               ( Var_formal_parameter({pos=rhs_start_pos(1);run=Null_runtime_entity}, _2, _4) )
+# 676 "Parser.ml"
+               : 'Formal_Parameter))
+; (fun __caml_parser_env ->
+    let _2 = (Parsing.peek_val __caml_parser_env 3 : 'R_Identifier) in
+    let _4 = (Parsing.peek_val __caml_parser_env 1 : 'Formal_Parameter_Sequence) in
+    Obj.repr(
+# 135 "Parser.mly"
+                                                                                               ( Proc_formal_parameter({pos=rhs_start_pos(1);run=Null_runtime_entity}, _2, _4) )
+# 684 "Parser.ml"
+               : 'Formal_Parameter))
+; (fun __caml_parser_env ->
+    let _2 = (Parsing.peek_val __caml_parser_env 5 : 'R_Identifier) in
+    let _4 = (Parsing.peek_val __caml_parser_env 3 : 'Formal_Parameter_Sequence) in
+    let _7 = (Parsing.peek_val __caml_parser_env 0 : 'Type_denoter) in
+    Obj.repr(
+# 136 "Parser.mly"
+                                                                                               ( Func_formal_parameter({pos=rhs_start_pos(1);run=Null_runtime_entity}, _2, _4, _7) )
+# 693 "Parser.ml"
+               : 'Formal_Parameter))
+; (fun __caml_parser_env ->
+    Obj.repr(
+# 137 "Parser.mly"
+                                                                                               ( ErrorReporter.report_error "Cannot start a formal parameter." (rhs_start_pos(1)); 
+                                                                                                 raise (Synt_error "Syntactical error") )
+# 700 "Parser.ml"
+               : 'Formal_Parameter))
+; (fun __caml_parser_env ->
+    Obj.repr(
+# 142 "Parser.mly"
+                                                            ( Empty_actual_parameter_sequence({pos=rhs_start_pos(1);run=Null_runtime_entity}) )
+# 706 "Parser.ml"
+               : 'Actual_Parameter_Sequence))
+; (fun __caml_parser_env ->
+    let _1 = (Parsing.peek_val __caml_parser_env 0 : 'proper_Actual_Parameter_Sequence) in
+    Obj.repr(
+# 143 "Parser.mly"
+                                                            ( _1 )
+# 713 "Parser.ml"
+               : 'Actual_Parameter_Sequence))
+; (fun __caml_parser_env ->
+    let _1 = (Parsing.peek_val __caml_parser_env 0 : 'Actual_Parameter) in
+    Obj.repr(
+# 146 "Parser.mly"
+                                                                                          ( Single_actual_parameter_sequence({pos=rhs_start_pos(1);run=Null_runtime_entity}, _1) )
+# 720 "Parser.ml"
+               : 'proper_Actual_Parameter_Sequence))
+; (fun __caml_parser_env ->
+    let _1 = (Parsing.peek_val __caml_parser_env 2 : 'Actual_Parameter) in
+    let _3 = (Parsing.peek_val __caml_parser_env 0 : 'proper_Actual_Parameter_Sequence) in
+    Obj.repr(
+# 147 "Parser.mly"
+                                                                                          ( Multiple_actual_parameter_sequence({pos=rhs_start_pos(1);run=Null_runtime_entity}, _1, _3) )
+# 728 "Parser.ml"
+               : 'proper_Actual_Parameter_Sequence))
+; (fun __caml_parser_env ->
+    let _1 = (Parsing.peek_val __caml_parser_env 0 : 'Expression) in
+    Obj.repr(
+# 150 "Parser.mly"
+                                    ( Const_actual_parameter({pos=rhs_start_pos(1);run=Null_runtime_entity}, _1) )
+# 735 "Parser.ml"
+               : 'Actual_Parameter))
+; (fun __caml_parser_env ->
+    let _2 = (Parsing.peek_val __caml_parser_env 0 : 'Vname) in
+    Obj.repr(
+# 151 "Parser.mly"
+                                    ( Var_actual_parameter({pos=rhs_start_pos(1);run=Null_runtime_entity}, _2) )
+# 742 "Parser.ml"
+               : 'Actual_Parameter))
+; (fun __caml_parser_env ->
+    let _2 = (Parsing.peek_val __caml_parser_env 0 : 'R_Identifier) in
+    Obj.repr(
+# 152 "Parser.mly"
+                                    ( Proc_actual_parameter({pos=rhs_start_pos(1);run=Null_runtime_entity}, _2) )
+# 749 "Parser.ml"
+               : 'Actual_Parameter))
+; (fun __caml_parser_env ->
+    let _2 = (Parsing.peek_val __caml_parser_env 0 : 'R_Identifier) in
+    Obj.repr(
+# 153 "Parser.mly"
+                                    ( Func_actual_parameter({pos=rhs_start_pos(1);run=Null_runtime_entity}, _2) )
+# 756 "Parser.ml"
+               : 'Actual_Parameter))
+; (fun __caml_parser_env ->
+    let _1 = (Parsing.peek_val __caml_parser_env 0 : 'R_Identifier) in
+    Obj.repr(
+# 157 "Parser.mly"
+                                                    ( Simple_type_denoter({pos=rhs_start_pos(1);run=Null_runtime_entity}, _1) )
+# 763 "Parser.ml"
+               : 'Type_denoter))
+; (fun __caml_parser_env ->
+    let _2 = (Parsing.peek_val __caml_parser_env 2 : 'Integer_Literal) in
+    let _4 = (Parsing.peek_val __caml_parser_env 0 : 'Type_denoter) in
+    Obj.repr(
+# 158 "Parser.mly"
+                                                    ( Array_type_denoter({pos=rhs_start_pos(1);run=Null_runtime_entity}, _2, _4) )
+# 771 "Parser.ml"
+               : 'Type_denoter))
+; (fun __caml_parser_env ->
+    let _2 = (Parsing.peek_val __caml_parser_env 1 : 'Record_Type_denoter) in
+    Obj.repr(
+# 159 "Parser.mly"
+                                                    ( Record_type_denoter({pos=rhs_start_pos(1);run=Null_runtime_entity}, _2) )
+# 778 "Parser.ml"
+               : 'Type_denoter))
+; (fun __caml_parser_env ->
+    Obj.repr(
+# 160 "Parser.mly"
+                                                    ( ErrorReporter.report_error "Cannot start type denoter." (rhs_start_pos(1)); 
+                                                      raise (Synt_error "Syntactical error") )
+# 785 "Parser.ml"
+               : 'Type_denoter))
+; (fun __caml_parser_env ->
+    let _1 = (Parsing.peek_val __caml_parser_env 2 : 'R_Identifier) in
+    let _3 = (Parsing.peek_val __caml_parser_env 0 : 'Type_denoter) in
+    Obj.repr(
+# 163 "Parser.mly"
+                                                                               ( Single_field_type_denoter({pos=rhs_start_pos(1);run=Null_runtime_entity}, _1, _3) )
+# 793 "Parser.ml"
+               : 'Record_Type_denoter))
+; (fun __caml_parser_env ->
+    let _1 = (Parsing.peek_val __caml_parser_env 4 : 'R_Identifier) in
+    let _3 = (Parsing.peek_val __caml_parser_env 2 : 'Type_denoter) in
+    let _5 = (Parsing.peek_val __caml_parser_env 0 : 'Record_Type_denoter) in
+    Obj.repr(
+# 164 "Parser.mly"
+                                                                               ( Multiple_field_type_denoter({pos=rhs_start_pos(1);run=Null_runtime_entity}, _1, _3, _5) )
+# 802 "Parser.ml"
+               : 'Record_Type_denoter))
+; (fun __caml_parser_env ->
+    let _1 = (Parsing.peek_val __caml_parser_env 0 : string) in
+    Obj.repr(
+# 168 "Parser.mly"
+                             ( Integer_literal({pos=rhs_start_pos(1);run=Null_runtime_entity}, _1) )
+# 809 "Parser.ml"
+               : 'Integer_Literal))
+; (fun __caml_parser_env ->
+    let _1 = (Parsing.peek_val __caml_parser_env 0 : string) in
+    Obj.repr(
+# 172 "Parser.mly"
+                                ( Character_literal({pos=rhs_start_pos(1);run=Null_runtime_entity}, _1) )
+# 816 "Parser.ml"
+               : 'Character_Literal))
+; (fun __caml_parser_env ->
+    let _1 = (Parsing.peek_val __caml_parser_env 0 : string) in
+    Obj.repr(
+# 176 "Parser.mly"
+                         ( Ast.Identifier({pos=rhs_start_pos(1);run=Null_runtime_entity}, _1) )
+# 823 "Parser.ml"
+               : 'R_Identifier))
+; (fun __caml_parser_env ->
+    let _1 = (Parsing.peek_val __caml_parser_env 0 : string) in
+    Obj.repr(
+# 180 "Parser.mly"
+                     ( Ast.Operator({pos=rhs_start_pos(1);run=Null_runtime_entity}, _1) )
+# 830 "Parser.ml"
+               : 'R_Operator))
+(* Entry parse_program *)
+; (fun __caml_parser_env -> raise (Parsing.YYexit (Parsing.peek_val __caml_parser_env 0)))
+|]
+let yytables =
+  { Parsing.actions=yyact;
+    Parsing.transl_const=yytransl_const;
+    Parsing.transl_block=yytransl_block;
+    Parsing.lhs=yylhs;
+    Parsing.len=yylen;
+    Parsing.defred=yydefred;
+    Parsing.dgoto=yydgoto;
+    Parsing.sindex=yysindex;
+    Parsing.rindex=yyrindex;
+    Parsing.gindex=yygindex;
+    Parsing.tablesize=yytablesize;
+    Parsing.table=yytable;
+    Parsing.check=yycheck;
+    Parsing.error_function=parse_error;
+    Parsing.names_const=yynames_const;
+    Parsing.names_block=yynames_block }
+let parse_program (lexfun : Lexing.lexbuf -> token) (lexbuf : Lexing.lexbuf) =
+   (Parsing.yyparse yytables 1 lexfun lexbuf : Ast.ast_program)
+;;
