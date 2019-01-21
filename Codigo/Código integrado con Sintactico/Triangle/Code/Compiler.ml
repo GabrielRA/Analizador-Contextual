@@ -9,6 +9,8 @@ Implementation file
 @author Jose Antonio Alpízar Aguilar
 @author Pablo Josué Brenes Jimenes
 @author Luis José Castillo Valverde
+@author Christian León Guevara
+@author Gabriel Ramírez Ramírez
 *)
 
 open Ast
