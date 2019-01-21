@@ -197,8 +197,8 @@ and check_expression e = match e with
         Checked_operator(_,d) -> 
           (match !d with
             Null_declaration -> 
-	          report_undeclared_operator o; 
-			  Checked_expression(e, Error_type_denoter(ix))
+	            report_undeclared_operator o; 
+			        Checked_expression(e, Error_type_denoter(ix))
           | Unary_operator_declaration(_,o,t,tr) -> 
               (match eType with
                 Checked_expression(_,tt) -> 
@@ -220,7 +220,7 @@ and check_expression e = match e with
         Checked_operator(_,d) -> 
           (match !d with
             Null_declaration-> 
-			  report_undeclared_operator o;
+			        report_undeclared_operator o;
               Checked_expression(e, Error_type_denoter(ix))
           | Binary_operator_declaration(_,o,t1,t2,tr) -> 
               (match (e1Type,e2Type) with
@@ -234,7 +234,7 @@ and check_expression e = match e with
                         ErrorReporter.report_error ("Wrong argument type for " ^ (operator_name o)) ix.pos
                   )
               | _ -> ()
-			  ); 
+			        ); 
               Checked_expression(Binary_expression(ix,e1Type,oType,e2Type),tr)
           | _ -> ErrorReporter.report_error ((operator_name o) ^ " is not a binary operator") ix.pos; e
           )
@@ -260,7 +260,7 @@ and check_expression e = match e with
     let raType = (check_record_aggregate ra) in
       (match raType with
         Checked_record_aggregate(_,t) -> 
-		  Checked_expression(Record_expression(ix,raType),Record_type_denoter(ix,t))
+		      Checked_expression(Record_expression(ix,raType),Record_type_denoter(ix,t))
       | _ -> e)
 	  
     (* Already checked expression - does nothing *)
@@ -297,7 +297,7 @@ and check_record_aggregate r = match r with
         Checked_expression(_,t) -> 
 	      Checked_record_aggregate(
 		    Single_record_aggregate(ix,i,eType),
-			Single_field_type_denoter(ix,i,t)
+			  Single_field_type_denoter(ix,i,t)
 		  )
       | _ -> r
       )                                           
@@ -312,17 +312,17 @@ and check_record_aggregate r = match r with
             | _ -> ErrorReporter.report_error ("Duplicate field in record") ix.pos
 	        );
           Checked_record_aggregate(
-			Multiple_record_aggregate(ix, i, eType, rType),
-			Multiple_field_type_denoter(
-			  ix,
-			  i, 
-			  (match eType with 
+			      Multiple_record_aggregate(ix, i, eType, rType),
+			      Multiple_field_type_denoter(
+  			      ix,
+  			      i, 
+  			      (match eType with 
                 Checked_expression(_,tt) -> tt 
               | _ -> Error_type_denoter(ix)
-			  ),
-			  t
-			)
-		  )
+			        ),
+			        t
+			      )
+		      )
       | _ -> r
 	  )                                                 
 | Checked_record_aggregate(_,_) -> r
@@ -431,21 +431,21 @@ and check_declaration d = match d with
     let tType = (check_type_denoter t) in
       if (IdentificationTable.exists (identifier_name i)) then
         ErrorReporter.report_error ("Identifier " ^ (identifier_name i) ^ " already declared") ix.pos;
-        IdentificationTable.enter (identifier_name i) (ref (Func_declaration(ix,i,fps,tType,e)));
-        let elem = IdentificationTable.retrieve_element (identifier_name i) in
-          IdentificationTable.open_scope();
-        let fpsType = (check_formal_parameter_sequence fps) in
-          elem.attr <- (ref (Func_declaration(ix,i,fpsType,tType,e)));
-        let eType = (check_expression e) in
-          IdentificationTable.close_scope();
-        elem.attr <- (ref (Func_declaration(ix,i,fpsType,tType,eType)));
-        (match eType with
-          Checked_expression(_,t) -> 
-            if (t != tType) then
-              ErrorReporter.report_error ("Body of function " ^ (identifier_name i) ^ " has wrong type") ix.pos
-        | _ -> ()
-        ); 
-        !(IdentificationTable.retrieve (identifier_name i))
+      IdentificationTable.enter (identifier_name i) (ref (Func_declaration(ix,i,fps,tType,e)));
+      let elem = IdentificationTable.retrieve_element (identifier_name i) in
+        IdentificationTable.open_scope();
+      let fpsType = (check_formal_parameter_sequence fps) in
+        elem.attr <- (ref (Func_declaration(ix,i,fpsType,tType,e)));
+      let eType = (check_expression e) in
+        IdentificationTable.close_scope();
+      elem.attr <- (ref (Func_declaration(ix,i,fpsType,tType,eType)));
+      (match eType with
+        Checked_expression(_,t) -> 
+          if (t != tType) then
+            ErrorReporter.report_error ("Body of function " ^ (identifier_name i) ^ " has wrong type") ix.pos
+      | _ -> ()
+      ); 
+      !(IdentificationTable.retrieve (identifier_name i))
 
 | Type_declaration(ix,i,t) -> 
     let tType = (check_type_denoter t) in
@@ -462,8 +462,8 @@ and check_declaration d = match d with
   
 | Sequential_declaration(ix,d1,d2) -> 
     let d1Type = (check_declaration d1) and 
-    d2Type = (check_declaration d2) in
-      Sequential_declaration(ix, d1Type, d2Type)
+        d2Type = (check_declaration d2) in
+          Sequential_declaration(ix, d1Type, d2Type)
 
 
 (* Actual Parameters *)
@@ -482,7 +482,7 @@ and check_actual_parameter a f = match a with
               else
                 Const_actual_parameter(ix,eType)
           | _ -> a
-		  )
+		      )
       | _ -> ErrorReporter.report_error "Const actual parameter not expected here" ix.pos; a
       )
 
@@ -490,21 +490,20 @@ and check_actual_parameter a f = match a with
     let vType = (check_vname v) in
       (match vType with
         Checked_vname(_,false,_,_,_) -> 
-		  ErrorReporter.report_error "Actual parameter is not a variable" ix.pos; 
-		  a
+		    ErrorReporter.report_error "Actual parameter is not a variable" ix.pos; 
+		    a
       | Checked_vname(_,true,_,_,tt) -> 
           (match f with
             Var_formal_parameter(_,_,t) -> 
               if ((compare_types t tt) == false) then
                 begin
                   ErrorReporter.report_error "Wrong type for var actual parameter" ix.pos;
-				  a
+				          a
                 end
               else
                 Var_actual_parameter(ix,vType)
-          | _ -> 
-		      ErrorReporter.report_error "Var actual parameter not expected here" ix.pos; 
-			  a
+          | _ -> ErrorReporter.report_error "Var actual parameter not expected here" ix.pos; 
+			           a
           )
       | _ -> a
       )
@@ -517,16 +516,15 @@ and check_actual_parameter a f = match a with
             Checked_identifier(i,d) -> 
               (match !d with
                 Null_declaration -> 
-				  report_undeclared_identifier(i); 
-				  a
+				          report_undeclared_identifier(i); 
+				          a
               | Formal_parameter_declaration(_,Proc_formal_parameter(_,i,fps))
               | Proc_declaration(_,i,fps,_) -> 
                   if ((compare_fps fp fps) == false) then
                     ErrorReporter.report_error ("Wrong signature for procedure " ^ (identifier_name i)) ix.pos;
                     Proc_actual_parameter(ix,idType)
-              | _ -> 
-			      ErrorReporter.report_error ((identifier_name i) ^ " is not a procedure Identifier") ix.pos; 
-				  a
+              | _ -> ErrorReporter.report_error ((identifier_name i) ^ " is not a procedure Identifier") ix.pos; 
+				             a
               )
           | _ -> a
           )
@@ -547,7 +545,7 @@ and check_actual_parameter a f = match a with
                     ErrorReporter.report_error ("Wrong signature for function " ^ (identifier_name i)) ix.pos
                   else if ((compare_types t tp) == false) then
                     ErrorReporter.report_error ("Wrong type for function " ^ (identifier_name i)) ix.pos;
-                    Func_actual_parameter(ix,idType)
+                  Func_actual_parameter(ix,idType)
               | _ -> ErrorReporter.report_error ((identifier_name i) ^ " is not a function Identifier") ix.pos; a
               )
           | _ -> a
@@ -574,8 +572,8 @@ and check_actual_parameter_sequence a f = match a with
     (match f with
       Multiple_formal_parameter_sequence(ixx,fp,fps) -> 
         let fpType = (check_actual_parameter b fp) and 
-        fpsType = (check_actual_parameter_sequence c fps) in 
-          Multiple_actual_parameter_sequence(ixx, fpType, fpsType)
+            fpsType = (check_actual_parameter_sequence c fps) in 
+              Multiple_actual_parameter_sequence(ixx, fpType, fpsType)
     | _ -> ErrorReporter.report_error "Too many actual parameters" ix.pos; a
     )
 

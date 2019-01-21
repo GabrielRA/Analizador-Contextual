@@ -1,11 +1,5 @@
 ! Verfica que la expresion mas a la izquierda del if sea booleana
 ! Da error en linea 8, deberia de tener un a < 5
 
-if 3 < 5 then
-  begin
-    true;
-  end
-  else
-    begin
-      false;
-    end
+
+
