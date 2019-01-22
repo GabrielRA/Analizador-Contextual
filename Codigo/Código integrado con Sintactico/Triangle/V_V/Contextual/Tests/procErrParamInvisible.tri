@@ -1,8 +1,8 @@
-! Procedimiento bien en cantidad de parámetros, tipo y modo
+! Procedimiento bien en cantidad de parametros, tipo y modo
 ! Error: x no declarado fuera de proc
 
 let
   proc P (x : Integer) ~
     putint (x * 2)
 in
-  P (x) ! x no debe ser visible aquí
+  P (x) ! x no debe ser visible aqui

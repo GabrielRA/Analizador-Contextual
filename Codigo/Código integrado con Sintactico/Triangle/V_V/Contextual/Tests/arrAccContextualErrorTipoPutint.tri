@@ -10,7 +10,7 @@ in begin
 
   get (var b[2]); 
 
-  putint (a [5]) ! Error contextual: putint espera un parámetro de tipo Integer.
+  putint (a [5]) ! Error contextual: putint espera un parametro de tipo Integer.
 
 end
 

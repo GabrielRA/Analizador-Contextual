@@ -1,7 +1,6 @@
 <?xml version="1.0" standalone="yes"?>
 <Table>
 <Nivel1>
-<Declaration id="c" level="1"/>
 <Declaration id="n" level="1"/>
 </Nivel1>
 </Table>

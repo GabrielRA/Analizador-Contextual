@@ -1,5 +1,5 @@
-! Con error contextual cantidad de parámetros en get
-! Modos están bien
+! Con error contextual cantidad de parametros en get
+! Modos estan bien
 
 let
 
@@ -9,7 +9,7 @@ let
 
 in begin
 
-  get (var a[8], var b[2]); ! Error contextual: get espera un sólo parámetro real (argumento), pasado por variable (referencia).
+  get (var a[8], var b[2]); ! Error contextual: get espera un solo parametro real (argumento), pasado por variable (referencia).
 
   putint (b [9])
 

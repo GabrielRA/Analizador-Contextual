@@ -1,0 +1,27 @@
+<?xml version="1.0" standalone="yes"?>
+<Table>
+<Nivel1>
+<Nivel2>
+<Nivel3>
+<Declaration id="f" level="3"/>
+<Declaration id="e" level="3"/>
+</Nivel3>
+<Nivel3>
+<Declaration id="h" level="3"/>
+<Declaration id="g" level="3"/>
+</Nivel3>
+<Declaration id="d" level="2"/>
+<Declaration id="c" level="2"/>
+</Nivel2>
+<Nivel2>
+<Declaration id="j" level="2"/>
+<Declaration id="i" level="2"/>
+</Nivel2>
+<Declaration id="b" level="1"/>
+<Declaration id="a" level="1"/>
+</Nivel1>
+<Nivel1>
+<Declaration id="l" level="1"/>
+<Declaration id="k" level="1"/>
+</Nivel1>
+</Table>

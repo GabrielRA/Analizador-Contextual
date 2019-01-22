@@ -4,4 +4,4 @@ let
   proc Q (x : Integer) ~
     putint (x * 2)
 in
-  P (10) ! P no está declarado
+  P (10) ! P no esta declarado

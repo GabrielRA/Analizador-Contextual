@@ -1,4 +1,4 @@
-! Prueba de validación de tipo.
+! Prueba de validacion de tipo.
 ! Resultado incorrecto - ln7 -> La expresion del while tiene ser boolean.
 let
    var n: Integer

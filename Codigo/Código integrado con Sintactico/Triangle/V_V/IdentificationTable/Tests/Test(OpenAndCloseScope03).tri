@@ -19,12 +19,13 @@ in
 		  var h :Boolean
 		in
 		;
-	  end
-	  
+	  end;
 	  let
 	    var i : Char;
 		var j :Boolean
-  end
+	  in
+	  ;
+  end;
 let 
   var k : Integer;
   var l : Char

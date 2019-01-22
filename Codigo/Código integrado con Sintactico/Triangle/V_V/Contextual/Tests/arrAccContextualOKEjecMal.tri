@@ -1,5 +1,5 @@
 ! Sin errores contextuales
-! Debe dar error de mal acceso a arreglo EN TIEMPO DE EJECUCIÓN
+! Debe dar error de mal acceso a arreglo EN TIEMPO DE EJECUCION
 
 let
 
@@ -9,7 +9,7 @@ let
 
 in begin
 
-  get (var a[19]); ! Sin error contextual.  Con error de ejecución (si se están verificando cotas de arreglos).
+  get (var a[19]); ! Sin error contextual.  Con error de ejecucion (si se estan verificando cotas de arreglos).
 
   putint (b [9])
 

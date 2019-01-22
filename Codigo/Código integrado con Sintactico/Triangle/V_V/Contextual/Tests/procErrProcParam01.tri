@@ -1,7 +1,7 @@
-! Error: proc P llamado con argumento que es llamada a un proc F. P espera parámetro Integer
+! Error: proc P llamado con argumento que es llamada a un proc F. P espera parametro Integer
 
 let
-  proc F () ~ putint(1) ; ! Los comandos no entregan valores.  Solamente completan su ejecución sin retornar valores.
+  proc F () ~ putint(1) ; ! Los comandos no entregan valores.  Solamente completan su ejecucion sin retornar valores.
   proc P (x : Integer) ~ ! P espera paso por constante
     putint (x * 2)
 in

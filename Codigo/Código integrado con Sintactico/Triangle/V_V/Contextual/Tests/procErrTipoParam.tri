@@ -1,4 +1,4 @@
-! Error: proc llamado con parámetro de tipo equivocado
+! Error: proc llamado con parametro de tipo equivocado
 
 let
   proc P (x : Integer) ~
