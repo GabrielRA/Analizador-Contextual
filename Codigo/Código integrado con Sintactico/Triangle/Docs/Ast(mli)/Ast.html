@@ -1,0 +1,671 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+<link rel="stylesheet" href="style.css" type="text/css">
+<meta content="text/html; charset=iso-8859-1" http-equiv="Content-Type">
+<link rel="Start" href="index.html">
+<link rel="Up" href="index.html">
+<link title="Index of types" rel=Appendix href="index_types.html">
+<link title="Index of modules" rel=Appendix href="index_modules.html">
+<link title="Ast" rel="Chapter" href="Ast.html"><title>Ast</title>
+</head>
+<body>
+<div class="navbar">&nbsp;<a class="up" href="index.html" title="Index">Up</a>
+&nbsp;</div>
+<h1>Module <a href="type_Ast.html">Ast</a></h1>
+
+<pre><span class="keyword">module</span> Ast: <code class="code">sig</code> <a href="Ast.html">..</a> <code class="code">end</code></pre><div class="info module top">
+This program was originally written by Luis Leopoldo Pérez on March 14, 2006.
+This program was reviewed, repaired, completed, verified, and validated by
+students of ITCR in January 2019.
+Abstract Syntax Tree Definition for Caml-Triangle
+Interface file<br>
+<b>Author(s):</b> Luis Leopoldo Pérez, Jose Antonio Alpízar Aguilar, Pablo Josué Brenes Jimenes, Luis José Castillo Valverde<br>
+</div>
+<hr width="100%">
+
+<pre><code><span id="TYPEast_info"><span class="keyword">type</span> <code class="type"></code>ast_info</span> = {</code></pre><table class="typetable">
+<tr>
+<td align="left" valign="top" >
+<code>&nbsp;&nbsp;</code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTast_info.pos">pos</span>&nbsp;: <code class="type">Lexing.position</code>;</code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code>&nbsp;&nbsp;</code></td>
+<td align="left" valign="top" >
+<code><span class="keyword">mutable&nbsp;</span><span id="TYPEELTast_info.run">run</span>&nbsp;: <code class="type">RuntimeEntity.runtime_entity</code>;</code></td>
+
+</tr></table>
+}
+
+<div class="info ">
+Type to store the information referring to a part of the AST<br>
+</div>
+
+
+<pre><code><span id="TYPEast_program"><span class="keyword">type</span> <code class="type"></code>ast_program</span> = </code></pre><table class="typetable">
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTast_program.Null_program"><span class="constructor">Null_program</span></span></code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTast_program.Program"><span class="constructor">Program</span></span> <span class="keyword">of</span> <code class="type"><a href="Ast.html#TYPEast_info">ast_info</a> * <a href="Ast.html#TYPEast_command">ast_command</a></code></code></td>
+
+</tr></table>
+
+<div class="info ">
+Type to store the abstract data structure of the program<br>
+</div>
+
+
+<pre><code><span id="TYPEast_command"><span class="keyword">type</span> <code class="type"></code>ast_command</span> = </code></pre><table class="typetable">
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTast_command.Empty_command"><span class="constructor">Empty_command</span></span> <span class="keyword">of</span> <code class="type"><a href="Ast.html#TYPEast_info">ast_info</a></code></code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTast_command.Assign_command"><span class="constructor">Assign_command</span></span> <span class="keyword">of</span> <code class="type"><a href="Ast.html#TYPEast_info">ast_info</a> * <a href="Ast.html#TYPEast_vname">ast_vname</a> * <a href="Ast.html#TYPEast_expression">ast_expression</a></code></code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTast_command.Call_command"><span class="constructor">Call_command</span></span> <span class="keyword">of</span> <code class="type"><a href="Ast.html#TYPEast_info">ast_info</a> * <a href="Ast.html#TYPEast_identifier">ast_identifier</a> * <a href="Ast.html#TYPEast_actual_parameter_sequence">ast_actual_parameter_sequence</a></code></code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTast_command.Sequential_command"><span class="constructor">Sequential_command</span></span> <span class="keyword">of</span> <code class="type"><a href="Ast.html#TYPEast_info">ast_info</a> * <a href="Ast.html#TYPEast_command">ast_command</a> * <a href="Ast.html#TYPEast_command">ast_command</a></code></code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTast_command.Let_command"><span class="constructor">Let_command</span></span> <span class="keyword">of</span> <code class="type"><a href="Ast.html#TYPEast_info">ast_info</a> * <a href="Ast.html#TYPEast_declaration">ast_declaration</a> * <a href="Ast.html#TYPEast_command">ast_command</a></code></code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTast_command.If_command"><span class="constructor">If_command</span></span> <span class="keyword">of</span> <code class="type"><a href="Ast.html#TYPEast_info">ast_info</a> * <a href="Ast.html#TYPEast_expression">ast_expression</a> * <a href="Ast.html#TYPEast_command">ast_command</a> * <a href="Ast.html#TYPEast_command">ast_command</a></code></code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTast_command.While_command"><span class="constructor">While_command</span></span> <span class="keyword">of</span> <code class="type"><a href="Ast.html#TYPEast_info">ast_info</a> * <a href="Ast.html#TYPEast_expression">ast_expression</a> * <a href="Ast.html#TYPEast_command">ast_command</a></code></code></td>
+
+</tr></table>
+
+<div class="info ">
+Definition of the possible structure of a command<br>
+</div>
+
+
+<pre><code><span id="TYPEast_expression"><span class="keyword">type</span> <code class="type"></code>ast_expression</span> = </code></pre><table class="typetable">
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTast_expression.Empty_expression"><span class="constructor">Empty_expression</span></span> <span class="keyword">of</span> <code class="type"><a href="Ast.html#TYPEast_info">ast_info</a></code></code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTast_expression.Integer_expression"><span class="constructor">Integer_expression</span></span> <span class="keyword">of</span> <code class="type"><a href="Ast.html#TYPEast_info">ast_info</a> * <a href="Ast.html#TYPEast_integer_literal">ast_integer_literal</a></code></code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTast_expression.Character_expression"><span class="constructor">Character_expression</span></span> <span class="keyword">of</span> <code class="type"><a href="Ast.html#TYPEast_info">ast_info</a> * <a href="Ast.html#TYPEast_character_literal">ast_character_literal</a></code></code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTast_expression.Vname_expression"><span class="constructor">Vname_expression</span></span> <span class="keyword">of</span> <code class="type"><a href="Ast.html#TYPEast_info">ast_info</a> * <a href="Ast.html#TYPEast_vname">ast_vname</a></code></code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTast_expression.Call_expression"><span class="constructor">Call_expression</span></span> <span class="keyword">of</span> <code class="type"><a href="Ast.html#TYPEast_info">ast_info</a> * <a href="Ast.html#TYPEast_identifier">ast_identifier</a> * <a href="Ast.html#TYPEast_actual_parameter_sequence">ast_actual_parameter_sequence</a></code></code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTast_expression.If_expression"><span class="constructor">If_expression</span></span> <span class="keyword">of</span> <code class="type"><a href="Ast.html#TYPEast_info">ast_info</a> * <a href="Ast.html#TYPEast_expression">ast_expression</a> * <a href="Ast.html#TYPEast_expression">ast_expression</a> * <a href="Ast.html#TYPEast_expression">ast_expression</a></code></code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTast_expression.Let_expression"><span class="constructor">Let_expression</span></span> <span class="keyword">of</span> <code class="type"><a href="Ast.html#TYPEast_info">ast_info</a> * <a href="Ast.html#TYPEast_declaration">ast_declaration</a> * <a href="Ast.html#TYPEast_expression">ast_expression</a></code></code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTast_expression.Unary_expression"><span class="constructor">Unary_expression</span></span> <span class="keyword">of</span> <code class="type"><a href="Ast.html#TYPEast_info">ast_info</a> * <a href="Ast.html#TYPEast_operator">ast_operator</a> * <a href="Ast.html#TYPEast_expression">ast_expression</a></code></code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTast_expression.Binary_expression"><span class="constructor">Binary_expression</span></span> <span class="keyword">of</span> <code class="type"><a href="Ast.html#TYPEast_info">ast_info</a> * <a href="Ast.html#TYPEast_expression">ast_expression</a> * <a href="Ast.html#TYPEast_operator">ast_operator</a> * <a href="Ast.html#TYPEast_expression">ast_expression</a></code></code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTast_expression.Array_expression"><span class="constructor">Array_expression</span></span> <span class="keyword">of</span> <code class="type"><a href="Ast.html#TYPEast_info">ast_info</a> * <a href="Ast.html#TYPEast_array_aggregate">ast_array_aggregate</a></code></code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTast_expression.Record_expression"><span class="constructor">Record_expression</span></span> <span class="keyword">of</span> <code class="type"><a href="Ast.html#TYPEast_info">ast_info</a> * <a href="Ast.html#TYPEast_record_aggregate">ast_record_aggregate</a></code></code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTast_expression.Checked_expression"><span class="constructor">Checked_expression</span></span> <span class="keyword">of</span> <code class="type"><a href="Ast.html#TYPEast_expression">ast_expression</a> * <a href="Ast.html#TYPEast_type_denoter">ast_type_denoter</a></code></code></td>
+
+</tr></table>
+
+<div class="info ">
+Definition of the possible structure of an expression<br>
+</div>
+
+
+<pre><code><span id="TYPEast_array_aggregate"><span class="keyword">type</span> <code class="type"></code>ast_array_aggregate</span> = </code></pre><table class="typetable">
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTast_array_aggregate.Single_array_aggregate"><span class="constructor">Single_array_aggregate</span></span> <span class="keyword">of</span> <code class="type"><a href="Ast.html#TYPEast_info">ast_info</a> * <a href="Ast.html#TYPEast_expression">ast_expression</a></code></code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTast_array_aggregate.Multiple_array_aggregate"><span class="constructor">Multiple_array_aggregate</span></span> <span class="keyword">of</span> <code class="type"><a href="Ast.html#TYPEast_info">ast_info</a> * <a href="Ast.html#TYPEast_expression">ast_expression</a> * <a href="Ast.html#TYPEast_array_aggregate">ast_array_aggregate</a></code></code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTast_array_aggregate.Checked_array_aggregate"><span class="constructor">Checked_array_aggregate</span></span> <span class="keyword">of</span> <code class="type"><a href="Ast.html#TYPEast_array_aggregate">ast_array_aggregate</a> * int</code></code></td>
+
+</tr></table>
+
+<div class="info ">
+Definition of the possible structure of an array agregate<br>
+</div>
+
+
+<pre><code><span id="TYPEast_record_aggregate"><span class="keyword">type</span> <code class="type"></code>ast_record_aggregate</span> = </code></pre><table class="typetable">
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTast_record_aggregate.Single_record_aggregate"><span class="constructor">Single_record_aggregate</span></span> <span class="keyword">of</span> <code class="type"><a href="Ast.html#TYPEast_info">ast_info</a> * <a href="Ast.html#TYPEast_identifier">ast_identifier</a> * <a href="Ast.html#TYPEast_expression">ast_expression</a></code></code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTast_record_aggregate.Multiple_record_aggregate"><span class="constructor">Multiple_record_aggregate</span></span> <span class="keyword">of</span> <code class="type"><a href="Ast.html#TYPEast_info">ast_info</a> * <a href="Ast.html#TYPEast_identifier">ast_identifier</a> * <a href="Ast.html#TYPEast_expression">ast_expression</a><br>        * <a href="Ast.html#TYPEast_record_aggregate">ast_record_aggregate</a></code></code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTast_record_aggregate.Checked_record_aggregate"><span class="constructor">Checked_record_aggregate</span></span> <span class="keyword">of</span> <code class="type"><a href="Ast.html#TYPEast_record_aggregate">ast_record_aggregate</a> * <a href="Ast.html#TYPEast_field_type_denoter">ast_field_type_denoter</a></code></code></td>
+
+</tr></table>
+
+<div class="info ">
+Definition of the possible structure of a record agregate<br>
+</div>
+
+
+<pre><code><span id="TYPEast_vname"><span class="keyword">type</span> <code class="type"></code>ast_vname</span> = </code></pre><table class="typetable">
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTast_vname.Simple_vname"><span class="constructor">Simple_vname</span></span> <span class="keyword">of</span> <code class="type"><a href="Ast.html#TYPEast_info">ast_info</a> * <a href="Ast.html#TYPEast_identifier">ast_identifier</a></code></code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTast_vname.Dot_vname"><span class="constructor">Dot_vname</span></span> <span class="keyword">of</span> <code class="type"><a href="Ast.html#TYPEast_info">ast_info</a> * <a href="Ast.html#TYPEast_vname">ast_vname</a> * <a href="Ast.html#TYPEast_identifier">ast_identifier</a></code></code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTast_vname.Subscript_vname"><span class="constructor">Subscript_vname</span></span> <span class="keyword">of</span> <code class="type"><a href="Ast.html#TYPEast_info">ast_info</a> * <a href="Ast.html#TYPEast_vname">ast_vname</a> * <a href="Ast.html#TYPEast_expression">ast_expression</a></code></code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTast_vname.Checked_vname"><span class="constructor">Checked_vname</span></span> <span class="keyword">of</span> <code class="type"><a href="Ast.html#TYPEast_vname">ast_vname</a> * bool * bool * int * <a href="Ast.html#TYPEast_type_denoter">ast_type_denoter</a></code></code></td>
+
+</tr></table>
+
+<div class="info ">
+Definition of the possible structure of a vname<br>
+</div>
+
+
+<pre><code><span id="TYPEast_declaration"><span class="keyword">type</span> <code class="type"></code>ast_declaration</span> = </code></pre><table class="typetable">
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTast_declaration.Null_declaration"><span class="constructor">Null_declaration</span></span></code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTast_declaration.Const_declaration"><span class="constructor">Const_declaration</span></span> <span class="keyword">of</span> <code class="type"><a href="Ast.html#TYPEast_info">ast_info</a> * <a href="Ast.html#TYPEast_identifier">ast_identifier</a> * <a href="Ast.html#TYPEast_expression">ast_expression</a></code></code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTast_declaration.Var_declaration"><span class="constructor">Var_declaration</span></span> <span class="keyword">of</span> <code class="type"><a href="Ast.html#TYPEast_info">ast_info</a> * <a href="Ast.html#TYPEast_identifier">ast_identifier</a> * <a href="Ast.html#TYPEast_type_denoter">ast_type_denoter</a></code></code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTast_declaration.Proc_declaration"><span class="constructor">Proc_declaration</span></span> <span class="keyword">of</span> <code class="type"><a href="Ast.html#TYPEast_info">ast_info</a> * <a href="Ast.html#TYPEast_identifier">ast_identifier</a> * <a href="Ast.html#TYPEast_formal_parameter_sequence">ast_formal_parameter_sequence</a><br>        * <a href="Ast.html#TYPEast_command">ast_command</a></code></code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTast_declaration.Func_declaration"><span class="constructor">Func_declaration</span></span> <span class="keyword">of</span> <code class="type"><a href="Ast.html#TYPEast_info">ast_info</a> * <a href="Ast.html#TYPEast_identifier">ast_identifier</a> * <a href="Ast.html#TYPEast_formal_parameter_sequence">ast_formal_parameter_sequence</a><br>        * <a href="Ast.html#TYPEast_type_denoter">ast_type_denoter</a> * <a href="Ast.html#TYPEast_expression">ast_expression</a></code></code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTast_declaration.Type_declaration"><span class="constructor">Type_declaration</span></span> <span class="keyword">of</span> <code class="type"><a href="Ast.html#TYPEast_info">ast_info</a> * <a href="Ast.html#TYPEast_identifier">ast_identifier</a> * <a href="Ast.html#TYPEast_type_denoter">ast_type_denoter</a></code></code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTast_declaration.Unary_operator_declaration"><span class="constructor">Unary_operator_declaration</span></span> <span class="keyword">of</span> <code class="type"><a href="Ast.html#TYPEast_info">ast_info</a> * <a href="Ast.html#TYPEast_operator">ast_operator</a> * <a href="Ast.html#TYPEast_type_denoter">ast_type_denoter</a> * <a href="Ast.html#TYPEast_type_denoter">ast_type_denoter</a></code></code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTast_declaration.Binary_operator_declaration"><span class="constructor">Binary_operator_declaration</span></span> <span class="keyword">of</span> <code class="type"><a href="Ast.html#TYPEast_info">ast_info</a> * <a href="Ast.html#TYPEast_operator">ast_operator</a> * <a href="Ast.html#TYPEast_type_denoter">ast_type_denoter</a> * <a href="Ast.html#TYPEast_type_denoter">ast_type_denoter</a><br>        * <a href="Ast.html#TYPEast_type_denoter">ast_type_denoter</a></code></code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTast_declaration.Formal_parameter_declaration"><span class="constructor">Formal_parameter_declaration</span></span> <span class="keyword">of</span> <code class="type"><a href="Ast.html#TYPEast_info">ast_info</a> * <a href="Ast.html#TYPEast_formal_parameter">ast_formal_parameter</a></code></code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTast_declaration.Sequential_declaration"><span class="constructor">Sequential_declaration</span></span> <span class="keyword">of</span> <code class="type"><a href="Ast.html#TYPEast_info">ast_info</a> * <a href="Ast.html#TYPEast_declaration">ast_declaration</a> * <a href="Ast.html#TYPEast_declaration">ast_declaration</a></code></code></td>
+
+</tr></table>
+
+<div class="info ">
+Definition of the possible structure of a declaration<br>
+</div>
+
+
+<pre><code><span id="TYPEast_formal_parameter"><span class="keyword">type</span> <code class="type"></code>ast_formal_parameter</span> = </code></pre><table class="typetable">
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTast_formal_parameter.Const_formal_parameter"><span class="constructor">Const_formal_parameter</span></span> <span class="keyword">of</span> <code class="type"><a href="Ast.html#TYPEast_info">ast_info</a> * <a href="Ast.html#TYPEast_identifier">ast_identifier</a> * <a href="Ast.html#TYPEast_type_denoter">ast_type_denoter</a></code></code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTast_formal_parameter.Var_formal_parameter"><span class="constructor">Var_formal_parameter</span></span> <span class="keyword">of</span> <code class="type"><a href="Ast.html#TYPEast_info">ast_info</a> * <a href="Ast.html#TYPEast_identifier">ast_identifier</a> * <a href="Ast.html#TYPEast_type_denoter">ast_type_denoter</a></code></code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTast_formal_parameter.Proc_formal_parameter"><span class="constructor">Proc_formal_parameter</span></span> <span class="keyword">of</span> <code class="type"><a href="Ast.html#TYPEast_info">ast_info</a> * <a href="Ast.html#TYPEast_identifier">ast_identifier</a> * <a href="Ast.html#TYPEast_formal_parameter_sequence">ast_formal_parameter_sequence</a></code></code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTast_formal_parameter.Func_formal_parameter"><span class="constructor">Func_formal_parameter</span></span> <span class="keyword">of</span> <code class="type"><a href="Ast.html#TYPEast_info">ast_info</a> * <a href="Ast.html#TYPEast_identifier">ast_identifier</a> * <a href="Ast.html#TYPEast_formal_parameter_sequence">ast_formal_parameter_sequence</a><br>        * <a href="Ast.html#TYPEast_type_denoter">ast_type_denoter</a></code></code></td>
+
+</tr></table>
+
+<div class="info ">
+Definition of the possible structure of a formal parameter<br>
+</div>
+
+
+<pre><code><span id="TYPEast_actual_parameter"><span class="keyword">type</span> <code class="type"></code>ast_actual_parameter</span> = </code></pre><table class="typetable">
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTast_actual_parameter.Const_actual_parameter"><span class="constructor">Const_actual_parameter</span></span> <span class="keyword">of</span> <code class="type"><a href="Ast.html#TYPEast_info">ast_info</a> * <a href="Ast.html#TYPEast_expression">ast_expression</a></code></code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTast_actual_parameter.Var_actual_parameter"><span class="constructor">Var_actual_parameter</span></span> <span class="keyword">of</span> <code class="type"><a href="Ast.html#TYPEast_info">ast_info</a> * <a href="Ast.html#TYPEast_vname">ast_vname</a></code></code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTast_actual_parameter.Proc_actual_parameter"><span class="constructor">Proc_actual_parameter</span></span> <span class="keyword">of</span> <code class="type"><a href="Ast.html#TYPEast_info">ast_info</a> * <a href="Ast.html#TYPEast_identifier">ast_identifier</a></code></code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTast_actual_parameter.Func_actual_parameter"><span class="constructor">Func_actual_parameter</span></span> <span class="keyword">of</span> <code class="type"><a href="Ast.html#TYPEast_info">ast_info</a> * <a href="Ast.html#TYPEast_identifier">ast_identifier</a></code></code></td>
+
+</tr></table>
+
+<div class="info ">
+Definition of the possible structure of a actual parameter<br>
+</div>
+
+
+<pre><code><span id="TYPEast_formal_parameter_sequence"><span class="keyword">type</span> <code class="type"></code>ast_formal_parameter_sequence</span> = </code></pre><table class="typetable">
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTast_formal_parameter_sequence.Empty_formal_parameter_sequence"><span class="constructor">Empty_formal_parameter_sequence</span></span> <span class="keyword">of</span> <code class="type"><a href="Ast.html#TYPEast_info">ast_info</a></code></code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTast_formal_parameter_sequence.Single_formal_parameter_sequence"><span class="constructor">Single_formal_parameter_sequence</span></span> <span class="keyword">of</span> <code class="type"><a href="Ast.html#TYPEast_info">ast_info</a> * <a href="Ast.html#TYPEast_formal_parameter">ast_formal_parameter</a></code></code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTast_formal_parameter_sequence.Multiple_formal_parameter_sequence"><span class="constructor">Multiple_formal_parameter_sequence</span></span> <span class="keyword">of</span> <code class="type"><a href="Ast.html#TYPEast_info">ast_info</a> * <a href="Ast.html#TYPEast_formal_parameter">ast_formal_parameter</a> * <a href="Ast.html#TYPEast_formal_parameter_sequence">ast_formal_parameter_sequence</a></code></code></td>
+
+</tr></table>
+
+<div class="info ">
+Definition of the possible structure of a formal paramater sequence<br>
+</div>
+
+
+<pre><code><span id="TYPEast_actual_parameter_sequence"><span class="keyword">type</span> <code class="type"></code>ast_actual_parameter_sequence</span> = </code></pre><table class="typetable">
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTast_actual_parameter_sequence.Empty_actual_parameter_sequence"><span class="constructor">Empty_actual_parameter_sequence</span></span> <span class="keyword">of</span> <code class="type"><a href="Ast.html#TYPEast_info">ast_info</a></code></code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTast_actual_parameter_sequence.Single_actual_parameter_sequence"><span class="constructor">Single_actual_parameter_sequence</span></span> <span class="keyword">of</span> <code class="type"><a href="Ast.html#TYPEast_info">ast_info</a> * <a href="Ast.html#TYPEast_actual_parameter">ast_actual_parameter</a></code></code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTast_actual_parameter_sequence.Multiple_actual_parameter_sequence"><span class="constructor">Multiple_actual_parameter_sequence</span></span> <span class="keyword">of</span> <code class="type"><a href="Ast.html#TYPEast_info">ast_info</a> * <a href="Ast.html#TYPEast_actual_parameter">ast_actual_parameter</a> * <a href="Ast.html#TYPEast_actual_parameter_sequence">ast_actual_parameter_sequence</a></code></code></td>
+
+</tr></table>
+
+<div class="info ">
+Definition of the possible structure of an actual parameter sequence<br>
+</div>
+
+
+<pre><code><span id="TYPEast_type_denoter"><span class="keyword">type</span> <code class="type"></code>ast_type_denoter</span> = </code></pre><table class="typetable">
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTast_type_denoter.Null_type_denoter"><span class="constructor">Null_type_denoter</span></span></code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTast_type_denoter.Error_type_denoter"><span class="constructor">Error_type_denoter</span></span> <span class="keyword">of</span> <code class="type"><a href="Ast.html#TYPEast_info">ast_info</a></code></code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTast_type_denoter.Any_type_denoter"><span class="constructor">Any_type_denoter</span></span> <span class="keyword">of</span> <code class="type"><a href="Ast.html#TYPEast_info">ast_info</a></code></code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTast_type_denoter.Simple_type_denoter"><span class="constructor">Simple_type_denoter</span></span> <span class="keyword">of</span> <code class="type"><a href="Ast.html#TYPEast_info">ast_info</a> * <a href="Ast.html#TYPEast_identifier">ast_identifier</a></code></code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTast_type_denoter.Array_type_denoter"><span class="constructor">Array_type_denoter</span></span> <span class="keyword">of</span> <code class="type"><a href="Ast.html#TYPEast_info">ast_info</a> * <a href="Ast.html#TYPEast_integer_literal">ast_integer_literal</a> * <a href="Ast.html#TYPEast_type_denoter">ast_type_denoter</a></code></code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTast_type_denoter.Record_type_denoter"><span class="constructor">Record_type_denoter</span></span> <span class="keyword">of</span> <code class="type"><a href="Ast.html#TYPEast_info">ast_info</a> * <a href="Ast.html#TYPEast_field_type_denoter">ast_field_type_denoter</a></code></code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTast_type_denoter.Bool_type_denoter"><span class="constructor">Bool_type_denoter</span></span> <span class="keyword">of</span> <code class="type"><a href="Ast.html#TYPEast_info">ast_info</a></code></code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTast_type_denoter.Int_type_denoter"><span class="constructor">Int_type_denoter</span></span> <span class="keyword">of</span> <code class="type"><a href="Ast.html#TYPEast_info">ast_info</a></code></code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTast_type_denoter.Char_type_denoter"><span class="constructor">Char_type_denoter</span></span> <span class="keyword">of</span> <code class="type"><a href="Ast.html#TYPEast_info">ast_info</a></code></code></td>
+
+</tr></table>
+
+<div class="info ">
+Definition of the possible structure of a type denoter<br>
+</div>
+
+
+<pre><code><span id="TYPEast_field_type_denoter"><span class="keyword">type</span> <code class="type"></code>ast_field_type_denoter</span> = </code></pre><table class="typetable">
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTast_field_type_denoter.Single_field_type_denoter"><span class="constructor">Single_field_type_denoter</span></span> <span class="keyword">of</span> <code class="type"><a href="Ast.html#TYPEast_info">ast_info</a> * <a href="Ast.html#TYPEast_identifier">ast_identifier</a> * <a href="Ast.html#TYPEast_type_denoter">ast_type_denoter</a></code></code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTast_field_type_denoter.Multiple_field_type_denoter"><span class="constructor">Multiple_field_type_denoter</span></span> <span class="keyword">of</span> <code class="type"><a href="Ast.html#TYPEast_info">ast_info</a> * <a href="Ast.html#TYPEast_identifier">ast_identifier</a> * <a href="Ast.html#TYPEast_type_denoter">ast_type_denoter</a><br>        * <a href="Ast.html#TYPEast_field_type_denoter">ast_field_type_denoter</a></code></code></td>
+
+</tr></table>
+
+<div class="info ">
+Definition of the possible structure of a field type denoter<br>
+</div>
+
+
+<pre><code><span id="TYPEast_integer_literal"><span class="keyword">type</span> <code class="type"></code>ast_integer_literal</span> = </code></pre><table class="typetable">
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTast_integer_literal.Integer_literal"><span class="constructor">Integer_literal</span></span> <span class="keyword">of</span> <code class="type"><a href="Ast.html#TYPEast_info">ast_info</a> * string</code></code></td>
+
+</tr></table>
+
+<div class="info ">
+Definition of the possible structure of an integer literal<br>
+</div>
+
+
+<pre><code><span id="TYPEast_character_literal"><span class="keyword">type</span> <code class="type"></code>ast_character_literal</span> = </code></pre><table class="typetable">
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTast_character_literal.Character_literal"><span class="constructor">Character_literal</span></span> <span class="keyword">of</span> <code class="type"><a href="Ast.html#TYPEast_info">ast_info</a> * string</code></code></td>
+
+</tr></table>
+
+<div class="info ">
+Definition of the possible structure of an caracter literal<br>
+</div>
+
+
+<pre><code><span id="TYPEast_identifier"><span class="keyword">type</span> <code class="type"></code>ast_identifier</span> = </code></pre><table class="typetable">
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTast_identifier.Identifier"><span class="constructor">Identifier</span></span> <span class="keyword">of</span> <code class="type"><a href="Ast.html#TYPEast_info">ast_info</a> * string</code></code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTast_identifier.Checked_identifier"><span class="constructor">Checked_identifier</span></span> <span class="keyword">of</span> <code class="type"><a href="Ast.html#TYPEast_identifier">ast_identifier</a> * <a href="Ast.html#TYPEast_declaration">ast_declaration</a> Pervasives.ref</code></code></td>
+
+</tr></table>
+
+<div class="info ">
+Definition of the possible structure of an identifier<br>
+</div>
+
+
+<pre><code><span id="TYPEast_operator"><span class="keyword">type</span> <code class="type"></code>ast_operator</span> = </code></pre><table class="typetable">
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTast_operator.Operator"><span class="constructor">Operator</span></span> <span class="keyword">of</span> <code class="type"><a href="Ast.html#TYPEast_info">ast_info</a> * string</code></code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTast_operator.Checked_operator"><span class="constructor">Checked_operator</span></span> <span class="keyword">of</span> <code class="type"><a href="Ast.html#TYPEast_operator">ast_operator</a> * <a href="Ast.html#TYPEast_declaration">ast_declaration</a> Pervasives.ref</code></code></td>
+
+</tr></table>
+
+<div class="info ">
+Definition of the possible structure of an operator<br>
+</div>
+
+</body></html>

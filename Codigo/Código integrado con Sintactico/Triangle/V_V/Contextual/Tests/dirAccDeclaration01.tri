@@ -2,6 +2,6 @@
 ! Es correcto
 
 let
-   var x : record a : Integer end
+   var x : record a : Integer, b : Integer end
 in
   putint(x.a)

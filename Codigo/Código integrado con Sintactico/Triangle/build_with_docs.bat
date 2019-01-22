@@ -22,11 +22,13 @@ mkdir "TreeDrawer(mli)"
 mkdir "Token(mli)"
 mkdir "Parser(mli)"
 mkdir "Scanner(mli)"
+mkdir "Id_entry(mli)"
 mkdir "IdentificationTable(mli)"
 mkdir "Checker(mli)"
 mkdir "TokenPrinter_Pipe(mli)"
 mkdir "TokenPrinter_XML(mli)"
 mkdir "TokenPrinter_HTML(mli)"
+mkdir "IdentificationTablePrinter_XML(mli)"
 
 mkdir "ErrorReporter(ml)"
 mkdir "TreeDrawer(ml)"
@@ -37,6 +39,7 @@ mkdir "Checker(ml)"
 mkdir "TokenPrinter_Pipe(ml)"
 mkdir "TokenPrinter_XML(ml)"
 mkdir "TokenPrinter_HTML(ml)"
+mkdir "IdentificationTablePrinter_XML(ml)"
 mkdir "Compiler(ml)"
 
 REM Generate fields to save docs
@@ -52,11 +55,13 @@ ocamlc -c TreeDrawer.mli
 ocamlc -c Token.mli
 ocamlc -c Parser.mli
 ocamlc -c Scanner.mli
+ocamlc -c Id_entry.mli
 ocamlc -c IdentificationTable.mli
 ocamlc -c Checker.mli
 ocamlc -c TokenPrinter_Pipe.mli
 ocamlc -c TokenPrinter_XML.mli
 ocamlc -c TokenPrinter_HTML.mli
+ocamlc -c IdentificationTablePrinter_XML.mli
 
 ocamlc -c ErrorReporter.ml
 ocamlc -c TreeDrawer.ml
@@ -67,6 +72,7 @@ ocamlc -c Checker.ml
 ocamlc -c TokenPrinter_Pipe.ml
 ocamlc -c TokenPrinter_XML.ml
 ocamlc -c TokenPrinter_HTML.ml
+ocamlc -c IdentificationTablePrinter_XML.ml
 ocamlc -c -pp camlp4o Compiler.ml
 
 REM Create docs
@@ -78,11 +84,13 @@ ocamldoc TreeDrawer.mli -d "..\Docs\TreeDrawer(mli)" -html
 ocamldoc Token.mli -d "..\Docs\Token(mli)" -html
 ocamldoc Parser.mli -d "..\Docs\Parser(mli)" -html
 ocamldoc Scanner.mli -d "..\Docs\Scanner(mli)" -html
+ocamldoc Id_entry.mli -d "..\Docs\Id_entry(mli)" -html
 ocamldoc IdentificationTable.mli -d "..\Docs\IdentificationTable(mli)" -html
 ocamldoc Checker.mli -d "..\Docs\Checker(mli)" -html
 ocamldoc TokenPrinter_Pipe.mli -d "..\Docs\TokenPrinter_Pipe(mli)" -html
 ocamldoc TokenPrinter_XML.mli -d "..\Docs\TokenPrinter_XML(mli)" -html
 ocamldoc TokenPrinter_HTML.mli -d "..\Docs\TokenPrinter_HTML(mli)" -html
+ocamldoc IdentificationTablePrinter_XML.mli -d "..\Docs\IdentificationTablePrinter_XML(mli)" -html
 
 ocamldoc ErrorReporter.ml -d "..\Docs\ErrorReporter(ml)" -html
 ocamldoc TreeDrawer.ml -d "..\Docs\TreeDrawer(ml)" -html
@@ -93,11 +101,12 @@ ocamldoc Checker.ml -d "..\Docs\Checker(ml)" -html
 ocamldoc TokenPrinter_Pipe.ml -d "..\Docs\TokenPrinter_Pipe(ml)" -html
 ocamldoc TokenPrinter_XML.ml -d "..\Docs\TokenPrinter_XML(ml)" -html
 ocamldoc TokenPrinter_HTML.ml -d "..\Docs\TokenPrinter_HTML(ml)" -html
+ocamldoc IdentificationTablePrinter_XML.ml -d "..\Docs\IdentificationTablePrinter_XML(ml)" -html
 ocamldoc Compiler.ml -d "..\Docs\Compiler(ml)" -html
 
 REM Create docs
 
-ocamlc ErrorReporter.cmo TreeDrawer.cmo TokenPrinter_Pipe.cmo TokenPrinter_XML.cmo TokenPrinter_HTML.cmo Parser.cmo Scanner.cmo IdentificationTable.cmo Checker.cmo Compiler.cmo -o Triangle.exe
+ocamlc ErrorReporter.cmo TreeDrawer.cmo TokenPrinter_Pipe.cmo TokenPrinter_XML.cmo TokenPrinter_HTML.cmo Parser.cmo Scanner.cmo IdentificationTablePrinter_XML.cmo IdentificationTable.cmo Checker.cmo Compiler.cmo -o Triangle.exe
 
 move Triangle.exe ..
 

@@ -1,0 +1,126 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+<link rel="stylesheet" href="style.css" type="text/css">
+<meta content="text/html; charset=iso-8859-1" http-equiv="Content-Type">
+<link rel="Start" href="index.html">
+<link rel="Up" href="index.html">
+<link title="Index of types" rel=Appendix href="index_types.html">
+<link title="Index of modules" rel=Appendix href="index_modules.html">
+<link title="RuntimeEntity" rel="Chapter" href="RuntimeEntity.html"><title>RuntimeEntity</title>
+</head>
+<body>
+<div class="navbar">&nbsp;<a class="up" href="index.html" title="Index">Up</a>
+&nbsp;</div>
+<h1>Module <a href="type_RuntimeEntity.html">RuntimeEntity</a></h1>
+
+<pre><span class="keyword">module</span> RuntimeEntity: <code class="code">sig</code> <a href="RuntimeEntity.html">..</a> <code class="code">end</code></pre><div class="info module top">
+This program was originally written by Luis Leopoldo Pérez on May 26, 2006.
+This program was reviewed, repaired, completed, verified, and validated by 
+students of ITCR in January 2019.
+Runtime Entities Definition for Caml-Triangle
+Interface file<br>
+<b>Author(s):</b> Luis Leopoldo Pérez, Jose Antonio Alpízar Aguilar, Pablo Josué Brenes Jimenes, Luis José Castillo Valverde<br>
+</div>
+<hr width="100%">
+
+<pre><code><span id="TYPEobject_address"><span class="keyword">type</span> <code class="type"></code>object_address</span> = {</code></pre><table class="typetable">
+<tr>
+<td align="left" valign="top" >
+<code>&nbsp;&nbsp;</code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTobject_address.level">level</span>&nbsp;: <code class="type">int</code>;</code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code>&nbsp;&nbsp;</code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTobject_address.displacement">displacement</span>&nbsp;: <code class="type">int</code>;</code></td>
+
+</tr></table>
+}
+
+
+
+<pre><code><span id="TYPEruntime_entity"><span class="keyword">type</span> <code class="type"></code>runtime_entity</span> = </code></pre><table class="typetable">
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTruntime_entity.Null_runtime_entity"><span class="constructor">Null_runtime_entity</span></span></code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTruntime_entity.Known_value"><span class="constructor">Known_value</span></span> <span class="keyword">of</span> <code class="type">int * int</code></code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTruntime_entity.Unknown_value"><span class="constructor">Unknown_value</span></span> <span class="keyword">of</span> <code class="type">int * <a href="RuntimeEntity.html#TYPEobject_address">object_address</a></code></code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTruntime_entity.Known_address"><span class="constructor">Known_address</span></span> <span class="keyword">of</span> <code class="type">int * <a href="RuntimeEntity.html#TYPEobject_address">object_address</a></code></code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTruntime_entity.Unknown_address"><span class="constructor">Unknown_address</span></span> <span class="keyword">of</span> <code class="type">int * <a href="RuntimeEntity.html#TYPEobject_address">object_address</a></code></code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTruntime_entity.Known_routine"><span class="constructor">Known_routine</span></span> <span class="keyword">of</span> <code class="type">int * <a href="RuntimeEntity.html#TYPEobject_address">object_address</a></code></code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTruntime_entity.Unknown_routine"><span class="constructor">Unknown_routine</span></span> <span class="keyword">of</span> <code class="type">int * <a href="RuntimeEntity.html#TYPEobject_address">object_address</a></code></code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTruntime_entity.Primitive_routine"><span class="constructor">Primitive_routine</span></span> <span class="keyword">of</span> <code class="type">int * int</code></code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTruntime_entity.Equality_routine"><span class="constructor">Equality_routine</span></span> <span class="keyword">of</span> <code class="type">int * int</code></code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTruntime_entity.Field"><span class="constructor">Field</span></span> <span class="keyword">of</span> <code class="type">int * int</code></code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTruntime_entity.Type_representation"><span class="constructor">Type_representation</span></span> <span class="keyword">of</span> <code class="type">int</code></code></td>
+
+</tr></table>
+
+
+</body></html>

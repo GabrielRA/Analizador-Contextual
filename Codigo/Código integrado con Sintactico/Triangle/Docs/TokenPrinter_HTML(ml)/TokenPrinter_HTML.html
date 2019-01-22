@@ -1,0 +1,64 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+<link rel="stylesheet" href="style.css" type="text/css">
+<meta content="text/html; charset=iso-8859-1" http-equiv="Content-Type">
+<link rel="Start" href="index.html">
+<link rel="Up" href="index.html">
+<link title="Index of values" rel=Appendix href="index_values.html">
+<link title="Index of modules" rel=Appendix href="index_modules.html">
+<link title="TokenPrinter_HTML" rel="Chapter" href="TokenPrinter_HTML.html"><title>TokenPrinter_HTML</title>
+</head>
+<body>
+<div class="navbar">&nbsp;<a class="up" href="index.html" title="Index">Up</a>
+&nbsp;</div>
+<h1>Module <a href="type_TokenPrinter_HTML.html">TokenPrinter_HTML</a></h1>
+
+<pre><span class="keyword">module</span> TokenPrinter_HTML: <code class="code">sig</code> <a href="TokenPrinter_HTML.html">..</a> <code class="code">end</code></pre><div class="info module top">
+This program was written by students of ITCR in January 2019.
+This program was reviewed, repaired, completed, verified, and validated by
+students of ITCR in January 2019..
+Tokens Drawing Library in a HTML file for Caml-Triangle
+Implementation file<br>
+<b>Author(s):</b> Jose Antonio Alpízar Aguilar, Pablo Josué Brenes Jimenes, Luis José Castillo Valverde<br>
+</div>
+<hr width="100%">
+
+<pre><span id="VALfirst_print"><span class="keyword">val</span> first_print</span> : <code class="type">string Pervasives.ref</code></pre><div class="info ">
+This variable stores the first part of the container that stores each 
+token<br>
+</div>
+
+<pre><span id="VALsecond_print"><span class="keyword">val</span> second_print</span> : <code class="type">string Pervasives.ref</code></pre><div class="info ">
+This variable stores the second part of the container that stores each
+token<br>
+</div>
+
+<pre><span id="VALthird_print"><span class="keyword">val</span> third_print</span> : <code class="type">string Pervasives.ref</code></pre><div class="info ">
+This variable stores the third part of the container that stores each
+token<br>
+</div>
+
+<pre><span id="VALfourth_print"><span class="keyword">val</span> fourth_print</span> : <code class="type">string Pervasives.ref</code></pre><div class="info ">
+This variable stores the fourth part of the container that stores each
+token<br>
+</div>
+
+<pre><span id="VALtoken_to_str"><span class="keyword">val</span> token_to_str</span> : <code class="type">Token.token -> string</code></pre><div class="info ">
+This function calls each of the parts of the container in addition to 
+completing the missing elements, returning the string with the container 
+of the token<br>
+</div>
+
+<pre><span id="VALprint_tokens_aux"><span class="keyword">val</span> print_tokens_aux</span> : <code class="type">('a -> Token.token) -> 'a -> Pervasives.out_channel -> unit</code></pre><div class="info ">
+This function receives the scanner function, the buffer of the file
+being scanned and the handler of the file in which it is being written.
+It is responsible for filling the body of the HTML.<br>
+</div>
+
+<pre><span id="VALprint_tokens"><span class="keyword">val</span> print_tokens</span> : <code class="type">('a -> Token.token) -> 'a -> string -> unit</code></pre><div class="info ">
+This function receives the function of scanner, the buffer of the file 
+that is being scanned and the name of the file in which it will be written. 
+Is responsible for creating the file, fill in the header and footer.<br>
+</div>
+</body></html>

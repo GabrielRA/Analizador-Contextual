@@ -30,10 +30,22 @@ let unboxid_list t =
     Nullid_list -> []
   | Id_list s -> s
 
+(**
+This function is used to open a new scope in the identification table. 
+It increases the current level by 1.
+
+@return ().
+*)
 let open_scope() = 
   incr(level);
   write_open_scope_declarations !level
 
+(**
+This function is used to close the last scope in the identification table.
+It decreases the current level by 1.
+
+@return ().
+*)
 let close_scope() =
   (* Invocacion del generador de Xml del level actual id_list(List.filter (fun x -> (x.levl = !level)) (unboxid_list !identifier_list)) *)
   write_close_scope_declarations
@@ -50,17 +62,35 @@ let close_scope() =
     decr(level)
     
     
+(**
+Busca en la tabla de identifcacion si en el nivel actual existe un id_entry del mismo nombre que el de new_id
 
+@param new_id valor tipo id_entry que sera el que se buscara en la tabla de identificacion
+@return Booleano.
+*)
 let exists new_id =
   (List.exists (fun x -> 
 	  (((String.compare x.id new_id) == 0) && (x.levl == !level))) 
 	  (unboxid_list !identifier_list)
   )
     
+(**
+Mete una declaracion en la tabla de identificacion
+
+@param new_id valor tipo id_entry que sera el que se buscara en la tabla de identificacion
+@param new_decl el Tipo de identficador que fue declarado
+@return ()
+*)
 let enter new_id new_decl = 
   let new_entry = {id=new_id; attr=new_decl; levl=(!level)} in
     identifier_list := Id_list([new_entry] @ unboxid_list(!identifier_list))      
 
+(**
+Obtener el tipo de ast de un Id_entry segun un Id especifico
+
+@param old_Id un string que determina el nombre del Id_entry en la tabla
+@return Attr de un id_entry.
+*)
 let retrieve old_Id =
   try
     (List.find 
@@ -68,7 +98,12 @@ let retrieve old_Id =
 	    (unboxid_list !identifier_list)
 	  ).attr
     with Not_found -> ref Null_declaration
-    
+(**
+Obtener el Id_entry en la tabla de identificacion segun un Id especifico
+
+@param old_id valor tipo id_entry que sera el que se buscara en la tabla de identificacion
+@return Id_entry en la tabla de identificacion.
+*)  
 let retrieve_element old_Id =
   try
     (List.find 

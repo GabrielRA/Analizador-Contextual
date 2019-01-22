@@ -1,0 +1,116 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+<link rel="stylesheet" href="style.css" type="text/css">
+<meta content="text/html; charset=iso-8859-1" http-equiv="Content-Type">
+<link rel="Start" href="index.html">
+<link rel="Up" href="index.html">
+<link title="Index of types" rel=Appendix href="index_types.html">
+<link title="Index of values" rel=Appendix href="index_values.html">
+<link title="Index of modules" rel=Appendix href="index_modules.html">
+<link title="IdentificationTable" rel="Chapter" href="IdentificationTable.html"><title>IdentificationTable</title>
+</head>
+<body>
+<div class="navbar">&nbsp;<a class="up" href="index.html" title="Index">Up</a>
+&nbsp;</div>
+<h1>Module <a href="type_IdentificationTable.html">IdentificationTable</a></h1>
+
+<pre><span class="keyword">module</span> IdentificationTable: <code class="code">sig</code> <a href="IdentificationTable.html">..</a> <code class="code">end</code></pre><div class="info module top">
+This function is used to open a new scope in the identification table. 
+It increases the current level by 1.<br>
+<b>Returns</b> ().<br>
+</div>
+<hr width="100%">
+
+<pre><code><span id="TYPEid_list"><span class="keyword">type</span> <code class="type"></code>id_list</span> = </code></pre><table class="typetable">
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTid_list.Nullid_list"><span class="constructor">Nullid_list</span></span></code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTid_list.Id_list"><span class="constructor">Id_list</span></span> <span class="keyword">of</span> <code class="type">Id_entry.id_entry list</code></code></td>
+
+</tr></table>
+
+
+
+<pre><span id="VALlevel"><span class="keyword">val</span> level</span> : <code class="type">int Pervasives.ref</code></pre>
+<pre><span id="VALidentifier_list"><span class="keyword">val</span> identifier_list</span> : <code class="type"><a href="IdentificationTable.html#TYPEid_list">id_list</a> Pervasives.ref</code></pre>
+<pre><span id="VALunboxid_list"><span class="keyword">val</span> unboxid_list</span> : <code class="type"><a href="IdentificationTable.html#TYPEid_list">id_list</a> -> Id_entry.id_entry list</code></pre>
+<pre><span id="VALopen_scope"><span class="keyword">val</span> open_scope</span> : <code class="type">unit -> unit</code></pre><div class="info ">
+This function is used to open a new scope in the identification table. 
+It increases the current level by 1.<br>
+<b>Returns</b> ().<br>
+</div>
+
+<pre><span id="VALclose_scope"><span class="keyword">val</span> close_scope</span> : <code class="type">unit -> unit</code></pre><div class="info ">
+This function is used to close the last scope in the identification table.
+It decreases the current level by 1.<br>
+<b>Returns</b> ().<br>
+</div>
+
+<pre><span id="VALexists"><span class="keyword">val</span> exists</span> : <code class="type">String.t -> bool</code></pre><div class="info ">
+Busca en la tabla de identifcacion si en el nivel actual existe un id_entry del mismo nombre que el de new_id<br>
+<b>Returns</b> Booleano.<br>
+</div>
+<div class="param_info"><code class="code">new_id</code> : valor tipo id_entry que sera el que se buscara en la tabla de identificacion</div>
+
+<pre><span id="VALenter"><span class="keyword">val</span> enter</span> : <code class="type">string -> Ast.ast_declaration Pervasives.ref -> unit</code></pre><div class="info ">
+Mete una declaracion en la tabla de identificacion<br>
+<b>Returns</b> ()<br>
+</div>
+<div class="param_info"><code class="code">new_id</code> : valor tipo id_entry que sera el que se buscara en la tabla de identificacion</div>
+<div class="param_info"><code class="code">new_decl</code> : el Tipo de identficador que fue declarado</div>
+
+<pre><span id="VALretrieve"><span class="keyword">val</span> retrieve</span> : <code class="type">String.t -> Ast.ast_declaration Pervasives.ref</code></pre><div class="info ">
+Obtener el tipo de ast de un Id_entry segun un Id especifico<br>
+<b>Returns</b> Attr de un id_entry.<br>
+</div>
+<div class="param_info"><code class="code">old_Id</code> : un string que determina el nombre del Id_entry en la tabla</div>
+
+<pre><span id="VALretrieve_element"><span class="keyword">val</span> retrieve_element</span> : <code class="type">String.t -> Id_entry.id_entry</code></pre><div class="info ">
+Obtener el Id_entry en la tabla de identificacion segun un Id especifico<br>
+<b>Returns</b> Id_entry en la tabla de identificacion.<br>
+</div>
+
+<pre><span id="VALboolean_type"><span class="keyword">val</span> boolean_type</span> : <code class="type">Ast.ast_type_denoter</code></pre>
+<pre><span id="VALchar_type"><span class="keyword">val</span> char_type</span> : <code class="type">Ast.ast_type_denoter</code></pre>
+<pre><span id="VALinteger_type"><span class="keyword">val</span> integer_type</span> : <code class="type">Ast.ast_type_denoter</code></pre>
+<pre><span id="VALany_type"><span class="keyword">val</span> any_type</span> : <code class="type">Ast.ast_type_denoter</code></pre>
+<pre><span id="VALerror_type"><span class="keyword">val</span> error_type</span> : <code class="type">Ast.ast_type_denoter</code></pre>
+<pre><span id="VALboolean_decl"><span class="keyword">val</span> boolean_decl</span> : <code class="type">Ast.ast_declaration</code></pre>
+<pre><span id="VALchar_decl"><span class="keyword">val</span> char_decl</span> : <code class="type">Ast.ast_declaration</code></pre>
+<pre><span id="VALinteger_decl"><span class="keyword">val</span> integer_decl</span> : <code class="type">Ast.ast_declaration</code></pre>
+<pre><span id="VALfalse_decl"><span class="keyword">val</span> false_decl</span> : <code class="type">Ast.ast_declaration</code></pre>
+<pre><span id="VALtrue_decl"><span class="keyword">val</span> true_decl</span> : <code class="type">Ast.ast_declaration</code></pre>
+<pre><span id="VALmaxint_decl"><span class="keyword">val</span> maxint_decl</span> : <code class="type">Ast.ast_declaration</code></pre>
+<pre><span id="VALnot_decl"><span class="keyword">val</span> not_decl</span> : <code class="type">Ast.ast_declaration</code></pre>
+<pre><span id="VALand_decl"><span class="keyword">val</span> and_decl</span> : <code class="type">Ast.ast_declaration</code></pre>
+<pre><span id="VALor_decl"><span class="keyword">val</span> or_decl</span> : <code class="type">Ast.ast_declaration</code></pre>
+<pre><span id="VALadd_decl"><span class="keyword">val</span> add_decl</span> : <code class="type">Ast.ast_declaration</code></pre>
+<pre><span id="VALsubstractDecl"><span class="keyword">val</span> substractDecl</span> : <code class="type">Ast.ast_declaration</code></pre>
+<pre><span id="VALmultiply_decl"><span class="keyword">val</span> multiply_decl</span> : <code class="type">Ast.ast_declaration</code></pre>
+<pre><span id="VALdivide_decl"><span class="keyword">val</span> divide_decl</span> : <code class="type">Ast.ast_declaration</code></pre>
+<pre><span id="VALmodulo_decl"><span class="keyword">val</span> modulo_decl</span> : <code class="type">Ast.ast_declaration</code></pre>
+<pre><span id="VALequal_decl"><span class="keyword">val</span> equal_decl</span> : <code class="type">Ast.ast_declaration</code></pre>
+<pre><span id="VALunequal_decl"><span class="keyword">val</span> unequal_decl</span> : <code class="type">Ast.ast_declaration</code></pre>
+<pre><span id="VALless_decl"><span class="keyword">val</span> less_decl</span> : <code class="type">Ast.ast_declaration</code></pre>
+<pre><span id="VALnotless_decl"><span class="keyword">val</span> notless_decl</span> : <code class="type">Ast.ast_declaration</code></pre>
+<pre><span id="VALgreater_decl"><span class="keyword">val</span> greater_decl</span> : <code class="type">Ast.ast_declaration</code></pre>
+<pre><span id="VALnotgreater_decl"><span class="keyword">val</span> notgreater_decl</span> : <code class="type">Ast.ast_declaration</code></pre>
+<pre><span id="VALget_decl"><span class="keyword">val</span> get_decl</span> : <code class="type">Ast.ast_declaration</code></pre>
+<pre><span id="VALput_decl"><span class="keyword">val</span> put_decl</span> : <code class="type">Ast.ast_declaration</code></pre>
+<pre><span id="VALgetint_decl"><span class="keyword">val</span> getint_decl</span> : <code class="type">Ast.ast_declaration</code></pre>
+<pre><span id="VALputint_decl"><span class="keyword">val</span> putint_decl</span> : <code class="type">Ast.ast_declaration</code></pre>
+<pre><span id="VALgeteol_decl"><span class="keyword">val</span> geteol_decl</span> : <code class="type">Ast.ast_declaration</code></pre>
+<pre><span id="VALputeol_decl"><span class="keyword">val</span> puteol_decl</span> : <code class="type">Ast.ast_declaration</code></pre>
+<pre><span id="VALchr_decl"><span class="keyword">val</span> chr_decl</span> : <code class="type">Ast.ast_declaration</code></pre>
+<pre><span id="VALord_decl"><span class="keyword">val</span> ord_decl</span> : <code class="type">Ast.ast_declaration</code></pre>
+<pre><span id="VALeol_decl"><span class="keyword">val</span> eol_decl</span> : <code class="type">Ast.ast_declaration</code></pre>
+<pre><span id="VALeof_decl"><span class="keyword">val</span> eof_decl</span> : <code class="type">Ast.ast_declaration</code></pre></body></html>

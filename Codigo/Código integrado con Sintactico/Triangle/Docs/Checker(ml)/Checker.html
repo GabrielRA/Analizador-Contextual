@@ -1,0 +1,43 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+<link rel="stylesheet" href="style.css" type="text/css">
+<meta content="text/html; charset=iso-8859-1" http-equiv="Content-Type">
+<link rel="Start" href="index.html">
+<link rel="Up" href="index.html">
+<link title="Index of values" rel=Appendix href="index_values.html">
+<link title="Index of modules" rel=Appendix href="index_modules.html">
+<link title="Checker" rel="Chapter" href="Checker.html"><title>Checker</title>
+</head>
+<body>
+<div class="navbar">&nbsp;<a class="up" href="index.html" title="Index">Up</a>
+&nbsp;</div>
+<h1>Module <a href="type_Checker.html">Checker</a></h1>
+
+<pre><span class="keyword">module</span> Checker: <code class="code">sig</code> <a href="Checker.html">..</a> <code class="code">end</code></pre><hr width="100%">
+
+<pre><span id="VALreport_undeclared_identifier"><span class="keyword">val</span> report_undeclared_identifier</span> : <code class="type">Ast.ast_identifier -> unit</code></pre>
+<pre><span id="VALreport_undeclared_operator"><span class="keyword">val</span> report_undeclared_operator</span> : <code class="type">Ast.ast_operator -> unit</code></pre>
+<pre><span id="VALidentifier_name"><span class="keyword">val</span> identifier_name</span> : <code class="type">Ast.ast_identifier -> string</code></pre>
+<pre><span id="VALoperator_name"><span class="keyword">val</span> operator_name</span> : <code class="type">Ast.ast_operator -> string</code></pre>
+<pre><span id="VALvisit_field_identifier"><span class="keyword">val</span> visit_field_identifier</span> : <code class="type">Ast.ast_field_type_denoter -> Ast.ast_identifier -> Ast.ast_type_denoter</code></pre>
+<pre><span id="VALcheck_program"><span class="keyword">val</span> check_program</span> : <code class="type">Ast.ast_program -> Ast.ast_program</code></pre>
+<pre><span id="VALcheck_command"><span class="keyword">val</span> check_command</span> : <code class="type">Ast.ast_command -> Ast.ast_command</code></pre>
+<pre><span id="VALcheck_expression"><span class="keyword">val</span> check_expression</span> : <code class="type">Ast.ast_expression -> Ast.ast_expression</code></pre>
+<pre><span id="VALcheck_array_aggregate"><span class="keyword">val</span> check_array_aggregate</span> : <code class="type">Ast.ast_array_aggregate -> Ast.ast_array_aggregate</code></pre>
+<pre><span id="VALcheck_record_aggregate"><span class="keyword">val</span> check_record_aggregate</span> : <code class="type">Ast.ast_record_aggregate -> Ast.ast_record_aggregate</code></pre>
+<pre><span id="VALcheck_vname"><span class="keyword">val</span> check_vname</span> : <code class="type">Ast.ast_vname -> Ast.ast_vname</code></pre>
+<pre><span id="VALcheck_declaration"><span class="keyword">val</span> check_declaration</span> : <code class="type">Ast.ast_declaration -> Ast.ast_declaration</code></pre>
+<pre><span id="VALcheck_actual_parameter"><span class="keyword">val</span> check_actual_parameter</span> : <code class="type">Ast.ast_actual_parameter -><br>       Ast.ast_formal_parameter -> Ast.ast_actual_parameter</code></pre>
+<pre><span id="VALcheck_actual_parameter_sequence"><span class="keyword">val</span> check_actual_parameter_sequence</span> : <code class="type">Ast.ast_actual_parameter_sequence -><br>       Ast.ast_formal_parameter_sequence -> Ast.ast_actual_parameter_sequence</code></pre>
+<pre><span id="VALcheckFormalParameter"><span class="keyword">val</span> checkFormalParameter</span> : <code class="type">Ast.ast_formal_parameter -> Ast.ast_formal_parameter</code></pre>
+<pre><span id="VALcheck_formal_parameter_sequence"><span class="keyword">val</span> check_formal_parameter_sequence</span> : <code class="type">Ast.ast_formal_parameter_sequence -> Ast.ast_formal_parameter_sequence</code></pre>
+<pre><span id="VALcheck_type_denoter"><span class="keyword">val</span> check_type_denoter</span> : <code class="type">Ast.ast_type_denoter -> Ast.ast_type_denoter</code></pre>
+<pre><span id="VALcheck_field_type_denoter"><span class="keyword">val</span> check_field_type_denoter</span> : <code class="type">Ast.ast_field_type_denoter -> Ast.ast_field_type_denoter</code></pre>
+<pre><span id="VALcheck_integer_literal"><span class="keyword">val</span> check_integer_literal</span> : <code class="type">Ast.ast_integer_literal -> Ast.ast_type_denoter</code></pre>
+<pre><span id="VALcheck_character_literal"><span class="keyword">val</span> check_character_literal</span> : <code class="type">Ast.ast_character_literal -> Ast.ast_type_denoter</code></pre>
+<pre><span id="VALcheck_identifier"><span class="keyword">val</span> check_identifier</span> : <code class="type">Ast.ast_identifier -> Ast.ast_identifier</code></pre>
+<pre><span id="VALcheck_operator"><span class="keyword">val</span> check_operator</span> : <code class="type">Ast.ast_operator -> Ast.ast_operator</code></pre>
+<pre><span id="VALcompare_types"><span class="keyword">val</span> compare_types</span> : <code class="type">Ast.ast_type_denoter -> Ast.ast_type_denoter -> bool</code></pre>
+<pre><span id="VALcompare_fp"><span class="keyword">val</span> compare_fp</span> : <code class="type">Ast.ast_formal_parameter -> Ast.ast_formal_parameter -> bool</code></pre>
+<pre><span id="VALcompare_fps"><span class="keyword">val</span> compare_fps</span> : <code class="type">Ast.ast_formal_parameter_sequence -><br>       Ast.ast_formal_parameter_sequence -> bool</code></pre></body></html>

@@ -1,5 +1,5 @@
 ! Verifica el tipo correcto del elemento del directorio
-! Es correcto
+! Es incorrecto
 
 let
    var x : record a : Char end

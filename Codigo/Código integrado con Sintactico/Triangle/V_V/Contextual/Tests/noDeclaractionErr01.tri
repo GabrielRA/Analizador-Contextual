@@ -6,5 +6,5 @@ in
 begin
    n := 0;
    while n < 5 do
-	  a := n + 1;
+	  a := n + 1; !a no esta declarada
 end

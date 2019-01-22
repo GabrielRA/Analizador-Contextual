@@ -1,0 +1,46 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+<link rel="stylesheet" href="style.css" type="text/css">
+<meta content="text/html; charset=iso-8859-1" http-equiv="Content-Type">
+<link rel="Start" href="index.html">
+<link rel="Up" href="index.html">
+<link title="Index of values" rel=Appendix href="index_values.html">
+<link title="Index of modules" rel=Appendix href="index_modules.html">
+<link title="ErrorReporter" rel="Chapter" href="ErrorReporter.html"><title>ErrorReporter</title>
+</head>
+<body>
+<div class="navbar">&nbsp;<a class="up" href="index.html" title="Index">Up</a>
+&nbsp;</div>
+<h1>Module <a href="type_ErrorReporter.html">ErrorReporter</a></h1>
+
+<pre><span class="keyword">module</span> ErrorReporter: <code class="code">sig</code> <a href="ErrorReporter.html">..</a> <code class="code">end</code></pre><div class="info module top">
+This program was originally written by Luis Leopoldo Pérez on March 12, 2006.
+This program was reviewed, repaired, completed, verified, and validated by
+students of ITCR in January 2019.
+Error Reporting Library for Caml-Triangle
+Interface file<br>
+<b>Author(s):</b> Luis Leopoldo Pérez, Jose Antonio Alpízar Aguilar, Pablo Josué Brenes Jimenes, Luis José Castillo Valverde, Christian León Guevara, Gabriel Ramírez Ramírez<br>
+</div>
+<hr width="100%">
+
+<pre><span id="VALnum_errors"><span class="keyword">val</span> num_errors</span> : <code class="type">unit -> int</code></pre><div class="info ">
+Returns the number of errors found<br>
+</div>
+
+<pre><span id="VALreport_error"><span class="keyword">val</span> report_error</span> : <code class="type">string -> Lexing.position -> unit</code></pre><div class="info ">
+Reports an error, adding it to the error list<br>
+</div>
+
+<pre><span id="VALreport_restriction"><span class="keyword">val</span> report_restriction</span> : <code class="type">string -> unit</code></pre><div class="info ">
+Reports a restriction,<br>
+</div>
+
+<pre><span id="VALshow_errors"><span class="keyword">val</span> show_errors</span> : <code class="type">unit -> unit</code></pre><div class="info ">
+Prints the entire error list<br>
+</div>
+
+<pre><span id="VALwrite_x_m_l_errors"><span class="keyword">val</span> write_x_m_l_errors</span> : <code class="type">string -> unit</code></pre><div class="info ">
+Writes the error list in the specified XML file<br>
+</div>
+</body></html>

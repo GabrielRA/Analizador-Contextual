@@ -14,7 +14,7 @@ in
 	  var e : Integer;
 	  var f : Char
 	in
-	  putint(2);
+	  ;
 	let
 	  var g : Char;
 	  var h :Boolean
