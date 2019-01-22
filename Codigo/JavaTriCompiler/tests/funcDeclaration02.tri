@@ -1,0 +1,7 @@
+! Chequeo de proc y func correctos
+! Es correcto
+let
+  func a(var par1 : Char, var par2 : Integer): Char ~ 'C';
+  proc b(var par3 : Char, var par4 : Integer) ~ if true then else
+in
+  ;

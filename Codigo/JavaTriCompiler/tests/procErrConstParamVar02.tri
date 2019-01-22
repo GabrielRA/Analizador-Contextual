@@ -1,0 +1,8 @@
+! Error: proc llamado con argumento const para parametro var
+
+let
+  const k ~ 10;
+  proc P (var x : Integer) ~ ! P espera paso por variable (referencia) 
+    putint (x * 2)
+in
+  P (var k) ! Error: espera un argumento _variable_ no _constante_

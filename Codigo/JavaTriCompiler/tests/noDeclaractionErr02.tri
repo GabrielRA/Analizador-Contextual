@@ -1,0 +1,10 @@
+! Uso de una variable en otro bloque de codigo diferente
+
+let
+  var a : Integer
+in
+  ;
+let
+  var b : Integer
+in
+  putint(a)

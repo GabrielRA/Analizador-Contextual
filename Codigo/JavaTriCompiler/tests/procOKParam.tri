@@ -1,0 +1,8 @@
+! Procedimiento bien en cantidad de parametros, tipo y modo
+! Proc llamado sin errores
+
+let
+  proc P (x : Integer) ~
+    putint (x * 2)
+in
+  P (10)

@@ -1,0 +1,10 @@
+! Verifica que la estructura if se pueda usar como una expression
+! Da incorrecto
+let
+  var a : Integer;
+  var b : Integer
+in
+  if (if a < 5 then 5 else 2) then !La expresion deberia de retornar un booleano
+    putint(a)
+  else
+    putint(b)

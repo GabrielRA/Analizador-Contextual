@@ -7,6 +7,6 @@ let
 in
 begin
    v:= false;
-   w:= 10;
+   w:= '5';
    x:= 'A'
 end

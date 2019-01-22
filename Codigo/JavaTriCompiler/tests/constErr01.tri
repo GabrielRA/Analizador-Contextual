@@ -1,0 +1,8 @@
+! Tratar de cambiar constante
+! Da Error
+
+let
+  const x ~ 2
+in
+  x := 3;
+  putint(x)

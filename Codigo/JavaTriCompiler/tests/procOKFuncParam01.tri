@@ -1,0 +1,8 @@
+! Error: proc llamado con argumento func para parametro Integer
+
+let
+  func F () : Integer ~ 10;
+  proc P (x : Integer) ~ ! P espera paso por variable (referencia) 
+    putint (x * 2)
+in
+  P (F()) ! OK: P puede recibir un _valor_ entero resultante de la invocacion a una funcion.

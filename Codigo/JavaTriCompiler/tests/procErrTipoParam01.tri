@@ -1,0 +1,9 @@
+! Un tipo no puede usarse como argumento en ninguna circunstancia
+
+let
+  type Entero ~ Integer;
+  proc P (var x : Integer) ~ ! P espera paso por variable (referencia) 
+    putint (x * 2)
+in
+  P (Entero) ! Error: P solo puede recibir _variable_ argumentos, no _tipos_.
+

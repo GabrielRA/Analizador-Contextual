@@ -1,0 +1,10 @@
+! Verifica que la estructura if se pueda usar como una expression
+! Da correcto
+let
+  var a : Integer;
+  var b : Integer
+in
+  if (if a < 5 then true else false) then 
+    putint(a)
+  else
+    putint(b)
