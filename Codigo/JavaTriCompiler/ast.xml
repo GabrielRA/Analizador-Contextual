@@ -2,19 +2,30 @@
 <Program>
 <LetCommand>
 <SequentialDeclaration>
-<VarDeclaration>
-<Identifier value="a"/>
-<SimpleTypeDenoter>
-<Identifier value="Char"/>
-</SimpleTypeDenoter>
-</VarDeclaration>
-<ConstDeclaration>
-<Identifier value="b"/>
+<ProcDeclaration>
+<Identifier value="F"/>
+<EmptyFormalParameterSequence/>
+<CallCommand>
+<Identifier value="putint"/>
+<SingleActualParameterSequence>
+<ConstActualParameter>
 <IntegerExpression>
-<IntegerLiteral value="2"/>
+<IntegerLiteral value="1"/>
 </IntegerExpression>
-</ConstDeclaration>
-</SequentialDeclaration>
+</ConstActualParameter>
+</SingleActualParameterSequence>
+</CallCommand>
+</ProcDeclaration>
+<ProcDeclaration>
+<Identifier value="P"/>
+<SingleFormalParameterSequence>
+<ConstFormalParameter>
+<Identifier value="x"/>
+<SimpleTypeDenoter>
+<Identifier value="Integer"/>
+</SimpleTypeDenoter>
+</ConstFormalParameter>
+</SingleFormalParameterSequence>
 <CallCommand>
 <Identifier value="putint"/>
 <SingleActualParameterSequence>
@@ -22,14 +33,27 @@
 <BinaryExpression>
 <VnameExpression>
 <SimpleVname>
-<Identifier value="a"/>
+<Identifier value="x"/>
 </SimpleVname>
 </VnameExpression>
-<Operator value="+"/>
+<Operator value="*"/>
 <IntegerExpression>
 <IntegerLiteral value="2"/>
 </IntegerExpression>
 </BinaryExpression>
+</ConstActualParameter>
+</SingleActualParameterSequence>
+</CallCommand>
+</ProcDeclaration>
+</SequentialDeclaration>
+<CallCommand>
+<Identifier value="P"/>
+<SingleActualParameterSequence>
+<ConstActualParameter>
+<CallExpression>
+<Identifier value="F"/>
+<EmptyActualParameterSequence/>
+</CallExpression>
 </ConstActualParameter>
 </SingleActualParameterSequence>
 </CallCommand>
