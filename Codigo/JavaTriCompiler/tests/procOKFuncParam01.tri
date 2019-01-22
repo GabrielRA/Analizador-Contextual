@@ -1,4 +1,4 @@
-! Error: proc llamado con argumento func para parametro Integer
+! Proc llamado con argumento func~Integer para parametro Integer
 
 let
   func F () : Integer ~ 10;

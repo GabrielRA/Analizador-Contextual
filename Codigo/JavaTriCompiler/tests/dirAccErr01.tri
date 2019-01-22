@@ -1,5 +1,6 @@
 ! Verifica el tipo correcto del elemento del directorio
-! Es correcto
+!El sintactico no permite agregar mas campos al registro.
+! Es incorrecto
 
 let
    var x : record a : Char end

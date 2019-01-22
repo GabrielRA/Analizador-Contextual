@@ -5,4 +5,4 @@ let
   proc P (x : Integer) ~ ! P espera paso por variable (referencia) 
     putint (x * 2)
 in
-  P (F) ! Error: P solo puede recibir _variable_ no _funcion_.  Mensaje de error es criptico (impl. Pascal).
+  P (F) ! Error: P solo puede recibir _variable_ no _funcion_.  Mensaje de error es critico (impl. Pascal).
