@@ -1,0 +1,273 @@
+! Test of ^ with 3 units
+^^^
+
+! Test of ^ with array
+array ^
+array^
+array^array
+array ^ ^ ^ array
+
+! Test of ^ with begin
+begin ^
+begin^
+begin^begin
+begin ^ ^ ^ begin
+
+! Test of ^ with const
+const ^
+const^
+const^const
+const ^ ^ ^ const
+
+! Test of ^ with do
+do ^
+do^
+do^do
+do ^ ^ ^ do
+
+! Test of ^ with else
+else ^
+else^
+else^else
+else ^ ^ ^ else
+
+! Test of ^ with end
+end ^
+end^
+end^end
+end ^ ^ ^ end
+
+! Test of ^ with func
+func ^
+func^
+func^func
+func ^ ^ ^ func
+
+! Test of ^ with if
+if ^
+if^
+if^if
+if ^ ^ ^ if
+
+! Test of ^ with in
+in ^
+in^
+in^in
+in ^ ^ ^ in
+
+! Test of ^ with let
+let ^
+let^
+let^let
+let ^ ^ ^ let
+
+! Test of ^ with of
+of ^
+of^
+of^of
+of ^ ^ ^ of
+
+! Test of ^ with proc
+proc ^
+proc^
+proc^proc
+proc ^ ^ ^ proc
+
+! Test of ^ with record
+record ^
+record^
+record^record
+record ^ ^ ^ record
+
+! Test of ^ with then
+then ^
+then^
+then^then
+then ^ ^ ^ then
+
+! Test of ^ with type
+type ^
+type^
+type^type
+type ^ ^ ^ type
+
+! Test of ^ with var
+var ^
+var^
+var^var
+var ^ ^ ^ var
+
+! Test of ^ with while
+while ^
+while^
+while^while
+while ^ ^ ^ while
+
+! Test of ^ with .
+. ^
+.^
+.^.
+. ^ ^ ^ .
+
+! Test of ^ with colon
+: ^
+:^
+:^:
+: ^ ^ ^ :
+
+! Test of ^ with ;
+; ^
+;^
+;^;
+; ^ ^ ^ ;
+
+! Test of ^ with ,
+, ^
+,^
+,^,
+, ^ ^ ^ ,
+
+! Test of ^ with becomes
+:= ^
+:=^
+:=^:=
+:= ^ ^ ^ :=
+
+! Test of ^ with ~
+~ ^
+~^
+~^~
+~ ^ ^ ^ ~
+
+! Test of ^ with (
+( ^
+(^
+(^(
+( ^ ^ ^ (
+
+! Test of ^ with )
+) ^
+)^
+)^)
+) ^ ^ ^ )
+
+! Test of ^ with [
+[ ^
+[^
+[^[
+[ ^ ^ ^ [
+
+! Test of ^ with ]
+] ^
+]^
+]^]
+] ^ ^ ^ ]
+
+! Test of ^ with {
+{ ^
+{^
+{^{
+{ ^ ^ ^ {
+
+! Test of ^ with }
+} ^
+}^
+}^}
+} ^ ^ ^ }
+
+! Test of ^ with +
++ ^
++^
++^+
++ ^ ^ ^ +
+
+! Test of ^ with -
+- ^
+-^
+-^-
+- ^ ^ ^ -
+
+! Test of ^ with asterisk
+* ^
+*^
+*^*
+* ^ ^ ^ *
+
+! Test of ^ with backSlash
+/ ^
+/^
+/^/
+/ ^ ^ ^ /
+
+! Test of ^ with =
+= ^
+=^
+=^=
+= ^ ^ ^ =
+
+! Test of ^ with lessThan
+< ^
+<^
+<^<
+< ^ ^ ^ <
+
+! Test of ^ with moreThan
+> ^
+>^
+>^>
+> ^ ^ ^ >
+
+! Test of ^ with slash
+\ ^
+\^
+\^\
+\ ^ ^ ^ \
+
+! Test of ^ with &
+& ^
+&^
+&^&
+& ^ ^ ^ &
+
+! Test of ^ with @
+@ ^
+@^
+@^@
+@ ^ ^ ^ @
+
+! Test of ^ with %
+% ^
+%^
+%^%
+% ^ ^ ^ %
+
+! Test of ^ with ^
+^ ^
+^^
+^^^
+^ ^ ^ ^ ^
+
+! Test of ^ with questionMark
+? ^
+?^
+?^?
+? ^ ^ ^ ?
+
+! Test of ^ with CharLiteral
+'j' ^
+'A'^
+'~'^'q'
+'B' ^ ^ ^ 'U'
+
+! Test of ^ with IntLiteral
+6838228506577615020 ^
+0342868557^
+36971914064843276037^3579312125200890
+37570282284129 ^ ^ ^ 160844584166215
+
+! Test of ^ with Indentifier
+zOT36RPHWdMuOkWlx8TOw ^
+AW20BRSo0561W56wDD^
+JF2zMAX4T2w6d1klSK^nHuANd4L4apllMks
+nR75jIGw06KkD54 ^ ^ ^ W4U9E7fMRGDckhX
+

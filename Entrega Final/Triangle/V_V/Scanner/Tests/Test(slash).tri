@@ -1,0 +1,273 @@
+! Test of slash with 3 units
+\\\
+
+! Test of slash with array
+array \
+array\
+array\array
+array \ \ \ array
+
+! Test of slash with begin
+begin \
+begin\
+begin\begin
+begin \ \ \ begin
+
+! Test of slash with const
+const \
+const\
+const\const
+const \ \ \ const
+
+! Test of slash with do
+do \
+do\
+do\do
+do \ \ \ do
+
+! Test of slash with else
+else \
+else\
+else\else
+else \ \ \ else
+
+! Test of slash with end
+end \
+end\
+end\end
+end \ \ \ end
+
+! Test of slash with func
+func \
+func\
+func\func
+func \ \ \ func
+
+! Test of slash with if
+if \
+if\
+if\if
+if \ \ \ if
+
+! Test of slash with in
+in \
+in\
+in\in
+in \ \ \ in
+
+! Test of slash with let
+let \
+let\
+let\let
+let \ \ \ let
+
+! Test of slash with of
+of \
+of\
+of\of
+of \ \ \ of
+
+! Test of slash with proc
+proc \
+proc\
+proc\proc
+proc \ \ \ proc
+
+! Test of slash with record
+record \
+record\
+record\record
+record \ \ \ record
+
+! Test of slash with then
+then \
+then\
+then\then
+then \ \ \ then
+
+! Test of slash with type
+type \
+type\
+type\type
+type \ \ \ type
+
+! Test of slash with var
+var \
+var\
+var\var
+var \ \ \ var
+
+! Test of slash with while
+while \
+while\
+while\while
+while \ \ \ while
+
+! Test of slash with .
+. \
+.\
+.\.
+. \ \ \ .
+
+! Test of slash with colon
+: \
+:\
+:\:
+: \ \ \ :
+
+! Test of slash with ;
+; \
+;\
+;\;
+; \ \ \ ;
+
+! Test of slash with ,
+, \
+,\
+,\,
+, \ \ \ ,
+
+! Test of slash with becomes
+:= \
+:=\
+:=\:=
+:= \ \ \ :=
+
+! Test of slash with ~
+~ \
+~\
+~\~
+~ \ \ \ ~
+
+! Test of slash with (
+( \
+(\
+(\(
+( \ \ \ (
+
+! Test of slash with )
+) \
+)\
+)\)
+) \ \ \ )
+
+! Test of slash with [
+[ \
+[\
+[\[
+[ \ \ \ [
+
+! Test of slash with ]
+] \
+]\
+]\]
+] \ \ \ ]
+
+! Test of slash with {
+{ \
+{\
+{\{
+{ \ \ \ {
+
+! Test of slash with }
+} \
+}\
+}\}
+} \ \ \ }
+
+! Test of slash with +
++ \
++\
++\+
++ \ \ \ +
+
+! Test of slash with -
+- \
+-\
+-\-
+- \ \ \ -
+
+! Test of slash with asterisk
+* \
+*\
+*\*
+* \ \ \ *
+
+! Test of slash with backSlash
+/ \
+/\
+/\/
+/ \ \ \ /
+
+! Test of slash with =
+= \
+=\
+=\=
+= \ \ \ =
+
+! Test of slash with lessThan
+< \
+<\
+<\<
+< \ \ \ <
+
+! Test of slash with moreThan
+> \
+>\
+>\>
+> \ \ \ >
+
+! Test of slash with slash
+\ \
+\\
+\\\
+\ \ \ \ \
+
+! Test of slash with &
+& \
+&\
+&\&
+& \ \ \ &
+
+! Test of slash with @
+@ \
+@\
+@\@
+@ \ \ \ @
+
+! Test of slash with %
+% \
+%\
+%\%
+% \ \ \ %
+
+! Test of slash with ^
+^ \
+^\
+^\^
+^ \ \ \ ^
+
+! Test of slash with questionMark
+? \
+?\
+?\?
+? \ \ \ ?
+
+! Test of slash with CharLiteral
+'I' \
+';'\
+'1'\'p'
+'c' \ \ \ 'X'
+
+! Test of slash with IntLiteral
+37429051433391356 \
+3085014333644207301\
+9610203561568357529\67085554365
+6761935565 \ \ \ 51638824523
+
+! Test of slash with Indentifier
+HpPfKjfBips41 \
+QRxPe4EGY213oxKi\
+Ve21Kp4pw3S2xiZ3cme\i7rAoRYuwn2D
+rJP653fno9AE1bN7mwl \ \ \ M8Ii40NL95XWfg43
+

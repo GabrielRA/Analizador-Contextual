@@ -1,0 +1,23 @@
+! Prueba de niveles de la tabla de identificacion
+! Deberian existir un nivel 1, un nivel 2 y dos nivel 3
+! Corre bien
+let 
+  var a : Integer;
+  var b : Char
+in
+  let
+    var c : Integer;
+	var d : Boolean
+  in
+  begin
+    let
+	  var e : Integer;
+	  var f : Char
+	in
+	  ;
+	let
+	  var g : Char;
+	  var h :Boolean
+	in
+	;
+  end

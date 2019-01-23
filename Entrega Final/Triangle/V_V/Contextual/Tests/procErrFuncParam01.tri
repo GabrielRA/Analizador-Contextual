@@ -1,0 +1,8 @@
+! Error: proc llamado con argumento func para parametro Integer
+
+let
+  func F () : Integer ~ 10;
+  proc P (x : Integer) ~ ! P espera paso por variable (referencia) 
+    putint (x * 2)
+in
+  P (F) ! Error: P solo puede recibir _variable_ no _funcion_.  Mensaje de error es criptico (impl. Pascal).

@@ -1,0 +1,33 @@
+!Ejemplo Complejo de Niveles
+let 
+  var a : Integer;
+  var b : Char
+in
+  begin
+	  let
+		var c : Integer;
+		var d : Boolean
+	  in
+	  begin
+		let
+		  var e : Integer;
+		  var f : Char
+		in
+		  putint(2);
+		let
+		  var g : Char;
+		  var h :Boolean
+		in
+		;
+	  end;
+	  let
+	    var i : Char;
+		var j :Boolean
+	  in
+	  ;
+  end;
+let 
+  var k : Integer;
+  var l : Char
+in
+;

@@ -1,0 +1,273 @@
+! Test of then with 3 units
+thenthenthen
+
+! Test of then with array
+array then
+arraythen
+arraythenarray
+array then then then array
+
+! Test of then with begin
+begin then
+beginthen
+beginthenbegin
+begin then then then begin
+
+! Test of then with const
+const then
+constthen
+constthenconst
+const then then then const
+
+! Test of then with do
+do then
+dothen
+dothendo
+do then then then do
+
+! Test of then with else
+else then
+elsethen
+elsethenelse
+else then then then else
+
+! Test of then with end
+end then
+endthen
+endthenend
+end then then then end
+
+! Test of then with func
+func then
+functhen
+functhenfunc
+func then then then func
+
+! Test of then with if
+if then
+ifthen
+ifthenif
+if then then then if
+
+! Test of then with in
+in then
+inthen
+inthenin
+in then then then in
+
+! Test of then with let
+let then
+letthen
+letthenlet
+let then then then let
+
+! Test of then with of
+of then
+ofthen
+ofthenof
+of then then then of
+
+! Test of then with proc
+proc then
+procthen
+procthenproc
+proc then then then proc
+
+! Test of then with record
+record then
+recordthen
+recordthenrecord
+record then then then record
+
+! Test of then with then
+then then
+thenthen
+thenthenthen
+then then then then then
+
+! Test of then with type
+type then
+typethen
+typethentype
+type then then then type
+
+! Test of then with var
+var then
+varthen
+varthenvar
+var then then then var
+
+! Test of then with while
+while then
+whilethen
+whilethenwhile
+while then then then while
+
+! Test of then with .
+. then
+.then
+.then.
+. then then then .
+
+! Test of then with colon
+: then
+:then
+:then:
+: then then then :
+
+! Test of then with ;
+; then
+;then
+;then;
+; then then then ;
+
+! Test of then with ,
+, then
+,then
+,then,
+, then then then ,
+
+! Test of then with becomes
+:= then
+:=then
+:=then:=
+:= then then then :=
+
+! Test of then with ~
+~ then
+~then
+~then~
+~ then then then ~
+
+! Test of then with (
+( then
+(then
+(then(
+( then then then (
+
+! Test of then with )
+) then
+)then
+)then)
+) then then then )
+
+! Test of then with [
+[ then
+[then
+[then[
+[ then then then [
+
+! Test of then with ]
+] then
+]then
+]then]
+] then then then ]
+
+! Test of then with {
+{ then
+{then
+{then{
+{ then then then {
+
+! Test of then with }
+} then
+}then
+}then}
+} then then then }
+
+! Test of then with +
++ then
++then
++then+
++ then then then +
+
+! Test of then with -
+- then
+-then
+-then-
+- then then then -
+
+! Test of then with asterisk
+* then
+*then
+*then*
+* then then then *
+
+! Test of then with backSlash
+/ then
+/then
+/then/
+/ then then then /
+
+! Test of then with =
+= then
+=then
+=then=
+= then then then =
+
+! Test of then with lessThan
+< then
+<then
+<then<
+< then then then <
+
+! Test of then with moreThan
+> then
+>then
+>then>
+> then then then >
+
+! Test of then with slash
+\ then
+\then
+\then\
+\ then then then \
+
+! Test of then with &
+& then
+&then
+&then&
+& then then then &
+
+! Test of then with @
+@ then
+@then
+@then@
+@ then then then @
+
+! Test of then with %
+% then
+%then
+%then%
+% then then then %
+
+! Test of then with ^
+^ then
+^then
+^then^
+^ then then then ^
+
+! Test of then with questionMark
+? then
+?then
+?then?
+? then then then ?
+
+! Test of then with CharLiteral
+'5' then
+'R'then
+')'then'F'
+'[' then then then ' '
+
+! Test of then with IntLiteral
+7097360721 then
+7571979078then
+4009545249160769150then0347207948
+6652060537683801094 then then then 750254705318896642
+
+! Test of then with Indentifier
+MkGeGp0mIXTm8y then
+prOq801nM6epssdr90Rthen
+V72iUG8654k591DPMthenj1ie3Fk17f04z
+F7K9n283z9aW2zZ then then then Mb595q49wmFD3
+

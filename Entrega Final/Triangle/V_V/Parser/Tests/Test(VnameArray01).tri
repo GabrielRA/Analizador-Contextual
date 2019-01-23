@@ -1,0 +1,8 @@
+! Test of Variable names on arrays, it runs correctly.
+let
+   var a: array 5 of Integer
+in
+begin
+  getint(var a[2]);
+  putint(a[2])
+end

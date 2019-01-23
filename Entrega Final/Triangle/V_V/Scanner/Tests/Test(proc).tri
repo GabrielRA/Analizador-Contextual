@@ -1,0 +1,273 @@
+! Test of proc with 3 units
+procprocproc
+
+! Test of proc with array
+array proc
+arrayproc
+arrayprocarray
+array proc proc proc array
+
+! Test of proc with begin
+begin proc
+beginproc
+beginprocbegin
+begin proc proc proc begin
+
+! Test of proc with const
+const proc
+constproc
+constprocconst
+const proc proc proc const
+
+! Test of proc with do
+do proc
+doproc
+doprocdo
+do proc proc proc do
+
+! Test of proc with else
+else proc
+elseproc
+elseprocelse
+else proc proc proc else
+
+! Test of proc with end
+end proc
+endproc
+endprocend
+end proc proc proc end
+
+! Test of proc with func
+func proc
+funcproc
+funcprocfunc
+func proc proc proc func
+
+! Test of proc with if
+if proc
+ifproc
+ifprocif
+if proc proc proc if
+
+! Test of proc with in
+in proc
+inproc
+inprocin
+in proc proc proc in
+
+! Test of proc with let
+let proc
+letproc
+letproclet
+let proc proc proc let
+
+! Test of proc with of
+of proc
+ofproc
+ofprocof
+of proc proc proc of
+
+! Test of proc with proc
+proc proc
+procproc
+procprocproc
+proc proc proc proc proc
+
+! Test of proc with record
+record proc
+recordproc
+recordprocrecord
+record proc proc proc record
+
+! Test of proc with then
+then proc
+thenproc
+thenprocthen
+then proc proc proc then
+
+! Test of proc with type
+type proc
+typeproc
+typeproctype
+type proc proc proc type
+
+! Test of proc with var
+var proc
+varproc
+varprocvar
+var proc proc proc var
+
+! Test of proc with while
+while proc
+whileproc
+whileprocwhile
+while proc proc proc while
+
+! Test of proc with .
+. proc
+.proc
+.proc.
+. proc proc proc .
+
+! Test of proc with colon
+: proc
+:proc
+:proc:
+: proc proc proc :
+
+! Test of proc with ;
+; proc
+;proc
+;proc;
+; proc proc proc ;
+
+! Test of proc with ,
+, proc
+,proc
+,proc,
+, proc proc proc ,
+
+! Test of proc with becomes
+:= proc
+:=proc
+:=proc:=
+:= proc proc proc :=
+
+! Test of proc with ~
+~ proc
+~proc
+~proc~
+~ proc proc proc ~
+
+! Test of proc with (
+( proc
+(proc
+(proc(
+( proc proc proc (
+
+! Test of proc with )
+) proc
+)proc
+)proc)
+) proc proc proc )
+
+! Test of proc with [
+[ proc
+[proc
+[proc[
+[ proc proc proc [
+
+! Test of proc with ]
+] proc
+]proc
+]proc]
+] proc proc proc ]
+
+! Test of proc with {
+{ proc
+{proc
+{proc{
+{ proc proc proc {
+
+! Test of proc with }
+} proc
+}proc
+}proc}
+} proc proc proc }
+
+! Test of proc with +
++ proc
++proc
++proc+
++ proc proc proc +
+
+! Test of proc with -
+- proc
+-proc
+-proc-
+- proc proc proc -
+
+! Test of proc with asterisk
+* proc
+*proc
+*proc*
+* proc proc proc *
+
+! Test of proc with backSlash
+/ proc
+/proc
+/proc/
+/ proc proc proc /
+
+! Test of proc with =
+= proc
+=proc
+=proc=
+= proc proc proc =
+
+! Test of proc with lessThan
+< proc
+<proc
+<proc<
+< proc proc proc <
+
+! Test of proc with moreThan
+> proc
+>proc
+>proc>
+> proc proc proc >
+
+! Test of proc with slash
+\ proc
+\proc
+\proc\
+\ proc proc proc \
+
+! Test of proc with &
+& proc
+&proc
+&proc&
+& proc proc proc &
+
+! Test of proc with @
+@ proc
+@proc
+@proc@
+@ proc proc proc @
+
+! Test of proc with %
+% proc
+%proc
+%proc%
+% proc proc proc %
+
+! Test of proc with ^
+^ proc
+^proc
+^proc^
+^ proc proc proc ^
+
+! Test of proc with questionMark
+? proc
+?proc
+?proc?
+? proc proc proc ?
+
+! Test of proc with CharLiteral
+' ' proc
+'8'proc
+'N'proc' '
+'I' proc proc proc ')'
+
+! Test of proc with IntLiteral
+4826807826590 proc
+43768214373891proc
+97187538400754proc71572099443167945665
+255403778636880612 proc proc proc 37104428453958170092
+
+! Test of proc with Indentifier
+ky4pfwSR2GS216Q proc
+P25KD9Je34jac0WU8Gproc
+dA2R22EzUsvMprocLLLQ4sPp8M7gy289gMXWw
+h2W4b23GLnU212h proc proc proc XV6O76l47gvv8
+

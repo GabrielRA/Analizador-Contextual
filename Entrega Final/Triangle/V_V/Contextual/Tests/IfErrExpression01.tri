@@ -1,0 +1,15 @@
+! Verfica que la expresion mas a la izquierda del if sea booleana
+! Da error en linea 8, deberia de tener un a < 5
+
+let
+  var a : Integer;
+  var b : Char
+in
+  if a + 5 then 
+    begin
+      putint(a);
+    end
+  else 
+    begin
+      put(b);
+    end

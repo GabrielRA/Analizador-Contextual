@@ -1,0 +1,131 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+<link rel="stylesheet" href="style.css" type="text/css">
+<meta content="text/html; charset=iso-8859-1" http-equiv="Content-Type">
+<link rel="Start" href="index.html">
+<link rel="Up" href="index.html">
+<link title="Index of values" rel=Appendix href="index_values.html">
+<link title="Index of modules" rel=Appendix href="index_modules.html">
+<link title="TreeDrawer" rel="Chapter" href="TreeDrawer.html"><title>TreeDrawer</title>
+</head>
+<body>
+<div class="navbar">&nbsp;<a class="up" href="index.html" title="Index">Up</a>
+&nbsp;</div>
+<h1>Module <a href="type_TreeDrawer.html">TreeDrawer</a></h1>
+
+<pre><span class="keyword">module</span> TreeDrawer: <code class="code">sig</code> <a href="TreeDrawer.html">..</a> <code class="code">end</code></pre><div class="info module top">
+This program was originally written by Luis Leopoldo Pérez on April 12, 2006.
+This program was reviewed, repaired, completed, verified, and validated by
+students of ITCR in January 2019
+Abstract Syntax Tree Drawing Library for Caml-Triangle
+Implementation file<br>
+<b>Author(s):</b> Luis Leopoldo Pérez, Jose Antonio Alpízar Aguilar, Pablo Josué Brenes Jimenes, Luis José Castillo Valverde<br>
+</div>
+<hr width="100%">
+
+<pre><span id="VALtransform_operator"><span class="keyword">val</span> transform_operator</span> : <code class="type">char -> string</code></pre><div class="info ">
+This function given a char returns its equivalent in XML (this for reasons
+of compatibility in the print).<br>
+</div>
+
+<pre><span id="VALtransform_string"><span class="keyword">val</span> transform_string</span> : <code class="type">string -> (char -> string) -> int -> int -> string -> string</code></pre><div class="info ">
+This function transforms a normal string to a compatible one to any format.
+This function receives the string to be changed, the character transformation
+function, the lower limit to be transformed, the upper limit to be
+transformed and the result (it is advised to use "")<br>
+</div>
+
+<pre><span id="VALclean_String"><span class="keyword">val</span> clean_String</span> : <code class="type">string -> string</code></pre><div class="info ">
+This function given a string returns its equivalent in XML<br>
+</div>
+
+<pre><span id="VALwrite_program"><span class="keyword">val</span> write_program</span> : <code class="type">Ast.ast_program -> Pervasives.out_channel -> unit</code></pre><div class="info ">
+Given a program, it will run through its tree recursively generating the
+openings and closures of tags in the corresponding places..<br>
+</div>
+
+<pre><span id="VALwrite_command"><span class="keyword">val</span> write_command</span> : <code class="type">Ast.ast_command -> Pervasives.out_channel -> unit</code></pre><div class="info ">
+Given a command, it will run through its tree recursively generating the
+openings and closures of tags in the corresponding places..<br>
+</div>
+
+<pre><span id="VALwrite_expression"><span class="keyword">val</span> write_expression</span> : <code class="type">Ast.ast_expression -> Pervasives.out_channel -> unit</code></pre><div class="info ">
+Given a expression, it will run through its tree recursively generating the
+openings and closures of tags in the corresponding places..<br>
+</div>
+
+<pre><span id="VALwrite_array_aggregate"><span class="keyword">val</span> write_array_aggregate</span> : <code class="type">Ast.ast_array_aggregate -> Pervasives.out_channel -> unit</code></pre><div class="info ">
+Given a aggregate, it will run through its tree recursively generating the
+openings and closures of tags in the corresponding places..<br>
+</div>
+
+<pre><span id="VALwrite_record_aggregate"><span class="keyword">val</span> write_record_aggregate</span> : <code class="type">Ast.ast_record_aggregate -> Pervasives.out_channel -> unit</code></pre><div class="info ">
+Given a record, it will run through its tree recursively generating the
+openings and closures of tags in the corresponding places..<br>
+</div>
+
+<pre><span id="VALwrite_vname"><span class="keyword">val</span> write_vname</span> : <code class="type">Ast.ast_vname -> Pervasives.out_channel -> unit</code></pre><div class="info ">
+Given a vname, it will run through its tree recursively generating the
+openings and closures of tags in the corresponding places..<br>
+</div>
+
+<pre><span id="VALwrite_declaration"><span class="keyword">val</span> write_declaration</span> : <code class="type">Ast.ast_declaration -> Pervasives.out_channel -> unit</code></pre><div class="info ">
+Given a declaration, it will run through its tree recursively generating
+the openings and closures of tags in the corresponding places..<br>
+</div>
+
+<pre><span id="VALwrite_formal_parameter"><span class="keyword">val</span> write_formal_parameter</span> : <code class="type">Ast.ast_formal_parameter -> Pervasives.out_channel -> unit</code></pre><div class="info ">
+Given a formal parameter, it will run through its tree recursively
+generating the openings and closures of tags in the corresponding places..<br>
+</div>
+
+<pre><span id="VALwrite_actual_parameter"><span class="keyword">val</span> write_actual_parameter</span> : <code class="type">Ast.ast_actual_parameter -> Pervasives.out_channel -> unit</code></pre><div class="info ">
+Given a actual parameter, it will run through its tree recursively
+generating the openings and closures of tags in the corresponding places..<br>
+</div>
+
+<pre><span id="VALwrite_formal_parameter_sequence"><span class="keyword">val</span> write_formal_parameter_sequence</span> : <code class="type">Ast.ast_formal_parameter_sequence -> Pervasives.out_channel -> unit</code></pre><div class="info ">
+Given a formal parameter sequence, it will run through its tree recursively
+generating the openings and closures of tags in the corresponding places..<br>
+</div>
+
+<pre><span id="VALwrite_actual_parameter_sequence"><span class="keyword">val</span> write_actual_parameter_sequence</span> : <code class="type">Ast.ast_actual_parameter_sequence -> Pervasives.out_channel -> unit</code></pre><div class="info ">
+Given a actual parameter sequence, it will run through its tree recursively
+generating the openings and closures of tags in the corresponding places..<br>
+</div>
+
+<pre><span id="VALwrite_type_denoter"><span class="keyword">val</span> write_type_denoter</span> : <code class="type">Ast.ast_type_denoter -> Pervasives.out_channel -> unit</code></pre><div class="info ">
+Given a type denoter, it will run through its tree recursively generating
+the openings and closures of tags in the corresponding places..<br>
+</div>
+
+<pre><span id="VALwrite_field_type_denoter"><span class="keyword">val</span> write_field_type_denoter</span> : <code class="type">Ast.ast_field_type_denoter -> Pervasives.out_channel -> unit</code></pre><div class="info ">
+Given a field type denoter, it will run through its tree recursively
+generating the openings and closures of tags in the corresponding places..<br>
+</div>
+
+<pre><span id="VALwrite_integer_literal"><span class="keyword">val</span> write_integer_literal</span> : <code class="type">Ast.ast_integer_literal -> Pervasives.out_channel -> unit</code></pre><div class="info ">
+Given a integer literal this prints the XML version<br>
+</div>
+
+<pre><span id="VALwrite_character_literal"><span class="keyword">val</span> write_character_literal</span> : <code class="type">Ast.ast_character_literal -> Pervasives.out_channel -> unit</code></pre><div class="info ">
+Given a character literal this prints the XML version<br>
+</div>
+
+<pre><span id="VALwrite_identifier"><span class="keyword">val</span> write_identifier</span> : <code class="type">Ast.ast_identifier -> Pervasives.out_channel -> unit</code></pre><div class="info ">
+Given a identifier this prints the XML version<br>
+</div>
+
+<pre><span id="VALwrite_operator"><span class="keyword">val</span> write_operator</span> : <code class="type">Ast.ast_operator -> Pervasives.out_channel -> unit</code></pre><div class="info ">
+Given a operator this prints the XML version<br>
+</div>
+
+<pre><span id="VALwrite_x_m_l_tree"><span class="keyword">val</span> write_x_m_l_tree</span> : <code class="type">Ast.ast_program -> string -> unit</code></pre><div class="info ">
+This function receives the AST to be printed and the name of the file
+in which it will be written). It is responsible for creating the file<br>
+</div>
+<br>
+Note: The first argument of all printing functions is ignored because it
+stores irrelevant information for printing.<br>
+</body></html>

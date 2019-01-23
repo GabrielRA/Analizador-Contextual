@@ -1,0 +1,12 @@
+! Test of variable declaration, doesn't runs correctly.
+
+let
+
+  var a := !lack of expression
+
+in
+
+  putint (a)
+
+end
+

@@ -1,0 +1,7 @@
+! Test of while command, doesn't runs correctly.
+let
+   var x: Integer in
+
+while (x := 10) do
+   putint(x)
+  

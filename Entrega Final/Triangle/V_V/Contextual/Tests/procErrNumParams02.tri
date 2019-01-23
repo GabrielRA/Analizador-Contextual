@@ -1,0 +1,7 @@
+! Error: proc llamado con muy pocos parametros
+
+let
+  proc P (x : Integer) ~
+    putint (x * 2)
+in
+  P () ! P debe ser invocado con exactamente 1 parametro real (argumento)

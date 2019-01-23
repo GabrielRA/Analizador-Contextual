@@ -1,0 +1,8 @@
+! Revisar que expresion sea de tipo correcto
+! Da error
+
+let
+  var a : Char;
+  const b ~ 2
+in
+  putint(a + 2)

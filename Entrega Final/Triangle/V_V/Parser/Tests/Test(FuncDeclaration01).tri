@@ -1,0 +1,6 @@
+! Test of declaration of command, it runs correctly.
+let
+   func x(): Integer ~
+      5
+in
+   putint(x())

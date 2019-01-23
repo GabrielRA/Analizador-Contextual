@@ -1,0 +1,273 @@
+! Test of lessThan with 3 units
+<<<
+
+! Test of lessThan with array
+array <
+array<
+array<array
+array < < < array
+
+! Test of lessThan with begin
+begin <
+begin<
+begin<begin
+begin < < < begin
+
+! Test of lessThan with const
+const <
+const<
+const<const
+const < < < const
+
+! Test of lessThan with do
+do <
+do<
+do<do
+do < < < do
+
+! Test of lessThan with else
+else <
+else<
+else<else
+else < < < else
+
+! Test of lessThan with end
+end <
+end<
+end<end
+end < < < end
+
+! Test of lessThan with func
+func <
+func<
+func<func
+func < < < func
+
+! Test of lessThan with if
+if <
+if<
+if<if
+if < < < if
+
+! Test of lessThan with in
+in <
+in<
+in<in
+in < < < in
+
+! Test of lessThan with let
+let <
+let<
+let<let
+let < < < let
+
+! Test of lessThan with of
+of <
+of<
+of<of
+of < < < of
+
+! Test of lessThan with proc
+proc <
+proc<
+proc<proc
+proc < < < proc
+
+! Test of lessThan with record
+record <
+record<
+record<record
+record < < < record
+
+! Test of lessThan with then
+then <
+then<
+then<then
+then < < < then
+
+! Test of lessThan with type
+type <
+type<
+type<type
+type < < < type
+
+! Test of lessThan with var
+var <
+var<
+var<var
+var < < < var
+
+! Test of lessThan with while
+while <
+while<
+while<while
+while < < < while
+
+! Test of lessThan with .
+. <
+.<
+.<.
+. < < < .
+
+! Test of lessThan with colon
+: <
+:<
+:<:
+: < < < :
+
+! Test of lessThan with ;
+; <
+;<
+;<;
+; < < < ;
+
+! Test of lessThan with ,
+, <
+,<
+,<,
+, < < < ,
+
+! Test of lessThan with becomes
+:= <
+:=<
+:=<:=
+:= < < < :=
+
+! Test of lessThan with ~
+~ <
+~<
+~<~
+~ < < < ~
+
+! Test of lessThan with (
+( <
+(<
+(<(
+( < < < (
+
+! Test of lessThan with )
+) <
+)<
+)<)
+) < < < )
+
+! Test of lessThan with [
+[ <
+[<
+[<[
+[ < < < [
+
+! Test of lessThan with ]
+] <
+]<
+]<]
+] < < < ]
+
+! Test of lessThan with {
+{ <
+{<
+{<{
+{ < < < {
+
+! Test of lessThan with }
+} <
+}<
+}<}
+} < < < }
+
+! Test of lessThan with +
++ <
++<
++<+
++ < < < +
+
+! Test of lessThan with -
+- <
+-<
+-<-
+- < < < -
+
+! Test of lessThan with asterisk
+* <
+*<
+*<*
+* < < < *
+
+! Test of lessThan with backSlash
+/ <
+/<
+/</
+/ < < < /
+
+! Test of lessThan with =
+= <
+=<
+=<=
+= < < < =
+
+! Test of lessThan with lessThan
+< <
+<<
+<<<
+< < < < <
+
+! Test of lessThan with moreThan
+> <
+><
+><>
+> < < < >
+
+! Test of lessThan with slash
+\ <
+\<
+\<\
+\ < < < \
+
+! Test of lessThan with &
+& <
+&<
+&<&
+& < < < &
+
+! Test of lessThan with @
+@ <
+@<
+@<@
+@ < < < @
+
+! Test of lessThan with %
+% <
+%<
+%<%
+% < < < %
+
+! Test of lessThan with ^
+^ <
+^<
+^<^
+^ < < < ^
+
+! Test of lessThan with questionMark
+? <
+?<
+?<?
+? < < < ?
+
+! Test of lessThan with CharLiteral
+'i' <
+' '<
+' '<')'
+'1' < < < '2'
+
+! Test of lessThan with IntLiteral
+768480673626968 <
+409785199447133834<
+71750929154655841281<8825684235304868
+60136657301344950 < < < 6040842100813
+
+! Test of lessThan with Indentifier
+bs1p11hHbX1zy2iI <
+hlL47b7KzYIC6Ie5gbg<
+Gh4759D3N4W<wWKg1LDJS8Qe8do9f7w
+lQiQtu8Q36T < < < Z48ftLV4u23N8auiuuC
+

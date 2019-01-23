@@ -1,0 +1,273 @@
+! Test of questionMark with 3 units
+???
+
+! Test of questionMark with array
+array ?
+array?
+array?array
+array ? ? ? array
+
+! Test of questionMark with begin
+begin ?
+begin?
+begin?begin
+begin ? ? ? begin
+
+! Test of questionMark with const
+const ?
+const?
+const?const
+const ? ? ? const
+
+! Test of questionMark with do
+do ?
+do?
+do?do
+do ? ? ? do
+
+! Test of questionMark with else
+else ?
+else?
+else?else
+else ? ? ? else
+
+! Test of questionMark with end
+end ?
+end?
+end?end
+end ? ? ? end
+
+! Test of questionMark with func
+func ?
+func?
+func?func
+func ? ? ? func
+
+! Test of questionMark with if
+if ?
+if?
+if?if
+if ? ? ? if
+
+! Test of questionMark with in
+in ?
+in?
+in?in
+in ? ? ? in
+
+! Test of questionMark with let
+let ?
+let?
+let?let
+let ? ? ? let
+
+! Test of questionMark with of
+of ?
+of?
+of?of
+of ? ? ? of
+
+! Test of questionMark with proc
+proc ?
+proc?
+proc?proc
+proc ? ? ? proc
+
+! Test of questionMark with record
+record ?
+record?
+record?record
+record ? ? ? record
+
+! Test of questionMark with then
+then ?
+then?
+then?then
+then ? ? ? then
+
+! Test of questionMark with type
+type ?
+type?
+type?type
+type ? ? ? type
+
+! Test of questionMark with var
+var ?
+var?
+var?var
+var ? ? ? var
+
+! Test of questionMark with while
+while ?
+while?
+while?while
+while ? ? ? while
+
+! Test of questionMark with .
+. ?
+.?
+.?.
+. ? ? ? .
+
+! Test of questionMark with colon
+: ?
+:?
+:?:
+: ? ? ? :
+
+! Test of questionMark with ;
+; ?
+;?
+;?;
+; ? ? ? ;
+
+! Test of questionMark with ,
+, ?
+,?
+,?,
+, ? ? ? ,
+
+! Test of questionMark with becomes
+:= ?
+:=?
+:=?:=
+:= ? ? ? :=
+
+! Test of questionMark with ~
+~ ?
+~?
+~?~
+~ ? ? ? ~
+
+! Test of questionMark with (
+( ?
+(?
+(?(
+( ? ? ? (
+
+! Test of questionMark with )
+) ?
+)?
+)?)
+) ? ? ? )
+
+! Test of questionMark with [
+[ ?
+[?
+[?[
+[ ? ? ? [
+
+! Test of questionMark with ]
+] ?
+]?
+]?]
+] ? ? ? ]
+
+! Test of questionMark with {
+{ ?
+{?
+{?{
+{ ? ? ? {
+
+! Test of questionMark with }
+} ?
+}?
+}?}
+} ? ? ? }
+
+! Test of questionMark with +
++ ?
++?
++?+
++ ? ? ? +
+
+! Test of questionMark with -
+- ?
+-?
+-?-
+- ? ? ? -
+
+! Test of questionMark with asterisk
+* ?
+*?
+*?*
+* ? ? ? *
+
+! Test of questionMark with backSlash
+/ ?
+/?
+/?/
+/ ? ? ? /
+
+! Test of questionMark with =
+= ?
+=?
+=?=
+= ? ? ? =
+
+! Test of questionMark with lessThan
+< ?
+<?
+<?<
+< ? ? ? <
+
+! Test of questionMark with moreThan
+> ?
+>?
+>?>
+> ? ? ? >
+
+! Test of questionMark with slash
+\ ?
+\?
+\?\
+\ ? ? ? \
+
+! Test of questionMark with &
+& ?
+&?
+&?&
+& ? ? ? &
+
+! Test of questionMark with @
+@ ?
+@?
+@?@
+@ ? ? ? @
+
+! Test of questionMark with %
+% ?
+%?
+%?%
+% ? ? ? %
+
+! Test of questionMark with ^
+^ ?
+^?
+^?^
+^ ? ? ? ^
+
+! Test of questionMark with questionMark
+? ?
+??
+???
+? ? ? ? ?
+
+! Test of questionMark with CharLiteral
+'{' ?
+'"'?
+' '?'R'
+'	' ? ? ? '9'
+
+! Test of questionMark with IntLiteral
+402342161196457 ?
+1967541247501938041?
+724308790624883899?7428313997940
+057905977371519 ? ? ? 86164978036
+
+! Test of questionMark with Indentifier
+EXejF8aZmk52 ?
+d9rc7joqT8PiMft4?
+q5V7YxP0q8R74vsbAIrB?F04f9gCR8yH8rV5yjL2
+DNTE43tBZq9py7ou ? ? ? P83KCM6q358YK
+

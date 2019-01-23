@@ -1,0 +1,273 @@
+! Test of if with 3 units
+ififif
+
+! Test of if with array
+array if
+arrayif
+arrayifarray
+array if if if array
+
+! Test of if with begin
+begin if
+beginif
+beginifbegin
+begin if if if begin
+
+! Test of if with const
+const if
+constif
+constifconst
+const if if if const
+
+! Test of if with do
+do if
+doif
+doifdo
+do if if if do
+
+! Test of if with else
+else if
+elseif
+elseifelse
+else if if if else
+
+! Test of if with end
+end if
+endif
+endifend
+end if if if end
+
+! Test of if with func
+func if
+funcif
+funciffunc
+func if if if func
+
+! Test of if with if
+if if
+ifif
+ififif
+if if if if if
+
+! Test of if with in
+in if
+inif
+inifin
+in if if if in
+
+! Test of if with let
+let if
+letif
+letiflet
+let if if if let
+
+! Test of if with of
+of if
+ofif
+ofifof
+of if if if of
+
+! Test of if with proc
+proc if
+procif
+procifproc
+proc if if if proc
+
+! Test of if with record
+record if
+recordif
+recordifrecord
+record if if if record
+
+! Test of if with then
+then if
+thenif
+thenifthen
+then if if if then
+
+! Test of if with type
+type if
+typeif
+typeiftype
+type if if if type
+
+! Test of if with var
+var if
+varif
+varifvar
+var if if if var
+
+! Test of if with while
+while if
+whileif
+whileifwhile
+while if if if while
+
+! Test of if with .
+. if
+.if
+.if.
+. if if if .
+
+! Test of if with colon
+: if
+:if
+:if:
+: if if if :
+
+! Test of if with ;
+; if
+;if
+;if;
+; if if if ;
+
+! Test of if with ,
+, if
+,if
+,if,
+, if if if ,
+
+! Test of if with becomes
+:= if
+:=if
+:=if:=
+:= if if if :=
+
+! Test of if with ~
+~ if
+~if
+~if~
+~ if if if ~
+
+! Test of if with (
+( if
+(if
+(if(
+( if if if (
+
+! Test of if with )
+) if
+)if
+)if)
+) if if if )
+
+! Test of if with [
+[ if
+[if
+[if[
+[ if if if [
+
+! Test of if with ]
+] if
+]if
+]if]
+] if if if ]
+
+! Test of if with {
+{ if
+{if
+{if{
+{ if if if {
+
+! Test of if with }
+} if
+}if
+}if}
+} if if if }
+
+! Test of if with +
++ if
++if
++if+
++ if if if +
+
+! Test of if with -
+- if
+-if
+-if-
+- if if if -
+
+! Test of if with asterisk
+* if
+*if
+*if*
+* if if if *
+
+! Test of if with backSlash
+/ if
+/if
+/if/
+/ if if if /
+
+! Test of if with =
+= if
+=if
+=if=
+= if if if =
+
+! Test of if with lessThan
+< if
+<if
+<if<
+< if if if <
+
+! Test of if with moreThan
+> if
+>if
+>if>
+> if if if >
+
+! Test of if with slash
+\ if
+\if
+\if\
+\ if if if \
+
+! Test of if with &
+& if
+&if
+&if&
+& if if if &
+
+! Test of if with @
+@ if
+@if
+@if@
+@ if if if @
+
+! Test of if with %
+% if
+%if
+%if%
+% if if if %
+
+! Test of if with ^
+^ if
+^if
+^if^
+^ if if if ^
+
+! Test of if with questionMark
+? if
+?if
+?if?
+? if if if ?
+
+! Test of if with CharLiteral
+' ' if
+'R'if
+' 'if'}'
+'F' if if if 'r'
+
+! Test of if with IntLiteral
+26696489567335824107 if
+6646676963338975if
+30724902369if0911109287
+3647699830875 if if if 703412167580
+
+! Test of if with Indentifier
+NYFovuLa654e6 if
+EfeC4Uxk3a0vif
+oJ5uM7Rvgy55e55OC9uifd0r5h3fN266YXNOyz49
+efLlf6CCw0a if if if pdK0m063qs0qs1xt
+

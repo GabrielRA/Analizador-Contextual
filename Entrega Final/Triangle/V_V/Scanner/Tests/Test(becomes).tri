@@ -1,0 +1,273 @@
+! Test of becomes with 3 units
+:=:=:=
+
+! Test of becomes with array
+array :=
+array:=
+array:=array
+array := := := array
+
+! Test of becomes with begin
+begin :=
+begin:=
+begin:=begin
+begin := := := begin
+
+! Test of becomes with const
+const :=
+const:=
+const:=const
+const := := := const
+
+! Test of becomes with do
+do :=
+do:=
+do:=do
+do := := := do
+
+! Test of becomes with else
+else :=
+else:=
+else:=else
+else := := := else
+
+! Test of becomes with end
+end :=
+end:=
+end:=end
+end := := := end
+
+! Test of becomes with func
+func :=
+func:=
+func:=func
+func := := := func
+
+! Test of becomes with if
+if :=
+if:=
+if:=if
+if := := := if
+
+! Test of becomes with in
+in :=
+in:=
+in:=in
+in := := := in
+
+! Test of becomes with let
+let :=
+let:=
+let:=let
+let := := := let
+
+! Test of becomes with of
+of :=
+of:=
+of:=of
+of := := := of
+
+! Test of becomes with proc
+proc :=
+proc:=
+proc:=proc
+proc := := := proc
+
+! Test of becomes with record
+record :=
+record:=
+record:=record
+record := := := record
+
+! Test of becomes with then
+then :=
+then:=
+then:=then
+then := := := then
+
+! Test of becomes with type
+type :=
+type:=
+type:=type
+type := := := type
+
+! Test of becomes with var
+var :=
+var:=
+var:=var
+var := := := var
+
+! Test of becomes with while
+while :=
+while:=
+while:=while
+while := := := while
+
+! Test of becomes with .
+. :=
+.:=
+.:=.
+. := := := .
+
+! Test of becomes with colon
+: :=
+::=
+::=:
+: := := := :
+
+! Test of becomes with ;
+; :=
+;:=
+;:=;
+; := := := ;
+
+! Test of becomes with ,
+, :=
+,:=
+,:=,
+, := := := ,
+
+! Test of becomes with becomes
+:= :=
+:=:=
+:=:=:=
+:= := := := :=
+
+! Test of becomes with ~
+~ :=
+~:=
+~:=~
+~ := := := ~
+
+! Test of becomes with (
+( :=
+(:=
+(:=(
+( := := := (
+
+! Test of becomes with )
+) :=
+):=
+):=)
+) := := := )
+
+! Test of becomes with [
+[ :=
+[:=
+[:=[
+[ := := := [
+
+! Test of becomes with ]
+] :=
+]:=
+]:=]
+] := := := ]
+
+! Test of becomes with {
+{ :=
+{:=
+{:={
+{ := := := {
+
+! Test of becomes with }
+} :=
+}:=
+}:=}
+} := := := }
+
+! Test of becomes with +
++ :=
++:=
++:=+
++ := := := +
+
+! Test of becomes with -
+- :=
+-:=
+-:=-
+- := := := -
+
+! Test of becomes with asterisk
+* :=
+*:=
+*:=*
+* := := := *
+
+! Test of becomes with backSlash
+/ :=
+/:=
+/:=/
+/ := := := /
+
+! Test of becomes with =
+= :=
+=:=
+=:==
+= := := := =
+
+! Test of becomes with lessThan
+< :=
+<:=
+<:=<
+< := := := <
+
+! Test of becomes with moreThan
+> :=
+>:=
+>:=>
+> := := := >
+
+! Test of becomes with slash
+\ :=
+\:=
+\:=\
+\ := := := \
+
+! Test of becomes with &
+& :=
+&:=
+&:=&
+& := := := &
+
+! Test of becomes with @
+@ :=
+@:=
+@:=@
+@ := := := @
+
+! Test of becomes with %
+% :=
+%:=
+%:=%
+% := := := %
+
+! Test of becomes with ^
+^ :=
+^:=
+^:=^
+^ := := := ^
+
+! Test of becomes with questionMark
+? :=
+?:=
+?:=?
+? := := := ?
+
+! Test of becomes with CharLiteral
+'"' :=
+'Y':=
+'F':='0'
+'[' := := := '6'
+
+! Test of becomes with IntLiteral
+19767628124 :=
+616572999531185300:=
+5179345482054:=8946671664610881
+44223196186296488692 := := := 0623612259405710710
+
+! Test of becomes with Indentifier
+P8q7O89AuJaLHIDHvMy :=
+CH771MXt7Jl5:=
+nXxwd9nSa0VTPAhv:=LyDC7aQ7gj03HF6pdRWBp
+VY86nNY148742 := := := w938K43a26bY
+

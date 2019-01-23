@@ -1,0 +1,7 @@
+! Test of constant declaration, it runs correctly
+let
+   const constante ~ 'b'
+in
+begin
+  put(constante)
+end

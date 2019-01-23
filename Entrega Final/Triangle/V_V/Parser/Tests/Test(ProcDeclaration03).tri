@@ -1,0 +1,9 @@
+! Test of declaration of procedure, it runs correctly.
+
+let
+
+proc fibo(var num1 : Integer, var num2 : Integer)
+
+~num1 := num1 * num2
+
+in

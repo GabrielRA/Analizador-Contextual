@@ -1,0 +1,273 @@
+! Test of CharLiteral with 3 units
+'c''A''F'
+
+! Test of CharLiteral with array
+array 'E'
+array'1'
+array'	'array
+array 'k' 'Q' '2' array
+
+! Test of CharLiteral with begin
+begin '2'
+begin'9'
+begin'9'begin
+begin ']' '}' 'p' begin
+
+! Test of CharLiteral with const
+const '	'
+const't'
+const' 'const
+const ' ' '	' 'Z' const
+
+! Test of CharLiteral with do
+do '8'
+do'('
+do'1'do
+do '4' 'r' '!' do
+
+! Test of CharLiteral with else
+else 'w'
+else'R'
+else' 'else
+else '[' 'J' 'Q' else
+
+! Test of CharLiteral with end
+end ' '
+end'4'
+end'a'end
+end 'c' 'e' 'D' end
+
+! Test of CharLiteral with func
+func '`'
+func'F'
+func'_'func
+func ' ' 'J' 'H' func
+
+! Test of CharLiteral with if
+if 'e'
+if'M'
+if'.'if
+if '2' '\' 'F' if
+
+! Test of CharLiteral with in
+in 'Q'
+in';'
+in'T'in
+in '`' 'i' '~' in
+
+! Test of CharLiteral with let
+let '~'
+let'f'
+let'j'let
+let 'x' 'G' 'r' let
+
+! Test of CharLiteral with of
+of 't'
+of' '
+of'e'of
+of ' ' '	' '_' of
+
+! Test of CharLiteral with proc
+proc 'H'
+proc'~'
+proc'Z'proc
+proc 'L' 'K' ' ' proc
+
+! Test of CharLiteral with record
+record 'n'
+record'3'
+record')'record
+record ' ' '	' '(' record
+
+! Test of CharLiteral with then
+then 'P'
+then' '
+then'A'then
+then 'J' 'S' '	' then
+
+! Test of CharLiteral with type
+type '\'
+type'j'
+type'v'type
+type 'v' 'c' '_' type
+
+! Test of CharLiteral with var
+var '8'
+var'S'
+var' 'var
+var ' ' '7' 'F' var
+
+! Test of CharLiteral with while
+while '6'
+while'a'
+while'z'while
+while ' ' '.' 'v' while
+
+! Test of CharLiteral with .
+. 'Z'
+.'5'
+.'w'.
+. '	' 'h' 'M' .
+
+! Test of CharLiteral with colon
+: 'D'
+:')'
+:'$':
+: 'U' '1' 'V' :
+
+! Test of CharLiteral with ;
+; 'U'
+;'|'
+;'6';
+; ' ' 'r' 'Q' ;
+
+! Test of CharLiteral with ,
+, 'n'
+,'B'
+,'1',
+, '	' 'z' '5' ,
+
+! Test of CharLiteral with becomes
+:= '7'
+:='	'
+:='s':=
+:= ' ' ',' '`' :=
+
+! Test of CharLiteral with ~
+~ '3'
+~'U'
+~'	'~
+~ ';' '5' '	' ~
+
+! Test of CharLiteral with (
+( 'B'
+('B'
+('V'(
+( '.' ' ' 'Z' (
+
+! Test of CharLiteral with )
+) '	'
+)'o'
+)' ')
+) 'a' 'o' ' ' )
+
+! Test of CharLiteral with [
+[ 'V'
+['T'
+['3'[
+[ '(' '|' '4' [
+
+! Test of CharLiteral with ]
+] 'z'
+]'`'
+]' ']
+] 'f' '#' '2' ]
+
+! Test of CharLiteral with {
+{ 'p'
+{'	'
+{'e'{
+{ '0' '$' '5' {
+
+! Test of CharLiteral with }
+} 'p'
+}'_'
+}'	'}
+} ' ' ' ' 'Q' }
+
+! Test of CharLiteral with +
++ ' '
++'S'
++' '+
++ 'h' '|' 'h' +
+
+! Test of CharLiteral with -
+- ' '
+-'5'
+-'	'-
+- '}' '	' '!' -
+
+! Test of CharLiteral with asterisk
+* '|'
+*'	'
+*'!'*
+* 'v' 'q' 'r' *
+
+! Test of CharLiteral with backSlash
+/ '{'
+/' '
+/'	'/
+/ '	' '3' '	' /
+
+! Test of CharLiteral with =
+= 'w'
+='R'
+='$'=
+= '5' 'j' '6' =
+
+! Test of CharLiteral with lessThan
+< ';'
+<'3'
+<'8'<
+< '5' 'D' 'g' <
+
+! Test of CharLiteral with moreThan
+> ' '
+>'5'
+>'H'>
+> ' ' '!' '|' >
+
+! Test of CharLiteral with slash
+\ '\'
+\'R'
+\'	'\
+\ '_' '	' '\' \
+
+! Test of CharLiteral with &
+& 'o'
+&'#'
+&' '&
+& '|' '6' ',' &
+
+! Test of CharLiteral with @
+@ 'S'
+@'.'
+@'4'@
+@ 'Y' 'L' ' ' @
+
+! Test of CharLiteral with %
+% '	'
+%'	'
+%'	'%
+% '"' 'u' '!' %
+
+! Test of CharLiteral with ^
+^ ' '
+^'I'
+^'	'^
+^ 'V' ':' 'b' ^
+
+! Test of CharLiteral with questionMark
+? '	'
+?' '
+?'3'?
+? '2' 'K' 'S' ?
+
+! Test of CharLiteral with CharLiteral
+'Q' ']'
+'0''s'
+'!''3'' '
+'	' '_' '1' '8' 'l'
+
+! Test of CharLiteral with IntLiteral
+1167841361663644 ']'
+6009147253'B'
+467194383094467147'	'1405644475718113988
+488272679199 'p' '{' ' ' 07829771020560071
+
+! Test of CharLiteral with Indentifier
+aZb57VBW817nS4c 'g'
+fDRgP6uB6k5xH0' '
+aKtdpOh71pFp' 'l649398CC6p7G81hgSvJ
+i1U98WXaZwS '	' 'B' '.' ls60b8kZj3Fo5MO6U16o
+

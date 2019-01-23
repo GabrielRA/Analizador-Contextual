@@ -1,0 +1,5 @@
+! Test of procedure, doesn't runs correctly.
+let
+   proc p(): Integer ~ put('!')
+in
+  p()

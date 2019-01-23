@@ -1,0 +1,273 @@
+! Test of + with 3 units
++++
+
+! Test of + with array
+array +
+array+
+array+array
+array + + + array
+
+! Test of + with begin
+begin +
+begin+
+begin+begin
+begin + + + begin
+
+! Test of + with const
+const +
+const+
+const+const
+const + + + const
+
+! Test of + with do
+do +
+do+
+do+do
+do + + + do
+
+! Test of + with else
+else +
+else+
+else+else
+else + + + else
+
+! Test of + with end
+end +
+end+
+end+end
+end + + + end
+
+! Test of + with func
+func +
+func+
+func+func
+func + + + func
+
+! Test of + with if
+if +
+if+
+if+if
+if + + + if
+
+! Test of + with in
+in +
+in+
+in+in
+in + + + in
+
+! Test of + with let
+let +
+let+
+let+let
+let + + + let
+
+! Test of + with of
+of +
+of+
+of+of
+of + + + of
+
+! Test of + with proc
+proc +
+proc+
+proc+proc
+proc + + + proc
+
+! Test of + with record
+record +
+record+
+record+record
+record + + + record
+
+! Test of + with then
+then +
+then+
+then+then
+then + + + then
+
+! Test of + with type
+type +
+type+
+type+type
+type + + + type
+
+! Test of + with var
+var +
+var+
+var+var
+var + + + var
+
+! Test of + with while
+while +
+while+
+while+while
+while + + + while
+
+! Test of + with .
+. +
+.+
+.+.
+. + + + .
+
+! Test of + with colon
+: +
+:+
+:+:
+: + + + :
+
+! Test of + with ;
+; +
+;+
+;+;
+; + + + ;
+
+! Test of + with ,
+, +
+,+
+,+,
+, + + + ,
+
+! Test of + with becomes
+:= +
+:=+
+:=+:=
+:= + + + :=
+
+! Test of + with ~
+~ +
+~+
+~+~
+~ + + + ~
+
+! Test of + with (
+( +
+(+
+(+(
+( + + + (
+
+! Test of + with )
+) +
+)+
+)+)
+) + + + )
+
+! Test of + with [
+[ +
+[+
+[+[
+[ + + + [
+
+! Test of + with ]
+] +
+]+
+]+]
+] + + + ]
+
+! Test of + with {
+{ +
+{+
+{+{
+{ + + + {
+
+! Test of + with }
+} +
+}+
+}+}
+} + + + }
+
+! Test of + with +
++ +
+++
++++
++ + + + +
+
+! Test of + with -
+- +
+-+
+-+-
+- + + + -
+
+! Test of + with asterisk
+* +
+*+
+*+*
+* + + + *
+
+! Test of + with backSlash
+/ +
+/+
+/+/
+/ + + + /
+
+! Test of + with =
+= +
+=+
+=+=
+= + + + =
+
+! Test of + with lessThan
+< +
+<+
+<+<
+< + + + <
+
+! Test of + with moreThan
+> +
+>+
+>+>
+> + + + >
+
+! Test of + with slash
+\ +
+\+
+\+\
+\ + + + \
+
+! Test of + with &
+& +
+&+
+&+&
+& + + + &
+
+! Test of + with @
+@ +
+@+
+@+@
+@ + + + @
+
+! Test of + with %
+% +
+%+
+%+%
+% + + + %
+
+! Test of + with ^
+^ +
+^+
+^+^
+^ + + + ^
+
+! Test of + with questionMark
+? +
+?+
+?+?
+? + + + ?
+
+! Test of + with CharLiteral
+'u' +
+'!'+
+'R'+'L'
+'l' + + + 'q'
+
+! Test of + with IntLiteral
+627415397693 +
+6196619283671+
+22935511713+825006246918
+362663512718 + + + 453104377289618
+
+! Test of + with Indentifier
+i9200tIZLt5T0 +
+XZwrJJ8mmNZzOo2j+
+h2BErUF21YY00I+toSSYzt94UkKNk4xp7S
+Q0I5hl49X0R + + + APsC8DZJiEx8KDX8J3
+

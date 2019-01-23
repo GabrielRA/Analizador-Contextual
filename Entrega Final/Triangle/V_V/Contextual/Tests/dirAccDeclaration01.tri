@@ -1,0 +1,7 @@
+! Uso correcto de directorio
+! Es correcto
+
+let
+   var x : record a : Integer, b : Integer end
+in
+  putint(x.a)

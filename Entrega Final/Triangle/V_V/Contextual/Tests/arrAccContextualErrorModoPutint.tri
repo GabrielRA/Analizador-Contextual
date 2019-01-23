@@ -1,0 +1,16 @@
+! Con error contextual de modo en putint
+
+let
+
+  var a : array 10 of Char;
+
+  var b : array 10 of Integer
+
+in begin
+
+  get (var a[8]); ! Error contextual: get espera paso por variable (referencia).
+
+  putint (var b [9])
+
+end
+

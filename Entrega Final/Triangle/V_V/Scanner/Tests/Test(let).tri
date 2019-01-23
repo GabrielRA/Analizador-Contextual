@@ -1,0 +1,273 @@
+! Test of let with 3 units
+letletlet
+
+! Test of let with array
+array let
+arraylet
+arrayletarray
+array let let let array
+
+! Test of let with begin
+begin let
+beginlet
+beginletbegin
+begin let let let begin
+
+! Test of let with const
+const let
+constlet
+constletconst
+const let let let const
+
+! Test of let with do
+do let
+dolet
+doletdo
+do let let let do
+
+! Test of let with else
+else let
+elselet
+elseletelse
+else let let let else
+
+! Test of let with end
+end let
+endlet
+endletend
+end let let let end
+
+! Test of let with func
+func let
+funclet
+funcletfunc
+func let let let func
+
+! Test of let with if
+if let
+iflet
+ifletif
+if let let let if
+
+! Test of let with in
+in let
+inlet
+inletin
+in let let let in
+
+! Test of let with let
+let let
+letlet
+letletlet
+let let let let let
+
+! Test of let with of
+of let
+oflet
+ofletof
+of let let let of
+
+! Test of let with proc
+proc let
+proclet
+procletproc
+proc let let let proc
+
+! Test of let with record
+record let
+recordlet
+recordletrecord
+record let let let record
+
+! Test of let with then
+then let
+thenlet
+thenletthen
+then let let let then
+
+! Test of let with type
+type let
+typelet
+typelettype
+type let let let type
+
+! Test of let with var
+var let
+varlet
+varletvar
+var let let let var
+
+! Test of let with while
+while let
+whilelet
+whileletwhile
+while let let let while
+
+! Test of let with .
+. let
+.let
+.let.
+. let let let .
+
+! Test of let with colon
+: let
+:let
+:let:
+: let let let :
+
+! Test of let with ;
+; let
+;let
+;let;
+; let let let ;
+
+! Test of let with ,
+, let
+,let
+,let,
+, let let let ,
+
+! Test of let with becomes
+:= let
+:=let
+:=let:=
+:= let let let :=
+
+! Test of let with ~
+~ let
+~let
+~let~
+~ let let let ~
+
+! Test of let with (
+( let
+(let
+(let(
+( let let let (
+
+! Test of let with )
+) let
+)let
+)let)
+) let let let )
+
+! Test of let with [
+[ let
+[let
+[let[
+[ let let let [
+
+! Test of let with ]
+] let
+]let
+]let]
+] let let let ]
+
+! Test of let with {
+{ let
+{let
+{let{
+{ let let let {
+
+! Test of let with }
+} let
+}let
+}let}
+} let let let }
+
+! Test of let with +
++ let
++let
++let+
++ let let let +
+
+! Test of let with -
+- let
+-let
+-let-
+- let let let -
+
+! Test of let with asterisk
+* let
+*let
+*let*
+* let let let *
+
+! Test of let with backSlash
+/ let
+/let
+/let/
+/ let let let /
+
+! Test of let with =
+= let
+=let
+=let=
+= let let let =
+
+! Test of let with lessThan
+< let
+<let
+<let<
+< let let let <
+
+! Test of let with moreThan
+> let
+>let
+>let>
+> let let let >
+
+! Test of let with slash
+\ let
+\let
+\let\
+\ let let let \
+
+! Test of let with &
+& let
+&let
+&let&
+& let let let &
+
+! Test of let with @
+@ let
+@let
+@let@
+@ let let let @
+
+! Test of let with %
+% let
+%let
+%let%
+% let let let %
+
+! Test of let with ^
+^ let
+^let
+^let^
+^ let let let ^
+
+! Test of let with questionMark
+? let
+?let
+?let?
+? let let let ?
+
+! Test of let with CharLiteral
+'	' let
+' 'let
+'8'let'6'
+'L' let let let 'R'
+
+! Test of let with IntLiteral
+671617451849643631 let
+2366202602084let
+90907596451458967let0633966944609586
+52724463316851352 let let let 670977786510623138
+
+! Test of let with Indentifier
+T4gy8955Z247ZBeBdtp let
+Rdx522TK09a7Ylet
+n6vi21J6C3hj9gGletDLCmVpS34HSC8z2Bcn6b
+zdi9RUzGyQv67L let let let k4t36SNyO6D111d7mM0
+

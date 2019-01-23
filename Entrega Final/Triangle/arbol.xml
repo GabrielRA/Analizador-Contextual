@@ -1,0 +1,171 @@
+<?xml version="1.0" standalone="yes"?>
+<Program>
+<LetCommand>
+<VarDeclaration>
+<Identifier value="x"/>
+<ArrayTypeDenoter>
+<IntegerLiteral value="10"/>
+<IntTypeDenoter/>
+</ArrayTypeDenoter>
+</VarDeclaration>
+<SequentialCommand>
+<AssignCommand>
+<CheckedVname variable="true" indexed="false" offset="0">
+<SimpleVname>
+<CheckedIdentifier>
+<Identifier value="x"/>
+</CheckedIdentifier>
+</SimpleVname>
+<ArrayTypeDenoter>
+<IntegerLiteral value="10"/>
+<IntTypeDenoter/>
+</ArrayTypeDenoter>
+</CheckedVname>
+<CheckedExpression>
+<ArrayExpression>
+<CheckedArrayAggregate element_count="10">
+<MultipleArrayAggregate>
+<CheckedExpression>
+<IntegerExpression>
+<IntegerLiteral value="1"/>
+</IntegerExpression>
+<IntTypeDenoter/>
+</CheckedExpression>
+<CheckedArrayAggregate element_count="9">
+<MultipleArrayAggregate>
+<CheckedExpression>
+<IntegerExpression>
+<IntegerLiteral value="2"/>
+</IntegerExpression>
+<IntTypeDenoter/>
+</CheckedExpression>
+<CheckedArrayAggregate element_count="8">
+<MultipleArrayAggregate>
+<CheckedExpression>
+<IntegerExpression>
+<IntegerLiteral value="4"/>
+</IntegerExpression>
+<IntTypeDenoter/>
+</CheckedExpression>
+<CheckedArrayAggregate element_count="7">
+<MultipleArrayAggregate>
+<CheckedExpression>
+<IntegerExpression>
+<IntegerLiteral value="8"/>
+</IntegerExpression>
+<IntTypeDenoter/>
+</CheckedExpression>
+<CheckedArrayAggregate element_count="6">
+<MultipleArrayAggregate>
+<CheckedExpression>
+<IntegerExpression>
+<IntegerLiteral value="16"/>
+</IntegerExpression>
+<IntTypeDenoter/>
+</CheckedExpression>
+<CheckedArrayAggregate element_count="5">
+<MultipleArrayAggregate>
+<CheckedExpression>
+<IntegerExpression>
+<IntegerLiteral value="32"/>
+</IntegerExpression>
+<IntTypeDenoter/>
+</CheckedExpression>
+<CheckedArrayAggregate element_count="4">
+<MultipleArrayAggregate>
+<CheckedExpression>
+<IntegerExpression>
+<IntegerLiteral value="64"/>
+</IntegerExpression>
+<IntTypeDenoter/>
+</CheckedExpression>
+<CheckedArrayAggregate element_count="3">
+<MultipleArrayAggregate>
+<CheckedExpression>
+<IntegerExpression>
+<IntegerLiteral value="128"/>
+</IntegerExpression>
+<IntTypeDenoter/>
+</CheckedExpression>
+<CheckedArrayAggregate element_count="2">
+<MultipleArrayAggregate>
+<CheckedExpression>
+<IntegerExpression>
+<IntegerLiteral value="256"/>
+</IntegerExpression>
+<IntTypeDenoter/>
+</CheckedExpression>
+<CheckedArrayAggregate element_count="1">
+<SingleArrayAggregate>
+<CheckedExpression>
+<IntegerExpression>
+<IntegerLiteral value="512"/>
+</IntegerExpression>
+<IntTypeDenoter/>
+</CheckedExpression>
+</SingleArrayAggregate>
+</CheckedArrayAggregate>
+</MultipleArrayAggregate>
+</CheckedArrayAggregate>
+</MultipleArrayAggregate>
+</CheckedArrayAggregate>
+</MultipleArrayAggregate>
+</CheckedArrayAggregate>
+</MultipleArrayAggregate>
+</CheckedArrayAggregate>
+</MultipleArrayAggregate>
+</CheckedArrayAggregate>
+</MultipleArrayAggregate>
+</CheckedArrayAggregate>
+</MultipleArrayAggregate>
+</CheckedArrayAggregate>
+</MultipleArrayAggregate>
+</CheckedArrayAggregate>
+</MultipleArrayAggregate>
+</CheckedArrayAggregate>
+</ArrayExpression>
+<ArrayTypeDenoter>
+<IntegerLiteral value="10"/>
+<IntTypeDenoter/>
+</ArrayTypeDenoter>
+</CheckedExpression>
+</AssignCommand>
+<CallCommand>
+<CheckedIdentifier>
+<Identifier value="putint"/>
+</CheckedIdentifier>
+<SingleActualParameterSequence>
+<ConstActualParameter>
+<CheckedExpression>
+<VnameExpression>
+<CheckedVname variable="true" indexed="false" offset="0">
+<SubscriptVname>
+<CheckedVname variable="true" indexed="false" offset="0">
+<SimpleVname>
+<CheckedIdentifier>
+<Identifier value="x"/>
+</CheckedIdentifier>
+</SimpleVname>
+<ArrayTypeDenoter>
+<IntegerLiteral value="10"/>
+<IntTypeDenoter/>
+</ArrayTypeDenoter>
+</CheckedVname>
+<CheckedExpression>
+<IntegerExpression>
+<IntegerLiteral value="5"/>
+</IntegerExpression>
+<IntTypeDenoter/>
+</CheckedExpression>
+</SubscriptVname>
+<IntTypeDenoter/>
+</CheckedVname>
+</VnameExpression>
+<IntTypeDenoter/>
+</CheckedExpression>
+</ConstActualParameter>
+</SingleActualParameterSequence>
+</CallCommand>
+</SequentialCommand>
+</LetCommand>
+</Program>

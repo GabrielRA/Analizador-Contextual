@@ -1,0 +1,8 @@
+! Revisa si diferencia entre x minuscula y X mayuscula
+! Da error
+
+let
+  var x : Integer
+in
+  putint(X)
+  

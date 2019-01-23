@@ -1,0 +1,273 @@
+! Test of ~ with 3 units
+~~~
+
+! Test of ~ with array
+array ~
+array~
+array~array
+array ~ ~ ~ array
+
+! Test of ~ with begin
+begin ~
+begin~
+begin~begin
+begin ~ ~ ~ begin
+
+! Test of ~ with const
+const ~
+const~
+const~const
+const ~ ~ ~ const
+
+! Test of ~ with do
+do ~
+do~
+do~do
+do ~ ~ ~ do
+
+! Test of ~ with else
+else ~
+else~
+else~else
+else ~ ~ ~ else
+
+! Test of ~ with end
+end ~
+end~
+end~end
+end ~ ~ ~ end
+
+! Test of ~ with func
+func ~
+func~
+func~func
+func ~ ~ ~ func
+
+! Test of ~ with if
+if ~
+if~
+if~if
+if ~ ~ ~ if
+
+! Test of ~ with in
+in ~
+in~
+in~in
+in ~ ~ ~ in
+
+! Test of ~ with let
+let ~
+let~
+let~let
+let ~ ~ ~ let
+
+! Test of ~ with of
+of ~
+of~
+of~of
+of ~ ~ ~ of
+
+! Test of ~ with proc
+proc ~
+proc~
+proc~proc
+proc ~ ~ ~ proc
+
+! Test of ~ with record
+record ~
+record~
+record~record
+record ~ ~ ~ record
+
+! Test of ~ with then
+then ~
+then~
+then~then
+then ~ ~ ~ then
+
+! Test of ~ with type
+type ~
+type~
+type~type
+type ~ ~ ~ type
+
+! Test of ~ with var
+var ~
+var~
+var~var
+var ~ ~ ~ var
+
+! Test of ~ with while
+while ~
+while~
+while~while
+while ~ ~ ~ while
+
+! Test of ~ with .
+. ~
+.~
+.~.
+. ~ ~ ~ .
+
+! Test of ~ with colon
+: ~
+:~
+:~:
+: ~ ~ ~ :
+
+! Test of ~ with ;
+; ~
+;~
+;~;
+; ~ ~ ~ ;
+
+! Test of ~ with ,
+, ~
+,~
+,~,
+, ~ ~ ~ ,
+
+! Test of ~ with becomes
+:= ~
+:=~
+:=~:=
+:= ~ ~ ~ :=
+
+! Test of ~ with ~
+~ ~
+~~
+~~~
+~ ~ ~ ~ ~
+
+! Test of ~ with (
+( ~
+(~
+(~(
+( ~ ~ ~ (
+
+! Test of ~ with )
+) ~
+)~
+)~)
+) ~ ~ ~ )
+
+! Test of ~ with [
+[ ~
+[~
+[~[
+[ ~ ~ ~ [
+
+! Test of ~ with ]
+] ~
+]~
+]~]
+] ~ ~ ~ ]
+
+! Test of ~ with {
+{ ~
+{~
+{~{
+{ ~ ~ ~ {
+
+! Test of ~ with }
+} ~
+}~
+}~}
+} ~ ~ ~ }
+
+! Test of ~ with +
++ ~
++~
++~+
++ ~ ~ ~ +
+
+! Test of ~ with -
+- ~
+-~
+-~-
+- ~ ~ ~ -
+
+! Test of ~ with asterisk
+* ~
+*~
+*~*
+* ~ ~ ~ *
+
+! Test of ~ with backSlash
+/ ~
+/~
+/~/
+/ ~ ~ ~ /
+
+! Test of ~ with =
+= ~
+=~
+=~=
+= ~ ~ ~ =
+
+! Test of ~ with lessThan
+< ~
+<~
+<~<
+< ~ ~ ~ <
+
+! Test of ~ with moreThan
+> ~
+>~
+>~>
+> ~ ~ ~ >
+
+! Test of ~ with slash
+\ ~
+\~
+\~\
+\ ~ ~ ~ \
+
+! Test of ~ with &
+& ~
+&~
+&~&
+& ~ ~ ~ &
+
+! Test of ~ with @
+@ ~
+@~
+@~@
+@ ~ ~ ~ @
+
+! Test of ~ with %
+% ~
+%~
+%~%
+% ~ ~ ~ %
+
+! Test of ~ with ^
+^ ~
+^~
+^~^
+^ ~ ~ ~ ^
+
+! Test of ~ with questionMark
+? ~
+?~
+?~?
+? ~ ~ ~ ?
+
+! Test of ~ with CharLiteral
+')' ~
+'4'~
+'9'~'5'
+'	' ~ ~ ~ 'g'
+
+! Test of ~ with IntLiteral
+3634495584250 ~
+8492110180357829600~
+177204416700~87309940610640
+5652788526321 ~ ~ ~ 675476858723864
+
+! Test of ~ with Indentifier
+laFa2mT83akBTs ~
+Yy8l4ItB6tvdhC~
+V1F2KqKWq3YhmGf0V3Z~biM4JX3iZ4K63RAJrqh
+ZyjRbilln85Ht ~ ~ ~ WlF71H60x6Gu4pjqk
+

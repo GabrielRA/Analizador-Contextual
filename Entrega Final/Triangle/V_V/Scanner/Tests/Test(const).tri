@@ -1,0 +1,273 @@
+! Test of const with 3 units
+constconstconst
+
+! Test of const with array
+array const
+arrayconst
+arrayconstarray
+array const const const array
+
+! Test of const with begin
+begin const
+beginconst
+beginconstbegin
+begin const const const begin
+
+! Test of const with const
+const const
+constconst
+constconstconst
+const const const const const
+
+! Test of const with do
+do const
+doconst
+doconstdo
+do const const const do
+
+! Test of const with else
+else const
+elseconst
+elseconstelse
+else const const const else
+
+! Test of const with end
+end const
+endconst
+endconstend
+end const const const end
+
+! Test of const with func
+func const
+funcconst
+funcconstfunc
+func const const const func
+
+! Test of const with if
+if const
+ifconst
+ifconstif
+if const const const if
+
+! Test of const with in
+in const
+inconst
+inconstin
+in const const const in
+
+! Test of const with let
+let const
+letconst
+letconstlet
+let const const const let
+
+! Test of const with of
+of const
+ofconst
+ofconstof
+of const const const of
+
+! Test of const with proc
+proc const
+procconst
+procconstproc
+proc const const const proc
+
+! Test of const with record
+record const
+recordconst
+recordconstrecord
+record const const const record
+
+! Test of const with then
+then const
+thenconst
+thenconstthen
+then const const const then
+
+! Test of const with type
+type const
+typeconst
+typeconsttype
+type const const const type
+
+! Test of const with var
+var const
+varconst
+varconstvar
+var const const const var
+
+! Test of const with while
+while const
+whileconst
+whileconstwhile
+while const const const while
+
+! Test of const with .
+. const
+.const
+.const.
+. const const const .
+
+! Test of const with colon
+: const
+:const
+:const:
+: const const const :
+
+! Test of const with ;
+; const
+;const
+;const;
+; const const const ;
+
+! Test of const with ,
+, const
+,const
+,const,
+, const const const ,
+
+! Test of const with becomes
+:= const
+:=const
+:=const:=
+:= const const const :=
+
+! Test of const with ~
+~ const
+~const
+~const~
+~ const const const ~
+
+! Test of const with (
+( const
+(const
+(const(
+( const const const (
+
+! Test of const with )
+) const
+)const
+)const)
+) const const const )
+
+! Test of const with [
+[ const
+[const
+[const[
+[ const const const [
+
+! Test of const with ]
+] const
+]const
+]const]
+] const const const ]
+
+! Test of const with {
+{ const
+{const
+{const{
+{ const const const {
+
+! Test of const with }
+} const
+}const
+}const}
+} const const const }
+
+! Test of const with +
++ const
++const
++const+
++ const const const +
+
+! Test of const with -
+- const
+-const
+-const-
+- const const const -
+
+! Test of const with asterisk
+* const
+*const
+*const*
+* const const const *
+
+! Test of const with backSlash
+/ const
+/const
+/const/
+/ const const const /
+
+! Test of const with =
+= const
+=const
+=const=
+= const const const =
+
+! Test of const with lessThan
+< const
+<const
+<const<
+< const const const <
+
+! Test of const with moreThan
+> const
+>const
+>const>
+> const const const >
+
+! Test of const with slash
+\ const
+\const
+\const\
+\ const const const \
+
+! Test of const with &
+& const
+&const
+&const&
+& const const const &
+
+! Test of const with @
+@ const
+@const
+@const@
+@ const const const @
+
+! Test of const with %
+% const
+%const
+%const%
+% const const const %
+
+! Test of const with ^
+^ const
+^const
+^const^
+^ const const const ^
+
+! Test of const with questionMark
+? const
+?const
+?const?
+? const const const ?
+
+! Test of const with CharLiteral
+'w' const
+'Y'const
+'	'const'7'
+';' const const const '#'
+
+! Test of const with IntLiteral
+8781167622392 const
+37671729091099514142const
+514943496287const384690691673
+86349501297977936672 const const const 8830554761783
+
+! Test of const with Indentifier
+e2OVPqE5Z924 const
+Vaw44xVNQ7bnrSaP0v9r0const
+NfLoqImfdt4mebUconstPg3pIbHjqeheDB
+XF8U1T02e7L3XSCH8 const const const O2gO34SIi81zHd
+

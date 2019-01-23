@@ -1,0 +1,273 @@
+! Test of of with 3 units
+ofofof
+
+! Test of of with array
+array of
+arrayof
+arrayofarray
+array of of of array
+
+! Test of of with begin
+begin of
+beginof
+beginofbegin
+begin of of of begin
+
+! Test of of with const
+const of
+constof
+constofconst
+const of of of const
+
+! Test of of with do
+do of
+doof
+doofdo
+do of of of do
+
+! Test of of with else
+else of
+elseof
+elseofelse
+else of of of else
+
+! Test of of with end
+end of
+endof
+endofend
+end of of of end
+
+! Test of of with func
+func of
+funcof
+funcoffunc
+func of of of func
+
+! Test of of with if
+if of
+ifof
+ifofif
+if of of of if
+
+! Test of of with in
+in of
+inof
+inofin
+in of of of in
+
+! Test of of with let
+let of
+letof
+letoflet
+let of of of let
+
+! Test of of with of
+of of
+ofof
+ofofof
+of of of of of
+
+! Test of of with proc
+proc of
+procof
+procofproc
+proc of of of proc
+
+! Test of of with record
+record of
+recordof
+recordofrecord
+record of of of record
+
+! Test of of with then
+then of
+thenof
+thenofthen
+then of of of then
+
+! Test of of with type
+type of
+typeof
+typeoftype
+type of of of type
+
+! Test of of with var
+var of
+varof
+varofvar
+var of of of var
+
+! Test of of with while
+while of
+whileof
+whileofwhile
+while of of of while
+
+! Test of of with .
+. of
+.of
+.of.
+. of of of .
+
+! Test of of with colon
+: of
+:of
+:of:
+: of of of :
+
+! Test of of with ;
+; of
+;of
+;of;
+; of of of ;
+
+! Test of of with ,
+, of
+,of
+,of,
+, of of of ,
+
+! Test of of with becomes
+:= of
+:=of
+:=of:=
+:= of of of :=
+
+! Test of of with ~
+~ of
+~of
+~of~
+~ of of of ~
+
+! Test of of with (
+( of
+(of
+(of(
+( of of of (
+
+! Test of of with )
+) of
+)of
+)of)
+) of of of )
+
+! Test of of with [
+[ of
+[of
+[of[
+[ of of of [
+
+! Test of of with ]
+] of
+]of
+]of]
+] of of of ]
+
+! Test of of with {
+{ of
+{of
+{of{
+{ of of of {
+
+! Test of of with }
+} of
+}of
+}of}
+} of of of }
+
+! Test of of with +
++ of
++of
++of+
++ of of of +
+
+! Test of of with -
+- of
+-of
+-of-
+- of of of -
+
+! Test of of with asterisk
+* of
+*of
+*of*
+* of of of *
+
+! Test of of with backSlash
+/ of
+/of
+/of/
+/ of of of /
+
+! Test of of with =
+= of
+=of
+=of=
+= of of of =
+
+! Test of of with lessThan
+< of
+<of
+<of<
+< of of of <
+
+! Test of of with moreThan
+> of
+>of
+>of>
+> of of of >
+
+! Test of of with slash
+\ of
+\of
+\of\
+\ of of of \
+
+! Test of of with &
+& of
+&of
+&of&
+& of of of &
+
+! Test of of with @
+@ of
+@of
+@of@
+@ of of of @
+
+! Test of of with %
+% of
+%of
+%of%
+% of of of %
+
+! Test of of with ^
+^ of
+^of
+^of^
+^ of of of ^
+
+! Test of of with questionMark
+? of
+?of
+?of?
+? of of of ?
+
+! Test of of with CharLiteral
+'6' of
+'V'of
+'A'of'	'
+'9' of of of 'u'
+
+! Test of of with IntLiteral
+1219963073103148 of
+98218057579669of
+9237102717of618248713450925607
+03356209129483491328 of of of 2653516017659927739
+
+! Test of of with Indentifier
+tvR3G9E32U461esiIQ of
+H6DNx7oE5fU7h4RAJof
+dEHC2xmVgelXofZ3c4x4jxNU4UL82Otx
+t70OBi940OQ89 of of of cyvL4mNQ7yt44VD
+

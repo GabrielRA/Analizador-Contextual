@@ -1,0 +1,134 @@
+<html><head>
+<link rel="stylesheet" href="style.css" type="text/css">
+<meta content="text/html; charset=iso-8859-1" http-equiv="Content-Type">
+<link rel="Start" href="index.html">
+<link title="Index of types" rel=Appendix href="index_types.html">
+<link title="Index of modules" rel=Appendix href="index_modules.html">
+<link title="Ast" rel="Chapter" href="Ast.html"><title>Ast</title>
+</head>
+<body>
+<code class="code"><span class="keyword">sig</span><br>
+&nbsp;&nbsp;<span class="keyword">type</span>&nbsp;ast_info&nbsp;=&nbsp;{<br>
+&nbsp;&nbsp;&nbsp;&nbsp;pos&nbsp;:&nbsp;<span class="constructor">Lexing</span>.position;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">mutable</span>&nbsp;run&nbsp;:&nbsp;<span class="constructor">RuntimeEntity</span>.runtime_entity;<br>
+&nbsp;&nbsp;}<br>
+&nbsp;&nbsp;<span class="keyword">type</span>&nbsp;ast_program&nbsp;=&nbsp;<span class="constructor">Null_program</span>&nbsp;<span class="keywordsign">|</span>&nbsp;<span class="constructor">Program</span>&nbsp;<span class="keyword">of</span>&nbsp;<span class="constructor">Ast</span>.ast_info&nbsp;*&nbsp;<span class="constructor">Ast</span>.ast_command<br>
+&nbsp;&nbsp;<span class="keyword">and</span>&nbsp;ast_command&nbsp;=<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="constructor">Empty_command</span>&nbsp;<span class="keyword">of</span>&nbsp;<span class="constructor">Ast</span>.ast_info<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="keywordsign">|</span>&nbsp;<span class="constructor">Assign_command</span>&nbsp;<span class="keyword">of</span>&nbsp;<span class="constructor">Ast</span>.ast_info&nbsp;*&nbsp;<span class="constructor">Ast</span>.ast_vname&nbsp;*&nbsp;<span class="constructor">Ast</span>.ast_expression<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="keywordsign">|</span>&nbsp;<span class="constructor">Call_command</span>&nbsp;<span class="keyword">of</span>&nbsp;<span class="constructor">Ast</span>.ast_info&nbsp;*&nbsp;<span class="constructor">Ast</span>.ast_identifier&nbsp;*<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="constructor">Ast</span>.ast_actual_parameter_sequence<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="keywordsign">|</span>&nbsp;<span class="constructor">Sequential_command</span>&nbsp;<span class="keyword">of</span>&nbsp;<span class="constructor">Ast</span>.ast_info&nbsp;*&nbsp;<span class="constructor">Ast</span>.ast_command&nbsp;*&nbsp;<span class="constructor">Ast</span>.ast_command<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="keywordsign">|</span>&nbsp;<span class="constructor">Let_command</span>&nbsp;<span class="keyword">of</span>&nbsp;<span class="constructor">Ast</span>.ast_info&nbsp;*&nbsp;<span class="constructor">Ast</span>.ast_declaration&nbsp;*&nbsp;<span class="constructor">Ast</span>.ast_command<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="keywordsign">|</span>&nbsp;<span class="constructor">If_command</span>&nbsp;<span class="keyword">of</span>&nbsp;<span class="constructor">Ast</span>.ast_info&nbsp;*&nbsp;<span class="constructor">Ast</span>.ast_expression&nbsp;*&nbsp;<span class="constructor">Ast</span>.ast_command&nbsp;*<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="constructor">Ast</span>.ast_command<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="keywordsign">|</span>&nbsp;<span class="constructor">While_command</span>&nbsp;<span class="keyword">of</span>&nbsp;<span class="constructor">Ast</span>.ast_info&nbsp;*&nbsp;<span class="constructor">Ast</span>.ast_expression&nbsp;*&nbsp;<span class="constructor">Ast</span>.ast_command<br>
+&nbsp;&nbsp;<span class="keyword">and</span>&nbsp;ast_expression&nbsp;=<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="constructor">Empty_expression</span>&nbsp;<span class="keyword">of</span>&nbsp;<span class="constructor">Ast</span>.ast_info<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="keywordsign">|</span>&nbsp;<span class="constructor">Integer_expression</span>&nbsp;<span class="keyword">of</span>&nbsp;<span class="constructor">Ast</span>.ast_info&nbsp;*&nbsp;<span class="constructor">Ast</span>.ast_integer_literal<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="keywordsign">|</span>&nbsp;<span class="constructor">Character_expression</span>&nbsp;<span class="keyword">of</span>&nbsp;<span class="constructor">Ast</span>.ast_info&nbsp;*&nbsp;<span class="constructor">Ast</span>.ast_character_literal<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="keywordsign">|</span>&nbsp;<span class="constructor">Vname_expression</span>&nbsp;<span class="keyword">of</span>&nbsp;<span class="constructor">Ast</span>.ast_info&nbsp;*&nbsp;<span class="constructor">Ast</span>.ast_vname<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="keywordsign">|</span>&nbsp;<span class="constructor">Call_expression</span>&nbsp;<span class="keyword">of</span>&nbsp;<span class="constructor">Ast</span>.ast_info&nbsp;*&nbsp;<span class="constructor">Ast</span>.ast_identifier&nbsp;*<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="constructor">Ast</span>.ast_actual_parameter_sequence<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="keywordsign">|</span>&nbsp;<span class="constructor">If_expression</span>&nbsp;<span class="keyword">of</span>&nbsp;<span class="constructor">Ast</span>.ast_info&nbsp;*&nbsp;<span class="constructor">Ast</span>.ast_expression&nbsp;*<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="constructor">Ast</span>.ast_expression&nbsp;*&nbsp;<span class="constructor">Ast</span>.ast_expression<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="keywordsign">|</span>&nbsp;<span class="constructor">Let_expression</span>&nbsp;<span class="keyword">of</span>&nbsp;<span class="constructor">Ast</span>.ast_info&nbsp;*&nbsp;<span class="constructor">Ast</span>.ast_declaration&nbsp;*<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="constructor">Ast</span>.ast_expression<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="keywordsign">|</span>&nbsp;<span class="constructor">Unary_expression</span>&nbsp;<span class="keyword">of</span>&nbsp;<span class="constructor">Ast</span>.ast_info&nbsp;*&nbsp;<span class="constructor">Ast</span>.ast_operator&nbsp;*<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="constructor">Ast</span>.ast_expression<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="keywordsign">|</span>&nbsp;<span class="constructor">Binary_expression</span>&nbsp;<span class="keyword">of</span>&nbsp;<span class="constructor">Ast</span>.ast_info&nbsp;*&nbsp;<span class="constructor">Ast</span>.ast_expression&nbsp;*<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="constructor">Ast</span>.ast_operator&nbsp;*&nbsp;<span class="constructor">Ast</span>.ast_expression<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="keywordsign">|</span>&nbsp;<span class="constructor">Array_expression</span>&nbsp;<span class="keyword">of</span>&nbsp;<span class="constructor">Ast</span>.ast_info&nbsp;*&nbsp;<span class="constructor">Ast</span>.ast_array_aggregate<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="keywordsign">|</span>&nbsp;<span class="constructor">Record_expression</span>&nbsp;<span class="keyword">of</span>&nbsp;<span class="constructor">Ast</span>.ast_info&nbsp;*&nbsp;<span class="constructor">Ast</span>.ast_record_aggregate<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="keywordsign">|</span>&nbsp;<span class="constructor">Checked_expression</span>&nbsp;<span class="keyword">of</span>&nbsp;<span class="constructor">Ast</span>.ast_expression&nbsp;*&nbsp;<span class="constructor">Ast</span>.ast_type_denoter<br>
+&nbsp;&nbsp;<span class="keyword">and</span>&nbsp;ast_array_aggregate&nbsp;=<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="constructor">Single_array_aggregate</span>&nbsp;<span class="keyword">of</span>&nbsp;<span class="constructor">Ast</span>.ast_info&nbsp;*&nbsp;<span class="constructor">Ast</span>.ast_expression<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="keywordsign">|</span>&nbsp;<span class="constructor">Multiple_array_aggregate</span>&nbsp;<span class="keyword">of</span>&nbsp;<span class="constructor">Ast</span>.ast_info&nbsp;*&nbsp;<span class="constructor">Ast</span>.ast_expression&nbsp;*<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="constructor">Ast</span>.ast_array_aggregate<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="keywordsign">|</span>&nbsp;<span class="constructor">Checked_array_aggregate</span>&nbsp;<span class="keyword">of</span>&nbsp;<span class="constructor">Ast</span>.ast_array_aggregate&nbsp;*&nbsp;int<br>
+&nbsp;&nbsp;<span class="keyword">and</span>&nbsp;ast_record_aggregate&nbsp;=<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="constructor">Single_record_aggregate</span>&nbsp;<span class="keyword">of</span>&nbsp;<span class="constructor">Ast</span>.ast_info&nbsp;*&nbsp;<span class="constructor">Ast</span>.ast_identifier&nbsp;*<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="constructor">Ast</span>.ast_expression<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="keywordsign">|</span>&nbsp;<span class="constructor">Multiple_record_aggregate</span>&nbsp;<span class="keyword">of</span>&nbsp;<span class="constructor">Ast</span>.ast_info&nbsp;*&nbsp;<span class="constructor">Ast</span>.ast_identifier&nbsp;*<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="constructor">Ast</span>.ast_expression&nbsp;*&nbsp;<span class="constructor">Ast</span>.ast_record_aggregate<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="keywordsign">|</span>&nbsp;<span class="constructor">Checked_record_aggregate</span>&nbsp;<span class="keyword">of</span>&nbsp;<span class="constructor">Ast</span>.ast_record_aggregate&nbsp;*<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="constructor">Ast</span>.ast_field_type_denoter<br>
+&nbsp;&nbsp;<span class="keyword">and</span>&nbsp;ast_vname&nbsp;=<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="constructor">Simple_vname</span>&nbsp;<span class="keyword">of</span>&nbsp;<span class="constructor">Ast</span>.ast_info&nbsp;*&nbsp;<span class="constructor">Ast</span>.ast_identifier<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="keywordsign">|</span>&nbsp;<span class="constructor">Dot_vname</span>&nbsp;<span class="keyword">of</span>&nbsp;<span class="constructor">Ast</span>.ast_info&nbsp;*&nbsp;<span class="constructor">Ast</span>.ast_vname&nbsp;*&nbsp;<span class="constructor">Ast</span>.ast_identifier<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="keywordsign">|</span>&nbsp;<span class="constructor">Subscript_vname</span>&nbsp;<span class="keyword">of</span>&nbsp;<span class="constructor">Ast</span>.ast_info&nbsp;*&nbsp;<span class="constructor">Ast</span>.ast_vname&nbsp;*&nbsp;<span class="constructor">Ast</span>.ast_expression<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="keywordsign">|</span>&nbsp;<span class="constructor">Checked_vname</span>&nbsp;<span class="keyword">of</span>&nbsp;<span class="constructor">Ast</span>.ast_vname&nbsp;*&nbsp;bool&nbsp;*&nbsp;bool&nbsp;*&nbsp;int&nbsp;*<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="constructor">Ast</span>.ast_type_denoter<br>
+&nbsp;&nbsp;<span class="keyword">and</span>&nbsp;ast_declaration&nbsp;=<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="constructor">Null_declaration</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="keywordsign">|</span>&nbsp;<span class="constructor">Const_declaration</span>&nbsp;<span class="keyword">of</span>&nbsp;<span class="constructor">Ast</span>.ast_info&nbsp;*&nbsp;<span class="constructor">Ast</span>.ast_identifier&nbsp;*<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="constructor">Ast</span>.ast_expression<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="keywordsign">|</span>&nbsp;<span class="constructor">Var_declaration</span>&nbsp;<span class="keyword">of</span>&nbsp;<span class="constructor">Ast</span>.ast_info&nbsp;*&nbsp;<span class="constructor">Ast</span>.ast_identifier&nbsp;*<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="constructor">Ast</span>.ast_type_denoter<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="keywordsign">|</span>&nbsp;<span class="constructor">Proc_declaration</span>&nbsp;<span class="keyword">of</span>&nbsp;<span class="constructor">Ast</span>.ast_info&nbsp;*&nbsp;<span class="constructor">Ast</span>.ast_identifier&nbsp;*<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="constructor">Ast</span>.ast_formal_parameter_sequence&nbsp;*&nbsp;<span class="constructor">Ast</span>.ast_command<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="keywordsign">|</span>&nbsp;<span class="constructor">Func_declaration</span>&nbsp;<span class="keyword">of</span>&nbsp;<span class="constructor">Ast</span>.ast_info&nbsp;*&nbsp;<span class="constructor">Ast</span>.ast_identifier&nbsp;*<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="constructor">Ast</span>.ast_formal_parameter_sequence&nbsp;*&nbsp;<span class="constructor">Ast</span>.ast_type_denoter&nbsp;*<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="constructor">Ast</span>.ast_expression<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="keywordsign">|</span>&nbsp;<span class="constructor">Type_declaration</span>&nbsp;<span class="keyword">of</span>&nbsp;<span class="constructor">Ast</span>.ast_info&nbsp;*&nbsp;<span class="constructor">Ast</span>.ast_identifier&nbsp;*<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="constructor">Ast</span>.ast_type_denoter<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="keywordsign">|</span>&nbsp;<span class="constructor">Unary_operator_declaration</span>&nbsp;<span class="keyword">of</span>&nbsp;<span class="constructor">Ast</span>.ast_info&nbsp;*&nbsp;<span class="constructor">Ast</span>.ast_operator&nbsp;*<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="constructor">Ast</span>.ast_type_denoter&nbsp;*&nbsp;<span class="constructor">Ast</span>.ast_type_denoter<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="keywordsign">|</span>&nbsp;<span class="constructor">Binary_operator_declaration</span>&nbsp;<span class="keyword">of</span>&nbsp;<span class="constructor">Ast</span>.ast_info&nbsp;*&nbsp;<span class="constructor">Ast</span>.ast_operator&nbsp;*<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="constructor">Ast</span>.ast_type_denoter&nbsp;*&nbsp;<span class="constructor">Ast</span>.ast_type_denoter&nbsp;*&nbsp;<span class="constructor">Ast</span>.ast_type_denoter<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="keywordsign">|</span>&nbsp;<span class="constructor">Formal_parameter_declaration</span>&nbsp;<span class="keyword">of</span>&nbsp;<span class="constructor">Ast</span>.ast_info&nbsp;*&nbsp;<span class="constructor">Ast</span>.ast_formal_parameter<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="keywordsign">|</span>&nbsp;<span class="constructor">Sequential_declaration</span>&nbsp;<span class="keyword">of</span>&nbsp;<span class="constructor">Ast</span>.ast_info&nbsp;*&nbsp;<span class="constructor">Ast</span>.ast_declaration&nbsp;*<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="constructor">Ast</span>.ast_declaration<br>
+&nbsp;&nbsp;<span class="keyword">and</span>&nbsp;ast_formal_parameter&nbsp;=<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="constructor">Const_formal_parameter</span>&nbsp;<span class="keyword">of</span>&nbsp;<span class="constructor">Ast</span>.ast_info&nbsp;*&nbsp;<span class="constructor">Ast</span>.ast_identifier&nbsp;*<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="constructor">Ast</span>.ast_type_denoter<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="keywordsign">|</span>&nbsp;<span class="constructor">Var_formal_parameter</span>&nbsp;<span class="keyword">of</span>&nbsp;<span class="constructor">Ast</span>.ast_info&nbsp;*&nbsp;<span class="constructor">Ast</span>.ast_identifier&nbsp;*<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="constructor">Ast</span>.ast_type_denoter<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="keywordsign">|</span>&nbsp;<span class="constructor">Proc_formal_parameter</span>&nbsp;<span class="keyword">of</span>&nbsp;<span class="constructor">Ast</span>.ast_info&nbsp;*&nbsp;<span class="constructor">Ast</span>.ast_identifier&nbsp;*<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="constructor">Ast</span>.ast_formal_parameter_sequence<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="keywordsign">|</span>&nbsp;<span class="constructor">Func_formal_parameter</span>&nbsp;<span class="keyword">of</span>&nbsp;<span class="constructor">Ast</span>.ast_info&nbsp;*&nbsp;<span class="constructor">Ast</span>.ast_identifier&nbsp;*<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="constructor">Ast</span>.ast_formal_parameter_sequence&nbsp;*&nbsp;<span class="constructor">Ast</span>.ast_type_denoter<br>
+&nbsp;&nbsp;<span class="keyword">and</span>&nbsp;ast_actual_parameter&nbsp;=<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="constructor">Const_actual_parameter</span>&nbsp;<span class="keyword">of</span>&nbsp;<span class="constructor">Ast</span>.ast_info&nbsp;*&nbsp;<span class="constructor">Ast</span>.ast_expression<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="keywordsign">|</span>&nbsp;<span class="constructor">Var_actual_parameter</span>&nbsp;<span class="keyword">of</span>&nbsp;<span class="constructor">Ast</span>.ast_info&nbsp;*&nbsp;<span class="constructor">Ast</span>.ast_vname<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="keywordsign">|</span>&nbsp;<span class="constructor">Proc_actual_parameter</span>&nbsp;<span class="keyword">of</span>&nbsp;<span class="constructor">Ast</span>.ast_info&nbsp;*&nbsp;<span class="constructor">Ast</span>.ast_identifier<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="keywordsign">|</span>&nbsp;<span class="constructor">Func_actual_parameter</span>&nbsp;<span class="keyword">of</span>&nbsp;<span class="constructor">Ast</span>.ast_info&nbsp;*&nbsp;<span class="constructor">Ast</span>.ast_identifier<br>
+&nbsp;&nbsp;<span class="keyword">and</span>&nbsp;ast_formal_parameter_sequence&nbsp;=<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="constructor">Empty_formal_parameter_sequence</span>&nbsp;<span class="keyword">of</span>&nbsp;<span class="constructor">Ast</span>.ast_info<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="keywordsign">|</span>&nbsp;<span class="constructor">Single_formal_parameter_sequence</span>&nbsp;<span class="keyword">of</span>&nbsp;<span class="constructor">Ast</span>.ast_info&nbsp;*<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="constructor">Ast</span>.ast_formal_parameter<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="keywordsign">|</span>&nbsp;<span class="constructor">Multiple_formal_parameter_sequence</span>&nbsp;<span class="keyword">of</span>&nbsp;<span class="constructor">Ast</span>.ast_info&nbsp;*<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="constructor">Ast</span>.ast_formal_parameter&nbsp;*&nbsp;<span class="constructor">Ast</span>.ast_formal_parameter_sequence<br>
+&nbsp;&nbsp;<span class="keyword">and</span>&nbsp;ast_actual_parameter_sequence&nbsp;=<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="constructor">Empty_actual_parameter_sequence</span>&nbsp;<span class="keyword">of</span>&nbsp;<span class="constructor">Ast</span>.ast_info<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="keywordsign">|</span>&nbsp;<span class="constructor">Single_actual_parameter_sequence</span>&nbsp;<span class="keyword">of</span>&nbsp;<span class="constructor">Ast</span>.ast_info&nbsp;*<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="constructor">Ast</span>.ast_actual_parameter<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="keywordsign">|</span>&nbsp;<span class="constructor">Multiple_actual_parameter_sequence</span>&nbsp;<span class="keyword">of</span>&nbsp;<span class="constructor">Ast</span>.ast_info&nbsp;*<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="constructor">Ast</span>.ast_actual_parameter&nbsp;*&nbsp;<span class="constructor">Ast</span>.ast_actual_parameter_sequence<br>
+&nbsp;&nbsp;<span class="keyword">and</span>&nbsp;ast_type_denoter&nbsp;=<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="constructor">Null_type_denoter</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="keywordsign">|</span>&nbsp;<span class="constructor">Error_type_denoter</span>&nbsp;<span class="keyword">of</span>&nbsp;<span class="constructor">Ast</span>.ast_info<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="keywordsign">|</span>&nbsp;<span class="constructor">Any_type_denoter</span>&nbsp;<span class="keyword">of</span>&nbsp;<span class="constructor">Ast</span>.ast_info<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="keywordsign">|</span>&nbsp;<span class="constructor">Simple_type_denoter</span>&nbsp;<span class="keyword">of</span>&nbsp;<span class="constructor">Ast</span>.ast_info&nbsp;*&nbsp;<span class="constructor">Ast</span>.ast_identifier<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="keywordsign">|</span>&nbsp;<span class="constructor">Array_type_denoter</span>&nbsp;<span class="keyword">of</span>&nbsp;<span class="constructor">Ast</span>.ast_info&nbsp;*&nbsp;<span class="constructor">Ast</span>.ast_integer_literal&nbsp;*<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="constructor">Ast</span>.ast_type_denoter<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="keywordsign">|</span>&nbsp;<span class="constructor">Record_type_denoter</span>&nbsp;<span class="keyword">of</span>&nbsp;<span class="constructor">Ast</span>.ast_info&nbsp;*&nbsp;<span class="constructor">Ast</span>.ast_field_type_denoter<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="keywordsign">|</span>&nbsp;<span class="constructor">Bool_type_denoter</span>&nbsp;<span class="keyword">of</span>&nbsp;<span class="constructor">Ast</span>.ast_info<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="keywordsign">|</span>&nbsp;<span class="constructor">Int_type_denoter</span>&nbsp;<span class="keyword">of</span>&nbsp;<span class="constructor">Ast</span>.ast_info<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="keywordsign">|</span>&nbsp;<span class="constructor">Char_type_denoter</span>&nbsp;<span class="keyword">of</span>&nbsp;<span class="constructor">Ast</span>.ast_info<br>
+&nbsp;&nbsp;<span class="keyword">and</span>&nbsp;ast_field_type_denoter&nbsp;=<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="constructor">Single_field_type_denoter</span>&nbsp;<span class="keyword">of</span>&nbsp;<span class="constructor">Ast</span>.ast_info&nbsp;*&nbsp;<span class="constructor">Ast</span>.ast_identifier&nbsp;*<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="constructor">Ast</span>.ast_type_denoter<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="keywordsign">|</span>&nbsp;<span class="constructor">Multiple_field_type_denoter</span>&nbsp;<span class="keyword">of</span>&nbsp;<span class="constructor">Ast</span>.ast_info&nbsp;*&nbsp;<span class="constructor">Ast</span>.ast_identifier&nbsp;*<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="constructor">Ast</span>.ast_type_denoter&nbsp;*&nbsp;<span class="constructor">Ast</span>.ast_field_type_denoter<br>
+&nbsp;&nbsp;<span class="keyword">and</span>&nbsp;ast_integer_literal&nbsp;=&nbsp;<span class="constructor">Integer_literal</span>&nbsp;<span class="keyword">of</span>&nbsp;<span class="constructor">Ast</span>.ast_info&nbsp;*&nbsp;string<br>
+&nbsp;&nbsp;<span class="keyword">and</span>&nbsp;ast_character_literal&nbsp;=&nbsp;<span class="constructor">Character_literal</span>&nbsp;<span class="keyword">of</span>&nbsp;<span class="constructor">Ast</span>.ast_info&nbsp;*&nbsp;string<br>
+&nbsp;&nbsp;<span class="keyword">and</span>&nbsp;ast_identifier&nbsp;=<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="constructor">Identifier</span>&nbsp;<span class="keyword">of</span>&nbsp;<span class="constructor">Ast</span>.ast_info&nbsp;*&nbsp;string<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="keywordsign">|</span>&nbsp;<span class="constructor">Checked_identifier</span>&nbsp;<span class="keyword">of</span>&nbsp;<span class="constructor">Ast</span>.ast_identifier&nbsp;*<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="constructor">Ast</span>.ast_declaration&nbsp;<span class="constructor">Pervasives</span>.ref<br>
+&nbsp;&nbsp;<span class="keyword">and</span>&nbsp;ast_operator&nbsp;=<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="constructor">Operator</span>&nbsp;<span class="keyword">of</span>&nbsp;<span class="constructor">Ast</span>.ast_info&nbsp;*&nbsp;string<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="keywordsign">|</span>&nbsp;<span class="constructor">Checked_operator</span>&nbsp;<span class="keyword">of</span>&nbsp;<span class="constructor">Ast</span>.ast_operator&nbsp;*<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="constructor">Ast</span>.ast_declaration&nbsp;<span class="constructor">Pervasives</span>.ref<br>
+<span class="keyword">end</span></code></body></html>

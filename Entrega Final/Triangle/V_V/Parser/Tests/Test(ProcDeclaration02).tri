@@ -1,0 +1,9 @@
+! Test of declaration of procedure, it runs correctly.
+let
+   proc p(a: Char) ~ begin
+                      put('<');
+                      put(a);
+                      put('>')
+                     end
+in
+  p('x')

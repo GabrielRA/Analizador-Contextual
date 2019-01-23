@@ -1,0 +1,3 @@
+! Test of let in command, it runs correctly.
+
+let var i : Char; var j : Integer; var k : Integer in put(i);put(i); k:= 1
